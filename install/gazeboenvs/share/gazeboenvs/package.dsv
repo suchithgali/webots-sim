@@ -1,6 +1,0 @@
-source;share/gazeboenvs/hook/pythonpath.ps1
-source;share/gazeboenvs/hook/pythonpath.dsv
-source;share/gazeboenvs/hook/pythonpath.sh
-source;share/gazeboenvs/hook/ament_prefix_path.ps1
-source;share/gazeboenvs/hook/ament_prefix_path.dsv
-source;share/gazeboenvs/hook/ament_prefix_path.sh
