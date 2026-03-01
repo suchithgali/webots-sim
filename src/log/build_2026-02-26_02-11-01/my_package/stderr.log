@@ -1,0 +1,8 @@
+In file included from [01m[K/MRTP/MRTP/src/my_package/src/mavic2pro_patrol.cpp:18[m[K:
+[01m[K/MRTP/MRTP/src/install/webots_ros2_driver/include/webots/cpp/webots/GPS.hpp:37:5:[m[K [01;35m[Kwarning: [m[Ktype qualifiers ignored on function return type [[01;35m[K-Wignored-qualifiers[m[K]
+   37 |     [01;35m[Kconst[m[K CoordinateSystem getCoordinateSystem() const;
+      |     [01;35m[K^~~~~[m[K
+[01m[K/MRTP/MRTP/src/my_package/src/mavic2pro_patrol.cpp:[m[K In member function ‘[01m[Kstd::pair<double, double> Mavic::[01;32m[Kmove_to_target[m[K(const std::vector<std::array<double, 2> >&, bool, bool)[m[K’:
+[01m[K/MRTP/MRTP/src/my_package/src/mavic2pro_patrol.cpp:100:3:[m[K [01;36m[Knote: [m[Kparameter passing for argument of type ‘[01m[Kstd::pair<double, double>[m[K’ when C++17 is enabled changed to match C++14 in GCC 10.1
+  100 |   [01;36m[K{[m[K
+      |   [01;36m[K^[m[K

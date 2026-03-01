@@ -1,0 +1,4 @@
+[ 25%] [32mBuilding CXX object CMakeFiles/autopilot_node.dir/src/autopilot_node.cpp.o[0m
+[ 50%] [32m[1mLinking CXX executable autopilot_node[0m
+[ 50%] Built target autopilot_node
+[ 75%] [32mBuilding CXX object CMakeFiles/mavic2pro_patrol.dir/src/mavic2pro_patrol.cpp.o[0m

@@ -1,0 +1,32 @@
+[ 50%] [32mBuilding CXX object CMakeFiles/mavic2pro_patrol.dir/src/mavic2pro_patrol.cpp.o[0m
+In file included from [01m[K/MRTP/MRTP/src/my_package/src/mavic2pro_patrol.cpp:2[m[K:
+[01m[K/MRTP/MRTP/src/install/webots_ros2_driver/include/webots/cpp/webots/GPS.hpp:37:5:[m[K [01;35m[Kwarning: [m[Ktype qualifiers ignored on function return type [[01;35m[K-Wignored-qualifiers[m[K]
+   37 |     [01;35m[Kconst[m[K CoordinateSystem getCoordinateSystem() const;
+      |     [01;35m[K^~~~~[m[K
+[01m[K/MRTP/MRTP/src/my_package/src/mavic2pro_patrol.cpp:[m[K In member function ‘[01m[Kstd::pair<double, double> Mavic::[01;32m[Kmove_to_target[m[K(const std::vector<std::array<double, 2> >&, bool, bool)[m[K’:
+[01m[K/MRTP/MRTP/src/my_package/src/mavic2pro_patrol.cpp:89:3:[m[K [01;36m[Knote: [m[Kparameter passing for argument of type ‘[01m[Kstd::pair<double, double>[m[K’ when C++17 is enabled changed to match C++14 in GCC 10.1
+   89 |   [01;36m[K{[m[K
+      |   [01;36m[K^[m[K
+[100%] [32m[1mLinking CXX executable mavic2pro_patrol[0m
+[100%] Built target mavic2pro_patrol
+-- Install configuration: ""
+-- Execute custom install script
+-- Up-to-date symlink: /MRTP/MRTP/src/install/my_package/lib/my_package/mavic2pro_patrol
+-- Up-to-date symlink: /MRTP/MRTP/src/install/my_package/share/my_package/launch/robot_launch.py
+-- Up-to-date symlink: /MRTP/MRTP/src/install/my_package/share/my_package/resource/my_robot.urdf
+-- Up-to-date symlink: /MRTP/MRTP/src/install/my_package/share/my_package/worlds/wharehouse.wbt
+-- Up-to-date symlink: /MRTP/MRTP/src/install/my_package/share/ament_index/resource_index/package_run_dependencies/my_package
+-- Up-to-date symlink: /MRTP/MRTP/src/install/my_package/share/ament_index/resource_index/parent_prefix_path/my_package
+-- Up-to-date symlink: /MRTP/MRTP/src/install/my_package/share/my_package/environment/ament_prefix_path.sh
+-- Up-to-date symlink: /MRTP/MRTP/src/install/my_package/share/my_package/environment/ament_prefix_path.dsv
+-- Up-to-date symlink: /MRTP/MRTP/src/install/my_package/share/my_package/environment/path.sh
+-- Up-to-date symlink: /MRTP/MRTP/src/install/my_package/share/my_package/environment/path.dsv
+-- Up-to-date symlink: /MRTP/MRTP/src/install/my_package/share/my_package/local_setup.bash
+-- Up-to-date symlink: /MRTP/MRTP/src/install/my_package/share/my_package/local_setup.sh
+-- Up-to-date symlink: /MRTP/MRTP/src/install/my_package/share/my_package/local_setup.zsh
+-- Up-to-date symlink: /MRTP/MRTP/src/install/my_package/share/my_package/local_setup.dsv
+-- Symlinking: /MRTP/MRTP/src/install/my_package/share/my_package/package.dsv
+-- Up-to-date symlink: /MRTP/MRTP/src/install/my_package/share/ament_index/resource_index/packages/my_package
+-- Up-to-date symlink: /MRTP/MRTP/src/install/my_package/share/my_package/cmake/my_packageConfig.cmake
+-- Up-to-date symlink: /MRTP/MRTP/src/install/my_package/share/my_package/cmake/my_packageConfig-version.cmake
+-- Up-to-date symlink: /MRTP/MRTP/src/install/my_package/share/my_package/package.xml

@@ -1,0 +1,58 @@
+[0.000000] (-) TimerEvent: {}
+[0.001094] (gazeboenvs) JobQueued: {'identifier': 'gazeboenvs', 'dependencies': OrderedDict()}
+[0.001243] (gazeboenvs) JobStarted: {'identifier': 'gazeboenvs'}
+[0.099617] (-) TimerEvent: {}
+[0.207613] (-) TimerEvent: {}
+[0.313657] (-) TimerEvent: {}
+[0.419595] (-) TimerEvent: {}
+[0.522592] (-) TimerEvent: {}
+[0.564805] (gazeboenvs) Command: {'cmd': ['/usr/bin/python3', '-W', 'ignore:setup.py install is deprecated', '-W', 'ignore:easy_install command is deprecated', 'setup.py', 'egg_info', '--egg-base', '../../build/gazeboenvs', 'build', '--build-base', '/MRTP/MRTP/build/gazeboenvs/build', 'install', '--record', '/MRTP/MRTP/build/gazeboenvs/install.log', '--single-version-externally-managed', 'install_data'], 'cwd': '/MRTP/MRTP/src/gazeboenvs', 'env': {'GZ_SIM_RESOURCE_PATH': '/opt/ros/jazzy/share', 'GZ_CONFIG_PATH': '/opt/ros/jazzy/opt/gz_sim_vendor/share/gz:/opt/ros/jazzy/opt/sdformat_vendor/share/gz:/opt/ros/jazzy/opt/gz_gui_vendor/share/gz:/opt/ros/jazzy/opt/gz_transport_vendor/share/gz:/opt/ros/jazzy/opt/gz_rendering_vendor/share/gz:/opt/ros/jazzy/opt/gz_plugin_vendor/share/gz:/opt/ros/jazzy/opt/gz_fuel_tools_vendor/share/gz:/opt/ros/jazzy/opt/gz_msgs_vendor/share/gz:/opt/ros/jazzy/opt/gz_common_vendor/share/gz', 'HOSTNAME': 'docker-desktop', '__GLX_VENDOR_LIBRARY_NAME': 'nvidia', 'SHLVL': '1', 'LD_LIBRARY_PATH': '/opt/ros/jazzy/opt/gz_sim_vendor/lib:/opt/ros/jazzy/opt/gz_sensors_vendor/lib:/opt/ros/jazzy/opt/gz_physics_vendor/lib:/opt/ros/jazzy/opt/sdformat_vendor/lib:/opt/ros/jazzy/opt/rviz_ogre_vendor/lib:/opt/ros/jazzy/lib/aarch64-linux-gnu:/opt/ros/jazzy/opt/gz_gui_vendor/lib:/opt/ros/jazzy/opt/gz_transport_vendor/lib:/opt/ros/jazzy/opt/gz_rendering_vendor/lib:/opt/ros/jazzy/opt/gz_plugin_vendor/lib:/opt/ros/jazzy/opt/gz_fuel_tools_vendor/lib:/opt/ros/jazzy/opt/gz_msgs_vendor/lib:/opt/ros/jazzy/opt/gz_common_vendor/lib:/opt/ros/jazzy/opt/gz_math_vendor/lib:/opt/ros/jazzy/opt/gz_utils_vendor/lib:/opt/ros/jazzy/opt/gz_tools_vendor/lib:/opt/ros/jazzy/opt/gz_ogre_next_vendor/lib:/opt/ros/jazzy/opt/gz_dartsim_vendor/lib:/opt/ros/jazzy/opt/gz_cmake_vendor/lib:/opt/ros/jazzy/lib', 'HOME': '/root', 'OLDPWD': '/MRTP/MRTP/src', 'ROS_PYTHON_VERSION': '3', 'PS1': '(.venv) \\[\\e]0;\\u@\\h: \\w\\a\\]${debian_chroot:+($debian_chroot)}\\u@\\h:\\w\\$', 'ROS_DISTRO': 'jazzy', '_': '/usr/bin/colcon', 'ROS_VERSION': '2', 'NVIDIA_DRIVER_CAPABILITIES': 'all', 'TERM': 'xterm', 'GAZEBO_MODEL_PATH': '/opt/ros/jazzy/share/', 'PATH': '/.venv/bin:/opt/ros/jazzy/opt/gz_msgs_vendor/bin:/opt/ros/jazzy/opt/gz_tools_vendor/bin:/opt/ros/jazzy/opt/gz_ogre_next_vendor/bin:/opt/ros/jazzy/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin', 'DISPLAY': ':2', 'LANG': 'C.UTF-8', 'VIRTUAL_ENV_PROMPT': '(.venv)', '__NV_PRIME_RENDER_OFFLOAD': '1', 'LS_COLORS': 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=00:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.avif=01;35:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:*~=00;90:*#=00;90:*.bak=00;90:*.crdownload=00;90:*.dpkg-dist=00;90:*.dpkg-new=00;90:*.dpkg-old=00;90:*.dpkg-tmp=00;90:*.old=00;90:*.orig=00;90:*.part=00;90:*.rej=00;90:*.rpmnew=00;90:*.rpmorig=00;90:*.rpmsave=00;90:*.swp=00;90:*.tmp=00;90:*.ucf-dist=00;90:*.ucf-new=00;90:*.ucf-old=00;90:', 'AMENT_PREFIX_PATH': '/opt/ros/jazzy', 'VIRTUAL_ENV': '/.venv', 'ROS_AUTOMATIC_DISCOVERY_RANGE': 'SUBNET', 'PWD': '/MRTP/MRTP/build/gazeboenvs', 'LC_ALL': 'C.UTF-8', 'PYTHONPATH': '/MRTP/MRTP/build/gazeboenvs/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/MRTP/MRTP/install/gazeboenvs/lib/python3.12/site-packages:/usr/lib/python3/dist-packages:/opt/ros/jazzy/lib/python3.12/site-packages', 'NVIDIA_VISIBLE_DEVICES': 'all', 'COLCON': '1', 'CMAKE_PREFIX_PATH': '/opt/ros/jazzy/opt/gz_sim_vendor:/opt/ros/jazzy/opt/gz_sensors_vendor:/opt/ros/jazzy/opt/gz_physics_vendor:/opt/ros/jazzy/opt/sdformat_vendor:/opt/ros/jazzy/opt/gz_gui_vendor:/opt/ros/jazzy/opt/gz_transport_vendor:/opt/ros/jazzy/opt/gz_rendering_vendor:/opt/ros/jazzy/opt/gz_plugin_vendor:/opt/ros/jazzy/opt/gz_fuel_tools_vendor:/opt/ros/jazzy/opt/gz_msgs_vendor:/opt/ros/jazzy/opt/gz_common_vendor:/opt/ros/jazzy/opt/gz_math_vendor:/opt/ros/jazzy/opt/gz_utils_vendor:/opt/ros/jazzy/opt/gz_tools_vendor:/opt/ros/jazzy/opt/gz_ogre_next_vendor:/opt/ros/jazzy/opt/gz_dartsim_vendor:/opt/ros/jazzy/opt/gz_cmake_vendor'}, 'shell': False}
+[0.623625] (-) TimerEvent: {}
+[0.718084] (gazeboenvs) StdoutLine: {'line': b'running egg_info\n'}
+[0.718763] (gazeboenvs) StdoutLine: {'line': b'creating ../../build/gazeboenvs/gazeboenvs.egg-info\n'}
+[0.724573] (-) TimerEvent: {}
+[0.727613] (gazeboenvs) StdoutLine: {'line': b'writing ../../build/gazeboenvs/gazeboenvs.egg-info/PKG-INFO\n'}
+[0.728633] (gazeboenvs) StdoutLine: {'line': b'writing dependency_links to ../../build/gazeboenvs/gazeboenvs.egg-info/dependency_links.txt\n'}
+[0.729262] (gazeboenvs) StdoutLine: {'line': b'writing requirements to ../../build/gazeboenvs/gazeboenvs.egg-info/requires.txt\n'}
+[0.729655] (gazeboenvs) StdoutLine: {'line': b'writing top-level names to ../../build/gazeboenvs/gazeboenvs.egg-info/top_level.txt\n'}
+[0.730159] (gazeboenvs) StdoutLine: {'line': b"writing manifest file '../../build/gazeboenvs/gazeboenvs.egg-info/SOURCES.txt'\n"}
+[0.750800] (gazeboenvs) StdoutLine: {'line': b"reading manifest file '../../build/gazeboenvs/gazeboenvs.egg-info/SOURCES.txt'\n"}
+[0.751852] (gazeboenvs) StdoutLine: {'line': b"writing manifest file '../../build/gazeboenvs/gazeboenvs.egg-info/SOURCES.txt'\n"}
+[0.752206] (gazeboenvs) StdoutLine: {'line': b'running build\n'}
+[0.752457] (gazeboenvs) StdoutLine: {'line': b'running build_py\n'}
+[0.752747] (gazeboenvs) StdoutLine: {'line': b'creating /MRTP/MRTP/build/gazeboenvs/build\n'}
+[0.753224] (gazeboenvs) StdoutLine: {'line': b'creating /MRTP/MRTP/build/gazeboenvs/build/lib\n'}
+[0.753512] (gazeboenvs) StdoutLine: {'line': b'creating /MRTP/MRTP/build/gazeboenvs/build/lib/gazeboenvs\n'}
+[0.753766] (gazeboenvs) StdoutLine: {'line': b'copying gazeboenvs/__init__.py -> /MRTP/MRTP/build/gazeboenvs/build/lib/gazeboenvs\n'}
+[0.757574] (gazeboenvs) StdoutLine: {'line': b'running install\n'}
+[0.760691] (gazeboenvs) StdoutLine: {'line': b'running install_lib\n'}
+[0.768455] (gazeboenvs) StdoutLine: {'line': b'creating /MRTP/MRTP/install/gazeboenvs/lib/python3.12/site-packages/gazeboenvs\n'}
+[0.768790] (gazeboenvs) StdoutLine: {'line': b'copying /MRTP/MRTP/build/gazeboenvs/build/lib/gazeboenvs/__init__.py -> /MRTP/MRTP/install/gazeboenvs/lib/python3.12/site-packages/gazeboenvs\n'}
+[0.769967] (gazeboenvs) StdoutLine: {'line': b'byte-compiling /MRTP/MRTP/install/gazeboenvs/lib/python3.12/site-packages/gazeboenvs/__init__.py to __init__.cpython-312.pyc\n'}
+[0.771036] (gazeboenvs) StdoutLine: {'line': b'running install_data\n'}
+[0.771406] (gazeboenvs) StdoutLine: {'line': b'creating /MRTP/MRTP/install/gazeboenvs/share/ament_index\n'}
+[0.771908] (gazeboenvs) StdoutLine: {'line': b'creating /MRTP/MRTP/install/gazeboenvs/share/ament_index/resource_index\n'}
+[0.772154] (gazeboenvs) StdoutLine: {'line': b'creating /MRTP/MRTP/install/gazeboenvs/share/ament_index/resource_index/packages\n'}
+[0.772481] (gazeboenvs) StdoutLine: {'line': b'copying resource/gazeboenvs -> /MRTP/MRTP/install/gazeboenvs/share/ament_index/resource_index/packages\n'}
+[0.772833] (gazeboenvs) StdoutLine: {'line': b'copying package.xml -> /MRTP/MRTP/install/gazeboenvs/share/gazeboenvs\n'}
+[0.773577] (gazeboenvs) StdoutLine: {'line': b'creating /MRTP/MRTP/install/gazeboenvs/share/gazeboenvs/launch\n'}
+[0.773880] (gazeboenvs) StdoutLine: {'line': b'copying launch/husky_orchard.launch.py -> /MRTP/MRTP/install/gazeboenvs/share/gazeboenvs/launch\n'}
+[0.774575] (gazeboenvs) StdoutLine: {'line': b'copying launch/tb4_warehouse.launch.py -> /MRTP/MRTP/install/gazeboenvs/share/gazeboenvs/launch\n'}
+[0.775439] (gazeboenvs) StdoutLine: {'line': b'copying launch/tb4_simulation.launch.py -> /MRTP/MRTP/install/gazeboenvs/share/gazeboenvs/launch\n'}
+[0.776208] (gazeboenvs) StdoutLine: {'line': b'copying launch/gazebo_husky.launch.py -> /MRTP/MRTP/install/gazeboenvs/share/gazeboenvs/launch\n'}
+[0.776889] (gazeboenvs) StdoutLine: {'line': b'copying launch/tb3_simulation.launch.py -> /MRTP/MRTP/install/gazeboenvs/share/gazeboenvs/launch\n'}
+[0.778021] (gazeboenvs) StdoutLine: {'line': b'creating /MRTP/MRTP/install/gazeboenvs/share/gazeboenvs/params\n'}
+[0.778315] (gazeboenvs) StdoutLine: {'line': b'copying params/nav2_params_tb4.yaml -> /MRTP/MRTP/install/gazeboenvs/share/gazeboenvs/params\n'}
+[0.779034] (gazeboenvs) StdoutLine: {'line': b'copying params/nav2_params_wh_tb4.yaml -> /MRTP/MRTP/install/gazeboenvs/share/gazeboenvs/params\n'}
+[0.779841] (gazeboenvs) StdoutLine: {'line': b'creating /MRTP/MRTP/install/gazeboenvs/share/gazeboenvs/params/indoor\n'}
+[0.780174] (gazeboenvs) StdoutLine: {'line': b'copying params/indoor/robot.yaml -> /MRTP/MRTP/install/gazeboenvs/share/gazeboenvs/params/indoor\n'}
+[0.780827] (gazeboenvs) StdoutLine: {'line': b'creating /MRTP/MRTP/install/gazeboenvs/share/gazeboenvs/params/outdoor\n'}
+[0.781248] (gazeboenvs) StdoutLine: {'line': b'copying params/outdoor/robot.yaml -> /MRTP/MRTP/install/gazeboenvs/share/gazeboenvs/params/outdoor\n'}
+[0.781928] (gazeboenvs) StdoutLine: {'line': b'running install_egg_info\n'}
+[0.792549] (gazeboenvs) StdoutLine: {'line': b'Copying ../../build/gazeboenvs/gazeboenvs.egg-info to /MRTP/MRTP/install/gazeboenvs/lib/python3.12/site-packages/gazeboenvs-0.0.1-py3.12.egg-info\n'}
+[0.796879] (gazeboenvs) StdoutLine: {'line': b'running install_scripts\n'}
+[0.825615] (-) TimerEvent: {}
+[0.866643] (gazeboenvs) StdoutLine: {'line': b"writing list of installed files to '/MRTP/MRTP/build/gazeboenvs/install.log'\n"}
+[0.884270] (gazeboenvs) CommandEnded: {'returncode': 0}
+[0.897648] (gazeboenvs) JobEnded: {'identifier': 'gazeboenvs', 'rc': 0}
+[0.898871] (-) EventReactorShutdown: {}

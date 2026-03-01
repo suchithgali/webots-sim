@@ -1,0 +1,31 @@
+[0.770s] Invoking command in '/MRTP/MRTP/src/build/webots_ros2_crazyflie': AMENT_PREFIX_PATH=/MRTP/MRTP/src/install/webots_ros2_driver:/MRTP/MRTP/src/install/webots_ros2_msgs:/MRTP/MRTP/src/install/webots_ros2_importer:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/MRTP/MRTP/src/install/webots_ros2_driver:/MRTP/MRTP/src/install/webots_ros2_msgs:${CMAKE_PREFIX_PATH} LD_LIBRARY_PATH=/MRTP/MRTP/src/install/webots_ros2_driver/lib:/MRTP/MRTP/src/install/webots_ros2_msgs/lib:${LD_LIBRARY_PATH} PS1=(.venv) \[\e]0;\u@\h: \w\a\]${debian_chroot:+($debian_chroot)}\u@\h:\w\$ PYTHONPATH=/MRTP/MRTP/src/build/webots_ros2_crazyflie/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/MRTP/MRTP/src/install/webots_ros2_crazyflie/lib/python3.12/site-packages:/MRTP/MRTP/src/install/webots_ros2_driver/lib/python3.12/site-packages:/MRTP/MRTP/src/install/webots_ros2_msgs/lib/python3.12/site-packages:/MRTP/MRTP/src/build/webots_ros2_importer:/MRTP/MRTP/src/install/webots_ros2_importer/lib/python3.12/site-packages:${PYTHONPATH} VIRTUAL_ENV_PROMPT=(.venv) /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py develop --editable --build-directory /MRTP/MRTP/src/build/webots_ros2_crazyflie/build --no-deps symlink_data
+[1.018s] running develop
+[1.159s] running egg_info
+[1.160s] creating webots_ros2_crazyflie.egg-info
+[1.168s] writing webots_ros2_crazyflie.egg-info/PKG-INFO
+[1.170s] writing dependency_links to webots_ros2_crazyflie.egg-info/dependency_links.txt
+[1.171s] writing entry points to webots_ros2_crazyflie.egg-info/entry_points.txt
+[1.171s] writing requirements to webots_ros2_crazyflie.egg-info/requires.txt
+[1.172s] writing top-level names to webots_ros2_crazyflie.egg-info/top_level.txt
+[1.173s] writing manifest file 'webots_ros2_crazyflie.egg-info/SOURCES.txt'
+[1.211s] reading manifest file 'webots_ros2_crazyflie.egg-info/SOURCES.txt'
+[1.214s] writing manifest file 'webots_ros2_crazyflie.egg-info/SOURCES.txt'
+[1.224s] running build_ext
+[1.224s] Creating /MRTP/MRTP/src/install/webots_ros2_crazyflie/lib/python3.12/site-packages/webots-ros2-crazyflie.egg-link (link to .)
+[1.226s] Installing crazyflie_driver script to /MRTP/MRTP/src/install/webots_ros2_crazyflie/lib/webots_ros2_crazyflie
+[1.227s] 
+[1.228s] Installed /MRTP/MRTP/src/build/webots_ros2_crazyflie
+[1.229s] running symlink_data
+[1.229s] creating /MRTP/MRTP/src/install/webots_ros2_crazyflie/share/ament_index
+[1.230s] creating /MRTP/MRTP/src/install/webots_ros2_crazyflie/share/ament_index/resource_index
+[1.230s] creating /MRTP/MRTP/src/install/webots_ros2_crazyflie/share/ament_index/resource_index/packages
+[1.231s] symbolically linking /MRTP/MRTP/src/build/webots_ros2_crazyflie/resource/webots_ros2_crazyflie -> /MRTP/MRTP/src/install/webots_ros2_crazyflie/share/ament_index/resource_index/packages
+[1.231s] creating /MRTP/MRTP/src/install/webots_ros2_crazyflie/share/webots_ros2_crazyflie/launch
+[1.231s] symbolically linking /MRTP/MRTP/src/build/webots_ros2_crazyflie/launch/robot_launch.py -> /MRTP/MRTP/src/install/webots_ros2_crazyflie/share/webots_ros2_crazyflie/launch
+[1.231s] creating /MRTP/MRTP/src/install/webots_ros2_crazyflie/share/webots_ros2_crazyflie/worlds
+[1.232s] symbolically linking /MRTP/MRTP/src/build/webots_ros2_crazyflie/worlds/crazyflie_apartment.wbt -> /MRTP/MRTP/src/install/webots_ros2_crazyflie/share/webots_ros2_crazyflie/worlds
+[1.232s] symbolically linking /MRTP/MRTP/src/build/webots_ros2_crazyflie/worlds/.crazyflie_apartment.wbproj -> /MRTP/MRTP/src/install/webots_ros2_crazyflie/share/webots_ros2_crazyflie/worlds
+[1.232s] creating /MRTP/MRTP/src/install/webots_ros2_crazyflie/share/webots_ros2_crazyflie/resource
+[1.233s] symbolically linking /MRTP/MRTP/src/build/webots_ros2_crazyflie/resource/crazyflie_webots.urdf -> /MRTP/MRTP/src/install/webots_ros2_crazyflie/share/webots_ros2_crazyflie/resource
+[1.233s] symbolically linking /MRTP/MRTP/src/build/webots_ros2_crazyflie/package.xml -> /MRTP/MRTP/src/install/webots_ros2_crazyflie/share/webots_ros2_crazyflie
+[1.257s] Invoked command in '/MRTP/MRTP/src/build/webots_ros2_crazyflie' returned '0': AMENT_PREFIX_PATH=/MRTP/MRTP/src/install/webots_ros2_driver:/MRTP/MRTP/src/install/webots_ros2_msgs:/MRTP/MRTP/src/install/webots_ros2_importer:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/MRTP/MRTP/src/install/webots_ros2_driver:/MRTP/MRTP/src/install/webots_ros2_msgs:${CMAKE_PREFIX_PATH} LD_LIBRARY_PATH=/MRTP/MRTP/src/install/webots_ros2_driver/lib:/MRTP/MRTP/src/install/webots_ros2_msgs/lib:${LD_LIBRARY_PATH} PS1=(.venv) \[\e]0;\u@\h: \w\a\]${debian_chroot:+($debian_chroot)}\u@\h:\w\$ PYTHONPATH=/MRTP/MRTP/src/build/webots_ros2_crazyflie/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/MRTP/MRTP/src/install/webots_ros2_crazyflie/lib/python3.12/site-packages:/MRTP/MRTP/src/install/webots_ros2_driver/lib/python3.12/site-packages:/MRTP/MRTP/src/install/webots_ros2_msgs/lib/python3.12/site-packages:/MRTP/MRTP/src/build/webots_ros2_importer:/MRTP/MRTP/src/install/webots_ros2_importer/lib/python3.12/site-packages:${PYTHONPATH} VIRTUAL_ENV_PROMPT=(.venv) /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py develop --editable --build-directory /MRTP/MRTP/src/build/webots_ros2_crazyflie/build --no-deps symlink_data

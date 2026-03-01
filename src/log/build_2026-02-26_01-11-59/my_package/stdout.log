@@ -1,0 +1,49 @@
+[ 50%] [32mBuilding CXX object CMakeFiles/my_package.dir/src/MyRobotDriver.cpp.o[0m
+[ 50%] Built target ament_cmake_python_symlink_my_package
+running egg_info
+writing my_package.egg-info/PKG-INFO
+writing dependency_links to my_package.egg-info/dependency_links.txt
+writing top-level names to my_package.egg-info/top_level.txt
+reading manifest file 'my_package.egg-info/SOURCES.txt'
+writing manifest file 'my_package.egg-info/SOURCES.txt'
+[ 50%] Built target ament_cmake_python_build_my_package_egg
+[100%] [32m[1mLinking CXX shared library libmy_package.so[0m
+[100%] Built target my_package
+-- Install configuration: ""
+-- Execute custom install script
+-- Up-to-date symlink: /MRTP/MRTP/src/install/my_package/share/my_package//my_robot_driver.xml
+-- Up-to-date symlink: /MRTP/MRTP/src/install/my_package/lib/libmy_package.so
+-- Up-to-date symlink: /MRTP/MRTP/src/install/my_package/include/include/my_package/MyRobotDriver.hpp
+-- Up-to-date symlink: /MRTP/MRTP/src/install/my_package/share/my_package/my_robot_driver.xml
+-- Up-to-date symlink: /MRTP/MRTP/src/install/my_package/share/my_package/launch/robot_launch.py
+-- Up-to-date symlink: /MRTP/MRTP/src/install/my_package/share/my_package/resource/my_robot.urdf
+-- Up-to-date symlink: /MRTP/MRTP/src/install/my_package/share/my_package/worlds/wharehouse.wbt
+-- Up-to-date symlink: /MRTP/MRTP/src/install/my_package/share/my_package/environment/library_path.sh
+-- Up-to-date symlink: /MRTP/MRTP/src/install/my_package/share/my_package/environment/library_path.dsv
+-- Up-to-date symlink: /MRTP/MRTP/src/install/my_package/share/my_package/environment/pythonpath.sh
+-- Up-to-date symlink: /MRTP/MRTP/src/install/my_package/share/my_package/environment/pythonpath.dsv
+-- Up-to-date symlink: /MRTP/MRTP/src/install/my_package/lib/python3.12/site-packages/my_package-0.0.0-py3.12.egg-info/PKG-INFO
+-- Up-to-date symlink: /MRTP/MRTP/src/install/my_package/lib/python3.12/site-packages/my_package-0.0.0-py3.12.egg-info/SOURCES.txt
+-- Up-to-date symlink: /MRTP/MRTP/src/install/my_package/lib/python3.12/site-packages/my_package-0.0.0-py3.12.egg-info/dependency_links.txt
+-- Up-to-date symlink: /MRTP/MRTP/src/install/my_package/lib/python3.12/site-packages/my_package-0.0.0-py3.12.egg-info/top_level.txt
+-- Up-to-date symlink: /MRTP/MRTP/src/install/my_package/lib/python3.12/site-packages/my_package/__init__.py
+-- Up-to-date symlink: /MRTP/MRTP/src/install/my_package/lib/python3.12/site-packages/my_package/mavic_autopilot.py
+-- Up-to-date symlink: /MRTP/MRTP/src/install/my_package/share/ament_index/resource_index/package_run_dependencies/my_package
+-- Up-to-date symlink: /MRTP/MRTP/src/install/my_package/share/ament_index/resource_index/parent_prefix_path/my_package
+-- Up-to-date symlink: /MRTP/MRTP/src/install/my_package/share/my_package/environment/ament_prefix_path.sh
+-- Up-to-date symlink: /MRTP/MRTP/src/install/my_package/share/my_package/environment/ament_prefix_path.dsv
+-- Up-to-date symlink: /MRTP/MRTP/src/install/my_package/share/my_package/environment/path.sh
+-- Up-to-date symlink: /MRTP/MRTP/src/install/my_package/share/my_package/environment/path.dsv
+-- Up-to-date symlink: /MRTP/MRTP/src/install/my_package/share/my_package/local_setup.bash
+-- Up-to-date symlink: /MRTP/MRTP/src/install/my_package/share/my_package/local_setup.sh
+-- Up-to-date symlink: /MRTP/MRTP/src/install/my_package/share/my_package/local_setup.zsh
+-- Up-to-date symlink: /MRTP/MRTP/src/install/my_package/share/my_package/local_setup.dsv
+-- Symlinking: /MRTP/MRTP/src/install/my_package/share/my_package/package.dsv
+-- Up-to-date symlink: /MRTP/MRTP/src/install/my_package/share/ament_index/resource_index/packages/my_package
+-- Up-to-date symlink: /MRTP/MRTP/src/install/my_package/share/ament_index/resource_index/webots_ros2_driver__pluginlib__plugin/my_package
+-- Up-to-date symlink: /MRTP/MRTP/src/install/my_package/share/my_package/cmake/ament_cmake_export_include_directories-extras.cmake
+-- Up-to-date symlink: /MRTP/MRTP/src/install/my_package/share/my_package/cmake/ament_cmake_export_libraries-extras.cmake
+-- Up-to-date symlink: /MRTP/MRTP/src/install/my_package/share/my_package/cmake/my_packageConfig.cmake
+-- Up-to-date symlink: /MRTP/MRTP/src/install/my_package/share/my_package/cmake/my_packageConfig-version.cmake
+-- Up-to-date symlink: /MRTP/MRTP/src/install/my_package/share/my_package/package.xml
+Listing '/MRTP/MRTP/src/install/my_package/lib/python3.12/site-packages/my_package'...

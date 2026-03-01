@@ -1,0 +1,29 @@
+running develop
+running egg_info
+creating webots_ros2_crazyflie.egg-info
+writing webots_ros2_crazyflie.egg-info/PKG-INFO
+writing dependency_links to webots_ros2_crazyflie.egg-info/dependency_links.txt
+writing entry points to webots_ros2_crazyflie.egg-info/entry_points.txt
+writing requirements to webots_ros2_crazyflie.egg-info/requires.txt
+writing top-level names to webots_ros2_crazyflie.egg-info/top_level.txt
+writing manifest file 'webots_ros2_crazyflie.egg-info/SOURCES.txt'
+reading manifest file 'webots_ros2_crazyflie.egg-info/SOURCES.txt'
+writing manifest file 'webots_ros2_crazyflie.egg-info/SOURCES.txt'
+running build_ext
+Creating /MRTP/MRTP/src/install/webots_ros2_crazyflie/lib/python3.12/site-packages/webots-ros2-crazyflie.egg-link (link to .)
+Installing crazyflie_driver script to /MRTP/MRTP/src/install/webots_ros2_crazyflie/lib/webots_ros2_crazyflie
+
+Installed /MRTP/MRTP/src/build/webots_ros2_crazyflie
+running symlink_data
+creating /MRTP/MRTP/src/install/webots_ros2_crazyflie/share/ament_index
+creating /MRTP/MRTP/src/install/webots_ros2_crazyflie/share/ament_index/resource_index
+creating /MRTP/MRTP/src/install/webots_ros2_crazyflie/share/ament_index/resource_index/packages
+symbolically linking /MRTP/MRTP/src/build/webots_ros2_crazyflie/resource/webots_ros2_crazyflie -> /MRTP/MRTP/src/install/webots_ros2_crazyflie/share/ament_index/resource_index/packages
+creating /MRTP/MRTP/src/install/webots_ros2_crazyflie/share/webots_ros2_crazyflie/launch
+symbolically linking /MRTP/MRTP/src/build/webots_ros2_crazyflie/launch/robot_launch.py -> /MRTP/MRTP/src/install/webots_ros2_crazyflie/share/webots_ros2_crazyflie/launch
+creating /MRTP/MRTP/src/install/webots_ros2_crazyflie/share/webots_ros2_crazyflie/worlds
+symbolically linking /MRTP/MRTP/src/build/webots_ros2_crazyflie/worlds/crazyflie_apartment.wbt -> /MRTP/MRTP/src/install/webots_ros2_crazyflie/share/webots_ros2_crazyflie/worlds
+symbolically linking /MRTP/MRTP/src/build/webots_ros2_crazyflie/worlds/.crazyflie_apartment.wbproj -> /MRTP/MRTP/src/install/webots_ros2_crazyflie/share/webots_ros2_crazyflie/worlds
+creating /MRTP/MRTP/src/install/webots_ros2_crazyflie/share/webots_ros2_crazyflie/resource
+symbolically linking /MRTP/MRTP/src/build/webots_ros2_crazyflie/resource/crazyflie_webots.urdf -> /MRTP/MRTP/src/install/webots_ros2_crazyflie/share/webots_ros2_crazyflie/resource
+symbolically linking /MRTP/MRTP/src/build/webots_ros2_crazyflie/package.xml -> /MRTP/MRTP/src/install/webots_ros2_crazyflie/share/webots_ros2_crazyflie

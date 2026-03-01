@@ -1,0 +1,7 @@
+Metadata-Version: 2.1
+Name: gazeboenvs
+Version: 0.0.1
+Summary: Package with Gazebo environments
+Maintainer: Stefano Carpin
+Maintainer-email: scarpin@ucmerced.edu
+License: Apache License 2.0

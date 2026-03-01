@@ -1,0 +1,33 @@
+[0.065s] Invoking command in '/MRTP/MRTP/build/my_package': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/MRTP/MRTP/install/webots_ros2_mavic:/MRTP/MRTP/install/gazeboenvs:/MRTP/MRTP/src/install/webots_ros2:/MRTP/MRTP/src/install/webots_ros2_universal_robot:/MRTP/MRTP/src/install/webots_ros2_turtlebot:/MRTP/MRTP/src/install/webots_ros2_tiago:/MRTP/MRTP/src/install/webots_ros2_tests:/MRTP/MRTP/src/install/webots_ros2_tesla:/MRTP/MRTP/src/install/webots_ros2_mavic:/MRTP/MRTP/src/install/webots_ros2_husarion:/MRTP/MRTP/src/install/webots_ros2_epuck:/MRTP/MRTP/src/install/webots_ros2_crazyflie:/MRTP/MRTP/src/install/webots_ros2_importer:/MRTP/MRTP/src/install/gazeboenvs:/opt/ros/jazzy PS1=(.venv) \[\e]0;\u@\h: \w\a\]${debian_chroot:+($debian_chroot)}\u@\h:\w\$ VIRTUAL_ENV_PROMPT=(.venv) /usr/bin/cmake --build /MRTP/MRTP/build/my_package -- -j12 -l12
+[0.993s] [ 25%] [32mBuilding CXX object CMakeFiles/autopilot_node.dir/src/autopilot_node.cpp.o[0m
+[11.491s] [ 50%] [32m[1mLinking CXX executable autopilot_node[0m
+[13.010s] [ 50%] Built target autopilot_node
+[13.103s] [100%] Built target mavic2pro_patrol
+[13.162s] Invoked command in '/MRTP/MRTP/build/my_package' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/MRTP/MRTP/install/webots_ros2_mavic:/MRTP/MRTP/install/gazeboenvs:/MRTP/MRTP/src/install/webots_ros2:/MRTP/MRTP/src/install/webots_ros2_universal_robot:/MRTP/MRTP/src/install/webots_ros2_turtlebot:/MRTP/MRTP/src/install/webots_ros2_tiago:/MRTP/MRTP/src/install/webots_ros2_tests:/MRTP/MRTP/src/install/webots_ros2_tesla:/MRTP/MRTP/src/install/webots_ros2_mavic:/MRTP/MRTP/src/install/webots_ros2_husarion:/MRTP/MRTP/src/install/webots_ros2_epuck:/MRTP/MRTP/src/install/webots_ros2_crazyflie:/MRTP/MRTP/src/install/webots_ros2_importer:/MRTP/MRTP/src/install/gazeboenvs:/opt/ros/jazzy PS1=(.venv) \[\e]0;\u@\h: \w\a\]${debian_chroot:+($debian_chroot)}\u@\h:\w\$ VIRTUAL_ENV_PROMPT=(.venv) /usr/bin/cmake --build /MRTP/MRTP/build/my_package -- -j12 -l12
+[13.212s] Invoking command in '/MRTP/MRTP/build/my_package': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/MRTP/MRTP/install/webots_ros2_mavic:/MRTP/MRTP/install/gazeboenvs:/MRTP/MRTP/src/install/webots_ros2:/MRTP/MRTP/src/install/webots_ros2_universal_robot:/MRTP/MRTP/src/install/webots_ros2_turtlebot:/MRTP/MRTP/src/install/webots_ros2_tiago:/MRTP/MRTP/src/install/webots_ros2_tests:/MRTP/MRTP/src/install/webots_ros2_tesla:/MRTP/MRTP/src/install/webots_ros2_mavic:/MRTP/MRTP/src/install/webots_ros2_husarion:/MRTP/MRTP/src/install/webots_ros2_epuck:/MRTP/MRTP/src/install/webots_ros2_crazyflie:/MRTP/MRTP/src/install/webots_ros2_importer:/MRTP/MRTP/src/install/gazeboenvs:/opt/ros/jazzy PS1=(.venv) \[\e]0;\u@\h: \w\a\]${debian_chroot:+($debian_chroot)}\u@\h:\w\$ VIRTUAL_ENV_PROMPT=(.venv) /usr/bin/cmake --install /MRTP/MRTP/build/my_package
+[13.357s] -- Install configuration: ""
+[13.362s] -- Installing: /MRTP/MRTP/install/my_package/lib/my_package/autopilot_node
+[13.520s] -- Set non-toolchain portion of runtime path of "/MRTP/MRTP/install/my_package/lib/my_package/autopilot_node" to ""
+[13.523s] -- Up-to-date: /MRTP/MRTP/install/my_package/lib/my_package/mavic2pro_patrol
+[13.525s] -- Up-to-date: /MRTP/MRTP/install/my_package/share/my_package/launch
+[13.526s] -- Up-to-date: /MRTP/MRTP/install/my_package/share/my_package/launch/robot_launch.py
+[13.527s] -- Up-to-date: /MRTP/MRTP/install/my_package/share/my_package/resource
+[13.528s] -- Up-to-date: /MRTP/MRTP/install/my_package/share/my_package/resource/my_robot.urdf
+[13.529s] -- Up-to-date: /MRTP/MRTP/install/my_package/share/my_package/worlds
+[13.532s] -- Up-to-date: /MRTP/MRTP/install/my_package/share/my_package/worlds/wharehouse.wbt
+[13.534s] -- Up-to-date: /MRTP/MRTP/install/my_package/share/ament_index/resource_index/package_run_dependencies/my_package
+[13.538s] -- Up-to-date: /MRTP/MRTP/install/my_package/share/ament_index/resource_index/parent_prefix_path/my_package
+[13.540s] -- Up-to-date: /MRTP/MRTP/install/my_package/share/my_package/environment/ament_prefix_path.sh
+[13.558s] -- Up-to-date: /MRTP/MRTP/install/my_package/share/my_package/environment/ament_prefix_path.dsv
+[13.561s] -- Up-to-date: /MRTP/MRTP/install/my_package/share/my_package/environment/path.sh
+[13.562s] -- Up-to-date: /MRTP/MRTP/install/my_package/share/my_package/environment/path.dsv
+[13.562s] -- Up-to-date: /MRTP/MRTP/install/my_package/share/my_package/local_setup.bash
+[13.564s] -- Up-to-date: /MRTP/MRTP/install/my_package/share/my_package/local_setup.sh
+[13.564s] -- Up-to-date: /MRTP/MRTP/install/my_package/share/my_package/local_setup.zsh
+[13.565s] -- Up-to-date: /MRTP/MRTP/install/my_package/share/my_package/local_setup.dsv
+[13.565s] -- Installing: /MRTP/MRTP/install/my_package/share/my_package/package.dsv
+[13.565s] -- Up-to-date: /MRTP/MRTP/install/my_package/share/ament_index/resource_index/packages/my_package
+[13.566s] -- Up-to-date: /MRTP/MRTP/install/my_package/share/my_package/cmake/my_packageConfig.cmake
+[13.566s] -- Up-to-date: /MRTP/MRTP/install/my_package/share/my_package/cmake/my_packageConfig-version.cmake
+[13.569s] -- Up-to-date: /MRTP/MRTP/install/my_package/share/my_package/package.xml
+[13.579s] Invoked command in '/MRTP/MRTP/build/my_package' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/MRTP/MRTP/install/webots_ros2_mavic:/MRTP/MRTP/install/gazeboenvs:/MRTP/MRTP/src/install/webots_ros2:/MRTP/MRTP/src/install/webots_ros2_universal_robot:/MRTP/MRTP/src/install/webots_ros2_turtlebot:/MRTP/MRTP/src/install/webots_ros2_tiago:/MRTP/MRTP/src/install/webots_ros2_tests:/MRTP/MRTP/src/install/webots_ros2_tesla:/MRTP/MRTP/src/install/webots_ros2_mavic:/MRTP/MRTP/src/install/webots_ros2_husarion:/MRTP/MRTP/src/install/webots_ros2_epuck:/MRTP/MRTP/src/install/webots_ros2_crazyflie:/MRTP/MRTP/src/install/webots_ros2_importer:/MRTP/MRTP/src/install/gazeboenvs:/opt/ros/jazzy PS1=(.venv) \[\e]0;\u@\h: \w\a\]${debian_chroot:+($debian_chroot)}\u@\h:\w\$ VIRTUAL_ENV_PROMPT=(.venv) /usr/bin/cmake --install /MRTP/MRTP/build/my_package

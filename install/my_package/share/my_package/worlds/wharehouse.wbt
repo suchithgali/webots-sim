@@ -1,0 +1,362 @@
+#VRML_SIM R2025a utf8
+
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/backgrounds/protos/TexturedBackground.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/floors/protos/Floor.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/appearances/protos/ThreadMetalPlate.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/apartment_structure/protos/Door.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/appearances/protos/GlossyPaint.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/apartment_structure/protos/Wall.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/appearances/protos/Roughcast.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/hospital/protos/EmergencyExitSign.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/stairs/protos/StraightStairsRail.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/stairs/protos/StraightStairs.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/factory/pallet/protos/WoodenPalletStack.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/robots/dji/mavic/protos/Mavic2Pro.proto"
+
+WorldInfo {
+  basicTimeStep 8
+}
+Viewpoint {
+  orientation -0.5773502691896258 0.5773502691896258 0.5773502691896258 2.0944
+  position 9.253813915597744 2.786164442379723 36.69892461121403
+  follow "Mavic 2 PRO"
+  followType "Tracking Shot"
+}
+TexturedBackground {
+  texture "empty_office"
+}
+PointLight {
+  attenuation 0 0 1
+  intensity 10.8
+  location -4 6 5
+  castShadows TRUE
+}
+PointLight {
+  attenuation 0 0 1
+  intensity 9.6
+  location 5 6 5
+}
+Floor {
+  translation 0 -4.3 0
+  name "floor(1)"
+  size 20 16.4
+  tileSize 1 1
+  appearance ThreadMetalPlate {
+  }
+}
+Mavic2Pro {
+  translation 7.41166 2.71991 0.139631
+  rotation 0 0 1 0
+  name "Mavic_2_PRO"
+  controller "<extern>"
+}
+Solid {
+  translation 7.4 2.74 0
+  rotation 0 0 1 0
+  name "base_station"
+  children [
+    Shape {
+      appearance PBRAppearance { baseColor 0.12 0.12 0.12 roughness 0.4 }
+      geometry Box { size 1.2 1.2 0.12 }
+    }
+  ]
+  boundingObject Box { size 1.2 1.2 0.12 }
+  locked TRUE
+}
+Door {
+  hidden translation_5 0.001142012957472932 4.4523906598370466e-05 2.220446049250313e-16
+  hidden rotation_5 0 0 -0.9999999999999999 0.0002989606333048721
+  translation 10.04 -4 3.27
+  rotation 0 0 1 3.141592
+  name "door(1)"
+  position -0.000298960633615857
+  doorAppearance GlossyPaint {
+    baseColor 0.16 0.16 0.16
+  }
+  frameAppearance GlossyPaint {
+    baseColor 0.35 0.3503166247043564 0.35
+  }
+}
+Door {
+  hidden translation_5 0.0011420129574729598 4.452390659842598e-05 2.220446049250313e-16
+  hidden rotation_5 0 0 -1 0.0002989606333048721
+  translation -10.05 0 0.02
+  position -0.0002989606336159169
+  doorAppearance GlossyPaint {
+    baseColor 0.16 0.16 0.16
+  }
+  frameAppearance GlossyPaint {
+    baseColor 0.35 0.3503166247043564 0.35
+  }
+}
+Floor {
+  translation 0 -4.22 7
+  rotation 1 0 0 3.141592
+  size 20 16.4
+  tileSize 1 1
+  appearance PBRAppearance {
+    baseColorMap ImageTexture {
+      url [
+        "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/default/worlds/textures/asphalt.jpg"
+      ]
+    }
+    roughness 1
+    metalness 0
+  }
+}
+Wall {
+  translation 0 3.82 0
+  name "wall(1)"
+  size 20 0.2 7
+  appearance Roughcast {
+    textureTransform TextureTransform {
+      scale 5 1.75
+    }
+  }
+}
+Wall {
+  translation 0 -12.5 0
+  name "wall(2)"
+  size 20 0.2 7
+  appearance Roughcast {
+    textureTransform TextureTransform {
+      scale 5 1.75
+    }
+  }
+}
+Wall {
+  translation -10 -4.3 0
+  rotation 0 0 1 1.5708
+  name "wall(3)"
+  size 16.5 0.2 7
+  appearance Roughcast {
+    textureTransform TextureTransform {
+      scale 4.125 1.725
+    }
+  }
+}
+Wall {
+  translation 10 -4.3 0
+  rotation 0 0 1 -1.5708
+  size 16.5 0.2 7
+  appearance Roughcast {
+    textureTransform TextureTransform {
+      scale 4.125 1.725
+    }
+  }
+}
+EmergencyExitSign {
+  translation 9.82 -4.02 5.45
+  rotation 0.5773509358560258 -0.577349935856137 -0.577349935856137 2.09439
+}
+EmergencyExitSign {
+  translation -9.83 -0.01 2.3
+  rotation 0.5773489358550934 0.5773519358547601 0.5773499358549823 2.0944
+  name "emergency exit sign(1)"
+}
+Solid {
+  translation -9.87 -6.36 4.13
+  rotation 0.7071067811865476 0 0.7071067811865476 3.141592
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0.8 0.8 0.8
+        baseColorMap ImageTexture {
+          url [
+            "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/default/worlds/textures/ladybug.png"
+          ]
+          filtering 5
+        }
+        transparency 0.6
+        roughness 0.5
+        metalness 0
+        textureTransform TextureTransform {
+          rotation 1.5708
+        }
+      }
+      geometry Plane {
+        size 5 5
+      }
+    }
+  ]
+  name "solid(3)"
+}
+Solid {
+  translation 9.25 -3.95 3.21
+  rotation 1 0 0 1.5707963267948966
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0.8 0.8 0.8
+        baseColorMap ImageTexture {
+          url [
+            "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/default/worlds/textures/steel_floor.jpg"
+          ]
+        }
+        roughness 0.5
+        metalness 0
+        textureTransform TextureTransform {
+          scale 2 2
+        }
+      }
+      geometry Box {
+        size 1.5 0.12 2.6
+      }
+    }
+  ]
+}
+StraightStairsRail {
+  translation 8.52 -2.73 3.27
+  rotation 0 0 1 -1.5708
+  name "straight stairs rail(1)"
+  run 2.5
+  rise 0
+  newelHeight 0.89
+  balusterHeight 0.9
+  nBalusters 9
+  appearance PBRAppearance {
+    baseColor 0.8 0.8 0.8
+    roughness 0.5
+    metalness 0
+    textureTransform TextureTransform {
+      rotation 1.5708
+    }
+  }
+}
+StraightStairsRail {
+  translation 8.57 -5.23 3.27
+  run 1.3
+  rise 0
+  newelHeight 0.89
+  balusterHeight 0.9
+  nBalusters 5
+  appearance PBRAppearance {
+    baseColor 0.8 0.8 0.8
+    roughness 0.5
+    metalness 0
+    textureTransform TextureTransform {
+      rotation 1.5708
+    }
+  }
+}
+StraightStairs {
+  translation 9.201 0.17 0
+  rotation 0 0 1 -1.5708
+  stepSize 0.3 1.34 0.01
+  stepRise 0.297
+  nSteps 10
+  stepAppearance PBRAppearance {
+    baseColor 0.8 0.8 0.8
+    roughness 0.5
+    metalness 0
+    textureTransform TextureTransform {
+      rotation 1.5708
+      scale 3 1
+    }
+  }
+  stringerAppearance PBRAppearance {
+    baseColor 0.8 0.8 0.8
+    roughness 0.5
+    metalness 0
+    textureTransform TextureTransform {
+      rotation 1.5708
+      scale 3 3
+    }
+  }
+  leftRail []
+  rightRail [
+    StraightStairsRail {
+      run 3
+      rise 2.97
+      newelHeight 0.862
+      balusterHeight 0.83
+      nBalusters 12
+      appearance PBRAppearance {
+        baseColor 0.8 0.8 0.8
+        roughness 0.5
+        metalness 0
+        textureTransform TextureTransform {
+          rotation 1.5708
+        }
+      }
+    }
+  ]
+}
+WoodenPalletStack {
+  translation -6.79 -10.15 0
+}
+WoodenPalletStack {
+  translation -3.37 -10.15 0
+  rotation 1 0 0 4.692820414042842e-06
+  name "wooden pallet stack(1)"
+}
+WoodenPalletStack {
+  translation -0.07 -10.15 0
+  rotation 1 0 0 4.692820414042842e-06
+  name "wooden pallet stack(2)"
+}
+WoodenPalletStack {
+  translation 3.14 -10.15 0
+  rotation 1 0 0 4.692820414042842e-06
+  name "wooden pallet stack(3)"
+}
+WoodenPalletStack {
+  translation 3.14 -6.83 1.5581e-05
+  rotation 1 0 0 4.692820414042842e-06
+  name "wooden pallet stack(4)"
+}
+WoodenPalletStack {
+  translation -0.12 -6.83 1.5581e-05
+  rotation 1 0 0 4.692820414042842e-06
+  name "wooden pallet stack(5)"
+}
+WoodenPalletStack {
+  translation -3.53 -6.83 1.5581e-05
+  rotation 1 0 0 4.692820414042842e-06
+  name "wooden pallet stack(6)"
+}
+WoodenPalletStack {
+  translation -6.97 -6.83 1.5581e-05
+  rotation 1 0 0 4.692820414042842e-06
+  name "wooden pallet stack(7)"
+}
+WoodenPalletStack {
+  translation -6.97 -3.41 3.16312e-05
+  rotation 1 0 0 4.692820414042842e-06
+  name "wooden pallet stack(8)"
+}
+WoodenPalletStack {
+  translation -3.72 -3.41 3.16312e-05
+  rotation 1 0 0 4.692820414042842e-06
+  name "wooden pallet stack(9)"
+}
+WoodenPalletStack {
+  translation -0.19 -3.41 3.16312e-05
+  rotation 1 0 0 4.692820414042842e-06
+  name "wooden pallet stack(10)"
+}
+WoodenPalletStack {
+  translation 3.31 -3.41 3.16312e-05
+  rotation 1 0 0 4.692820414042842e-06
+  name "wooden pallet stack(11)"
+}
+WoodenPalletStack {
+  translation 3.31 0.33 4.91851e-05
+  rotation 1 0 0 4.692820414042842e-06
+  name "wooden pallet stack(12)"
+}
+WoodenPalletStack {
+  translation -0.07 0.27 4.8903e-05
+  rotation 1 0 0 4.692820414042842e-06
+  name "wooden pallet stack(13)"
+}
+WoodenPalletStack {
+  translation -3.89 0.3 4.90438e-05
+  rotation 1 0 0 4.692820414042842e-06
+  name "wooden pallet stack(14)"
+}
+WoodenPalletStack {
+  translation -7.15 0.17 4.84333e-05
+  rotation 1 0 0 4.692820414042842e-06
+  name "wooden pallet stack(15)"
+}

@@ -1,0 +1,1 @@
+/MRTP/MRTP/src/webots_ros2/webots_ros2_husarion/launch/rosbot_xl_launch.py

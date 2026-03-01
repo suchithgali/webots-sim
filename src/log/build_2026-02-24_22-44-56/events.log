@@ -1,0 +1,572 @@
+[0.000000] (-) TimerEvent: {}
+[0.000601] (-) JobUnselected: {'identifier': 'gazeboenvs'}
+[0.000708] (-) JobUnselected: {'identifier': 'webots_ros2'}
+[0.000763] (-) JobUnselected: {'identifier': 'webots_ros2_control'}
+[0.000843] (-) JobUnselected: {'identifier': 'webots_ros2_crazyflie'}
+[0.002162] (-) JobUnselected: {'identifier': 'webots_ros2_epuck'}
+[0.002973] (-) JobUnselected: {'identifier': 'webots_ros2_husarion'}
+[0.003089] (-) JobUnselected: {'identifier': 'webots_ros2_importer'}
+[0.003131] (-) JobUnselected: {'identifier': 'webots_ros2_mavic'}
+[0.003171] (-) JobUnselected: {'identifier': 'webots_ros2_msgs'}
+[0.003259] (-) JobUnselected: {'identifier': 'webots_ros2_tesla'}
+[0.003287] (-) JobUnselected: {'identifier': 'webots_ros2_tests'}
+[0.003326] (-) JobUnselected: {'identifier': 'webots_ros2_tiago'}
+[0.003367] (-) JobUnselected: {'identifier': 'webots_ros2_turtlebot'}
+[0.003542] (-) JobUnselected: {'identifier': 'webots_ros2_universal_robot'}
+[0.003583] (webots_ros2_driver) JobQueued: {'identifier': 'webots_ros2_driver', 'dependencies': OrderedDict({'webots_ros2_importer': '/MRTP/MRTP/src/install/webots_ros2_importer', 'webots_ros2_msgs': '/MRTP/MRTP/src/install/webots_ros2_msgs'})}
+[0.003613] (webots_ros2_driver) JobStarted: {'identifier': 'webots_ros2_driver'}
+[0.007778] (webots_ros2_driver) JobProgress: {'identifier': 'webots_ros2_driver', 'progress': 'cmake'}
+[0.009358] (webots_ros2_driver) Command: {'cmd': ['/usr/bin/cmake', '/MRTP/MRTP/src/webots_ros2/webots_ros2_driver', '-DAMENT_CMAKE_SYMLINK_INSTALL=1', '-DCMAKE_INSTALL_PREFIX=/MRTP/MRTP/src/install/webots_ros2_driver'], 'cwd': '/MRTP/MRTP/src/build/webots_ros2_driver', 'env': OrderedDict({'GZ_SIM_RESOURCE_PATH': '/opt/ros/jazzy/share', 'GZ_CONFIG_PATH': '/opt/ros/jazzy/opt/gz_sim_vendor/share/gz:/opt/ros/jazzy/opt/sdformat_vendor/share/gz:/opt/ros/jazzy/opt/gz_gui_vendor/share/gz:/opt/ros/jazzy/opt/gz_transport_vendor/share/gz:/opt/ros/jazzy/opt/gz_rendering_vendor/share/gz:/opt/ros/jazzy/opt/gz_plugin_vendor/share/gz:/opt/ros/jazzy/opt/gz_fuel_tools_vendor/share/gz:/opt/ros/jazzy/opt/gz_msgs_vendor/share/gz:/opt/ros/jazzy/opt/gz_common_vendor/share/gz', 'HOSTNAME': 'docker-desktop', '__GLX_VENDOR_LIBRARY_NAME': 'nvidia', 'SHLVL': '1', 'LD_LIBRARY_PATH': '/MRTP/MRTP/src/install/webots_ros2_msgs/lib:/opt/ros/jazzy/opt/gz_sim_vendor/lib:/opt/ros/jazzy/opt/gz_sensors_vendor/lib:/opt/ros/jazzy/opt/gz_physics_vendor/lib:/opt/ros/jazzy/opt/sdformat_vendor/lib:/opt/ros/jazzy/opt/rviz_ogre_vendor/lib:/opt/ros/jazzy/lib/aarch64-linux-gnu:/opt/ros/jazzy/opt/gz_gui_vendor/lib:/opt/ros/jazzy/opt/gz_transport_vendor/lib:/opt/ros/jazzy/opt/gz_rendering_vendor/lib:/opt/ros/jazzy/opt/gz_plugin_vendor/lib:/opt/ros/jazzy/opt/gz_fuel_tools_vendor/lib:/opt/ros/jazzy/opt/gz_msgs_vendor/lib:/opt/ros/jazzy/opt/gz_common_vendor/lib:/opt/ros/jazzy/opt/gz_math_vendor/lib:/opt/ros/jazzy/opt/gz_utils_vendor/lib:/opt/ros/jazzy/opt/gz_tools_vendor/lib:/opt/ros/jazzy/opt/gz_ogre_next_vendor/lib:/opt/ros/jazzy/opt/gz_dartsim_vendor/lib:/opt/ros/jazzy/opt/gz_cmake_vendor/lib:/opt/ros/jazzy/lib', 'HOME': '/root', 'OLDPWD': '/MRTP/MRTP', 'ROS_PYTHON_VERSION': '3', 'PS1': '(.venv) \\[\\e]0;\\u@\\h: \\w\\a\\]${debian_chroot:+($debian_chroot)}\\u@\\h:\\w\\$', 'ROS_DISTRO': 'jazzy', '_': '/usr/bin/colcon', 'ROS_VERSION': '2', 'NVIDIA_DRIVER_CAPABILITIES': 'all', 'TERM': 'xterm', 'GAZEBO_MODEL_PATH': '/opt/ros/jazzy/share/', 'PATH': '/.venv/bin:/opt/ros/jazzy/opt/gz_msgs_vendor/bin:/opt/ros/jazzy/opt/gz_tools_vendor/bin:/opt/ros/jazzy/opt/gz_ogre_next_vendor/bin:/opt/ros/jazzy/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin', 'DISPLAY': ':2', 'LANG': 'C.UTF-8', 'VIRTUAL_ENV_PROMPT': '(.venv)', '__NV_PRIME_RENDER_OFFLOAD': '1', 'LS_COLORS': 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=00:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.avif=01;35:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:*~=00;90:*#=00;90:*.bak=00;90:*.crdownload=00;90:*.dpkg-dist=00;90:*.dpkg-new=00;90:*.dpkg-old=00;90:*.dpkg-tmp=00;90:*.old=00;90:*.orig=00;90:*.part=00;90:*.rej=00;90:*.rpmnew=00;90:*.rpmorig=00;90:*.rpmsave=00;90:*.swp=00;90:*.tmp=00;90:*.ucf-dist=00;90:*.ucf-new=00;90:*.ucf-old=00;90:', 'AMENT_PREFIX_PATH': '/MRTP/MRTP/src/install/webots_ros2_msgs:/MRTP/MRTP/src/install/webots_ros2_importer:/opt/ros/jazzy', 'VIRTUAL_ENV': '/.venv', 'ROS_AUTOMATIC_DISCOVERY_RANGE': 'SUBNET', 'PWD': '/MRTP/MRTP/src/build/webots_ros2_driver', 'LC_ALL': 'C.UTF-8', 'PYTHONPATH': '/MRTP/MRTP/src/install/webots_ros2_msgs/lib/python3.12/site-packages:/MRTP/MRTP/src/build/webots_ros2_importer:/MRTP/MRTP/src/install/webots_ros2_importer/lib/python3.12/site-packages:/usr/lib/python3/dist-packages:/opt/ros/jazzy/lib/python3.12/site-packages', 'NVIDIA_VISIBLE_DEVICES': 'all', 'COLCON': '1', 'CMAKE_PREFIX_PATH': '/MRTP/MRTP/src/install/webots_ros2_msgs:/opt/ros/jazzy/opt/gz_sim_vendor:/opt/ros/jazzy/opt/gz_sensors_vendor:/opt/ros/jazzy/opt/gz_physics_vendor:/opt/ros/jazzy/opt/sdformat_vendor:/opt/ros/jazzy/opt/gz_gui_vendor:/opt/ros/jazzy/opt/gz_transport_vendor:/opt/ros/jazzy/opt/gz_rendering_vendor:/opt/ros/jazzy/opt/gz_plugin_vendor:/opt/ros/jazzy/opt/gz_fuel_tools_vendor:/opt/ros/jazzy/opt/gz_msgs_vendor:/opt/ros/jazzy/opt/gz_common_vendor:/opt/ros/jazzy/opt/gz_math_vendor:/opt/ros/jazzy/opt/gz_utils_vendor:/opt/ros/jazzy/opt/gz_tools_vendor:/opt/ros/jazzy/opt/gz_ogre_next_vendor:/opt/ros/jazzy/opt/gz_dartsim_vendor:/opt/ros/jazzy/opt/gz_cmake_vendor:/opt/ros/jazzy'}), 'shell': False}
+[0.045709] (webots_ros2_driver) StdoutLine: {'line': b'-- The C compiler identification is GNU 13.3.0\n'}
+[0.079445] (webots_ros2_driver) StdoutLine: {'line': b'-- The CXX compiler identification is GNU 13.3.0\n'}
+[0.087748] (webots_ros2_driver) StdoutLine: {'line': b'-- Detecting C compiler ABI info\n'}
+[0.099944] (-) TimerEvent: {}
+[0.155841] (webots_ros2_driver) StdoutLine: {'line': b'-- Detecting C compiler ABI info - done\n'}
+[0.164064] (webots_ros2_driver) StdoutLine: {'line': b'-- Check for working C compiler: /usr/bin/cc - skipped\n'}
+[0.164740] (webots_ros2_driver) StdoutLine: {'line': b'-- Detecting C compile features\n'}
+[0.164998] (webots_ros2_driver) StdoutLine: {'line': b'-- Detecting C compile features - done\n'}
+[0.170175] (webots_ros2_driver) StdoutLine: {'line': b'-- Detecting CXX compiler ABI info\n'}
+[0.200964] (-) TimerEvent: {}
+[0.240165] (webots_ros2_driver) StdoutLine: {'line': b'-- Detecting CXX compiler ABI info - done\n'}
+[0.248702] (webots_ros2_driver) StdoutLine: {'line': b'-- Check for working CXX compiler: /usr/bin/c++ - skipped\n'}
+[0.249435] (webots_ros2_driver) StdoutLine: {'line': b'-- Detecting CXX compile features\n'}
+[0.249818] (webots_ros2_driver) StdoutLine: {'line': b'-- Detecting CXX compile features - done\n'}
+[0.256190] (webots_ros2_driver) StdoutLine: {'line': b'-- Found ament_cmake: 2.5.5 (/opt/ros/jazzy/share/ament_cmake/cmake)\n'}
+[0.301939] (-) TimerEvent: {}
+[0.320782] (webots_ros2_driver) StdoutLine: {'line': b'-- Found Python3: /.venv/bin/python3 (found version "3.12.3") found components: Interpreter \n'}
+[0.359418] (webots_ros2_driver) StdoutLine: {'line': b'-- Override CMake install command with custom implementation using symlinks instead of copying resources\n'}
+[0.402963] (-) TimerEvent: {}
+[0.422323] (webots_ros2_driver) StdoutLine: {'line': b'-- Found rosgraph_msgs: 2.0.3 (/opt/ros/jazzy/share/rosgraph_msgs/cmake)\n'}
+[0.469464] (webots_ros2_driver) StdoutLine: {'line': b'-- Found rosidl_generator_c: 4.6.7 (/opt/ros/jazzy/share/rosidl_generator_c/cmake)\n'}
+[0.485544] (webots_ros2_driver) StdoutLine: {'line': b'-- Found rosidl_generator_cpp: 4.6.7 (/opt/ros/jazzy/share/rosidl_generator_cpp/cmake)\n'}
+[0.502935] (webots_ros2_driver) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c\n'}
+[0.503317] (-) TimerEvent: {}
+[0.523045] (webots_ros2_driver) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp\n'}
+[0.553801] (webots_ros2_driver) StdoutLine: {'line': b'-- Found rclcpp: 28.1.16 (/opt/ros/jazzy/share/rclcpp/cmake)\n'}
+[0.604775] (-) TimerEvent: {}
+[0.609215] (webots_ros2_driver) StdoutLine: {'line': b'-- Found rmw_implementation_cmake: 7.3.3 (/opt/ros/jazzy/share/rmw_implementation_cmake/cmake)\n'}
+[0.614271] (webots_ros2_driver) StdoutLine: {'line': b'-- Found rmw_fastrtps_cpp: 8.4.3 (/opt/ros/jazzy/share/rmw_fastrtps_cpp/cmake)\n'}
+[0.664691] (webots_ros2_driver) StdoutLine: {'line': b'-- Found OpenSSL: /usr/lib/aarch64-linux-gnu/libcrypto.so (found version "3.0.13")  \n'}
+[0.674673] (webots_ros2_driver) StdoutLine: {'line': b'-- Found FastRTPS: /opt/ros/jazzy/include (Required is at least version "2.13") \n'}
+[0.686075] (webots_ros2_driver) StdoutLine: {'line': b"-- Using RMW implementation 'rmw_fastrtps_cpp' as default\n"}
+[0.704921] (-) TimerEvent: {}
+[0.728658] (webots_ros2_driver) StdoutLine: {'line': b'-- Found pluginlib: 5.4.4 (/opt/ros/jazzy/share/pluginlib/cmake)\n'}
+[0.748904] (webots_ros2_driver) StdoutLine: {'line': b'-- Found sensor_msgs: 5.3.6 (/opt/ros/jazzy/share/sensor_msgs/cmake)\n'}
+[0.784815] (webots_ros2_driver) StdoutLine: {'line': b'-- Found tf2_geometry_msgs: 0.36.19 (/opt/ros/jazzy/share/tf2_geometry_msgs/cmake)\n'}
+[0.805449] (webots_ros2_driver) StdoutLine: {'line': b'-- Found eigen3_cmake_module: 0.3.0 (/opt/ros/jazzy/share/eigen3_cmake_module/cmake)\n'}
+[0.806664] (-) TimerEvent: {}
+[0.806759] (webots_ros2_driver) StdoutLine: {'line': b'-- Found Eigen3: TRUE (found version "3.4.0") \n'}
+[0.807120] (webots_ros2_driver) StdoutLine: {'line': b'-- Ensuring Eigen3 include directory is part of orocos-kdl CMake target\n'}
+[0.901441] (webots_ros2_driver) StdoutLine: {'line': b'-- Found vision_msgs: 4.1.1 (/opt/ros/jazzy/share/vision_msgs/cmake)\n'}
+[0.906901] (-) TimerEvent: {}
+[0.912524] (webots_ros2_driver) StdoutLine: {'line': b'-- Found webots_ros2_msgs: 2025.0.1 (/MRTP/MRTP/src/install/webots_ros2_msgs/share/webots_ros2_msgs/cmake)\n'}
+[0.933289] (webots_ros2_driver) StdoutLine: {'line': b'-- Found TinyXML2 via Config file: /usr/lib/aarch64-linux-gnu/cmake/tinyxml2\n'}
+[0.995507] (webots_ros2_driver) StdoutLine: {'line': b'-- Found Python: /usr/include/python3.12 (found suitable exact version "3.12.3") found components: Development Development.Module Development.Embed \n'}
+[1.007939] (-) TimerEvent: {}
+[1.109416] (-) TimerEvent: {}
+[1.205659] (webots_ros2_driver) StdoutLine: {'line': b'-- Configuring done (1.2s)\n'}
+[1.210126] (-) TimerEvent: {}
+[1.273930] (webots_ros2_driver) StdoutLine: {'line': b'-- Generating done (0.1s)\n'}
+[1.299083] (webots_ros2_driver) StdoutLine: {'line': b'-- Build files have been written to: /MRTP/MRTP/src/build/webots_ros2_driver\n'}
+[1.306001] (webots_ros2_driver) CommandEnded: {'returncode': 0}
+[1.306445] (webots_ros2_driver) JobProgress: {'identifier': 'webots_ros2_driver', 'progress': 'build'}
+[1.307157] (webots_ros2_driver) Command: {'cmd': ['/usr/bin/cmake', '--build', '/MRTP/MRTP/src/build/webots_ros2_driver', '--', '-j12', '-l12'], 'cwd': '/MRTP/MRTP/src/build/webots_ros2_driver', 'env': OrderedDict({'GZ_SIM_RESOURCE_PATH': '/opt/ros/jazzy/share', 'GZ_CONFIG_PATH': '/opt/ros/jazzy/opt/gz_sim_vendor/share/gz:/opt/ros/jazzy/opt/sdformat_vendor/share/gz:/opt/ros/jazzy/opt/gz_gui_vendor/share/gz:/opt/ros/jazzy/opt/gz_transport_vendor/share/gz:/opt/ros/jazzy/opt/gz_rendering_vendor/share/gz:/opt/ros/jazzy/opt/gz_plugin_vendor/share/gz:/opt/ros/jazzy/opt/gz_fuel_tools_vendor/share/gz:/opt/ros/jazzy/opt/gz_msgs_vendor/share/gz:/opt/ros/jazzy/opt/gz_common_vendor/share/gz', 'HOSTNAME': 'docker-desktop', '__GLX_VENDOR_LIBRARY_NAME': 'nvidia', 'SHLVL': '1', 'LD_LIBRARY_PATH': '/MRTP/MRTP/src/install/webots_ros2_msgs/lib:/opt/ros/jazzy/opt/gz_sim_vendor/lib:/opt/ros/jazzy/opt/gz_sensors_vendor/lib:/opt/ros/jazzy/opt/gz_physics_vendor/lib:/opt/ros/jazzy/opt/sdformat_vendor/lib:/opt/ros/jazzy/opt/rviz_ogre_vendor/lib:/opt/ros/jazzy/lib/aarch64-linux-gnu:/opt/ros/jazzy/opt/gz_gui_vendor/lib:/opt/ros/jazzy/opt/gz_transport_vendor/lib:/opt/ros/jazzy/opt/gz_rendering_vendor/lib:/opt/ros/jazzy/opt/gz_plugin_vendor/lib:/opt/ros/jazzy/opt/gz_fuel_tools_vendor/lib:/opt/ros/jazzy/opt/gz_msgs_vendor/lib:/opt/ros/jazzy/opt/gz_common_vendor/lib:/opt/ros/jazzy/opt/gz_math_vendor/lib:/opt/ros/jazzy/opt/gz_utils_vendor/lib:/opt/ros/jazzy/opt/gz_tools_vendor/lib:/opt/ros/jazzy/opt/gz_ogre_next_vendor/lib:/opt/ros/jazzy/opt/gz_dartsim_vendor/lib:/opt/ros/jazzy/opt/gz_cmake_vendor/lib:/opt/ros/jazzy/lib', 'HOME': '/root', 'OLDPWD': '/MRTP/MRTP', 'ROS_PYTHON_VERSION': '3', 'PS1': '(.venv) \\[\\e]0;\\u@\\h: \\w\\a\\]${debian_chroot:+($debian_chroot)}\\u@\\h:\\w\\$', 'ROS_DISTRO': 'jazzy', '_': '/usr/bin/colcon', 'ROS_VERSION': '2', 'NVIDIA_DRIVER_CAPABILITIES': 'all', 'TERM': 'xterm', 'GAZEBO_MODEL_PATH': '/opt/ros/jazzy/share/', 'PATH': '/.venv/bin:/opt/ros/jazzy/opt/gz_msgs_vendor/bin:/opt/ros/jazzy/opt/gz_tools_vendor/bin:/opt/ros/jazzy/opt/gz_ogre_next_vendor/bin:/opt/ros/jazzy/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin', 'DISPLAY': ':2', 'LANG': 'C.UTF-8', 'VIRTUAL_ENV_PROMPT': '(.venv)', '__NV_PRIME_RENDER_OFFLOAD': '1', 'LS_COLORS': 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=00:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.avif=01;35:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:*~=00;90:*#=00;90:*.bak=00;90:*.crdownload=00;90:*.dpkg-dist=00;90:*.dpkg-new=00;90:*.dpkg-old=00;90:*.dpkg-tmp=00;90:*.old=00;90:*.orig=00;90:*.part=00;90:*.rej=00;90:*.rpmnew=00;90:*.rpmorig=00;90:*.rpmsave=00;90:*.swp=00;90:*.tmp=00;90:*.ucf-dist=00;90:*.ucf-new=00;90:*.ucf-old=00;90:', 'AMENT_PREFIX_PATH': '/MRTP/MRTP/src/install/webots_ros2_msgs:/MRTP/MRTP/src/install/webots_ros2_importer:/opt/ros/jazzy', 'VIRTUAL_ENV': '/.venv', 'ROS_AUTOMATIC_DISCOVERY_RANGE': 'SUBNET', 'PWD': '/MRTP/MRTP/src/build/webots_ros2_driver', 'LC_ALL': 'C.UTF-8', 'PYTHONPATH': '/MRTP/MRTP/src/install/webots_ros2_msgs/lib/python3.12/site-packages:/MRTP/MRTP/src/build/webots_ros2_importer:/MRTP/MRTP/src/install/webots_ros2_importer/lib/python3.12/site-packages:/usr/lib/python3/dist-packages:/opt/ros/jazzy/lib/python3.12/site-packages', 'NVIDIA_VISIBLE_DEVICES': 'all', 'COLCON': '1', 'CMAKE_PREFIX_PATH': '/MRTP/MRTP/src/install/webots_ros2_msgs:/opt/ros/jazzy/opt/gz_sim_vendor:/opt/ros/jazzy/opt/gz_sensors_vendor:/opt/ros/jazzy/opt/gz_physics_vendor:/opt/ros/jazzy/opt/sdformat_vendor:/opt/ros/jazzy/opt/gz_gui_vendor:/opt/ros/jazzy/opt/gz_transport_vendor:/opt/ros/jazzy/opt/gz_rendering_vendor:/opt/ros/jazzy/opt/gz_plugin_vendor:/opt/ros/jazzy/opt/gz_fuel_tools_vendor:/opt/ros/jazzy/opt/gz_msgs_vendor:/opt/ros/jazzy/opt/gz_common_vendor:/opt/ros/jazzy/opt/gz_math_vendor:/opt/ros/jazzy/opt/gz_utils_vendor:/opt/ros/jazzy/opt/gz_tools_vendor:/opt/ros/jazzy/opt/gz_ogre_next_vendor:/opt/ros/jazzy/opt/gz_dartsim_vendor:/opt/ros/jazzy/opt/gz_cmake_vendor:/opt/ros/jazzy'}), 'shell': False}
+[1.311117] (-) TimerEvent: {}
+[1.356296] (webots_ros2_driver) StdoutLine: {'line': b'Using bundled prebuilt Webots controller libraries.\n'}
+[1.367225] (webots_ros2_driver) StdoutLine: {'line': b'[  0%] Built target compile-lib-controller\n'}
+[1.368959] (webots_ros2_driver) StdoutLine: {'line': b'[  0%] Built target ament_cmake_python_symlink_controller\n'}
+[1.369301] (webots_ros2_driver) StdoutLine: {'line': b'[  0%] Built target ament_cmake_python_symlink_vehicle\n'}
+[1.369544] (webots_ros2_driver) StdoutLine: {'line': b'[  0%] Built target ament_cmake_python_symlink_webots_ros2_driver\n'}
+[1.394444] (webots_ros2_driver) StdoutLine: {'line': b'Using bundled prebuilt Webots generic robot window library.\n'}
+[1.395136] (webots_ros2_driver) StdoutLine: {'line': b'Using bundled prebuilt Webots vehicle libraries.\n'}
+[1.409392] (webots_ros2_driver) StdoutLine: {'line': b'[  0%] Built target compile-lib-vehicle\n'}
+[1.410029] (webots_ros2_driver) StdoutLine: {'line': b'[  0%] Built target compile-generic-window\n'}
+[1.411930] (-) TimerEvent: {}
+[1.450248] (webots_ros2_driver) StdoutLine: {'line': b'[  3%] \x1b[32mBuilding CXX object CMakeFiles/webots_ros2_driver_rgbd.dir/src/plugins/dynamic/Ros2RGBD.cpp.o\x1b[0m\n'}
+[1.458526] (webots_ros2_driver) StdoutLine: {'line': b'[  7%] \x1b[32mBuilding CXX object CMakeFiles/webots_ros2_driver_rgbd.dir/src/plugins/Ros2SensorPlugin.cpp.o\x1b[0m\n'}
+[1.462608] (webots_ros2_driver) StdoutLine: {'line': b'[ 11%] \x1b[32mBuilding CXX object CMakeFiles/webots_ros2_driver_imu.dir/src/utils/Utils.cpp.o\x1b[0m\n'}
+[1.467278] (webots_ros2_driver) StdoutLine: {'line': b'[ 14%] \x1b[32mBuilding CXX object CMakeFiles/webots_ros2_driver_imu.dir/src/plugins/Ros2SensorPlugin.cpp.o\x1b[0m\n'}
+[1.470945] (webots_ros2_driver) StdoutLine: {'line': b'[ 25%] \x1b[32mBuilding CXX object CMakeFiles/driver.dir/src/Driver.cpp.o\x1b[0m\n'}
+[1.472707] (webots_ros2_driver) StdoutLine: {'line': b'[ 29%] \x1b[32mBuilding CXX object CMakeFiles/driver.dir/src/PythonPlugin.cpp.o\x1b[0m\n'}
+[1.474295] (webots_ros2_driver) StdoutLine: {'line': b'[ 29%] \x1b[32mBuilding CXX object CMakeFiles/driver.dir/src/WebotsNode.cpp.o\x1b[0m\n'}
+[1.475801] (webots_ros2_driver) StdoutLine: {'line': b'[ 29%] \x1b[32mBuilding CXX object CMakeFiles/webots_ros2_driver_rgbd.dir/src/utils/Utils.cpp.o\x1b[0m\n'}
+[1.476909] (webots_ros2_driver) StdoutLine: {'line': b'[ 33%] \x1b[32mBuilding CXX object CMakeFiles/webots_ros2_driver_imu.dir/src/plugins/dynamic/Ros2IMU.cpp.o\x1b[0m\n'}
+[1.502803] (webots_ros2_driver) StdoutLine: {'line': b'running egg_info\n'}
+[1.503406] (webots_ros2_driver) StdoutLine: {'line': b'creating webots_ros2_driver.egg-info\n'}
+[1.512961] (-) TimerEvent: {}
+[1.514734] (webots_ros2_driver) StdoutLine: {'line': b'writing webots_ros2_driver.egg-info/PKG-INFO\n'}
+[1.516339] (webots_ros2_driver) StdoutLine: {'line': b'writing dependency_links to webots_ros2_driver.egg-info/dependency_links.txt\n'}
+[1.518672] (webots_ros2_driver) StdoutLine: {'line': b'writing top-level names to webots_ros2_driver.egg-info/top_level.txt\n'}
+[1.519792] (webots_ros2_driver) StdoutLine: {'line': b"writing manifest file 'webots_ros2_driver.egg-info/SOURCES.txt'\n"}
+[1.525327] (webots_ros2_driver) StdoutLine: {'line': b'running egg_info\n'}
+[1.526547] (webots_ros2_driver) StdoutLine: {'line': b'creating controller.egg-info\n'}
+[1.527239] (webots_ros2_driver) StdoutLine: {'line': b'running egg_info\n'}
+[1.528038] (webots_ros2_driver) StdoutLine: {'line': b'creating vehicle.egg-info\n'}
+[1.537676] (webots_ros2_driver) StdoutLine: {'line': b'writing controller.egg-info/PKG-INFO\n'}
+[1.540588] (webots_ros2_driver) StdoutLine: {'line': b'writing vehicle.egg-info/PKG-INFO\n'}
+[1.541313] (webots_ros2_driver) StdoutLine: {'line': b'writing dependency_links to controller.egg-info/dependency_links.txt\n'}
+[1.541961] (webots_ros2_driver) StdoutLine: {'line': b'writing dependency_links to vehicle.egg-info/dependency_links.txt\n'}
+[1.543163] (webots_ros2_driver) StdoutLine: {'line': b'writing top-level names to vehicle.egg-info/top_level.txt\n'}
+[1.543812] (webots_ros2_driver) StdoutLine: {'line': b'writing top-level names to controller.egg-info/top_level.txt\n'}
+[1.544303] (webots_ros2_driver) StdoutLine: {'line': b"writing manifest file 'vehicle.egg-info/SOURCES.txt'\n"}
+[1.544945] (webots_ros2_driver) StdoutLine: {'line': b"writing manifest file 'controller.egg-info/SOURCES.txt'\n"}
+[1.579347] (webots_ros2_driver) StdoutLine: {'line': b"reading manifest file 'webots_ros2_driver.egg-info/SOURCES.txt'\n"}
+[1.582347] (webots_ros2_driver) StdoutLine: {'line': b"writing manifest file 'webots_ros2_driver.egg-info/SOURCES.txt'\n"}
+[1.604527] (webots_ros2_driver) StdoutLine: {'line': b'[ 33%] Built target ament_cmake_python_build_webots_ros2_driver_egg\n'}
+[1.613952] (-) TimerEvent: {}
+[1.617242] (webots_ros2_driver) StdoutLine: {'line': b"reading manifest file 'vehicle.egg-info/SOURCES.txt'\n"}
+[1.618955] (webots_ros2_driver) StdoutLine: {'line': b'[ 37%] \x1b[32mBuilding CXX object CMakeFiles/driver.dir/src/plugins/Ros2SensorPlugin.cpp.o\x1b[0m\n'}
+[1.619578] (webots_ros2_driver) StdoutLine: {'line': b"writing manifest file 'vehicle.egg-info/SOURCES.txt'\n"}
+[1.632893] (webots_ros2_driver) StdoutLine: {'line': b"reading manifest file 'controller.egg-info/SOURCES.txt'\n"}
+[1.637736] (webots_ros2_driver) StdoutLine: {'line': b"writing manifest file 'controller.egg-info/SOURCES.txt'\n"}
+[1.648306] (webots_ros2_driver) StdoutLine: {'line': b'[ 37%] Built target ament_cmake_python_build_vehicle_egg\n'}
+[1.662180] (webots_ros2_driver) StdoutLine: {'line': b'[ 40%] \x1b[32mBuilding CXX object CMakeFiles/driver.dir/src/plugins/static/Ros2Lidar.cpp.o\x1b[0m\n'}
+[1.678734] (webots_ros2_driver) StdoutLine: {'line': b'[ 40%] Built target ament_cmake_python_build_controller_egg\n'}
+[1.691129] (webots_ros2_driver) StdoutLine: {'line': b'[ 44%] \x1b[32mBuilding CXX object CMakeFiles/driver.dir/src/plugins/static/Ros2LED.cpp.o\x1b[0m\n'}
+[1.712651] (webots_ros2_driver) StdoutLine: {'line': b'[ 48%] \x1b[32mBuilding CXX object CMakeFiles/driver.dir/src/plugins/static/Ros2Pen.cpp.o\x1b[0m\n'}
+[1.714927] (-) TimerEvent: {}
+[1.805968] (webots_ros2_driver) StdoutLine: {'line': b'[ 51%] \x1b[32mBuilding CXX object CMakeFiles/driver.dir/src/plugins/static/Ros2Camera.cpp.o\x1b[0m\n'}
+[1.815975] (-) TimerEvent: {}
+[1.916964] (-) TimerEvent: {}
+[2.017970] (-) TimerEvent: {}
+[2.119123] (-) TimerEvent: {}
+[2.222258] (-) TimerEvent: {}
+[2.326167] (-) TimerEvent: {}
+[2.428009] (-) TimerEvent: {}
+[2.528986] (-) TimerEvent: {}
+[2.630084] (-) TimerEvent: {}
+[2.731074] (-) TimerEvent: {}
+[2.832998] (-) TimerEvent: {}
+[2.934102] (-) TimerEvent: {}
+[3.035002] (-) TimerEvent: {}
+[3.136126] (-) TimerEvent: {}
+[3.237108] (-) TimerEvent: {}
+[3.338131] (-) TimerEvent: {}
+[3.439106] (-) TimerEvent: {}
+[3.540043] (-) TimerEvent: {}
+[3.641402] (-) TimerEvent: {}
+[3.743983] (-) TimerEvent: {}
+[3.846542] (-) TimerEvent: {}
+[3.949448] (-) TimerEvent: {}
+[4.052076] (-) TimerEvent: {}
+[4.152971] (-) TimerEvent: {}
+[4.254214] (-) TimerEvent: {}
+[4.356040] (-) TimerEvent: {}
+[4.460999] (-) TimerEvent: {}
+[4.530394] (webots_ros2_driver) StdoutLine: {'line': b'[ 55%] \x1b[32mBuilding CXX object CMakeFiles/driver.dir/src/plugins/static/Ros2GPS.cpp.o\x1b[0m\n'}
+[4.565940] (-) TimerEvent: {}
+[4.669426] (-) TimerEvent: {}
+[4.771055] (-) TimerEvent: {}
+[4.873181] (-) TimerEvent: {}
+[4.974145] (-) TimerEvent: {}
+[5.077376] (-) TimerEvent: {}
+[5.183396] (-) TimerEvent: {}
+[5.289171] (-) TimerEvent: {}
+[5.390002] (-) TimerEvent: {}
+[5.490690] (-) TimerEvent: {}
+[5.592035] (-) TimerEvent: {}
+[5.693549] (-) TimerEvent: {}
+[5.795219] (-) TimerEvent: {}
+[5.900024] (-) TimerEvent: {}
+[6.000954] (-) TimerEvent: {}
+[6.102995] (-) TimerEvent: {}
+[6.204842] (-) TimerEvent: {}
+[6.314054] (-) TimerEvent: {}
+[6.414960] (-) TimerEvent: {}
+[6.515961] (-) TimerEvent: {}
+[6.617958] (webots_ros2_driver) StdoutLine: {'line': b'[ 59%] \x1b[32mBuilding CXX object CMakeFiles/driver.dir/src/plugins/static/Ros2RangeFinder.cpp.o\x1b[0m\n'}
+[6.622483] (-) TimerEvent: {}
+[6.722018] (webots_ros2_driver) StdoutLine: {'line': b'[ 62%] \x1b[32m\x1b[1mLinking CXX shared library libwebots_ros2_driver_rgbd.so\x1b[0m\n'}
+[6.723074] (-) TimerEvent: {}
+[6.755187] (webots_ros2_driver) StdoutLine: {'line': b'[ 66%] \x1b[32mBuilding CXX object CMakeFiles/driver.dir/src/plugins/static/Ros2DistanceSensor.cpp.o\x1b[0m\n'}
+[6.773420] (webots_ros2_driver) StdoutLine: {'line': b'[ 70%] \x1b[32mBuilding CXX object CMakeFiles/driver.dir/src/plugins/static/Ros2LightSensor.cpp.o\x1b[0m\n'}
+[6.824470] (-) TimerEvent: {}
+[6.844037] (webots_ros2_driver) StdoutLine: {'line': b'[ 74%] \x1b[32mBuilding CXX object CMakeFiles/driver.dir/src/plugins/static/Ros2Emitter.cpp.o\x1b[0m\n'}
+[6.925074] (-) TimerEvent: {}
+[7.025995] (-) TimerEvent: {}
+[7.126995] (-) TimerEvent: {}
+[7.229024] (-) TimerEvent: {}
+[7.329984] (-) TimerEvent: {}
+[7.337740] (webots_ros2_driver) StdoutLine: {'line': b'[ 74%] Built target webots_ros2_driver_rgbd\n'}
+[7.362986] (webots_ros2_driver) StdoutLine: {'line': b'[ 77%] \x1b[32mBuilding CXX object CMakeFiles/driver.dir/src/plugins/static/Ros2Receiver.cpp.o\x1b[0m\n'}
+[7.431048] (-) TimerEvent: {}
+[7.532014] (-) TimerEvent: {}
+[7.633010] (-) TimerEvent: {}
+[7.734082] (-) TimerEvent: {}
+[7.756311] (webots_ros2_driver) StdoutLine: {'line': b'[ 81%] \x1b[32m\x1b[1mLinking CXX shared library libwebots_ros2_driver_imu.so\x1b[0m\n'}
+[7.835398] (-) TimerEvent: {}
+[7.936946] (-) TimerEvent: {}
+[8.045368] (-) TimerEvent: {}
+[8.147178] (-) TimerEvent: {}
+[8.197377] (webots_ros2_driver) StdoutLine: {'line': b'[ 81%] Built target webots_ros2_driver_imu\n'}
+[8.222586] (webots_ros2_driver) StdoutLine: {'line': b'[ 85%] \x1b[32mBuilding CXX object CMakeFiles/driver.dir/src/plugins/static/Ros2Compass.cpp.o\x1b[0m\n'}
+[8.235091] (webots_ros2_driver) StdoutLine: {'line': b'[ 88%] \x1b[32mBuilding CXX object CMakeFiles/driver.dir/src/plugins/static/Ros2VacuumGripper.cpp.o\x1b[0m\n'}
+[8.247973] (-) TimerEvent: {}
+[8.351151] (-) TimerEvent: {}
+[8.453138] (-) TimerEvent: {}
+[8.556129] (-) TimerEvent: {}
+[8.657015] (-) TimerEvent: {}
+[8.758113] (-) TimerEvent: {}
+[8.860101] (-) TimerEvent: {}
+[8.961120] (-) TimerEvent: {}
+[9.064011] (-) TimerEvent: {}
+[9.165197] (-) TimerEvent: {}
+[9.266242] (-) TimerEvent: {}
+[9.367058] (-) TimerEvent: {}
+[9.469009] (-) TimerEvent: {}
+[9.570558] (-) TimerEvent: {}
+[9.688583] (-) TimerEvent: {}
+[9.743649] (webots_ros2_driver) StdoutLine: {'line': b'[ 92%] \x1b[32mBuilding CXX object CMakeFiles/driver.dir/src/utils/Math.cpp.o\x1b[0m\n'}
+[9.788992] (-) TimerEvent: {}
+[9.891450] (-) TimerEvent: {}
+[9.993222] (-) TimerEvent: {}
+[10.094606] (-) TimerEvent: {}
+[10.196101] (-) TimerEvent: {}
+[10.297009] (-) TimerEvent: {}
+[10.401978] (-) TimerEvent: {}
+[10.507984] (-) TimerEvent: {}
+[10.608947] (-) TimerEvent: {}
+[10.678024] (webots_ros2_driver) StdoutLine: {'line': b'[ 96%] \x1b[32mBuilding CXX object CMakeFiles/driver.dir/src/utils/Utils.cpp.o\x1b[0m\n'}
+[10.709969] (-) TimerEvent: {}
+[10.811019] (-) TimerEvent: {}
+[10.912023] (-) TimerEvent: {}
+[11.013481] (-) TimerEvent: {}
+[11.120558] (-) TimerEvent: {}
+[11.222949] (-) TimerEvent: {}
+[11.327039] (-) TimerEvent: {}
+[11.429400] (-) TimerEvent: {}
+[11.531327] (-) TimerEvent: {}
+[11.632236] (-) TimerEvent: {}
+[11.733160] (-) TimerEvent: {}
+[11.834107] (-) TimerEvent: {}
+[11.934996] (-) TimerEvent: {}
+[12.035978] (-) TimerEvent: {}
+[12.137978] (-) TimerEvent: {}
+[12.240968] (-) TimerEvent: {}
+[12.342678] (-) TimerEvent: {}
+[12.444201] (-) TimerEvent: {}
+[12.545082] (-) TimerEvent: {}
+[12.646176] (-) TimerEvent: {}
+[12.746962] (-) TimerEvent: {}
+[12.848142] (-) TimerEvent: {}
+[12.948974] (-) TimerEvent: {}
+[13.050439] (-) TimerEvent: {}
+[13.151969] (-) TimerEvent: {}
+[13.253182] (-) TimerEvent: {}
+[13.354186] (-) TimerEvent: {}
+[13.455179] (-) TimerEvent: {}
+[13.557964] (-) TimerEvent: {}
+[13.659171] (-) TimerEvent: {}
+[13.760186] (-) TimerEvent: {}
+[13.861965] (-) TimerEvent: {}
+[13.963433] (-) TimerEvent: {}
+[14.064085] (-) TimerEvent: {}
+[14.164957] (-) TimerEvent: {}
+[14.196049] (webots_ros2_driver) StdoutLine: {'line': b'[100%] \x1b[32m\x1b[1mLinking CXX executable driver\x1b[0m\n'}
+[14.265966] (-) TimerEvent: {}
+[14.366939] (-) TimerEvent: {}
+[14.467990] (-) TimerEvent: {}
+[14.575953] (-) TimerEvent: {}
+[14.686926] (-) TimerEvent: {}
+[14.787923] (-) TimerEvent: {}
+[14.888927] (-) TimerEvent: {}
+[14.989919] (-) TimerEvent: {}
+[15.091229] (-) TimerEvent: {}
+[15.194933] (-) TimerEvent: {}
+[15.276267] (webots_ros2_driver) StdoutLine: {'line': b'[100%] Built target driver\n'}
+[15.292490] (webots_ros2_driver) CommandEnded: {'returncode': 0}
+[15.295654] (webots_ros2_driver) JobProgress: {'identifier': 'webots_ros2_driver', 'progress': 'install'}
+[15.295714] (-) TimerEvent: {}
+[15.305023] (webots_ros2_driver) Command: {'cmd': ['/usr/bin/cmake', '--install', '/MRTP/MRTP/src/build/webots_ros2_driver'], 'cwd': '/MRTP/MRTP/src/build/webots_ros2_driver', 'env': OrderedDict({'GZ_SIM_RESOURCE_PATH': '/opt/ros/jazzy/share', 'GZ_CONFIG_PATH': '/opt/ros/jazzy/opt/gz_sim_vendor/share/gz:/opt/ros/jazzy/opt/sdformat_vendor/share/gz:/opt/ros/jazzy/opt/gz_gui_vendor/share/gz:/opt/ros/jazzy/opt/gz_transport_vendor/share/gz:/opt/ros/jazzy/opt/gz_rendering_vendor/share/gz:/opt/ros/jazzy/opt/gz_plugin_vendor/share/gz:/opt/ros/jazzy/opt/gz_fuel_tools_vendor/share/gz:/opt/ros/jazzy/opt/gz_msgs_vendor/share/gz:/opt/ros/jazzy/opt/gz_common_vendor/share/gz', 'HOSTNAME': 'docker-desktop', '__GLX_VENDOR_LIBRARY_NAME': 'nvidia', 'SHLVL': '1', 'LD_LIBRARY_PATH': '/MRTP/MRTP/src/install/webots_ros2_msgs/lib:/opt/ros/jazzy/opt/gz_sim_vendor/lib:/opt/ros/jazzy/opt/gz_sensors_vendor/lib:/opt/ros/jazzy/opt/gz_physics_vendor/lib:/opt/ros/jazzy/opt/sdformat_vendor/lib:/opt/ros/jazzy/opt/rviz_ogre_vendor/lib:/opt/ros/jazzy/lib/aarch64-linux-gnu:/opt/ros/jazzy/opt/gz_gui_vendor/lib:/opt/ros/jazzy/opt/gz_transport_vendor/lib:/opt/ros/jazzy/opt/gz_rendering_vendor/lib:/opt/ros/jazzy/opt/gz_plugin_vendor/lib:/opt/ros/jazzy/opt/gz_fuel_tools_vendor/lib:/opt/ros/jazzy/opt/gz_msgs_vendor/lib:/opt/ros/jazzy/opt/gz_common_vendor/lib:/opt/ros/jazzy/opt/gz_math_vendor/lib:/opt/ros/jazzy/opt/gz_utils_vendor/lib:/opt/ros/jazzy/opt/gz_tools_vendor/lib:/opt/ros/jazzy/opt/gz_ogre_next_vendor/lib:/opt/ros/jazzy/opt/gz_dartsim_vendor/lib:/opt/ros/jazzy/opt/gz_cmake_vendor/lib:/opt/ros/jazzy/lib', 'HOME': '/root', 'OLDPWD': '/MRTP/MRTP', 'ROS_PYTHON_VERSION': '3', 'PS1': '(.venv) \\[\\e]0;\\u@\\h: \\w\\a\\]${debian_chroot:+($debian_chroot)}\\u@\\h:\\w\\$', 'ROS_DISTRO': 'jazzy', '_': '/usr/bin/colcon', 'ROS_VERSION': '2', 'NVIDIA_DRIVER_CAPABILITIES': 'all', 'TERM': 'xterm', 'GAZEBO_MODEL_PATH': '/opt/ros/jazzy/share/', 'PATH': '/.venv/bin:/opt/ros/jazzy/opt/gz_msgs_vendor/bin:/opt/ros/jazzy/opt/gz_tools_vendor/bin:/opt/ros/jazzy/opt/gz_ogre_next_vendor/bin:/opt/ros/jazzy/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin', 'DISPLAY': ':2', 'LANG': 'C.UTF-8', 'VIRTUAL_ENV_PROMPT': '(.venv)', '__NV_PRIME_RENDER_OFFLOAD': '1', 'LS_COLORS': 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=00:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.avif=01;35:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:*~=00;90:*#=00;90:*.bak=00;90:*.crdownload=00;90:*.dpkg-dist=00;90:*.dpkg-new=00;90:*.dpkg-old=00;90:*.dpkg-tmp=00;90:*.old=00;90:*.orig=00;90:*.part=00;90:*.rej=00;90:*.rpmnew=00;90:*.rpmorig=00;90:*.rpmsave=00;90:*.swp=00;90:*.tmp=00;90:*.ucf-dist=00;90:*.ucf-new=00;90:*.ucf-old=00;90:', 'AMENT_PREFIX_PATH': '/MRTP/MRTP/src/install/webots_ros2_msgs:/MRTP/MRTP/src/install/webots_ros2_importer:/opt/ros/jazzy', 'VIRTUAL_ENV': '/.venv', 'ROS_AUTOMATIC_DISCOVERY_RANGE': 'SUBNET', 'PWD': '/MRTP/MRTP/src/build/webots_ros2_driver', 'LC_ALL': 'C.UTF-8', 'PYTHONPATH': '/MRTP/MRTP/src/install/webots_ros2_msgs/lib/python3.12/site-packages:/MRTP/MRTP/src/build/webots_ros2_importer:/MRTP/MRTP/src/install/webots_ros2_importer/lib/python3.12/site-packages:/usr/lib/python3/dist-packages:/opt/ros/jazzy/lib/python3.12/site-packages', 'NVIDIA_VISIBLE_DEVICES': 'all', 'COLCON': '1', 'CMAKE_PREFIX_PATH': '/MRTP/MRTP/src/install/webots_ros2_msgs:/opt/ros/jazzy/opt/gz_sim_vendor:/opt/ros/jazzy/opt/gz_sensors_vendor:/opt/ros/jazzy/opt/gz_physics_vendor:/opt/ros/jazzy/opt/sdformat_vendor:/opt/ros/jazzy/opt/gz_gui_vendor:/opt/ros/jazzy/opt/gz_transport_vendor:/opt/ros/jazzy/opt/gz_rendering_vendor:/opt/ros/jazzy/opt/gz_plugin_vendor:/opt/ros/jazzy/opt/gz_fuel_tools_vendor:/opt/ros/jazzy/opt/gz_msgs_vendor:/opt/ros/jazzy/opt/gz_common_vendor:/opt/ros/jazzy/opt/gz_math_vendor:/opt/ros/jazzy/opt/gz_utils_vendor:/opt/ros/jazzy/opt/gz_tools_vendor:/opt/ros/jazzy/opt/gz_ogre_next_vendor:/opt/ros/jazzy/opt/gz_dartsim_vendor:/opt/ros/jazzy/opt/gz_cmake_vendor:/opt/ros/jazzy'}), 'shell': False}
+[15.315392] (webots_ros2_driver) StdoutLine: {'line': b'-- Install configuration: ""\n'}
+[15.317372] (webots_ros2_driver) StdoutLine: {'line': b'-- Execute custom install script\n'}
+[15.319507] (webots_ros2_driver) StdoutLine: {'line': b'-- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/share/webots_ros2_driver/environment/pythonpath.sh\n'}
+[15.327305] (webots_ros2_driver) StdoutLine: {'line': b'-- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/share/webots_ros2_driver/environment/pythonpath.dsv\n'}
+[15.338744] (webots_ros2_driver) StdoutLine: {'line': b'-- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/lib/python3.12/site-packages/controller-2025.0.1-py3.12.egg-info/PKG-INFO\n'}
+[15.348313] (webots_ros2_driver) StdoutLine: {'line': b'-- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/lib/python3.12/site-packages/controller-2025.0.1-py3.12.egg-info/SOURCES.txt\n'}
+[15.357858] (webots_ros2_driver) StdoutLine: {'line': b'-- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/lib/python3.12/site-packages/controller-2025.0.1-py3.12.egg-info/dependency_links.txt\n'}
+[15.368008] (webots_ros2_driver) StdoutLine: {'line': b'-- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/lib/python3.12/site-packages/controller-2025.0.1-py3.12.egg-info/top_level.txt\n'}
+[15.380790] (webots_ros2_driver) StdoutLine: {'line': b'-- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/lib/python3.12/site-packages/controller/__init__.py\n'}
+[15.392769] (webots_ros2_driver) StdoutLine: {'line': b'-- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/lib/python3.12/site-packages/controller/accelerometer.py\n'}
+[15.396012] (-) TimerEvent: {}
+[15.402862] (webots_ros2_driver) StdoutLine: {'line': b'-- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/lib/python3.12/site-packages/controller/altimeter.py\n'}
+[15.415554] (webots_ros2_driver) StdoutLine: {'line': b'-- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/lib/python3.12/site-packages/controller/ansi_codes.py\n'}
+[15.425048] (webots_ros2_driver) StdoutLine: {'line': b'-- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/lib/python3.12/site-packages/controller/brake.py\n'}
+[15.433378] (webots_ros2_driver) StdoutLine: {'line': b'-- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/lib/python3.12/site-packages/controller/camera.py\n'}
+[15.441657] (webots_ros2_driver) StdoutLine: {'line': b'-- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/lib/python3.12/site-packages/controller/compass.py\n'}
+[15.449077] (webots_ros2_driver) StdoutLine: {'line': b'-- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/lib/python3.12/site-packages/controller/connector.py\n'}
+[15.457444] (webots_ros2_driver) StdoutLine: {'line': b'-- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/lib/python3.12/site-packages/controller/constants.py\n'}
+[15.463963] (webots_ros2_driver) StdoutLine: {'line': b'-- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/lib/python3.12/site-packages/controller/device.py\n'}
+[15.470079] (webots_ros2_driver) StdoutLine: {'line': b'-- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/lib/python3.12/site-packages/controller/display.py\n'}
+[15.476253] (webots_ros2_driver) StdoutLine: {'line': b'-- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/lib/python3.12/site-packages/controller/distance_sensor.py\n'}
+[15.482555] (webots_ros2_driver) StdoutLine: {'line': b'-- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/lib/python3.12/site-packages/controller/emitter.py\n'}
+[15.489091] (webots_ros2_driver) StdoutLine: {'line': b'-- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/lib/python3.12/site-packages/controller/field.py\n'}
+[15.495402] (webots_ros2_driver) StdoutLine: {'line': b'-- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/lib/python3.12/site-packages/controller/gps.py\n'}
+[15.496920] (-) TimerEvent: {}
+[15.501624] (webots_ros2_driver) StdoutLine: {'line': b'-- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/lib/python3.12/site-packages/controller/gyro.py\n'}
+[15.507952] (webots_ros2_driver) StdoutLine: {'line': b'-- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/lib/python3.12/site-packages/controller/inertial_unit.py\n'}
+[15.514034] (webots_ros2_driver) StdoutLine: {'line': b'-- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/lib/python3.12/site-packages/controller/joystick.py\n'}
+[15.520580] (webots_ros2_driver) StdoutLine: {'line': b'-- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/lib/python3.12/site-packages/controller/keyboard.py\n'}
+[15.526740] (webots_ros2_driver) StdoutLine: {'line': b'-- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/lib/python3.12/site-packages/controller/led.py\n'}
+[15.533417] (webots_ros2_driver) StdoutLine: {'line': b'-- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/lib/python3.12/site-packages/controller/lidar.py\n'}
+[15.539982] (webots_ros2_driver) StdoutLine: {'line': b'-- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/lib/python3.12/site-packages/controller/lidar_point.py\n'}
+[15.546348] (webots_ros2_driver) StdoutLine: {'line': b'-- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/lib/python3.12/site-packages/controller/light_sensor.py\n'}
+[15.552461] (webots_ros2_driver) StdoutLine: {'line': b'-- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/lib/python3.12/site-packages/controller/motion.py\n'}
+[15.558414] (webots_ros2_driver) StdoutLine: {'line': b'-- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/lib/python3.12/site-packages/controller/motor.py\n'}
+[15.564099] (webots_ros2_driver) StdoutLine: {'line': b'-- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/lib/python3.12/site-packages/controller/mouse.py\n'}
+[15.570311] (webots_ros2_driver) StdoutLine: {'line': b'-- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/lib/python3.12/site-packages/controller/node.py\n'}
+[15.575778] (webots_ros2_driver) StdoutLine: {'line': b'-- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/lib/python3.12/site-packages/controller/pen.py\n'}
+[15.581739] (webots_ros2_driver) StdoutLine: {'line': b'-- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/lib/python3.12/site-packages/controller/position_sensor.py\n'}
+[15.588026] (webots_ros2_driver) StdoutLine: {'line': b'-- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/lib/python3.12/site-packages/controller/proto.py\n'}
+[15.593911] (webots_ros2_driver) StdoutLine: {'line': b'-- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/lib/python3.12/site-packages/controller/radar.py\n'}
+[15.598133] (-) TimerEvent: {}
+[15.599911] (webots_ros2_driver) StdoutLine: {'line': b'-- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/lib/python3.12/site-packages/controller/radar_target.py\n'}
+[15.605976] (webots_ros2_driver) StdoutLine: {'line': b'-- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/lib/python3.12/site-packages/controller/range_finder.py\n'}
+[15.611534] (webots_ros2_driver) StdoutLine: {'line': b'-- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/lib/python3.12/site-packages/controller/receiver.py\n'}
+[15.617429] (webots_ros2_driver) StdoutLine: {'line': b'-- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/lib/python3.12/site-packages/controller/robot.py\n'}
+[15.623202] (webots_ros2_driver) StdoutLine: {'line': b'-- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/lib/python3.12/site-packages/controller/sensor.py\n'}
+[15.628963] (webots_ros2_driver) StdoutLine: {'line': b'-- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/lib/python3.12/site-packages/controller/skin.py\n'}
+[15.634960] (webots_ros2_driver) StdoutLine: {'line': b'-- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/lib/python3.12/site-packages/controller/speaker.py\n'}
+[15.640900] (webots_ros2_driver) StdoutLine: {'line': b'-- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/lib/python3.12/site-packages/controller/supervisor.py\n'}
+[15.646961] (webots_ros2_driver) StdoutLine: {'line': b'-- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/lib/python3.12/site-packages/controller/touch_sensor.py\n'}
+[15.652929] (webots_ros2_driver) StdoutLine: {'line': b'-- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/lib/python3.12/site-packages/controller/vacuum_gripper.py\n'}
+[15.658619] (webots_ros2_driver) StdoutLine: {'line': b'-- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/lib/python3.12/site-packages/controller/wb.py\n'}
+[15.666511] (webots_ros2_driver) StdoutLine: {'line': b'-- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/lib/python3.12/site-packages/vehicle-2025.0.1-py3.12.egg-info/PKG-INFO\n'}
+[15.672419] (webots_ros2_driver) StdoutLine: {'line': b'-- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/lib/python3.12/site-packages/vehicle-2025.0.1-py3.12.egg-info/SOURCES.txt\n'}
+[15.678045] (webots_ros2_driver) StdoutLine: {'line': b'-- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/lib/python3.12/site-packages/vehicle-2025.0.1-py3.12.egg-info/dependency_links.txt\n'}
+[15.683914] (webots_ros2_driver) StdoutLine: {'line': b'-- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/lib/python3.12/site-packages/vehicle-2025.0.1-py3.12.egg-info/top_level.txt\n'}
+[15.693454] (webots_ros2_driver) StdoutLine: {'line': b'-- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/lib/python3.12/site-packages/vehicle/__init__.py\n'}
+[15.698952] (-) TimerEvent: {}
+[15.701721] (webots_ros2_driver) StdoutLine: {'line': b'-- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/lib/python3.12/site-packages/vehicle/car.py\n'}
+[15.709062] (webots_ros2_driver) StdoutLine: {'line': b'-- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/lib/python3.12/site-packages/vehicle/driver.py\n'}
+[15.716665] (webots_ros2_driver) StdoutLine: {'line': b'-- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/lib/python3.12/site-packages/webots_ros2_driver-2025.0.1-py3.12.egg-info/PKG-INFO\n'}
+[15.722853] (webots_ros2_driver) StdoutLine: {'line': b'-- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/lib/python3.12/site-packages/webots_ros2_driver-2025.0.1-py3.12.egg-info/SOURCES.txt\n'}
+[15.728287] (webots_ros2_driver) StdoutLine: {'line': b'-- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/lib/python3.12/site-packages/webots_ros2_driver-2025.0.1-py3.12.egg-info/dependency_links.txt\n'}
+[15.733790] (webots_ros2_driver) StdoutLine: {'line': b'-- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/lib/python3.12/site-packages/webots_ros2_driver-2025.0.1-py3.12.egg-info/top_level.txt\n'}
+[15.740410] (webots_ros2_driver) StdoutLine: {'line': b'-- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/lib/python3.12/site-packages/webots_ros2_driver/__init__.py\n'}
+[15.745899] (webots_ros2_driver) StdoutLine: {'line': b'-- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/lib/python3.12/site-packages/webots_ros2_driver/ros2_supervisor.py\n'}
+[15.751383] (webots_ros2_driver) StdoutLine: {'line': b'-- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/lib/python3.12/site-packages/webots_ros2_driver/urdf_spawner.py\n'}
+[15.756981] (webots_ros2_driver) StdoutLine: {'line': b'-- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/lib/python3.12/site-packages/webots_ros2_driver/utils.py\n'}
+[15.762632] (webots_ros2_driver) StdoutLine: {'line': b'-- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/lib/python3.12/site-packages/webots_ros2_driver/wait_for_controller_connection.py\n'}
+[15.769197] (webots_ros2_driver) StdoutLine: {'line': b'-- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/lib/python3.12/site-packages/webots_ros2_driver/webots_controller.py\n'}
+[15.774560] (webots_ros2_driver) StdoutLine: {'line': b'-- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/lib/python3.12/site-packages/webots_ros2_driver/webots_launcher.py\n'}
+[15.782073] (webots_ros2_driver) StdoutLine: {'line': b'-- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/include/webots_ros2_driver/PluginInterface.hpp\n'}
+[15.787776] (webots_ros2_driver) StdoutLine: {'line': b'-- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/include/webots_ros2_driver/PythonPlugin.hpp\n'}
+[15.793476] (webots_ros2_driver) StdoutLine: {'line': b'-- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/include/webots_ros2_driver/WebotsNode.hpp\n'}
+[15.799305] (webots_ros2_driver) StdoutLine: {'line': b'-- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/include/webots_ros2_driver/plugins/Ros2SensorPlugin.hpp\n'}
+[15.799565] (-) TimerEvent: {}
+[15.805607] (webots_ros2_driver) StdoutLine: {'line': b'-- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/include/webots_ros2_driver/plugins/dynamic/Ros2IMU.hpp\n'}
+[15.810848] (webots_ros2_driver) StdoutLine: {'line': b'-- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/include/webots_ros2_driver/plugins/dynamic/Ros2RGBD.hpp\n'}
+[15.816477] (webots_ros2_driver) StdoutLine: {'line': b'-- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/include/webots_ros2_driver/plugins/static/Ros2Camera.hpp\n'}
+[15.822249] (webots_ros2_driver) StdoutLine: {'line': b'-- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/include/webots_ros2_driver/plugins/static/Ros2Compass.hpp\n'}
+[15.827532] (webots_ros2_driver) StdoutLine: {'line': b'-- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/include/webots_ros2_driver/plugins/static/Ros2DistanceSensor.hpp\n'}
+[15.834784] (webots_ros2_driver) StdoutLine: {'line': b'-- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/include/webots_ros2_driver/plugins/static/Ros2Emitter.hpp\n'}
+[15.840499] (webots_ros2_driver) StdoutLine: {'line': b'-- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/include/webots_ros2_driver/plugins/static/Ros2GPS.hpp\n'}
+[15.845987] (webots_ros2_driver) StdoutLine: {'line': b'-- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/include/webots_ros2_driver/plugins/static/Ros2LED.hpp\n'}
+[15.852879] (webots_ros2_driver) StdoutLine: {'line': b'-- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/include/webots_ros2_driver/plugins/static/Ros2Lidar.hpp\n'}
+[15.858921] (webots_ros2_driver) StdoutLine: {'line': b'-- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/include/webots_ros2_driver/plugins/static/Ros2LightSensor.hpp\n'}
+[15.865133] (webots_ros2_driver) StdoutLine: {'line': b'-- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/include/webots_ros2_driver/plugins/static/Ros2Pen.hpp\n'}
+[15.870920] (webots_ros2_driver) StdoutLine: {'line': b'-- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/include/webots_ros2_driver/plugins/static/Ros2RangeFinder.hpp\n'}
+[15.876678] (webots_ros2_driver) StdoutLine: {'line': b'-- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/include/webots_ros2_driver/plugins/static/Ros2Receiver.hpp\n'}
+[15.899990] (-) TimerEvent: {}
+[15.901295] (webots_ros2_driver) StdoutLine: {'line': b'-- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/include/webots_ros2_driver/plugins/static/Ros2VacuumGripper.hpp\n'}
+[15.913629] (webots_ros2_driver) StdoutLine: {'line': b'-- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/include/webots_ros2_driver/utils/Math.hpp\n'}
+[15.921728] (webots_ros2_driver) StdoutLine: {'line': b'-- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/include/webots_ros2_driver/utils/Utils.hpp\n'}
+[15.928300] (webots_ros2_driver) StdoutLine: {'line': b'-- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/lib/webots_ros2_driver/driver\n'}
+[15.935162] (webots_ros2_driver) StdoutLine: {'line': b'-- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/lib/libwebots_ros2_driver_imu.so\n'}
+[15.941040] (webots_ros2_driver) StdoutLine: {'line': b'-- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/lib/libwebots_ros2_driver_rgbd.so\n'}
+[15.951533] (webots_ros2_driver) StdoutLine: {'line': b'-- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/include/webots/c/webots/accelerometer.h\n'}
+[15.957613] (webots_ros2_driver) StdoutLine: {'line': b'-- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/include/webots/c/webots/altimeter.h\n'}
+[15.963832] (webots_ros2_driver) StdoutLine: {'line': b'-- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/include/webots/c/webots/brake.h\n'}
+[15.970070] (webots_ros2_driver) StdoutLine: {'line': b'-- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/include/webots/c/webots/camera.h\n'}
+[15.975370] (webots_ros2_driver) StdoutLine: {'line': b'-- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/include/webots/c/webots/camera_recognition_object.h\n'}
+[15.981596] (webots_ros2_driver) StdoutLine: {'line': b'-- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/include/webots/c/webots/compass.h\n'}
+[15.987034] (webots_ros2_driver) StdoutLine: {'line': b'-- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/include/webots/c/webots/connector.h\n'}
+[15.992646] (webots_ros2_driver) StdoutLine: {'line': b'-- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/include/webots/c/webots/console.h\n'}
+[15.998970] (webots_ros2_driver) StdoutLine: {'line': b'-- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/include/webots/c/webots/contact_point.h\n'}
+[16.000910] (-) TimerEvent: {}
+[16.004805] (webots_ros2_driver) StdoutLine: {'line': b'-- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/include/webots/c/webots/device.h\n'}
+[16.010330] (webots_ros2_driver) StdoutLine: {'line': b'-- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/include/webots/c/webots/display.h\n'}
+[16.016330] (webots_ros2_driver) StdoutLine: {'line': b'-- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/include/webots/c/webots/distance_sensor.h\n'}
+[16.022255] (webots_ros2_driver) StdoutLine: {'line': b'-- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/include/webots/c/webots/emitter.h\n'}
+[16.028701] (webots_ros2_driver) StdoutLine: {'line': b'-- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/include/webots/c/webots/gps.h\n'}
+[16.034316] (webots_ros2_driver) StdoutLine: {'line': b'-- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/include/webots/c/webots/gyro.h\n'}
+[16.040254] (webots_ros2_driver) StdoutLine: {'line': b'-- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/include/webots/c/webots/inertial_unit.h\n'}
+[16.046163] (webots_ros2_driver) StdoutLine: {'line': b'-- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/include/webots/c/webots/joystick.h\n'}
+[16.051859] (webots_ros2_driver) StdoutLine: {'line': b'-- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/include/webots/c/webots/keyboard.h\n'}
+[16.057323] (webots_ros2_driver) StdoutLine: {'line': b'-- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/include/webots/c/webots/led.h\n'}
+[16.062686] (webots_ros2_driver) StdoutLine: {'line': b'-- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/include/webots/c/webots/lidar.h\n'}
+[16.068234] (webots_ros2_driver) StdoutLine: {'line': b'-- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/include/webots/c/webots/lidar_point.h\n'}
+[16.074042] (webots_ros2_driver) StdoutLine: {'line': b'-- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/include/webots/c/webots/light_sensor.h\n'}
+[16.079348] (webots_ros2_driver) StdoutLine: {'line': b'-- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/include/webots/c/webots/microphone.h\n'}
+[16.084630] (webots_ros2_driver) StdoutLine: {'line': b'-- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/include/webots/c/webots/motor.h\n'}
+[16.090541] (webots_ros2_driver) StdoutLine: {'line': b'-- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/include/webots/c/webots/mouse.h\n'}
+[16.096377] (webots_ros2_driver) StdoutLine: {'line': b'-- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/include/webots/c/webots/mouse_state.h\n'}
+[16.101930] (-) TimerEvent: {}
+[16.102491] (webots_ros2_driver) StdoutLine: {'line': b'-- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/include/webots/c/webots/nodes.h\n'}
+[16.108768] (webots_ros2_driver) StdoutLine: {'line': b'-- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/include/webots/c/webots/pen.h\n'}
+[16.115726] (webots_ros2_driver) StdoutLine: {'line': b'-- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/include/webots/c/webots/plugins/robot_window/default.h\n'}
+[16.123828] (webots_ros2_driver) StdoutLine: {'line': b'-- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/include/webots/c/webots/plugins/robot_window/generic_robot_window/generic.h\n'}
+[16.131524] (webots_ros2_driver) StdoutLine: {'line': b'-- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/include/webots/c/webots/plugins/robot_window/robot_window.h\n'}
+[16.138580] (webots_ros2_driver) StdoutLine: {'line': b'-- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/include/webots/c/webots/plugins/robot_window/robot_wwi.h\n'}
+[16.144111] (webots_ros2_driver) StdoutLine: {'line': b'-- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/include/webots/c/webots/position_sensor.h\n'}
+[16.149997] (webots_ros2_driver) StdoutLine: {'line': b'-- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/include/webots/c/webots/radar.h\n'}
+[16.155850] (webots_ros2_driver) StdoutLine: {'line': b'-- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/include/webots/c/webots/radar_target.h\n'}
+[16.162073] (webots_ros2_driver) StdoutLine: {'line': b'-- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/include/webots/c/webots/radio.h\n'}
+[16.168395] (webots_ros2_driver) StdoutLine: {'line': b'-- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/include/webots/c/webots/range_finder.h\n'}
+[16.175299] (webots_ros2_driver) StdoutLine: {'line': b'-- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/include/webots/c/webots/receiver.h\n'}
+[16.183953] (webots_ros2_driver) StdoutLine: {'line': b'-- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/include/webots/c/webots/remote_control.h\n'}
+[16.193269] (webots_ros2_driver) StdoutLine: {'line': b'-- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/include/webots/c/webots/robot.h\n'}
+[16.202982] (-) TimerEvent: {}
+[16.204080] (webots_ros2_driver) StdoutLine: {'line': b'-- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/include/webots/c/webots/skin.h\n'}
+[16.210722] (webots_ros2_driver) StdoutLine: {'line': b'-- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/include/webots/c/webots/speaker.h\n'}
+[16.217019] (webots_ros2_driver) StdoutLine: {'line': b'-- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/include/webots/c/webots/supervisor.h\n'}
+[16.223406] (webots_ros2_driver) StdoutLine: {'line': b'-- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/include/webots/c/webots/touch_sensor.h\n'}
+[16.229572] (webots_ros2_driver) StdoutLine: {'line': b'-- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/include/webots/c/webots/types.h\n'}
+[16.235830] (webots_ros2_driver) StdoutLine: {'line': b'-- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/include/webots/c/webots/utils/ansi_codes.h\n'}
+[16.241879] (webots_ros2_driver) StdoutLine: {'line': b'-- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/include/webots/c/webots/utils/motion.h\n'}
+[16.248380] (webots_ros2_driver) StdoutLine: {'line': b'-- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/include/webots/c/webots/utils/string.h\n'}
+[16.254339] (webots_ros2_driver) StdoutLine: {'line': b'-- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/include/webots/c/webots/utils/system.h\n'}
+[16.259822] (webots_ros2_driver) StdoutLine: {'line': b'-- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/include/webots/c/webots/vacuum_gripper.h\n'}
+[16.266536] (webots_ros2_driver) StdoutLine: {'line': b'-- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/include/webots/c/webots/vehicle/car.h\n'}
+[16.272355] (webots_ros2_driver) StdoutLine: {'line': b'-- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/include/webots/c/webots/vehicle/driver.h\n'}
+[16.282851] (webots_ros2_driver) StdoutLine: {'line': b'-- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/include/webots/cpp/webots/Accelerometer.hpp\n'}
+[16.289123] (webots_ros2_driver) StdoutLine: {'line': b'-- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/include/webots/cpp/webots/Altimeter.hpp\n'}
+[16.294925] (webots_ros2_driver) StdoutLine: {'line': b'-- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/include/webots/cpp/webots/Brake.hpp\n'}
+[16.301034] (webots_ros2_driver) StdoutLine: {'line': b'-- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/include/webots/cpp/webots/Camera.hpp\n'}
+[16.303932] (-) TimerEvent: {}
+[16.306803] (webots_ros2_driver) StdoutLine: {'line': b'-- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/include/webots/cpp/webots/Compass.hpp\n'}
+[16.312798] (webots_ros2_driver) StdoutLine: {'line': b'-- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/include/webots/cpp/webots/Connector.hpp\n'}
+[16.318727] (webots_ros2_driver) StdoutLine: {'line': b'-- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/include/webots/cpp/webots/Device.hpp\n'}
+[16.324551] (webots_ros2_driver) StdoutLine: {'line': b'-- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/include/webots/cpp/webots/Display.hpp\n'}
+[16.330795] (webots_ros2_driver) StdoutLine: {'line': b'-- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/include/webots/cpp/webots/DistanceSensor.hpp\n'}
+[16.336625] (webots_ros2_driver) StdoutLine: {'line': b'-- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/include/webots/cpp/webots/Emitter.hpp\n'}
+[16.342050] (webots_ros2_driver) StdoutLine: {'line': b'-- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/include/webots/cpp/webots/Field.hpp\n'}
+[16.348394] (webots_ros2_driver) StdoutLine: {'line': b'-- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/include/webots/cpp/webots/GPS.hpp\n'}
+[16.354489] (webots_ros2_driver) StdoutLine: {'line': b'-- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/include/webots/cpp/webots/Gyro.hpp\n'}
+[16.361316] (webots_ros2_driver) StdoutLine: {'line': b'-- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/include/webots/cpp/webots/ImageRef.hpp\n'}
+[16.368495] (webots_ros2_driver) StdoutLine: {'line': b'-- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/include/webots/cpp/webots/InertialUnit.hpp\n'}
+[16.374572] (webots_ros2_driver) StdoutLine: {'line': b'-- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/include/webots/cpp/webots/Joystick.hpp\n'}
+[16.380624] (webots_ros2_driver) StdoutLine: {'line': b'-- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/include/webots/cpp/webots/Keyboard.hpp\n'}
+[16.386636] (webots_ros2_driver) StdoutLine: {'line': b'-- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/include/webots/cpp/webots/LED.hpp\n'}
+[16.392252] (webots_ros2_driver) StdoutLine: {'line': b'-- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/include/webots/cpp/webots/Lidar.hpp\n'}
+[16.398715] (webots_ros2_driver) StdoutLine: {'line': b'-- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/include/webots/cpp/webots/LightSensor.hpp\n'}
+[16.404443] (webots_ros2_driver) StdoutLine: {'line': b'-- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/include/webots/cpp/webots/Motor.hpp\n'}
+[16.404650] (-) TimerEvent: {}
+[16.410077] (webots_ros2_driver) StdoutLine: {'line': b'-- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/include/webots/cpp/webots/Mouse.hpp\n'}
+[16.416386] (webots_ros2_driver) StdoutLine: {'line': b'-- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/include/webots/cpp/webots/Node.hpp\n'}
+[16.422265] (webots_ros2_driver) StdoutLine: {'line': b'-- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/include/webots/cpp/webots/Pen.hpp\n'}
+[16.428542] (webots_ros2_driver) StdoutLine: {'line': b'-- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/include/webots/cpp/webots/PositionSensor.hpp\n'}
+[16.434457] (webots_ros2_driver) StdoutLine: {'line': b'-- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/include/webots/cpp/webots/Proto.hpp\n'}
+[16.440229] (webots_ros2_driver) StdoutLine: {'line': b'-- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/include/webots/cpp/webots/Radar.hpp\n'}
+[16.446217] (webots_ros2_driver) StdoutLine: {'line': b'-- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/include/webots/cpp/webots/RangeFinder.hpp\n'}
+[16.451987] (webots_ros2_driver) StdoutLine: {'line': b'-- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/include/webots/cpp/webots/Receiver.hpp\n'}
+[16.457631] (webots_ros2_driver) StdoutLine: {'line': b'-- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/include/webots/cpp/webots/Robot.hpp\n'}
+[16.463587] (webots_ros2_driver) StdoutLine: {'line': b'-- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/include/webots/cpp/webots/Skin.hpp\n'}
+[16.469419] (webots_ros2_driver) StdoutLine: {'line': b'-- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/include/webots/cpp/webots/Speaker.hpp\n'}
+[16.474906] (webots_ros2_driver) StdoutLine: {'line': b'-- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/include/webots/cpp/webots/Supervisor.hpp\n'}
+[16.480956] (webots_ros2_driver) StdoutLine: {'line': b'-- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/include/webots/cpp/webots/TouchSensor.hpp\n'}
+[16.486781] (webots_ros2_driver) StdoutLine: {'line': b'-- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/include/webots/cpp/webots/VacuumGripper.hpp\n'}
+[16.492641] (webots_ros2_driver) StdoutLine: {'line': b'-- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/include/webots/cpp/webots/utils/AnsiCodes.hpp\n'}
+[16.498808] (webots_ros2_driver) StdoutLine: {'line': b'-- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/include/webots/cpp/webots/utils/Motion.hpp\n'}
+[16.504866] (webots_ros2_driver) StdoutLine: {'line': b'-- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/include/webots/cpp/webots/vehicle/Car.hpp\n'}
+[16.505186] (-) TimerEvent: {}
+[16.510420] (webots_ros2_driver) StdoutLine: {'line': b'-- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/include/webots/cpp/webots/vehicle/Driver.hpp\n'}
+[16.522213] (webots_ros2_driver) StdoutLine: {'line': b'-- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/lib/controller/libController.so\n'}
+[16.527948] (webots_ros2_driver) StdoutLine: {'line': b'-- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/lib/controller/libCppCar.so\n'}
+[16.533934] (webots_ros2_driver) StdoutLine: {'line': b'-- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/lib/controller/libCppController.so\n'}
+[16.539730] (webots_ros2_driver) StdoutLine: {'line': b'-- Up-to-date symlink: /MRTP/MRTP/src/install/webots_ros2_driver/lib/controller/libCppController.so\n'}
+[16.540126] (webots_ros2_driver) StdoutLine: {'line': b'-- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/lib/controller/libCppDriver.so\n'}
+[16.545833] (webots_ros2_driver) StdoutLine: {'line': b'-- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/lib/controller/libcar.so\n'}
+[16.551760] (webots_ros2_driver) StdoutLine: {'line': b'-- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/lib/controller/libdriver.so\n'}
+[16.557478] (webots_ros2_driver) StdoutLine: {'line': b'-- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/lib/controller/libgeneric_robot_window.so\n'}
+[16.563269] (webots_ros2_driver) StdoutLine: {'line': b'-- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/lib/controller/python/vehicle/car.py\n'}
+[16.569078] (webots_ros2_driver) StdoutLine: {'line': b'-- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/lib/controller/python/vehicle/driver.py\n'}
+[16.574834] (webots_ros2_driver) StdoutLine: {'line': b'-- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/share/webots_ros2_driver//webots_ros2_imu.xml\n'}
+[16.580919] (webots_ros2_driver) StdoutLine: {'line': b'-- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/share/webots_ros2_driver//webots_ros2_rgbd.xml\n'}
+[16.586815] (webots_ros2_driver) StdoutLine: {'line': b'-- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/lib/webots_ros2_driver/ros2_supervisor.py\n'}
+[16.592843] (webots_ros2_driver) StdoutLine: {'line': b'-- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/share/webots_ros2_driver/scripts/webots_tcp_client.py\n'}
+[16.606203] (-) TimerEvent: {}
+[16.610198] (webots_ros2_driver) StdoutLine: {'line': b'-- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/share/webots_ros2_driver/scripts/webots-controller\n'}
+[16.625903] (webots_ros2_driver) StdoutLine: {'line': b'-- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/share/webots_ros2_driver/environment/library_path.sh\n'}
+[16.637237] (webots_ros2_driver) StdoutLine: {'line': b'-- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/share/webots_ros2_driver/environment/library_path.dsv\n'}
+[16.643752] (webots_ros2_driver) StdoutLine: {'line': b'-- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/share/ament_index/resource_index/package_run_dependencies/webots_ros2_driver\n'}
+[16.650127] (webots_ros2_driver) StdoutLine: {'line': b'-- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/share/ament_index/resource_index/parent_prefix_path/webots_ros2_driver\n'}
+[16.655969] (webots_ros2_driver) StdoutLine: {'line': b'-- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/share/webots_ros2_driver/environment/ament_prefix_path.sh\n'}
+[16.661730] (webots_ros2_driver) StdoutLine: {'line': b'-- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/share/webots_ros2_driver/environment/ament_prefix_path.dsv\n'}
+[16.667668] (webots_ros2_driver) StdoutLine: {'line': b'-- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/share/webots_ros2_driver/environment/path.sh\n'}
+[16.673362] (webots_ros2_driver) StdoutLine: {'line': b'-- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/share/webots_ros2_driver/environment/path.dsv\n'}
+[16.678942] (webots_ros2_driver) StdoutLine: {'line': b'-- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/share/webots_ros2_driver/local_setup.bash\n'}
+[16.684559] (webots_ros2_driver) StdoutLine: {'line': b'-- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/share/webots_ros2_driver/local_setup.sh\n'}
+[16.690389] (webots_ros2_driver) StdoutLine: {'line': b'-- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/share/webots_ros2_driver/local_setup.zsh\n'}
+[16.696126] (webots_ros2_driver) StdoutLine: {'line': b'-- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/share/webots_ros2_driver/local_setup.dsv\n'}
+[16.701606] (webots_ros2_driver) StdoutLine: {'line': b'-- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/share/webots_ros2_driver/package.dsv\n'}
+[16.706925] (-) TimerEvent: {}
+[16.707743] (webots_ros2_driver) StdoutLine: {'line': b'-- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/share/ament_index/resource_index/packages/webots_ros2_driver\n'}
+[16.714634] (webots_ros2_driver) StdoutLine: {'line': b'-- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/share/ament_index/resource_index/webots_ros2_driver__pluginlib__plugin/webots_ros2_driver\n'}
+[16.721453] (webots_ros2_driver) StdoutLine: {'line': b'-- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/share/webots_ros2_driver/cmake/ament_cmake_export_include_directories-extras.cmake\n'}
+[16.726727] (webots_ros2_driver) StdoutLine: {'line': b'-- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/share/webots_ros2_driver/cmake/ament_cmake_export_dependencies-extras.cmake\n'}
+[16.732722] (webots_ros2_driver) StdoutLine: {'line': b'-- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/share/webots_ros2_driver/cmake/ament_cmake_export_libraries-extras.cmake\n'}
+[16.738541] (webots_ros2_driver) StdoutLine: {'line': b'-- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/share/webots_ros2_driver/cmake/webots_ros2_driverConfig.cmake\n'}
+[16.743929] (webots_ros2_driver) StdoutLine: {'line': b'-- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/share/webots_ros2_driver/cmake/webots_ros2_driverConfig-version.cmake\n'}
+[16.749792] (webots_ros2_driver) StdoutLine: {'line': b'-- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/share/webots_ros2_driver/package.xml\n'}
+[16.807939] (-) TimerEvent: {}
+[16.818193] (webots_ros2_driver) StdoutLine: {'line': b"Listing '/MRTP/MRTP/src/install/webots_ros2_driver/lib/python3.12/site-packages/controller'...\n"}
+[16.821717] (webots_ros2_driver) StdoutLine: {'line': b"Compiling '/MRTP/MRTP/src/install/webots_ros2_driver/lib/python3.12/site-packages/controller/__init__.py'...\n"}
+[16.821912] (webots_ros2_driver) StdoutLine: {'line': b"Compiling '/MRTP/MRTP/src/install/webots_ros2_driver/lib/python3.12/site-packages/controller/accelerometer.py'...\n"}
+[16.822185] (webots_ros2_driver) StdoutLine: {'line': b"Compiling '/MRTP/MRTP/src/install/webots_ros2_driver/lib/python3.12/site-packages/controller/altimeter.py'...\n"}
+[16.822445] (webots_ros2_driver) StdoutLine: {'line': b"Compiling '/MRTP/MRTP/src/install/webots_ros2_driver/lib/python3.12/site-packages/controller/ansi_codes.py'...\n"}
+[16.822635] (webots_ros2_driver) StdoutLine: {'line': b"Compiling '/MRTP/MRTP/src/install/webots_ros2_driver/lib/python3.12/site-packages/controller/brake.py'...\n"}
+[16.822847] (webots_ros2_driver) StdoutLine: {'line': b"Compiling '/MRTP/MRTP/src/install/webots_ros2_driver/lib/python3.12/site-packages/controller/camera.py'...\n"}
+[16.823154] (webots_ros2_driver) StdoutLine: {'line': b"Compiling '/MRTP/MRTP/src/install/webots_ros2_driver/lib/python3.12/site-packages/controller/compass.py'...\n"}
+[16.823432] (webots_ros2_driver) StdoutLine: {'line': b"Compiling '/MRTP/MRTP/src/install/webots_ros2_driver/lib/python3.12/site-packages/controller/connector.py'...\n"}
+[16.823618] (webots_ros2_driver) StdoutLine: {'line': b"Compiling '/MRTP/MRTP/src/install/webots_ros2_driver/lib/python3.12/site-packages/controller/constants.py'...\n"}
+[16.823839] (webots_ros2_driver) StdoutLine: {'line': b"Compiling '/MRTP/MRTP/src/install/webots_ros2_driver/lib/python3.12/site-packages/controller/device.py'...\n"}
+[16.824031] (webots_ros2_driver) StdoutLine: {'line': b"Compiling '/MRTP/MRTP/src/install/webots_ros2_driver/lib/python3.12/site-packages/controller/display.py'...\n"}
+[16.824192] (webots_ros2_driver) StdoutLine: {'line': b"Compiling '/MRTP/MRTP/src/install/webots_ros2_driver/lib/python3.12/site-packages/controller/distance_sensor.py'...\n"}
+[16.824343] (webots_ros2_driver) StdoutLine: {'line': b"Compiling '/MRTP/MRTP/src/install/webots_ros2_driver/lib/python3.12/site-packages/controller/emitter.py'...\n"}
+[16.824501] (webots_ros2_driver) StdoutLine: {'line': b"Compiling '/MRTP/MRTP/src/install/webots_ros2_driver/lib/python3.12/site-packages/controller/field.py'...\n"}
+[16.824629] (webots_ros2_driver) StdoutLine: {'line': b"Compiling '/MRTP/MRTP/src/install/webots_ros2_driver/lib/python3.12/site-packages/controller/gps.py'...\n"}
+[16.824794] (webots_ros2_driver) StdoutLine: {'line': b"Compiling '/MRTP/MRTP/src/install/webots_ros2_driver/lib/python3.12/site-packages/controller/gyro.py'...\n"}
+[16.824972] (webots_ros2_driver) StdoutLine: {'line': b"Compiling '/MRTP/MRTP/src/install/webots_ros2_driver/lib/python3.12/site-packages/controller/inertial_unit.py'...\n"}
+[16.825140] (webots_ros2_driver) StdoutLine: {'line': b"Compiling '/MRTP/MRTP/src/install/webots_ros2_driver/lib/python3.12/site-packages/controller/joystick.py'...\n"}
+[16.825283] (webots_ros2_driver) StdoutLine: {'line': b"Compiling '/MRTP/MRTP/src/install/webots_ros2_driver/lib/python3.12/site-packages/controller/keyboard.py'...\n"}
+[16.825491] (webots_ros2_driver) StdoutLine: {'line': b"Compiling '/MRTP/MRTP/src/install/webots_ros2_driver/lib/python3.12/site-packages/controller/led.py'...\n"}
+[16.825724] (webots_ros2_driver) StdoutLine: {'line': b"Compiling '/MRTP/MRTP/src/install/webots_ros2_driver/lib/python3.12/site-packages/controller/lidar.py'...\n"}
+[16.825882] (webots_ros2_driver) StdoutLine: {'line': b"Compiling '/MRTP/MRTP/src/install/webots_ros2_driver/lib/python3.12/site-packages/controller/lidar_point.py'...\n"}
+[16.826064] (webots_ros2_driver) StdoutLine: {'line': b"Compiling '/MRTP/MRTP/src/install/webots_ros2_driver/lib/python3.12/site-packages/controller/light_sensor.py'...\n"}
+[16.826228] (webots_ros2_driver) StdoutLine: {'line': b"Compiling '/MRTP/MRTP/src/install/webots_ros2_driver/lib/python3.12/site-packages/controller/motion.py'...\n"}
+[16.826425] (webots_ros2_driver) StdoutLine: {'line': b"Compiling '/MRTP/MRTP/src/install/webots_ros2_driver/lib/python3.12/site-packages/controller/motor.py'...\n"}
+[16.826589] (webots_ros2_driver) StdoutLine: {'line': b"Compiling '/MRTP/MRTP/src/install/webots_ros2_driver/lib/python3.12/site-packages/controller/mouse.py'...\n"}
+[16.826740] (webots_ros2_driver) StdoutLine: {'line': b"Compiling '/MRTP/MRTP/src/install/webots_ros2_driver/lib/python3.12/site-packages/controller/node.py'...\n"}
+[16.826997] (webots_ros2_driver) StdoutLine: {'line': b"Compiling '/MRTP/MRTP/src/install/webots_ros2_driver/lib/python3.12/site-packages/controller/pen.py'...\n"}
+[16.827143] (webots_ros2_driver) StdoutLine: {'line': b"Compiling '/MRTP/MRTP/src/install/webots_ros2_driver/lib/python3.12/site-packages/controller/position_sensor.py'...\n"}
+[16.827484] (webots_ros2_driver) StdoutLine: {'line': b"Compiling '/MRTP/MRTP/src/install/webots_ros2_driver/lib/python3.12/site-packages/controller/proto.py'...\n"}
+[16.827699] (webots_ros2_driver) StdoutLine: {'line': b"Compiling '/MRTP/MRTP/src/install/webots_ros2_driver/lib/python3.12/site-packages/controller/radar.py'...\n"}
+[16.827869] (webots_ros2_driver) StdoutLine: {'line': b"Compiling '/MRTP/MRTP/src/install/webots_ros2_driver/lib/python3.12/site-packages/controller/radar_target.py'...\n"}
+[16.828056] (webots_ros2_driver) StdoutLine: {'line': b"Compiling '/MRTP/MRTP/src/install/webots_ros2_driver/lib/python3.12/site-packages/controller/range_finder.py'...\n"}
+[16.828201] (webots_ros2_driver) StdoutLine: {'line': b"Compiling '/MRTP/MRTP/src/install/webots_ros2_driver/lib/python3.12/site-packages/controller/receiver.py'...\n"}
+[16.828341] (webots_ros2_driver) StdoutLine: {'line': b"Compiling '/MRTP/MRTP/src/install/webots_ros2_driver/lib/python3.12/site-packages/controller/robot.py'...\n"}
+[16.828463] (webots_ros2_driver) StdoutLine: {'line': b"Compiling '/MRTP/MRTP/src/install/webots_ros2_driver/lib/python3.12/site-packages/controller/sensor.py'...\n"}
+[16.828607] (webots_ros2_driver) StdoutLine: {'line': b"Compiling '/MRTP/MRTP/src/install/webots_ros2_driver/lib/python3.12/site-packages/controller/skin.py'...\n"}
+[16.828759] (webots_ros2_driver) StdoutLine: {'line': b"Compiling '/MRTP/MRTP/src/install/webots_ros2_driver/lib/python3.12/site-packages/controller/speaker.py'...\n"}
+[16.828903] (webots_ros2_driver) StdoutLine: {'line': b"Compiling '/MRTP/MRTP/src/install/webots_ros2_driver/lib/python3.12/site-packages/controller/supervisor.py'...\n"}
+[16.829048] (webots_ros2_driver) StdoutLine: {'line': b"Compiling '/MRTP/MRTP/src/install/webots_ros2_driver/lib/python3.12/site-packages/controller/touch_sensor.py'...\n"}
+[16.829345] (webots_ros2_driver) StdoutLine: {'line': b"Compiling '/MRTP/MRTP/src/install/webots_ros2_driver/lib/python3.12/site-packages/controller/vacuum_gripper.py'...\n"}
+[16.829488] (webots_ros2_driver) StdoutLine: {'line': b"Compiling '/MRTP/MRTP/src/install/webots_ros2_driver/lib/python3.12/site-packages/controller/wb.py'...\n"}
+[16.846318] (webots_ros2_driver) StdoutLine: {'line': b"Listing '/MRTP/MRTP/src/install/webots_ros2_driver/lib/python3.12/site-packages/vehicle'...\n"}
+[16.849590] (webots_ros2_driver) StdoutLine: {'line': b"Compiling '/MRTP/MRTP/src/install/webots_ros2_driver/lib/python3.12/site-packages/vehicle/__init__.py'...\n"}
+[16.849780] (webots_ros2_driver) StdoutLine: {'line': b"Compiling '/MRTP/MRTP/src/install/webots_ros2_driver/lib/python3.12/site-packages/vehicle/car.py'...\n"}
+[16.850003] (webots_ros2_driver) StdoutLine: {'line': b"Compiling '/MRTP/MRTP/src/install/webots_ros2_driver/lib/python3.12/site-packages/vehicle/driver.py'...\n"}
+[16.879576] (webots_ros2_driver) StdoutLine: {'line': b"Listing '/MRTP/MRTP/src/install/webots_ros2_driver/lib/python3.12/site-packages/webots_ros2_driver'...\n"}
+[16.883025] (webots_ros2_driver) StdoutLine: {'line': b"Compiling '/MRTP/MRTP/src/install/webots_ros2_driver/lib/python3.12/site-packages/webots_ros2_driver/__init__.py'...\n"}
+[16.883247] (webots_ros2_driver) StdoutLine: {'line': b"Compiling '/MRTP/MRTP/src/install/webots_ros2_driver/lib/python3.12/site-packages/webots_ros2_driver/ros2_supervisor.py'...\n"}
+[16.883437] (webots_ros2_driver) StdoutLine: {'line': b"Compiling '/MRTP/MRTP/src/install/webots_ros2_driver/lib/python3.12/site-packages/webots_ros2_driver/urdf_spawner.py'...\n"}
+[16.883587] (webots_ros2_driver) StdoutLine: {'line': b"Compiling '/MRTP/MRTP/src/install/webots_ros2_driver/lib/python3.12/site-packages/webots_ros2_driver/utils.py'...\n"}
+[16.883740] (webots_ros2_driver) StdoutLine: {'line': b"Compiling '/MRTP/MRTP/src/install/webots_ros2_driver/lib/python3.12/site-packages/webots_ros2_driver/wait_for_controller_connection.py'...\n"}
+[16.884307] (webots_ros2_driver) StdoutLine: {'line': b"Compiling '/MRTP/MRTP/src/install/webots_ros2_driver/lib/python3.12/site-packages/webots_ros2_driver/webots_controller.py'...\n"}
+[16.885445] (webots_ros2_driver) StdoutLine: {'line': b"Compiling '/MRTP/MRTP/src/install/webots_ros2_driver/lib/python3.12/site-packages/webots_ros2_driver/webots_launcher.py'...\n"}
+[16.885600] (webots_ros2_driver) CommandEnded: {'returncode': 0}
+[16.908922] (-) TimerEvent: {}
+[16.930551] (webots_ros2_driver) JobEnded: {'identifier': 'webots_ros2_driver', 'rc': 0}
+[16.931598] (-) EventReactorShutdown: {}

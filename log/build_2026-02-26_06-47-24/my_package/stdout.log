@@ -1,0 +1,60 @@
+-- Found ament_cmake: 2.5.5 (/opt/ros/jazzy/share/ament_cmake/cmake)
+-- Found rclcpp: 28.1.16 (/opt/ros/jazzy/share/rclcpp/cmake)
+-- Found rosidl_generator_c: 4.6.7 (/opt/ros/jazzy/share/rosidl_generator_c/cmake)
+-- Found rosidl_generator_cpp: 4.6.7 (/opt/ros/jazzy/share/rosidl_generator_cpp/cmake)
+-- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+-- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+-- Found rmw_implementation_cmake: 7.3.3 (/opt/ros/jazzy/share/rmw_implementation_cmake/cmake)
+-- Found rmw_fastrtps_cpp: 8.4.3 (/opt/ros/jazzy/share/rmw_fastrtps_cpp/cmake)
+-- Using RMW implementation 'rmw_fastrtps_cpp' as default
+-- Found geometry_msgs: 5.3.6 (/opt/ros/jazzy/share/geometry_msgs/cmake)
+-- Configuring done (2.8s)
+-- Generating done (0.1s)
+-- Build files have been written to: /MRTP/MRTP/build/my_package
+[100%] Built target autopilot_node
+[100%] Built target ament_cmake_python_copy_my_package
+running egg_info
+creating my_package.egg-info
+writing my_package.egg-info/PKG-INFO
+writing dependency_links to my_package.egg-info/dependency_links.txt
+writing top-level names to my_package.egg-info/top_level.txt
+writing manifest file 'my_package.egg-info/SOURCES.txt'
+reading manifest file 'my_package.egg-info/SOURCES.txt'
+writing manifest file 'my_package.egg-info/SOURCES.txt'
+[100%] Built target ament_cmake_python_build_my_package_egg
+-- Install configuration: ""
+-- Up-to-date: /MRTP/MRTP/install/my_package/lib/my_package/autopilot_node
+-- Installing: /MRTP/MRTP/install/my_package/share/my_package/environment/pythonpath.sh
+-- Installing: /MRTP/MRTP/install/my_package/share/my_package/environment/pythonpath.dsv
+-- Installing: /MRTP/MRTP/install/my_package/lib/python3.12/site-packages/my_package-0.0.0-py3.12.egg-info
+-- Installing: /MRTP/MRTP/install/my_package/lib/python3.12/site-packages/my_package-0.0.0-py3.12.egg-info/PKG-INFO
+-- Installing: /MRTP/MRTP/install/my_package/lib/python3.12/site-packages/my_package-0.0.0-py3.12.egg-info/SOURCES.txt
+-- Installing: /MRTP/MRTP/install/my_package/lib/python3.12/site-packages/my_package-0.0.0-py3.12.egg-info/top_level.txt
+-- Installing: /MRTP/MRTP/install/my_package/lib/python3.12/site-packages/my_package-0.0.0-py3.12.egg-info/dependency_links.txt
+-- Installing: /MRTP/MRTP/install/my_package/lib/python3.12/site-packages/my_package
+-- Installing: /MRTP/MRTP/install/my_package/lib/python3.12/site-packages/my_package/__init__.py
+-- Installing: /MRTP/MRTP/install/my_package/lib/python3.12/site-packages/my_package/mavic_driver.py
+Listing '/MRTP/MRTP/install/my_package/lib/python3.12/site-packages/my_package'...
+Compiling '/MRTP/MRTP/install/my_package/lib/python3.12/site-packages/my_package/__init__.py'...
+Compiling '/MRTP/MRTP/install/my_package/lib/python3.12/site-packages/my_package/mavic_driver.py'...
+-- Up-to-date: /MRTP/MRTP/install/my_package/share/my_package/launch
+-- Up-to-date: /MRTP/MRTP/install/my_package/share/my_package/launch/robot_launch.py
+-- Up-to-date: /MRTP/MRTP/install/my_package/share/my_package/resource
+-- Installing: /MRTP/MRTP/install/my_package/share/my_package/resource/mavic_webots.urdf
+-- Up-to-date: /MRTP/MRTP/install/my_package/share/my_package/worlds
+-- Up-to-date: /MRTP/MRTP/install/my_package/share/my_package/worlds/wharehouse.wbt
+-- Installing: /MRTP/MRTP/install/my_package/share/ament_index/resource_index/package_run_dependencies/my_package
+-- Up-to-date: /MRTP/MRTP/install/my_package/share/ament_index/resource_index/parent_prefix_path/my_package
+-- Up-to-date: /MRTP/MRTP/install/my_package/share/my_package/environment/ament_prefix_path.sh
+-- Up-to-date: /MRTP/MRTP/install/my_package/share/my_package/environment/ament_prefix_path.dsv
+-- Up-to-date: /MRTP/MRTP/install/my_package/share/my_package/environment/path.sh
+-- Up-to-date: /MRTP/MRTP/install/my_package/share/my_package/environment/path.dsv
+-- Up-to-date: /MRTP/MRTP/install/my_package/share/my_package/local_setup.bash
+-- Installing: /MRTP/MRTP/install/my_package/share/my_package/local_setup.sh
+-- Up-to-date: /MRTP/MRTP/install/my_package/share/my_package/local_setup.zsh
+-- Installing: /MRTP/MRTP/install/my_package/share/my_package/local_setup.dsv
+-- Installing: /MRTP/MRTP/install/my_package/share/my_package/package.dsv
+-- Up-to-date: /MRTP/MRTP/install/my_package/share/ament_index/resource_index/packages/my_package
+-- Up-to-date: /MRTP/MRTP/install/my_package/share/my_package/cmake/my_packageConfig.cmake
+-- Up-to-date: /MRTP/MRTP/install/my_package/share/my_package/cmake/my_packageConfig-version.cmake
+-- Installing: /MRTP/MRTP/install/my_package/share/my_package/package.xml

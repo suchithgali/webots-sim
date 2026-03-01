@@ -1,0 +1,8 @@
+[ 50%] [32mBuilding CXX object CMakeFiles/my_package.dir/src/MyRobotDriver.cpp.o[0m
+[01m[Kcc1plus:[m[K [01;31m[Kfatal error: [m[K/MRTP/MRTP/src/my_package/src/MyRobotDriver.cpp: No such file or directory
+compilation terminated.
+gmake[2]: *** [CMakeFiles/my_package.dir/build.make:76: CMakeFiles/my_package.dir/src/MyRobotDriver.cpp.o] Error 1
+gmake[1]: *** [CMakeFiles/Makefile2:140: CMakeFiles/my_package.dir/all] Error 2
+gmake[1]: *** Waiting for unfinished jobs....
+[ 50%] Built target ament_cmake_python_symlink_my_package
+gmake: *** [Makefile:146: all] Error 2

@@ -1,0 +1,341 @@
+[0.000000] (-) TimerEvent: {}
+[0.002701] (-) JobUnselected: {'identifier': 'gazeboenvs'}
+[0.002812] (-) JobUnselected: {'identifier': 'webots_ros2'}
+[0.002858] (-) JobUnselected: {'identifier': 'webots_ros2_control'}
+[0.002920] (-) JobUnselected: {'identifier': 'webots_ros2_crazyflie'}
+[0.002991] (-) JobUnselected: {'identifier': 'webots_ros2_driver'}
+[0.003144] (-) JobUnselected: {'identifier': 'webots_ros2_epuck'}
+[0.003319] (-) JobUnselected: {'identifier': 'webots_ros2_husarion'}
+[0.003482] (-) JobUnselected: {'identifier': 'webots_ros2_importer'}
+[0.003548] (-) JobUnselected: {'identifier': 'webots_ros2_mavic'}
+[0.003757] (-) JobUnselected: {'identifier': 'webots_ros2_msgs'}
+[0.003851] (-) JobUnselected: {'identifier': 'webots_ros2_tesla'}
+[0.003902] (-) JobUnselected: {'identifier': 'webots_ros2_tests'}
+[0.004028] (-) JobUnselected: {'identifier': 'webots_ros2_tiago'}
+[0.004095] (-) JobUnselected: {'identifier': 'webots_ros2_turtlebot'}
+[0.004150] (-) JobUnselected: {'identifier': 'webots_ros2_universal_robot'}
+[0.004365] (my_package) JobQueued: {'identifier': 'my_package', 'dependencies': OrderedDict({'webots_ros2_importer': '/MRTP/MRTP/install/webots_ros2_importer', 'webots_ros2_msgs': '/MRTP/MRTP/install/webots_ros2_msgs', 'webots_ros2_driver': '/MRTP/MRTP/install/webots_ros2_driver'})}
+[0.004484] (my_package) JobStarted: {'identifier': 'my_package'}
+[0.063797] (my_package) JobProgress: {'identifier': 'my_package', 'progress': 'cmake'}
+[0.068480] (my_package) JobProgress: {'identifier': 'my_package', 'progress': 'build'}
+[0.072185] (my_package) Command: {'cmd': ['/usr/bin/cmake', '--build', '/MRTP/MRTP/build/my_package', '--', '-j12', '-l12'], 'cwd': '/MRTP/MRTP/build/my_package', 'env': OrderedDict({'GZ_SIM_RESOURCE_PATH': '/opt/ros/jazzy/share', 'GZ_CONFIG_PATH': '/opt/ros/jazzy/opt/gz_sim_vendor/share/gz:/opt/ros/jazzy/opt/sdformat_vendor/share/gz:/opt/ros/jazzy/opt/gz_gui_vendor/share/gz:/opt/ros/jazzy/opt/gz_transport_vendor/share/gz:/opt/ros/jazzy/opt/gz_rendering_vendor/share/gz:/opt/ros/jazzy/opt/gz_plugin_vendor/share/gz:/opt/ros/jazzy/opt/gz_fuel_tools_vendor/share/gz:/opt/ros/jazzy/opt/gz_msgs_vendor/share/gz:/opt/ros/jazzy/opt/gz_common_vendor/share/gz', 'HOSTNAME': 'docker-desktop', '__GLX_VENDOR_LIBRARY_NAME': 'nvidia', 'SHLVL': '1', 'LD_LIBRARY_PATH': '/MRTP/MRTP/src/install/webots_ros2_control/lib:/MRTP/MRTP/src/install/my_package/lib:/MRTP/MRTP/src/install/webots_ros2_driver/lib:/MRTP/MRTP/src/install/webots_ros2_msgs/lib:/opt/ros/jazzy/opt/gz_sim_vendor/lib:/opt/ros/jazzy/opt/gz_sensors_vendor/lib:/opt/ros/jazzy/opt/gz_physics_vendor/lib:/opt/ros/jazzy/opt/sdformat_vendor/lib:/opt/ros/jazzy/opt/rviz_ogre_vendor/lib:/opt/ros/jazzy/lib/aarch64-linux-gnu:/opt/ros/jazzy/opt/gz_gui_vendor/lib:/opt/ros/jazzy/opt/gz_transport_vendor/lib:/opt/ros/jazzy/opt/gz_rendering_vendor/lib:/opt/ros/jazzy/opt/gz_plugin_vendor/lib:/opt/ros/jazzy/opt/gz_fuel_tools_vendor/lib:/opt/ros/jazzy/opt/gz_msgs_vendor/lib:/opt/ros/jazzy/opt/gz_common_vendor/lib:/opt/ros/jazzy/opt/gz_math_vendor/lib:/opt/ros/jazzy/opt/gz_utils_vendor/lib:/opt/ros/jazzy/opt/gz_tools_vendor/lib:/opt/ros/jazzy/opt/gz_ogre_next_vendor/lib:/opt/ros/jazzy/opt/gz_dartsim_vendor/lib:/opt/ros/jazzy/opt/gz_cmake_vendor/lib:/opt/ros/jazzy/lib', 'HOME': '/root', 'OLDPWD': '/MRTP/MRTP/src', 'WEBOTS_SHARED_FOLDER': '/Users/suchithgali/shared:/home/ubuntu/shared', 'ROS_PYTHON_VERSION': '3', 'PS1': '(.venv) \\[\\e]0;\\u@\\h: \\w\\a\\]${debian_chroot:+($debian_chroot)}\\u@\\h:\\w\\$', 'COLCON_PREFIX_PATH': '/MRTP/MRTP/install:/MRTP/MRTP/src/install', 'ROS_DISTRO': 'jazzy', '_': '/usr/bin/colcon', 'ROS_VERSION': '2', 'NVIDIA_DRIVER_CAPABILITIES': 'all', 'TERM': 'xterm', 'GAZEBO_MODEL_PATH': '/opt/ros/jazzy/share/', 'PATH': '/.venv/bin:/opt/ros/jazzy/opt/gz_msgs_vendor/bin:/opt/ros/jazzy/opt/gz_tools_vendor/bin:/opt/ros/jazzy/opt/gz_ogre_next_vendor/bin:/opt/ros/jazzy/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin', 'DISPLAY': ':2', 'LANG': 'C.UTF-8', 'VIRTUAL_ENV_PROMPT': '(.venv)', '__NV_PRIME_RENDER_OFFLOAD': '1', 'LS_COLORS': 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=00:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.avif=01;35:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:*~=00;90:*#=00;90:*.bak=00;90:*.crdownload=00;90:*.dpkg-dist=00;90:*.dpkg-new=00;90:*.dpkg-old=00;90:*.dpkg-tmp=00;90:*.old=00;90:*.orig=00;90:*.part=00;90:*.rej=00;90:*.rpmnew=00;90:*.rpmorig=00;90:*.rpmsave=00;90:*.swp=00;90:*.tmp=00;90:*.ucf-dist=00;90:*.ucf-new=00;90:*.ucf-old=00;90:', 'AMENT_PREFIX_PATH': '/MRTP/MRTP/install/webots_ros2_mavic:/MRTP/MRTP/install/my_package:/MRTP/MRTP/install/gazeboenvs:/MRTP/MRTP/src/install/webots_ros2:/MRTP/MRTP/src/install/webots_ros2_universal_robot:/MRTP/MRTP/src/install/webots_ros2_turtlebot:/MRTP/MRTP/src/install/webots_ros2_tiago:/MRTP/MRTP/src/install/webots_ros2_tests:/MRTP/MRTP/src/install/webots_ros2_tesla:/MRTP/MRTP/src/install/webots_ros2_mavic:/MRTP/MRTP/src/install/webots_ros2_husarion:/MRTP/MRTP/src/install/webots_ros2_epuck:/MRTP/MRTP/src/install/webots_ros2_crazyflie:/MRTP/MRTP/src/install/webots_ros2_control:/MRTP/MRTP/src/install/my_package:/MRTP/MRTP/src/install/webots_ros2_driver:/MRTP/MRTP/src/install/webots_ros2_msgs:/MRTP/MRTP/src/install/webots_ros2_importer:/MRTP/MRTP/src/install/gazeboenvs:/opt/ros/jazzy', 'VIRTUAL_ENV': '/.venv', 'ROS_AUTOMATIC_DISCOVERY_RANGE': 'SUBNET', 'PWD': '/MRTP/MRTP/build/my_package', 'LC_ALL': 'C.UTF-8', 'PYTHONPATH': '/MRTP/MRTP/install/my_package/lib/python3.12/site-packages:/MRTP/MRTP/install/webots_ros2_mavic/lib/python3.12/site-packages:/MRTP/MRTP/install/gazeboenvs/lib/python3.12/site-packages:/MRTP/MRTP/src/install/my_package/lib/python3.12/site-packages:/MRTP/MRTP/src/build/webots_ros2:/MRTP/MRTP/src/install/webots_ros2/lib/python3.12/site-packages:/MRTP/MRTP/src/build/webots_ros2_universal_robot:/MRTP/MRTP/src/install/webots_ros2_universal_robot/lib/python3.12/site-packages:/MRTP/MRTP/src/build/webots_ros2_turtlebot:/MRTP/MRTP/src/install/webots_ros2_turtlebot/lib/python3.12/site-packages:/MRTP/MRTP/src/build/webots_ros2_tiago:/MRTP/MRTP/src/install/webots_ros2_tiago/lib/python3.12/site-packages:/MRTP/MRTP/src/build/webots_ros2_tests:/MRTP/MRTP/src/install/webots_ros2_tests/lib/python3.12/site-packages:/MRTP/MRTP/src/build/webots_ros2_tesla:/MRTP/MRTP/src/install/webots_ros2_tesla/lib/python3.12/site-packages:/MRTP/MRTP/src/build/webots_ros2_mavic:/MRTP/MRTP/src/install/webots_ros2_mavic/lib/python3.12/site-packages:/MRTP/MRTP/src/build/webots_ros2_husarion:/MRTP/MRTP/src/install/webots_ros2_husarion/lib/python3.12/site-packages:/MRTP/MRTP/src/build/webots_ros2_epuck:/MRTP/MRTP/src/install/webots_ros2_epuck/lib/python3.12/site-packages:/MRTP/MRTP/src/build/webots_ros2_crazyflie:/MRTP/MRTP/src/install/webots_ros2_crazyflie/lib/python3.12/site-packages:/MRTP/MRTP/src/install/webots_ros2_driver/lib/python3.12/site-packages:/MRTP/MRTP/src/install/webots_ros2_msgs/lib/python3.12/site-packages:/MRTP/MRTP/src/build/webots_ros2_importer:/MRTP/MRTP/src/install/webots_ros2_importer/lib/python3.12/site-packages:/MRTP/MRTP/src/build/gazeboenvs:/MRTP/MRTP/src/install/gazeboenvs/lib/python3.12/site-packages:/usr/lib/python3/dist-packages:/opt/ros/jazzy/lib/python3.12/site-packages', 'NVIDIA_VISIBLE_DEVICES': 'all', 'COLCON': '1', 'CMAKE_PREFIX_PATH': '/MRTP/MRTP/install/my_package:/MRTP/MRTP/src/install/webots_ros2_control:/MRTP/MRTP/src/install/my_package:/MRTP/MRTP/src/install/webots_ros2_driver:/MRTP/MRTP/src/install/webots_ros2_msgs:/opt/ros/jazzy/opt/gz_sim_vendor:/opt/ros/jazzy/opt/gz_sensors_vendor:/opt/ros/jazzy/opt/gz_physics_vendor:/opt/ros/jazzy/opt/sdformat_vendor:/opt/ros/jazzy/opt/gz_gui_vendor:/opt/ros/jazzy/opt/gz_transport_vendor:/opt/ros/jazzy/opt/gz_rendering_vendor:/opt/ros/jazzy/opt/gz_plugin_vendor:/opt/ros/jazzy/opt/gz_fuel_tools_vendor:/opt/ros/jazzy/opt/gz_msgs_vendor:/opt/ros/jazzy/opt/gz_common_vendor:/opt/ros/jazzy/opt/gz_math_vendor:/opt/ros/jazzy/opt/gz_utils_vendor:/opt/ros/jazzy/opt/gz_tools_vendor:/opt/ros/jazzy/opt/gz_ogre_next_vendor:/opt/ros/jazzy/opt/gz_dartsim_vendor:/opt/ros/jazzy/opt/gz_cmake_vendor:/MRTP/MRTP/install/webots_ros2_mavic:/MRTP/MRTP/install/gazeboenvs:/MRTP/MRTP/src/install/webots_ros2:/MRTP/MRTP/src/install/webots_ros2_universal_robot:/MRTP/MRTP/src/install/webots_ros2_turtlebot:/MRTP/MRTP/src/install/webots_ros2_tiago:/MRTP/MRTP/src/install/webots_ros2_tests:/MRTP/MRTP/src/install/webots_ros2_tesla:/MRTP/MRTP/src/install/webots_ros2_mavic:/MRTP/MRTP/src/install/webots_ros2_husarion:/MRTP/MRTP/src/install/webots_ros2_epuck:/MRTP/MRTP/src/install/webots_ros2_crazyflie:/MRTP/MRTP/src/install/webots_ros2_importer:/MRTP/MRTP/src/install/gazeboenvs:/opt/ros/jazzy'}), 'shell': False}
+[0.099728] (-) TimerEvent: {}
+[0.201838] (-) TimerEvent: {}
+[0.303710] (-) TimerEvent: {}
+[0.417013] (-) TimerEvent: {}
+[0.547779] (-) TimerEvent: {}
+[0.648740] (-) TimerEvent: {}
+[0.750722] (-) TimerEvent: {}
+[0.830562] (my_package) StdoutLine: {'line': b'[ 50%] \x1b[32mBuilding CXX object CMakeFiles/autopilot_node.dir/src/autopilot_node.cpp.o\x1b[0m\n'}
+[0.851751] (-) TimerEvent: {}
+[0.952713] (-) TimerEvent: {}
+[1.057718] (-) TimerEvent: {}
+[1.159717] (-) TimerEvent: {}
+[1.260968] (-) TimerEvent: {}
+[1.362752] (-) TimerEvent: {}
+[1.465739] (-) TimerEvent: {}
+[1.570733] (-) TimerEvent: {}
+[1.671788] (-) TimerEvent: {}
+[1.774746] (-) TimerEvent: {}
+[1.875769] (-) TimerEvent: {}
+[1.981716] (-) TimerEvent: {}
+[2.087715] (-) TimerEvent: {}
+[2.193870] (-) TimerEvent: {}
+[2.295733] (-) TimerEvent: {}
+[2.397714] (-) TimerEvent: {}
+[2.503741] (-) TimerEvent: {}
+[2.604720] (-) TimerEvent: {}
+[2.706708] (-) TimerEvent: {}
+[2.813592] (-) TimerEvent: {}
+[2.915748] (-) TimerEvent: {}
+[3.016749] (-) TimerEvent: {}
+[3.121747] (-) TimerEvent: {}
+[3.223060] (-) TimerEvent: {}
+[3.326714] (-) TimerEvent: {}
+[3.428110] (-) TimerEvent: {}
+[3.543742] (-) TimerEvent: {}
+[3.644715] (-) TimerEvent: {}
+[3.755748] (-) TimerEvent: {}
+[3.858715] (-) TimerEvent: {}
+[3.959746] (-) TimerEvent: {}
+[4.062721] (-) TimerEvent: {}
+[4.163717] (-) TimerEvent: {}
+[4.264751] (-) TimerEvent: {}
+[4.396717] (-) TimerEvent: {}
+[4.517737] (-) TimerEvent: {}
+[4.658719] (-) TimerEvent: {}
+[4.771766] (-) TimerEvent: {}
+[4.872731] (-) TimerEvent: {}
+[4.973751] (-) TimerEvent: {}
+[5.079720] (-) TimerEvent: {}
+[5.180713] (-) TimerEvent: {}
+[5.281716] (-) TimerEvent: {}
+[5.383714] (-) TimerEvent: {}
+[5.484748] (-) TimerEvent: {}
+[5.586718] (-) TimerEvent: {}
+[5.702715] (-) TimerEvent: {}
+[5.838809] (-) TimerEvent: {}
+[5.939705] (-) TimerEvent: {}
+[6.040765] (-) TimerEvent: {}
+[6.143731] (-) TimerEvent: {}
+[6.244747] (-) TimerEvent: {}
+[6.350350] (-) TimerEvent: {}
+[6.450716] (-) TimerEvent: {}
+[6.551747] (-) TimerEvent: {}
+[6.652746] (-) TimerEvent: {}
+[6.753723] (-) TimerEvent: {}
+[6.855711] (-) TimerEvent: {}
+[6.957714] (-) TimerEvent: {}
+[7.058718] (-) TimerEvent: {}
+[7.163740] (-) TimerEvent: {}
+[7.264714] (-) TimerEvent: {}
+[7.368707] (-) TimerEvent: {}
+[7.482169] (-) TimerEvent: {}
+[7.592753] (-) TimerEvent: {}
+[7.707918] (-) TimerEvent: {}
+[7.820741] (-) TimerEvent: {}
+[7.921711] (-) TimerEvent: {}
+[8.025773] (-) TimerEvent: {}
+[8.127714] (-) TimerEvent: {}
+[8.228745] (-) TimerEvent: {}
+[8.333756] (-) TimerEvent: {}
+[8.434747] (-) TimerEvent: {}
+[8.535777] (-) TimerEvent: {}
+[8.640719] (-) TimerEvent: {}
+[8.761789] (-) TimerEvent: {}
+[8.886760] (-) TimerEvent: {}
+[9.019718] (-) TimerEvent: {}
+[9.126239] (-) TimerEvent: {}
+[9.226715] (-) TimerEvent: {}
+[9.329711] (-) TimerEvent: {}
+[9.430721] (-) TimerEvent: {}
+[9.541707] (-) TimerEvent: {}
+[9.643766] (-) TimerEvent: {}
+[9.744717] (-) TimerEvent: {}
+[9.845752] (-) TimerEvent: {}
+[9.953753] (-) TimerEvent: {}
+[10.054797] (-) TimerEvent: {}
+[10.158742] (-) TimerEvent: {}
+[10.260759] (-) TimerEvent: {}
+[10.363747] (-) TimerEvent: {}
+[10.464752] (-) TimerEvent: {}
+[10.565712] (-) TimerEvent: {}
+[10.666713] (-) TimerEvent: {}
+[10.767788] (-) TimerEvent: {}
+[10.876201] (-) TimerEvent: {}
+[10.979718] (-) TimerEvent: {}
+[11.081712] (-) TimerEvent: {}
+[11.182747] (-) TimerEvent: {}
+[11.284716] (-) TimerEvent: {}
+[11.387713] (-) TimerEvent: {}
+[11.488716] (-) TimerEvent: {}
+[11.589755] (-) TimerEvent: {}
+[11.692752] (-) TimerEvent: {}
+[11.793868] (-) TimerEvent: {}
+[11.897839] (-) TimerEvent: {}
+[11.998719] (-) TimerEvent: {}
+[12.099713] (-) TimerEvent: {}
+[12.200710] (-) TimerEvent: {}
+[12.301713] (-) TimerEvent: {}
+[12.402705] (-) TimerEvent: {}
+[12.503750] (-) TimerEvent: {}
+[12.606718] (-) TimerEvent: {}
+[12.724744] (-) TimerEvent: {}
+[12.835759] (-) TimerEvent: {}
+[12.936717] (-) TimerEvent: {}
+[13.038133] (-) TimerEvent: {}
+[13.141740] (-) TimerEvent: {}
+[13.244743] (-) TimerEvent: {}
+[13.345718] (-) TimerEvent: {}
+[13.446717] (-) TimerEvent: {}
+[13.548724] (-) TimerEvent: {}
+[13.652718] (-) TimerEvent: {}
+[13.756704] (-) TimerEvent: {}
+[13.871711] (-) TimerEvent: {}
+[13.987262] (-) TimerEvent: {}
+[14.087716] (-) TimerEvent: {}
+[14.189747] (-) TimerEvent: {}
+[14.290758] (-) TimerEvent: {}
+[14.391716] (-) TimerEvent: {}
+[14.492740] (-) TimerEvent: {}
+[14.598235] (-) TimerEvent: {}
+[14.700745] (-) TimerEvent: {}
+[14.802867] (-) TimerEvent: {}
+[14.908726] (-) TimerEvent: {}
+[15.010748] (-) TimerEvent: {}
+[15.111719] (-) TimerEvent: {}
+[15.218751] (-) TimerEvent: {}
+[15.319727] (-) TimerEvent: {}
+[15.420732] (-) TimerEvent: {}
+[15.521707] (-) TimerEvent: {}
+[15.625472] (-) TimerEvent: {}
+[15.730749] (-) TimerEvent: {}
+[15.837720] (-) TimerEvent: {}
+[15.938713] (-) TimerEvent: {}
+[16.040748] (-) TimerEvent: {}
+[16.142712] (-) TimerEvent: {}
+[16.243716] (-) TimerEvent: {}
+[16.344711] (-) TimerEvent: {}
+[16.445747] (-) TimerEvent: {}
+[16.546748] (-) TimerEvent: {}
+[16.677716] (-) TimerEvent: {}
+[16.779759] (-) TimerEvent: {}
+[16.880713] (-) TimerEvent: {}
+[16.981754] (-) TimerEvent: {}
+[17.082926] (-) TimerEvent: {}
+[17.183716] (-) TimerEvent: {}
+[17.292759] (-) TimerEvent: {}
+[17.396709] (-) TimerEvent: {}
+[17.497745] (-) TimerEvent: {}
+[17.603748] (-) TimerEvent: {}
+[17.704713] (-) TimerEvent: {}
+[17.808787] (-) TimerEvent: {}
+[17.909716] (-) TimerEvent: {}
+[18.021709] (-) TimerEvent: {}
+[18.131725] (-) TimerEvent: {}
+[18.232749] (-) TimerEvent: {}
+[18.333797] (-) TimerEvent: {}
+[18.434750] (-) TimerEvent: {}
+[18.547214] (-) TimerEvent: {}
+[18.653717] (-) TimerEvent: {}
+[18.754739] (-) TimerEvent: {}
+[18.855708] (-) TimerEvent: {}
+[18.958747] (-) TimerEvent: {}
+[19.059752] (-) TimerEvent: {}
+[19.162754] (-) TimerEvent: {}
+[19.264723] (-) TimerEvent: {}
+[19.367989] (-) TimerEvent: {}
+[19.468841] (-) TimerEvent: {}
+[19.569717] (-) TimerEvent: {}
+[19.672747] (-) TimerEvent: {}
+[19.776749] (-) TimerEvent: {}
+[19.879753] (-) TimerEvent: {}
+[19.984750] (-) TimerEvent: {}
+[20.085720] (-) TimerEvent: {}
+[20.188030] (-) TimerEvent: {}
+[20.294972] (-) TimerEvent: {}
+[20.395767] (-) TimerEvent: {}
+[20.496758] (-) TimerEvent: {}
+[20.598763] (-) TimerEvent: {}
+[20.700716] (-) TimerEvent: {}
+[20.802750] (-) TimerEvent: {}
+[20.903755] (-) TimerEvent: {}
+[21.004717] (-) TimerEvent: {}
+[21.109771] (-) TimerEvent: {}
+[21.224743] (-) TimerEvent: {}
+[21.326709] (-) TimerEvent: {}
+[21.431950] (-) TimerEvent: {}
+[21.534798] (-) TimerEvent: {}
+[21.635763] (-) TimerEvent: {}
+[21.738781] (-) TimerEvent: {}
+[21.839719] (-) TimerEvent: {}
+[21.941710] (-) TimerEvent: {}
+[22.042922] (-) TimerEvent: {}
+[22.179940] (-) TimerEvent: {}
+[22.325082] (-) TimerEvent: {}
+[22.445644] (-) TimerEvent: {}
+[22.561714] (-) TimerEvent: {}
+[22.662753] (-) TimerEvent: {}
+[22.763712] (-) TimerEvent: {}
+[22.877752] (-) TimerEvent: {}
+[23.008088] (-) TimerEvent: {}
+[23.108939] (-) TimerEvent: {}
+[23.209725] (-) TimerEvent: {}
+[23.311772] (-) TimerEvent: {}
+[23.412868] (-) TimerEvent: {}
+[23.513712] (-) TimerEvent: {}
+[23.581258] (my_package) StdoutLine: {'line': b'[100%] \x1b[32m\x1b[1mLinking CXX executable autopilot_node\x1b[0m\n'}
+[23.614747] (-) TimerEvent: {}
+[23.715713] (-) TimerEvent: {}
+[23.816807] (-) TimerEvent: {}
+[23.919750] (-) TimerEvent: {}
+[24.021761] (-) TimerEvent: {}
+[24.127145] (-) TimerEvent: {}
+[24.227742] (-) TimerEvent: {}
+[24.328760] (-) TimerEvent: {}
+[24.431755] (-) TimerEvent: {}
+[24.536144] (-) TimerEvent: {}
+[24.636755] (-) TimerEvent: {}
+[24.737713] (-) TimerEvent: {}
+[24.838715] (-) TimerEvent: {}
+[24.939724] (-) TimerEvent: {}
+[25.040755] (-) TimerEvent: {}
+[25.141901] (-) TimerEvent: {}
+[25.211078] (my_package) StdoutLine: {'line': b'[100%] Built target autopilot_node\n'}
+[25.242713] (-) TimerEvent: {}
+[25.343718] (-) TimerEvent: {}
+[25.384160] (my_package) StdoutLine: {'line': b'[100%] Built target ament_cmake_python_copy_my_package\n'}
+[25.444757] (-) TimerEvent: {}
+[25.553202] (-) TimerEvent: {}
+[25.655491] (-) TimerEvent: {}
+[25.757736] (-) TimerEvent: {}
+[25.860035] (-) TimerEvent: {}
+[25.962698] (-) TimerEvent: {}
+[26.063983] (-) TimerEvent: {}
+[26.169737] (-) TimerEvent: {}
+[26.268735] (my_package) StdoutLine: {'line': b'running egg_info\n'}
+[26.270675] (-) TimerEvent: {}
+[26.350444] (my_package) StdoutLine: {'line': b'writing my_package.egg-info/PKG-INFO\n'}
+[26.379834] (-) TimerEvent: {}
+[26.390808] (my_package) StdoutLine: {'line': b'writing dependency_links to my_package.egg-info/dependency_links.txt\n'}
+[26.422467] (my_package) StdoutLine: {'line': b'writing top-level names to my_package.egg-info/top_level.txt\n'}
+[26.481950] (-) TimerEvent: {}
+[26.578590] (my_package) StdoutLine: {'line': b"reading manifest file 'my_package.egg-info/SOURCES.txt'\n"}
+[26.596790] (-) TimerEvent: {}
+[26.690240] (my_package) StdoutLine: {'line': b"writing manifest file 'my_package.egg-info/SOURCES.txt'\n"}
+[26.703127] (-) TimerEvent: {}
+[26.804848] (-) TimerEvent: {}
+[26.916757] (-) TimerEvent: {}
+[26.942228] (my_package) StdoutLine: {'line': b'[100%] Built target ament_cmake_python_build_my_package_egg\n'}
+[27.001935] (my_package) CommandEnded: {'returncode': 0}
+[27.012755] (my_package) JobProgress: {'identifier': 'my_package', 'progress': 'install'}
+[27.027735] (-) TimerEvent: {}
+[27.061418] (my_package) Command: {'cmd': ['/usr/bin/cmake', '--install', '/MRTP/MRTP/build/my_package'], 'cwd': '/MRTP/MRTP/build/my_package', 'env': OrderedDict({'GZ_SIM_RESOURCE_PATH': '/opt/ros/jazzy/share', 'GZ_CONFIG_PATH': '/opt/ros/jazzy/opt/gz_sim_vendor/share/gz:/opt/ros/jazzy/opt/sdformat_vendor/share/gz:/opt/ros/jazzy/opt/gz_gui_vendor/share/gz:/opt/ros/jazzy/opt/gz_transport_vendor/share/gz:/opt/ros/jazzy/opt/gz_rendering_vendor/share/gz:/opt/ros/jazzy/opt/gz_plugin_vendor/share/gz:/opt/ros/jazzy/opt/gz_fuel_tools_vendor/share/gz:/opt/ros/jazzy/opt/gz_msgs_vendor/share/gz:/opt/ros/jazzy/opt/gz_common_vendor/share/gz', 'HOSTNAME': 'docker-desktop', '__GLX_VENDOR_LIBRARY_NAME': 'nvidia', 'SHLVL': '1', 'LD_LIBRARY_PATH': '/MRTP/MRTP/src/install/webots_ros2_control/lib:/MRTP/MRTP/src/install/my_package/lib:/MRTP/MRTP/src/install/webots_ros2_driver/lib:/MRTP/MRTP/src/install/webots_ros2_msgs/lib:/opt/ros/jazzy/opt/gz_sim_vendor/lib:/opt/ros/jazzy/opt/gz_sensors_vendor/lib:/opt/ros/jazzy/opt/gz_physics_vendor/lib:/opt/ros/jazzy/opt/sdformat_vendor/lib:/opt/ros/jazzy/opt/rviz_ogre_vendor/lib:/opt/ros/jazzy/lib/aarch64-linux-gnu:/opt/ros/jazzy/opt/gz_gui_vendor/lib:/opt/ros/jazzy/opt/gz_transport_vendor/lib:/opt/ros/jazzy/opt/gz_rendering_vendor/lib:/opt/ros/jazzy/opt/gz_plugin_vendor/lib:/opt/ros/jazzy/opt/gz_fuel_tools_vendor/lib:/opt/ros/jazzy/opt/gz_msgs_vendor/lib:/opt/ros/jazzy/opt/gz_common_vendor/lib:/opt/ros/jazzy/opt/gz_math_vendor/lib:/opt/ros/jazzy/opt/gz_utils_vendor/lib:/opt/ros/jazzy/opt/gz_tools_vendor/lib:/opt/ros/jazzy/opt/gz_ogre_next_vendor/lib:/opt/ros/jazzy/opt/gz_dartsim_vendor/lib:/opt/ros/jazzy/opt/gz_cmake_vendor/lib:/opt/ros/jazzy/lib', 'HOME': '/root', 'OLDPWD': '/MRTP/MRTP/src', 'WEBOTS_SHARED_FOLDER': '/Users/suchithgali/shared:/home/ubuntu/shared', 'ROS_PYTHON_VERSION': '3', 'PS1': '(.venv) \\[\\e]0;\\u@\\h: \\w\\a\\]${debian_chroot:+($debian_chroot)}\\u@\\h:\\w\\$', 'COLCON_PREFIX_PATH': '/MRTP/MRTP/install:/MRTP/MRTP/src/install', 'ROS_DISTRO': 'jazzy', '_': '/usr/bin/colcon', 'ROS_VERSION': '2', 'NVIDIA_DRIVER_CAPABILITIES': 'all', 'TERM': 'xterm', 'GAZEBO_MODEL_PATH': '/opt/ros/jazzy/share/', 'PATH': '/.venv/bin:/opt/ros/jazzy/opt/gz_msgs_vendor/bin:/opt/ros/jazzy/opt/gz_tools_vendor/bin:/opt/ros/jazzy/opt/gz_ogre_next_vendor/bin:/opt/ros/jazzy/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin', 'DISPLAY': ':2', 'LANG': 'C.UTF-8', 'VIRTUAL_ENV_PROMPT': '(.venv)', '__NV_PRIME_RENDER_OFFLOAD': '1', 'LS_COLORS': 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=00:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.avif=01;35:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:*~=00;90:*#=00;90:*.bak=00;90:*.crdownload=00;90:*.dpkg-dist=00;90:*.dpkg-new=00;90:*.dpkg-old=00;90:*.dpkg-tmp=00;90:*.old=00;90:*.orig=00;90:*.part=00;90:*.rej=00;90:*.rpmnew=00;90:*.rpmorig=00;90:*.rpmsave=00;90:*.swp=00;90:*.tmp=00;90:*.ucf-dist=00;90:*.ucf-new=00;90:*.ucf-old=00;90:', 'AMENT_PREFIX_PATH': '/MRTP/MRTP/install/webots_ros2_mavic:/MRTP/MRTP/install/my_package:/MRTP/MRTP/install/gazeboenvs:/MRTP/MRTP/src/install/webots_ros2:/MRTP/MRTP/src/install/webots_ros2_universal_robot:/MRTP/MRTP/src/install/webots_ros2_turtlebot:/MRTP/MRTP/src/install/webots_ros2_tiago:/MRTP/MRTP/src/install/webots_ros2_tests:/MRTP/MRTP/src/install/webots_ros2_tesla:/MRTP/MRTP/src/install/webots_ros2_mavic:/MRTP/MRTP/src/install/webots_ros2_husarion:/MRTP/MRTP/src/install/webots_ros2_epuck:/MRTP/MRTP/src/install/webots_ros2_crazyflie:/MRTP/MRTP/src/install/webots_ros2_control:/MRTP/MRTP/src/install/my_package:/MRTP/MRTP/src/install/webots_ros2_driver:/MRTP/MRTP/src/install/webots_ros2_msgs:/MRTP/MRTP/src/install/webots_ros2_importer:/MRTP/MRTP/src/install/gazeboenvs:/opt/ros/jazzy', 'VIRTUAL_ENV': '/.venv', 'ROS_AUTOMATIC_DISCOVERY_RANGE': 'SUBNET', 'PWD': '/MRTP/MRTP/build/my_package', 'LC_ALL': 'C.UTF-8', 'PYTHONPATH': '/MRTP/MRTP/install/my_package/lib/python3.12/site-packages:/MRTP/MRTP/install/webots_ros2_mavic/lib/python3.12/site-packages:/MRTP/MRTP/install/gazeboenvs/lib/python3.12/site-packages:/MRTP/MRTP/src/install/my_package/lib/python3.12/site-packages:/MRTP/MRTP/src/build/webots_ros2:/MRTP/MRTP/src/install/webots_ros2/lib/python3.12/site-packages:/MRTP/MRTP/src/build/webots_ros2_universal_robot:/MRTP/MRTP/src/install/webots_ros2_universal_robot/lib/python3.12/site-packages:/MRTP/MRTP/src/build/webots_ros2_turtlebot:/MRTP/MRTP/src/install/webots_ros2_turtlebot/lib/python3.12/site-packages:/MRTP/MRTP/src/build/webots_ros2_tiago:/MRTP/MRTP/src/install/webots_ros2_tiago/lib/python3.12/site-packages:/MRTP/MRTP/src/build/webots_ros2_tests:/MRTP/MRTP/src/install/webots_ros2_tests/lib/python3.12/site-packages:/MRTP/MRTP/src/build/webots_ros2_tesla:/MRTP/MRTP/src/install/webots_ros2_tesla/lib/python3.12/site-packages:/MRTP/MRTP/src/build/webots_ros2_mavic:/MRTP/MRTP/src/install/webots_ros2_mavic/lib/python3.12/site-packages:/MRTP/MRTP/src/build/webots_ros2_husarion:/MRTP/MRTP/src/install/webots_ros2_husarion/lib/python3.12/site-packages:/MRTP/MRTP/src/build/webots_ros2_epuck:/MRTP/MRTP/src/install/webots_ros2_epuck/lib/python3.12/site-packages:/MRTP/MRTP/src/build/webots_ros2_crazyflie:/MRTP/MRTP/src/install/webots_ros2_crazyflie/lib/python3.12/site-packages:/MRTP/MRTP/src/install/webots_ros2_driver/lib/python3.12/site-packages:/MRTP/MRTP/src/install/webots_ros2_msgs/lib/python3.12/site-packages:/MRTP/MRTP/src/build/webots_ros2_importer:/MRTP/MRTP/src/install/webots_ros2_importer/lib/python3.12/site-packages:/MRTP/MRTP/src/build/gazeboenvs:/MRTP/MRTP/src/install/gazeboenvs/lib/python3.12/site-packages:/usr/lib/python3/dist-packages:/opt/ros/jazzy/lib/python3.12/site-packages', 'NVIDIA_VISIBLE_DEVICES': 'all', 'COLCON': '1', 'CMAKE_PREFIX_PATH': '/MRTP/MRTP/install/my_package:/MRTP/MRTP/src/install/webots_ros2_control:/MRTP/MRTP/src/install/my_package:/MRTP/MRTP/src/install/webots_ros2_driver:/MRTP/MRTP/src/install/webots_ros2_msgs:/opt/ros/jazzy/opt/gz_sim_vendor:/opt/ros/jazzy/opt/gz_sensors_vendor:/opt/ros/jazzy/opt/gz_physics_vendor:/opt/ros/jazzy/opt/sdformat_vendor:/opt/ros/jazzy/opt/gz_gui_vendor:/opt/ros/jazzy/opt/gz_transport_vendor:/opt/ros/jazzy/opt/gz_rendering_vendor:/opt/ros/jazzy/opt/gz_plugin_vendor:/opt/ros/jazzy/opt/gz_fuel_tools_vendor:/opt/ros/jazzy/opt/gz_msgs_vendor:/opt/ros/jazzy/opt/gz_common_vendor:/opt/ros/jazzy/opt/gz_math_vendor:/opt/ros/jazzy/opt/gz_utils_vendor:/opt/ros/jazzy/opt/gz_tools_vendor:/opt/ros/jazzy/opt/gz_ogre_next_vendor:/opt/ros/jazzy/opt/gz_dartsim_vendor:/opt/ros/jazzy/opt/gz_cmake_vendor:/MRTP/MRTP/install/webots_ros2_mavic:/MRTP/MRTP/install/gazeboenvs:/MRTP/MRTP/src/install/webots_ros2:/MRTP/MRTP/src/install/webots_ros2_universal_robot:/MRTP/MRTP/src/install/webots_ros2_turtlebot:/MRTP/MRTP/src/install/webots_ros2_tiago:/MRTP/MRTP/src/install/webots_ros2_tests:/MRTP/MRTP/src/install/webots_ros2_tesla:/MRTP/MRTP/src/install/webots_ros2_mavic:/MRTP/MRTP/src/install/webots_ros2_husarion:/MRTP/MRTP/src/install/webots_ros2_epuck:/MRTP/MRTP/src/install/webots_ros2_crazyflie:/MRTP/MRTP/src/install/webots_ros2_importer:/MRTP/MRTP/src/install/gazeboenvs:/opt/ros/jazzy'}), 'shell': False}
+[27.093078] (my_package) StdoutLine: {'line': b'-- Install configuration: ""\n'}
+[27.095116] (my_package) StdoutLine: {'line': b'-- Installing: /MRTP/MRTP/install/my_package/lib/my_package/autopilot_node\n'}
+[27.129508] (-) TimerEvent: {}
+[27.232789] (-) TimerEvent: {}
+[27.283430] (my_package) StdoutLine: {'line': b'-- Set non-toolchain portion of runtime path of "/MRTP/MRTP/install/my_package/lib/my_package/autopilot_node" to ""\n'}
+[27.286761] (my_package) StdoutLine: {'line': b'-- Up-to-date: /MRTP/MRTP/install/my_package/share/my_package/environment/pythonpath.sh\n'}
+[27.289995] (my_package) StdoutLine: {'line': b'-- Up-to-date: /MRTP/MRTP/install/my_package/share/my_package/environment/pythonpath.dsv\n'}
+[27.297078] (my_package) StdoutLine: {'line': b'-- Up-to-date: /MRTP/MRTP/install/my_package/lib/python3.12/site-packages/my_package-0.0.0-py3.12.egg-info\n'}
+[27.322923] (my_package) StdoutLine: {'line': b'-- Installing: /MRTP/MRTP/install/my_package/lib/python3.12/site-packages/my_package-0.0.0-py3.12.egg-info/PKG-INFO\n'}
+[27.337050] (-) TimerEvent: {}
+[27.387007] (my_package) StdoutLine: {'line': b'-- Installing: /MRTP/MRTP/install/my_package/lib/python3.12/site-packages/my_package-0.0.0-py3.12.egg-info/SOURCES.txt\n'}
+[27.438573] (-) TimerEvent: {}
+[27.447841] (my_package) StdoutLine: {'line': b'-- Installing: /MRTP/MRTP/install/my_package/lib/python3.12/site-packages/my_package-0.0.0-py3.12.egg-info/top_level.txt\n'}
+[27.460969] (my_package) StdoutLine: {'line': b'-- Installing: /MRTP/MRTP/install/my_package/lib/python3.12/site-packages/my_package-0.0.0-py3.12.egg-info/dependency_links.txt\n'}
+[27.471006] (my_package) StdoutLine: {'line': b'-- Up-to-date: /MRTP/MRTP/install/my_package/lib/python3.12/site-packages/my_package\n'}
+[27.472577] (my_package) StdoutLine: {'line': b'-- Up-to-date: /MRTP/MRTP/install/my_package/lib/python3.12/site-packages/my_package/__init__.py\n'}
+[27.473865] (my_package) StdoutLine: {'line': b'-- Installing: /MRTP/MRTP/install/my_package/lib/python3.12/site-packages/my_package/mavic_driver.py\n'}
+[27.538763] (-) TimerEvent: {}
+[27.640759] (-) TimerEvent: {}
+[27.677849] (my_package) StdoutLine: {'line': b"Listing '/MRTP/MRTP/install/my_package/lib/python3.12/site-packages/my_package'...\n"}
+[27.678279] (my_package) StdoutLine: {'line': b"Compiling '/MRTP/MRTP/install/my_package/lib/python3.12/site-packages/my_package/mavic_driver.py'...\n"}
+[27.695979] (my_package) StdoutLine: {'line': b'-- Up-to-date: /MRTP/MRTP/install/my_package/share/my_package/launch\n'}
+[27.725655] (my_package) StdoutLine: {'line': b'-- Up-to-date: /MRTP/MRTP/install/my_package/share/my_package/launch/robot_launch.py\n'}
+[27.737930] (my_package) StdoutLine: {'line': b'-- Up-to-date: /MRTP/MRTP/install/my_package/share/my_package/resource\n'}
+[27.741718] (-) TimerEvent: {}
+[27.754817] (my_package) StdoutLine: {'line': b'-- Up-to-date: /MRTP/MRTP/install/my_package/share/my_package/resource/mavic_webots.urdf\n'}
+[27.769816] (my_package) StdoutLine: {'line': b'-- Up-to-date: /MRTP/MRTP/install/my_package/share/my_package/worlds\n'}
+[27.784679] (my_package) StdoutLine: {'line': b'-- Up-to-date: /MRTP/MRTP/install/my_package/share/my_package/worlds/wharehouse.wbt\n'}
+[27.798595] (my_package) StdoutLine: {'line': b'-- Up-to-date: /MRTP/MRTP/install/my_package/share/ament_index/resource_index/package_run_dependencies/my_package\n'}
+[27.811163] (my_package) StdoutLine: {'line': b'-- Up-to-date: /MRTP/MRTP/install/my_package/share/ament_index/resource_index/parent_prefix_path/my_package\n'}
+[27.820313] (my_package) StdoutLine: {'line': b'-- Up-to-date: /MRTP/MRTP/install/my_package/share/my_package/environment/ament_prefix_path.sh\n'}
+[27.827251] (my_package) StdoutLine: {'line': b'-- Up-to-date: /MRTP/MRTP/install/my_package/share/my_package/environment/ament_prefix_path.dsv\n'}
+[27.828063] (my_package) StdoutLine: {'line': b'-- Up-to-date: /MRTP/MRTP/install/my_package/share/my_package/environment/path.sh\n'}
+[27.828512] (my_package) StdoutLine: {'line': b'-- Up-to-date: /MRTP/MRTP/install/my_package/share/my_package/environment/path.dsv\n'}
+[27.832122] (my_package) StdoutLine: {'line': b'-- Up-to-date: /MRTP/MRTP/install/my_package/share/my_package/local_setup.bash\n'}
+[27.833570] (my_package) StdoutLine: {'line': b'-- Up-to-date: /MRTP/MRTP/install/my_package/share/my_package/local_setup.sh\n'}
+[27.835023] (my_package) StdoutLine: {'line': b'-- Up-to-date: /MRTP/MRTP/install/my_package/share/my_package/local_setup.zsh\n'}
+[27.835728] (my_package) StdoutLine: {'line': b'-- Up-to-date: /MRTP/MRTP/install/my_package/share/my_package/local_setup.dsv\n'}
+[27.836163] (my_package) StdoutLine: {'line': b'-- Installing: /MRTP/MRTP/install/my_package/share/my_package/package.dsv\n'}
+[27.843964] (-) TimerEvent: {}
+[27.845177] (my_package) StdoutLine: {'line': b'-- Up-to-date: /MRTP/MRTP/install/my_package/share/ament_index/resource_index/packages/my_package\n'}
+[27.846267] (my_package) StdoutLine: {'line': b'-- Up-to-date: /MRTP/MRTP/install/my_package/share/my_package/cmake/my_packageConfig.cmake\n'}
+[27.848024] (my_package) StdoutLine: {'line': b'-- Up-to-date: /MRTP/MRTP/install/my_package/share/my_package/cmake/my_packageConfig-version.cmake\n'}
+[27.850143] (my_package) StdoutLine: {'line': b'-- Up-to-date: /MRTP/MRTP/install/my_package/share/my_package/package.xml\n'}
+[27.856997] (my_package) CommandEnded: {'returncode': 0}
+[27.945019] (-) TimerEvent: {}
+[28.019158] (my_package) JobEnded: {'identifier': 'my_package', 'rc': 0}
+[28.022054] (-) EventReactorShutdown: {}

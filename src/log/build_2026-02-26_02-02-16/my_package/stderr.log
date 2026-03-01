@@ -1,0 +1,24 @@
+In file included from [01m[K/MRTP/MRTP/src/my_package/src/mavic2pro_patrol.cpp:4[m[K:
+[01m[K/MRTP/MRTP/src/install/webots_ros2_driver/include/webots/cpp/webots/GPS.hpp:37:5:[m[K [01;35m[Kwarning: [m[Ktype qualifiers ignored on function return type [[01;35m[K-Wignored-qualifiers[m[K]
+   37 |     [01;35m[Kconst[m[K CoordinateSystem getCoordinateSystem() const;
+      |     [01;35m[K^~~~~[m[K
+[01m[K/MRTP/MRTP/src/my_package/src/mavic2pro_patrol.cpp:[m[K In member function ‘[01m[Kstd::pair<double, double> Mavic::[01;32m[Kmove_to_target[m[K(const std::vector<std::array<double, 2> >&, bool, bool)[m[K’:
+[01m[K/MRTP/MRTP/src/my_package/src/mavic2pro_patrol.cpp:84:3:[m[K [01;36m[Knote: [m[Kparameter passing for argument of type ‘[01m[Kstd::pair<double, double>[m[K’ when C++17 is enabled changed to match C++14 in GCC 10.1
+   84 |   [01;36m[K{[m[K
+      |   [01;36m[K^[m[K
+[01m[K/MRTP/MRTP/src/my_package/src/mavic2pro_patrol.cpp:[m[K In member function ‘[01m[Kvoid Mavic::[01;32m[Krun[m[K()[m[K’:
+[01m[K/MRTP/MRTP/src/my_package/src/mavic2pro_patrol.cpp:213:14:[m[K [01;31m[Kerror: [m[Kredeclaration of ‘[01m[Kdouble clamped_difference_altitude[m[K’
+  213 |       double [01;31m[Kclamped_difference_altitude[m[K = clamp(target_altitude - altitude + K_VERTICAL_OFFSET, -1.0, 1.0);
+      |              [01;31m[K^~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K
+[01m[K/MRTP/MRTP/src/my_package/src/mavic2pro_patrol.cpp:197:14:[m[K [01;36m[Knote: [m[K‘[01m[Kdouble clamped_difference_altitude[m[K’ previously declared here
+  197 |       double [01;36m[Kclamped_difference_altitude[m[K = clamp(target_altitude - altitude + K_VERTICAL_OFFSET, -1.0, 1.0);
+      |              [01;36m[K^~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K
+[01m[K/MRTP/MRTP/src/my_package/src/mavic2pro_patrol.cpp:214:14:[m[K [01;31m[Kerror: [m[Kredeclaration of ‘[01m[Kdouble vertical_input[m[K’
+  214 |       double [01;31m[Kvertical_input[m[K = K_VERTICAL_P * std::pow(clamped_difference_altitude, 3.0);
+      |              [01;31m[K^~~~~~~~~~~~~~[m[K
+[01m[K/MRTP/MRTP/src/my_package/src/mavic2pro_patrol.cpp:198:14:[m[K [01;36m[Knote: [m[K‘[01m[Kdouble vertical_input[m[K’ previously declared here
+  198 |       double [01;36m[Kvertical_input[m[K = K_VERTICAL_P * std::pow(clamped_difference_altitude, 3.0);
+      |              [01;36m[K^~~~~~~~~~~~~~[m[K
+gmake[2]: *** [CMakeFiles/mavic2pro_patrol.dir/build.make:76: CMakeFiles/mavic2pro_patrol.dir/src/mavic2pro_patrol.cpp.o] Error 1
+gmake[1]: *** [CMakeFiles/Makefile2:137: CMakeFiles/mavic2pro_patrol.dir/all] Error 2
+gmake: *** [Makefile:146: all] Error 2

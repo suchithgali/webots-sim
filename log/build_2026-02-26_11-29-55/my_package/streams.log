@@ -1,0 +1,48 @@
+[0.073s] Invoking command in '/MRTP/MRTP/build/my_package': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/MRTP/MRTP/install/webots_ros2_mavic:/MRTP/MRTP/install/gazeboenvs:/MRTP/MRTP/src/install/webots_ros2:/MRTP/MRTP/src/install/webots_ros2_universal_robot:/MRTP/MRTP/src/install/webots_ros2_turtlebot:/MRTP/MRTP/src/install/webots_ros2_tiago:/MRTP/MRTP/src/install/webots_ros2_tests:/MRTP/MRTP/src/install/webots_ros2_tesla:/MRTP/MRTP/src/install/webots_ros2_mavic:/MRTP/MRTP/src/install/webots_ros2_husarion:/MRTP/MRTP/src/install/webots_ros2_epuck:/MRTP/MRTP/src/install/webots_ros2_crazyflie:/MRTP/MRTP/src/install/webots_ros2_importer:/MRTP/MRTP/src/install/gazeboenvs:/opt/ros/jazzy PS1=(.venv) \[\e]0;\u@\h: \w\a\]${debian_chroot:+($debian_chroot)}\u@\h:\w\$ VIRTUAL_ENV_PROMPT=(.venv) /usr/bin/cmake --build /MRTP/MRTP/build/my_package -- -j12 -l12
+[0.478s] [100%] Built target autopilot_node
+[0.785s] [100%] Built target ament_cmake_python_copy_my_package
+[1.570s] running egg_info
+[1.599s] writing my_package.egg-info/PKG-INFO
+[1.600s] writing dependency_links to my_package.egg-info/dependency_links.txt
+[1.601s] writing top-level names to my_package.egg-info/top_level.txt
+[1.786s] reading manifest file 'my_package.egg-info/SOURCES.txt'
+[1.786s] writing manifest file 'my_package.egg-info/SOURCES.txt'
+[1.898s] [100%] Built target ament_cmake_python_build_my_package_egg
+[1.930s] Invoked command in '/MRTP/MRTP/build/my_package' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/MRTP/MRTP/install/webots_ros2_mavic:/MRTP/MRTP/install/gazeboenvs:/MRTP/MRTP/src/install/webots_ros2:/MRTP/MRTP/src/install/webots_ros2_universal_robot:/MRTP/MRTP/src/install/webots_ros2_turtlebot:/MRTP/MRTP/src/install/webots_ros2_tiago:/MRTP/MRTP/src/install/webots_ros2_tests:/MRTP/MRTP/src/install/webots_ros2_tesla:/MRTP/MRTP/src/install/webots_ros2_mavic:/MRTP/MRTP/src/install/webots_ros2_husarion:/MRTP/MRTP/src/install/webots_ros2_epuck:/MRTP/MRTP/src/install/webots_ros2_crazyflie:/MRTP/MRTP/src/install/webots_ros2_importer:/MRTP/MRTP/src/install/gazeboenvs:/opt/ros/jazzy PS1=(.venv) \[\e]0;\u@\h: \w\a\]${debian_chroot:+($debian_chroot)}\u@\h:\w\$ VIRTUAL_ENV_PROMPT=(.venv) /usr/bin/cmake --build /MRTP/MRTP/build/my_package -- -j12 -l12
+[1.993s] Invoking command in '/MRTP/MRTP/build/my_package': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/MRTP/MRTP/install/webots_ros2_mavic:/MRTP/MRTP/install/gazeboenvs:/MRTP/MRTP/src/install/webots_ros2:/MRTP/MRTP/src/install/webots_ros2_universal_robot:/MRTP/MRTP/src/install/webots_ros2_turtlebot:/MRTP/MRTP/src/install/webots_ros2_tiago:/MRTP/MRTP/src/install/webots_ros2_tests:/MRTP/MRTP/src/install/webots_ros2_tesla:/MRTP/MRTP/src/install/webots_ros2_mavic:/MRTP/MRTP/src/install/webots_ros2_husarion:/MRTP/MRTP/src/install/webots_ros2_epuck:/MRTP/MRTP/src/install/webots_ros2_crazyflie:/MRTP/MRTP/src/install/webots_ros2_importer:/MRTP/MRTP/src/install/gazeboenvs:/opt/ros/jazzy PS1=(.venv) \[\e]0;\u@\h: \w\a\]${debian_chroot:+($debian_chroot)}\u@\h:\w\$ VIRTUAL_ENV_PROMPT=(.venv) /usr/bin/cmake --install /MRTP/MRTP/build/my_package
+[2.110s] -- Install configuration: ""
+[2.111s] -- Up-to-date: /MRTP/MRTP/install/my_package/lib/my_package/autopilot_node
+[2.118s] -- Up-to-date: /MRTP/MRTP/install/my_package/share/my_package/environment/pythonpath.sh
+[2.129s] -- Up-to-date: /MRTP/MRTP/install/my_package/share/my_package/environment/pythonpath.dsv
+[2.130s] -- Up-to-date: /MRTP/MRTP/install/my_package/lib/python3.12/site-packages/my_package-0.0.0-py3.12.egg-info
+[2.134s] -- Installing: /MRTP/MRTP/install/my_package/lib/python3.12/site-packages/my_package-0.0.0-py3.12.egg-info/PKG-INFO
+[2.182s] -- Installing: /MRTP/MRTP/install/my_package/lib/python3.12/site-packages/my_package-0.0.0-py3.12.egg-info/SOURCES.txt
+[2.234s] -- Installing: /MRTP/MRTP/install/my_package/lib/python3.12/site-packages/my_package-0.0.0-py3.12.egg-info/top_level.txt
+[2.255s] -- Installing: /MRTP/MRTP/install/my_package/lib/python3.12/site-packages/my_package-0.0.0-py3.12.egg-info/dependency_links.txt
+[2.268s] -- Up-to-date: /MRTP/MRTP/install/my_package/lib/python3.12/site-packages/my_package
+[2.271s] -- Up-to-date: /MRTP/MRTP/install/my_package/lib/python3.12/site-packages/my_package/__init__.py
+[2.272s] -- Installing: /MRTP/MRTP/install/my_package/lib/python3.12/site-packages/my_package/mavic_driver.py
+[2.481s] Listing '/MRTP/MRTP/install/my_package/lib/python3.12/site-packages/my_package'...
+[2.490s] Compiling '/MRTP/MRTP/install/my_package/lib/python3.12/site-packages/my_package/mavic_driver.py'...
+[2.519s] -- Up-to-date: /MRTP/MRTP/install/my_package/share/my_package/launch
+[2.519s] -- Up-to-date: /MRTP/MRTP/install/my_package/share/my_package/launch/robot_launch.py
+[2.520s] -- Up-to-date: /MRTP/MRTP/install/my_package/share/my_package/resource
+[2.520s] -- Up-to-date: /MRTP/MRTP/install/my_package/share/my_package/resource/mavic_webots.urdf
+[2.520s] -- Up-to-date: /MRTP/MRTP/install/my_package/share/my_package/worlds
+[2.521s] -- Up-to-date: /MRTP/MRTP/install/my_package/share/my_package/worlds/wharehouse.wbt
+[2.521s] -- Up-to-date: /MRTP/MRTP/install/my_package/share/ament_index/resource_index/package_run_dependencies/my_package
+[2.523s] -- Up-to-date: /MRTP/MRTP/install/my_package/share/ament_index/resource_index/parent_prefix_path/my_package
+[2.523s] -- Up-to-date: /MRTP/MRTP/install/my_package/share/my_package/environment/ament_prefix_path.sh
+[2.525s] -- Up-to-date: /MRTP/MRTP/install/my_package/share/my_package/environment/ament_prefix_path.dsv
+[2.530s] -- Up-to-date: /MRTP/MRTP/install/my_package/share/my_package/environment/path.sh
+[2.535s] -- Up-to-date: /MRTP/MRTP/install/my_package/share/my_package/environment/path.dsv
+[2.536s] -- Up-to-date: /MRTP/MRTP/install/my_package/share/my_package/local_setup.bash
+[2.536s] -- Up-to-date: /MRTP/MRTP/install/my_package/share/my_package/local_setup.sh
+[2.537s] -- Up-to-date: /MRTP/MRTP/install/my_package/share/my_package/local_setup.zsh
+[2.537s] -- Up-to-date: /MRTP/MRTP/install/my_package/share/my_package/local_setup.dsv
+[2.538s] -- Installing: /MRTP/MRTP/install/my_package/share/my_package/package.dsv
+[2.539s] -- Up-to-date: /MRTP/MRTP/install/my_package/share/ament_index/resource_index/packages/my_package
+[2.540s] -- Up-to-date: /MRTP/MRTP/install/my_package/share/my_package/cmake/my_packageConfig.cmake
+[2.548s] -- Up-to-date: /MRTP/MRTP/install/my_package/share/my_package/cmake/my_packageConfig-version.cmake
+[2.554s] -- Up-to-date: /MRTP/MRTP/install/my_package/share/my_package/package.xml
+[2.555s] Invoked command in '/MRTP/MRTP/build/my_package' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/MRTP/MRTP/install/webots_ros2_mavic:/MRTP/MRTP/install/gazeboenvs:/MRTP/MRTP/src/install/webots_ros2:/MRTP/MRTP/src/install/webots_ros2_universal_robot:/MRTP/MRTP/src/install/webots_ros2_turtlebot:/MRTP/MRTP/src/install/webots_ros2_tiago:/MRTP/MRTP/src/install/webots_ros2_tests:/MRTP/MRTP/src/install/webots_ros2_tesla:/MRTP/MRTP/src/install/webots_ros2_mavic:/MRTP/MRTP/src/install/webots_ros2_husarion:/MRTP/MRTP/src/install/webots_ros2_epuck:/MRTP/MRTP/src/install/webots_ros2_crazyflie:/MRTP/MRTP/src/install/webots_ros2_importer:/MRTP/MRTP/src/install/gazeboenvs:/opt/ros/jazzy PS1=(.venv) \[\e]0;\u@\h: \w\a\]${debian_chroot:+($debian_chroot)}\u@\h:\w\$ VIRTUAL_ENV_PROMPT=(.venv) /usr/bin/cmake --install /MRTP/MRTP/build/my_package

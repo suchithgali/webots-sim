@@ -1,0 +1,31 @@
+[0.734s] Invoking command in '/MRTP/MRTP/src/build/webots_ros2_tesla': AMENT_PREFIX_PATH=/MRTP/MRTP/src/install/webots_ros2_driver:/MRTP/MRTP/src/install/webots_ros2_msgs:/MRTP/MRTP/src/install/webots_ros2_importer:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/MRTP/MRTP/src/install/webots_ros2_driver:/MRTP/MRTP/src/install/webots_ros2_msgs:${CMAKE_PREFIX_PATH} LD_LIBRARY_PATH=/MRTP/MRTP/src/install/webots_ros2_driver/lib:/MRTP/MRTP/src/install/webots_ros2_msgs/lib:${LD_LIBRARY_PATH} PS1=(.venv) \[\e]0;\u@\h: \w\a\]${debian_chroot:+($debian_chroot)}\u@\h:\w\$ PYTHONPATH=/MRTP/MRTP/src/build/webots_ros2_tesla/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/MRTP/MRTP/src/install/webots_ros2_tesla/lib/python3.12/site-packages:/MRTP/MRTP/src/install/webots_ros2_driver/lib/python3.12/site-packages:/MRTP/MRTP/src/install/webots_ros2_msgs/lib/python3.12/site-packages:/MRTP/MRTP/src/build/webots_ros2_importer:/MRTP/MRTP/src/install/webots_ros2_importer/lib/python3.12/site-packages:${PYTHONPATH} VIRTUAL_ENV_PROMPT=(.venv) /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py develop --editable --build-directory /MRTP/MRTP/src/build/webots_ros2_tesla/build --no-deps symlink_data
+[0.948s] running develop
+[1.097s] running egg_info
+[1.097s] creating webots_ros2_tesla.egg-info
+[1.106s] writing webots_ros2_tesla.egg-info/PKG-INFO
+[1.107s] writing dependency_links to webots_ros2_tesla.egg-info/dependency_links.txt
+[1.107s] writing entry points to webots_ros2_tesla.egg-info/entry_points.txt
+[1.108s] writing requirements to webots_ros2_tesla.egg-info/requires.txt
+[1.108s] writing top-level names to webots_ros2_tesla.egg-info/top_level.txt
+[1.112s] writing manifest file 'webots_ros2_tesla.egg-info/SOURCES.txt'
+[1.133s] reading manifest file 'webots_ros2_tesla.egg-info/SOURCES.txt'
+[1.136s] writing manifest file 'webots_ros2_tesla.egg-info/SOURCES.txt'
+[1.154s] running build_ext
+[1.156s] Creating /MRTP/MRTP/src/install/webots_ros2_tesla/lib/python3.12/site-packages/webots-ros2-tesla.egg-link (link to .)
+[1.157s] Installing lane_follower script to /MRTP/MRTP/src/install/webots_ros2_tesla/lib/webots_ros2_tesla
+[1.158s] 
+[1.158s] Installed /MRTP/MRTP/src/build/webots_ros2_tesla
+[1.158s] running symlink_data
+[1.159s] creating /MRTP/MRTP/src/install/webots_ros2_tesla/share/ament_index
+[1.159s] creating /MRTP/MRTP/src/install/webots_ros2_tesla/share/ament_index/resource_index
+[1.160s] creating /MRTP/MRTP/src/install/webots_ros2_tesla/share/ament_index/resource_index/packages
+[1.160s] symbolically linking /MRTP/MRTP/src/build/webots_ros2_tesla/resource/webots_ros2_tesla -> /MRTP/MRTP/src/install/webots_ros2_tesla/share/ament_index/resource_index/packages
+[1.161s] creating /MRTP/MRTP/src/install/webots_ros2_tesla/share/webots_ros2_tesla/launch
+[1.161s] symbolically linking /MRTP/MRTP/src/build/webots_ros2_tesla/launch/robot_launch.py -> /MRTP/MRTP/src/install/webots_ros2_tesla/share/webots_ros2_tesla/launch
+[1.163s] creating /MRTP/MRTP/src/install/webots_ros2_tesla/share/webots_ros2_tesla/worlds
+[1.163s] symbolically linking /MRTP/MRTP/src/build/webots_ros2_tesla/worlds/tesla_world.wbt -> /MRTP/MRTP/src/install/webots_ros2_tesla/share/webots_ros2_tesla/worlds
+[1.164s] symbolically linking /MRTP/MRTP/src/build/webots_ros2_tesla/worlds/.tesla_world.wbproj -> /MRTP/MRTP/src/install/webots_ros2_tesla/share/webots_ros2_tesla/worlds
+[1.165s] creating /MRTP/MRTP/src/install/webots_ros2_tesla/share/webots_ros2_tesla/resource
+[1.165s] symbolically linking /MRTP/MRTP/src/build/webots_ros2_tesla/resource/tesla_webots.urdf -> /MRTP/MRTP/src/install/webots_ros2_tesla/share/webots_ros2_tesla/resource
+[1.165s] symbolically linking /MRTP/MRTP/src/build/webots_ros2_tesla/package.xml -> /MRTP/MRTP/src/install/webots_ros2_tesla/share/webots_ros2_tesla
+[1.191s] Invoked command in '/MRTP/MRTP/src/build/webots_ros2_tesla' returned '0': AMENT_PREFIX_PATH=/MRTP/MRTP/src/install/webots_ros2_driver:/MRTP/MRTP/src/install/webots_ros2_msgs:/MRTP/MRTP/src/install/webots_ros2_importer:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/MRTP/MRTP/src/install/webots_ros2_driver:/MRTP/MRTP/src/install/webots_ros2_msgs:${CMAKE_PREFIX_PATH} LD_LIBRARY_PATH=/MRTP/MRTP/src/install/webots_ros2_driver/lib:/MRTP/MRTP/src/install/webots_ros2_msgs/lib:${LD_LIBRARY_PATH} PS1=(.venv) \[\e]0;\u@\h: \w\a\]${debian_chroot:+($debian_chroot)}\u@\h:\w\$ PYTHONPATH=/MRTP/MRTP/src/build/webots_ros2_tesla/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/MRTP/MRTP/src/install/webots_ros2_tesla/lib/python3.12/site-packages:/MRTP/MRTP/src/install/webots_ros2_driver/lib/python3.12/site-packages:/MRTP/MRTP/src/install/webots_ros2_msgs/lib/python3.12/site-packages:/MRTP/MRTP/src/build/webots_ros2_importer:/MRTP/MRTP/src/install/webots_ros2_importer/lib/python3.12/site-packages:${PYTHONPATH} VIRTUAL_ENV_PROMPT=(.venv) /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py develop --editable --build-directory /MRTP/MRTP/src/build/webots_ros2_tesla/build --no-deps symlink_data

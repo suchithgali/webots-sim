@@ -1,0 +1,41 @@
+running egg_info
+creating ../../../build/webots_ros2_mavic/webots_ros2_mavic.egg-info
+writing ../../../build/webots_ros2_mavic/webots_ros2_mavic.egg-info/PKG-INFO
+writing dependency_links to ../../../build/webots_ros2_mavic/webots_ros2_mavic.egg-info/dependency_links.txt
+writing entry points to ../../../build/webots_ros2_mavic/webots_ros2_mavic.egg-info/entry_points.txt
+writing requirements to ../../../build/webots_ros2_mavic/webots_ros2_mavic.egg-info/requires.txt
+writing top-level names to ../../../build/webots_ros2_mavic/webots_ros2_mavic.egg-info/top_level.txt
+writing manifest file '../../../build/webots_ros2_mavic/webots_ros2_mavic.egg-info/SOURCES.txt'
+reading manifest file '../../../build/webots_ros2_mavic/webots_ros2_mavic.egg-info/SOURCES.txt'
+writing manifest file '../../../build/webots_ros2_mavic/webots_ros2_mavic.egg-info/SOURCES.txt'
+running build
+running build_py
+creating /MRTP/MRTP/build/webots_ros2_mavic/build
+creating /MRTP/MRTP/build/webots_ros2_mavic/build/lib
+creating /MRTP/MRTP/build/webots_ros2_mavic/build/lib/webots_ros2_mavic
+copying webots_ros2_mavic/__init__.py -> /MRTP/MRTP/build/webots_ros2_mavic/build/lib/webots_ros2_mavic
+copying webots_ros2_mavic/mavic_driver.py -> /MRTP/MRTP/build/webots_ros2_mavic/build/lib/webots_ros2_mavic
+running install
+running install_lib
+creating /MRTP/MRTP/install/webots_ros2_mavic/lib/python3.12/site-packages/webots_ros2_mavic
+copying /MRTP/MRTP/build/webots_ros2_mavic/build/lib/webots_ros2_mavic/__init__.py -> /MRTP/MRTP/install/webots_ros2_mavic/lib/python3.12/site-packages/webots_ros2_mavic
+copying /MRTP/MRTP/build/webots_ros2_mavic/build/lib/webots_ros2_mavic/mavic_driver.py -> /MRTP/MRTP/install/webots_ros2_mavic/lib/python3.12/site-packages/webots_ros2_mavic
+byte-compiling /MRTP/MRTP/install/webots_ros2_mavic/lib/python3.12/site-packages/webots_ros2_mavic/__init__.py to __init__.cpython-312.pyc
+byte-compiling /MRTP/MRTP/install/webots_ros2_mavic/lib/python3.12/site-packages/webots_ros2_mavic/mavic_driver.py to mavic_driver.cpython-312.pyc
+running install_data
+creating /MRTP/MRTP/install/webots_ros2_mavic/share/ament_index
+creating /MRTP/MRTP/install/webots_ros2_mavic/share/ament_index/resource_index
+creating /MRTP/MRTP/install/webots_ros2_mavic/share/ament_index/resource_index/packages
+copying resource/webots_ros2_mavic -> /MRTP/MRTP/install/webots_ros2_mavic/share/ament_index/resource_index/packages
+creating /MRTP/MRTP/install/webots_ros2_mavic/share/webots_ros2_mavic/launch
+copying launch/robot_launch.py -> /MRTP/MRTP/install/webots_ros2_mavic/share/webots_ros2_mavic/launch
+creating /MRTP/MRTP/install/webots_ros2_mavic/share/webots_ros2_mavic/worlds
+copying worlds/mavic_world.wbt -> /MRTP/MRTP/install/webots_ros2_mavic/share/webots_ros2_mavic/worlds
+copying worlds/.mavic_world.wbproj -> /MRTP/MRTP/install/webots_ros2_mavic/share/webots_ros2_mavic/worlds
+creating /MRTP/MRTP/install/webots_ros2_mavic/share/webots_ros2_mavic/resource
+copying resource/mavic_webots.urdf -> /MRTP/MRTP/install/webots_ros2_mavic/share/webots_ros2_mavic/resource
+copying package.xml -> /MRTP/MRTP/install/webots_ros2_mavic/share/webots_ros2_mavic
+running install_egg_info
+Copying ../../../build/webots_ros2_mavic/webots_ros2_mavic.egg-info to /MRTP/MRTP/install/webots_ros2_mavic/lib/python3.12/site-packages/webots_ros2_mavic-2025.0.1-py3.12.egg-info
+running install_scripts
+writing list of installed files to '/MRTP/MRTP/build/webots_ros2_mavic/install.log'

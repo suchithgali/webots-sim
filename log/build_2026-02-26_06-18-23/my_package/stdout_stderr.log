@@ -1,0 +1,13 @@
+[ 25%] [32mBuilding CXX object CMakeFiles/autopilot_node.dir/src/autopilot_node.cpp.o[0m
+[01m[K/MRTP/MRTP/src/my_package/src/autopilot_node.cpp:[m[K In member function ‘[01m[Kvoid AutopilotNode::[01;32m[Kcontrol_loop[m[K()[m[K’:
+[01m[K/MRTP/MRTP/src/my_package/src/autopilot_node.cpp:121:18:[m[K [01;35m[Kwarning: [m[Kunused variable ‘[01m[Kdist[m[K’ [[01;35m[K-Wunused-variable[m[K]
+  121 |     const double [01;35m[Kdist[m[K    = std::sqrt(ex*ex + ey*ey + ez*ez);
+      |                  [01;35m[K^~~~[m[K
+[ 50%] [32m[1mLinking CXX executable autopilot_node[0m
+[ 50%] Built target autopilot_node
+[ 75%] [32mBuilding CXX object CMakeFiles/mavic2pro_patrol.dir/src/mavic2pro_patrol.cpp.o[0m
+[01m[Kcc1plus:[m[K [01;31m[Kfatal error: [m[K/MRTP/MRTP/src/my_package/src/mavic2pro_patrol.cpp: No such file or directory
+compilation terminated.
+gmake[2]: *** [CMakeFiles/mavic2pro_patrol.dir/build.make:76: CMakeFiles/mavic2pro_patrol.dir/src/mavic2pro_patrol.cpp.o] Error 1
+gmake[1]: *** [CMakeFiles/Makefile2:165: CMakeFiles/mavic2pro_patrol.dir/all] Error 2
+gmake: *** [Makefile:146: all] Error 2

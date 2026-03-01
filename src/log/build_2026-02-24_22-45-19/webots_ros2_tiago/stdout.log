@@ -1,0 +1,42 @@
+running develop
+running egg_info
+creating webots_ros2_tiago.egg-info
+writing webots_ros2_tiago.egg-info/PKG-INFO
+writing dependency_links to webots_ros2_tiago.egg-info/dependency_links.txt
+writing entry points to webots_ros2_tiago.egg-info/entry_points.txt
+writing requirements to webots_ros2_tiago.egg-info/requires.txt
+writing top-level names to webots_ros2_tiago.egg-info/top_level.txt
+writing manifest file 'webots_ros2_tiago.egg-info/SOURCES.txt'
+reading manifest file 'webots_ros2_tiago.egg-info/SOURCES.txt'
+writing manifest file 'webots_ros2_tiago.egg-info/SOURCES.txt'
+running build_ext
+Creating /MRTP/MRTP/src/install/webots_ros2_tiago/lib/python3.12/site-packages/webots-ros2-tiago.egg-link (link to .)
+
+Installed /MRTP/MRTP/src/build/webots_ros2_tiago
+running symlink_data
+creating /MRTP/MRTP/src/install/webots_ros2_tiago/share/ament_index
+creating /MRTP/MRTP/src/install/webots_ros2_tiago/share/ament_index/resource_index
+creating /MRTP/MRTP/src/install/webots_ros2_tiago/share/ament_index/resource_index/packages
+symbolically linking /MRTP/MRTP/src/build/webots_ros2_tiago/resource/webots_ros2_tiago -> /MRTP/MRTP/src/install/webots_ros2_tiago/share/ament_index/resource_index/packages
+creating /MRTP/MRTP/src/install/webots_ros2_tiago/share/webots_ros2_tiago/launch
+symbolically linking /MRTP/MRTP/src/build/webots_ros2_tiago/launch/robot_launch.py -> /MRTP/MRTP/src/install/webots_ros2_tiago/share/webots_ros2_tiago/launch
+symbolically linking /MRTP/MRTP/src/build/webots_ros2_tiago/launch/robot_bringup_launch.py -> /MRTP/MRTP/src/install/webots_ros2_tiago/share/webots_ros2_tiago/launch
+creating /MRTP/MRTP/src/install/webots_ros2_tiago/share/webots_ros2_tiago/resource
+symbolically linking /MRTP/MRTP/src/build/webots_ros2_tiago/resource/tiago_webots.urdf -> /MRTP/MRTP/src/install/webots_ros2_tiago/share/webots_ros2_tiago/resource
+symbolically linking /MRTP/MRTP/src/build/webots_ros2_tiago/resource/tiago_bringup_webots.urdf -> /MRTP/MRTP/src/install/webots_ros2_tiago/share/webots_ros2_tiago/resource
+symbolically linking /MRTP/MRTP/src/build/webots_ros2_tiago/resource/ros2_control.yml -> /MRTP/MRTP/src/install/webots_ros2_tiago/share/webots_ros2_tiago/resource
+symbolically linking /MRTP/MRTP/src/build/webots_ros2_tiago/resource/ros2_control_bringup.yml -> /MRTP/MRTP/src/install/webots_ros2_tiago/share/webots_ros2_tiago/resource
+symbolically linking /MRTP/MRTP/src/build/webots_ros2_tiago/resource/nav2_params.yaml -> /MRTP/MRTP/src/install/webots_ros2_tiago/share/webots_ros2_tiago/resource
+symbolically linking /MRTP/MRTP/src/build/webots_ros2_tiago/resource/nav2_params_iron.yaml -> /MRTP/MRTP/src/install/webots_ros2_tiago/share/webots_ros2_tiago/resource
+symbolically linking /MRTP/MRTP/src/build/webots_ros2_tiago/resource/default.rviz -> /MRTP/MRTP/src/install/webots_ros2_tiago/share/webots_ros2_tiago/resource
+symbolically linking /MRTP/MRTP/src/build/webots_ros2_tiago/resource/default_bringup.rviz -> /MRTP/MRTP/src/install/webots_ros2_tiago/share/webots_ros2_tiago/resource
+symbolically linking /MRTP/MRTP/src/build/webots_ros2_tiago/resource/map.pgm -> /MRTP/MRTP/src/install/webots_ros2_tiago/share/webots_ros2_tiago/resource
+symbolically linking /MRTP/MRTP/src/build/webots_ros2_tiago/resource/map.yaml -> /MRTP/MRTP/src/install/webots_ros2_tiago/share/webots_ros2_tiago/resource
+symbolically linking /MRTP/MRTP/src/build/webots_ros2_tiago/resource/cartographer.lua -> /MRTP/MRTP/src/install/webots_ros2_tiago/share/webots_ros2_tiago/resource
+symbolically linking /MRTP/MRTP/src/build/webots_ros2_tiago/resource/slam_toolbox_params.yaml -> /MRTP/MRTP/src/install/webots_ros2_tiago/share/webots_ros2_tiago/resource
+symbolically linking /MRTP/MRTP/src/build/webots_ros2_tiago/package.xml -> /MRTP/MRTP/src/install/webots_ros2_tiago/share/webots_ros2_tiago
+creating /MRTP/MRTP/src/install/webots_ros2_tiago/share/webots_ros2_tiago/worlds
+symbolically linking /MRTP/MRTP/src/build/webots_ros2_tiago/worlds/default.wbt -> /MRTP/MRTP/src/install/webots_ros2_tiago/share/webots_ros2_tiago/worlds
+symbolically linking /MRTP/MRTP/src/build/webots_ros2_tiago/worlds/.default.wbproj -> /MRTP/MRTP/src/install/webots_ros2_tiago/share/webots_ros2_tiago/worlds
+symbolically linking /MRTP/MRTP/src/build/webots_ros2_tiago/worlds/default_bringup.wbt -> /MRTP/MRTP/src/install/webots_ros2_tiago/share/webots_ros2_tiago/worlds
+symbolically linking /MRTP/MRTP/src/build/webots_ros2_tiago/worlds/.default_bringup.wbproj -> /MRTP/MRTP/src/install/webots_ros2_tiago/share/webots_ros2_tiago/worlds

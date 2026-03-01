@@ -1,0 +1,18 @@
+[1.689s] Invoking command in '/MRTP/MRTP/src/build/webots_ros2_importer': PS1=(.venv) \[\e]0;\u@\h: \w\a\]${debian_chroot:+($debian_chroot)}\u@\h:\w\$ PYTHONPATH=/MRTP/MRTP/src/build/webots_ros2_importer/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/MRTP/MRTP/src/install/webots_ros2_importer/lib/python3.12/site-packages:${PYTHONPATH} VIRTUAL_ENV_PROMPT=(.venv) /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py develop --editable --build-directory /MRTP/MRTP/src/build/webots_ros2_importer/build --no-deps symlink_data
+[2.222s] running develop
+[2.568s] running egg_info
+[2.600s] writing webots_ros2_importer.egg-info/PKG-INFO
+[2.602s] writing dependency_links to webots_ros2_importer.egg-info/dependency_links.txt
+[2.603s] writing entry points to webots_ros2_importer.egg-info/entry_points.txt
+[2.605s] writing requirements to webots_ros2_importer.egg-info/requires.txt
+[2.606s] writing top-level names to webots_ros2_importer.egg-info/top_level.txt
+[2.666s] reading manifest file 'webots_ros2_importer.egg-info/SOURCES.txt'
+[2.667s] writing manifest file 'webots_ros2_importer.egg-info/SOURCES.txt'
+[2.697s] running build_ext
+[2.698s] Creating /MRTP/MRTP/src/install/webots_ros2_importer/lib/python3.12/site-packages/webots-ros2-importer.egg-link (link to .)
+[2.701s] Installing urdf2proto script to /MRTP/MRTP/src/install/webots_ros2_importer/lib/webots_ros2_importer
+[2.703s] Installing xacro2proto script to /MRTP/MRTP/src/install/webots_ros2_importer/lib/webots_ros2_importer
+[2.704s] 
+[2.705s] Installed /MRTP/MRTP/src/build/webots_ros2_importer
+[2.705s] running symlink_data
+[2.735s] Invoked command in '/MRTP/MRTP/src/build/webots_ros2_importer' returned '0': PS1=(.venv) \[\e]0;\u@\h: \w\a\]${debian_chroot:+($debian_chroot)}\u@\h:\w\$ PYTHONPATH=/MRTP/MRTP/src/build/webots_ros2_importer/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/MRTP/MRTP/src/install/webots_ros2_importer/lib/python3.12/site-packages:${PYTHONPATH} VIRTUAL_ENV_PROMPT=(.venv) /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py develop --editable --build-directory /MRTP/MRTP/src/build/webots_ros2_importer/build --no-deps symlink_data

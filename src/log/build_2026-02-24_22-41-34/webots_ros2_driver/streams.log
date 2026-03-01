@@ -1,0 +1,77 @@
+[0.007s] Invoking command in '/MRTP/MRTP/src/build/webots_ros2_driver': AMENT_PREFIX_PATH=/MRTP/MRTP/src/install/webots_ros2_msgs:/MRTP/MRTP/src/install/webots_ros2_importer:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/MRTP/MRTP/src/install/webots_ros2_msgs:/opt/ros/jazzy/opt/gz_sim_vendor:/opt/ros/jazzy/opt/gz_sensors_vendor:/opt/ros/jazzy/opt/gz_physics_vendor:/opt/ros/jazzy/opt/sdformat_vendor:/opt/ros/jazzy/opt/gz_gui_vendor:/opt/ros/jazzy/opt/gz_transport_vendor:/opt/ros/jazzy/opt/gz_rendering_vendor:/opt/ros/jazzy/opt/gz_plugin_vendor:/opt/ros/jazzy/opt/gz_fuel_tools_vendor:/opt/ros/jazzy/opt/gz_msgs_vendor:/opt/ros/jazzy/opt/gz_common_vendor:/opt/ros/jazzy/opt/gz_math_vendor:/opt/ros/jazzy/opt/gz_utils_vendor:/opt/ros/jazzy/opt/gz_tools_vendor:/opt/ros/jazzy/opt/gz_ogre_next_vendor:/opt/ros/jazzy/opt/gz_dartsim_vendor:/opt/ros/jazzy/opt/gz_cmake_vendor:/opt/ros/jazzy LD_LIBRARY_PATH=/MRTP/MRTP/src/install/webots_ros2_msgs/lib:${LD_LIBRARY_PATH} PS1=(.venv) \[\e]0;\u@\h: \w\a\]${debian_chroot:+($debian_chroot)}\u@\h:\w\$ PYTHONPATH=/MRTP/MRTP/src/install/webots_ros2_msgs/lib/python3.12/site-packages:/MRTP/MRTP/src/build/webots_ros2_importer:/MRTP/MRTP/src/install/webots_ros2_importer/lib/python3.12/site-packages:${PYTHONPATH} VIRTUAL_ENV_PROMPT=(.venv) /usr/bin/cmake /MRTP/MRTP/src/webots_ros2/webots_ros2_driver -DAMENT_CMAKE_SYMLINK_INSTALL=1 -DCMAKE_INSTALL_PREFIX=/MRTP/MRTP/src/install/webots_ros2_driver
+[0.043s] -- The C compiler identification is GNU 13.3.0
+[0.075s] -- The CXX compiler identification is GNU 13.3.0
+[0.083s] -- Detecting C compiler ABI info
+[0.149s] -- Detecting C compiler ABI info - done
+[0.156s] -- Check for working C compiler: /usr/bin/cc - skipped
+[0.157s] -- Detecting C compile features
+[0.157s] -- Detecting C compile features - done
+[0.162s] -- Detecting CXX compiler ABI info
+[0.233s] -- Detecting CXX compiler ABI info - done
+[0.242s] -- Check for working CXX compiler: /usr/bin/c++ - skipped
+[0.242s] -- Detecting CXX compile features
+[0.242s] -- Detecting CXX compile features - done
+[0.248s] -- Found ament_cmake: 2.5.5 (/opt/ros/jazzy/share/ament_cmake/cmake)
+[0.309s] -- Found Python3: /.venv/bin/python3 (found version "3.12.3") found components: Interpreter 
+[0.346s] -- Override CMake install command with custom implementation using symlinks instead of copying resources
+[0.408s] -- Found rosgraph_msgs: 2.0.3 (/opt/ros/jazzy/share/rosgraph_msgs/cmake)
+[0.454s] -- Found rosidl_generator_c: 4.6.7 (/opt/ros/jazzy/share/rosidl_generator_c/cmake)
+[0.470s] -- Found rosidl_generator_cpp: 4.6.7 (/opt/ros/jazzy/share/rosidl_generator_cpp/cmake)
+[0.486s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[0.505s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[0.533s] -- Found rclcpp: 28.1.16 (/opt/ros/jazzy/share/rclcpp/cmake)
+[0.586s] -- Found rmw_implementation_cmake: 7.3.3 (/opt/ros/jazzy/share/rmw_implementation_cmake/cmake)
+[0.591s] -- Found rmw_fastrtps_cpp: 8.4.3 (/opt/ros/jazzy/share/rmw_fastrtps_cpp/cmake)
+[0.641s] -- Found OpenSSL: /usr/lib/aarch64-linux-gnu/libcrypto.so (found version "3.0.13")  
+[0.651s] -- Found FastRTPS: /opt/ros/jazzy/include (Required is at least version "2.13") 
+[0.662s] -- Using RMW implementation 'rmw_fastrtps_cpp' as default
+[0.706s] -- Found pluginlib: 5.4.4 (/opt/ros/jazzy/share/pluginlib/cmake)
+[0.728s] -- Found sensor_msgs: 5.3.6 (/opt/ros/jazzy/share/sensor_msgs/cmake)
+[0.765s] -- Found tf2_geometry_msgs: 0.36.19 (/opt/ros/jazzy/share/tf2_geometry_msgs/cmake)
+[0.785s] -- Found eigen3_cmake_module: 0.3.0 (/opt/ros/jazzy/share/eigen3_cmake_module/cmake)
+[0.786s] -- Found Eigen3: TRUE (found version "3.4.0") 
+[0.786s] -- Ensuring Eigen3 include directory is part of orocos-kdl CMake target
+[0.880s] -- Found vision_msgs: 4.1.1 (/opt/ros/jazzy/share/vision_msgs/cmake)
+[0.890s] -- Found webots_ros2_msgs: 2025.0.1 (/MRTP/MRTP/src/install/webots_ros2_msgs/share/webots_ros2_msgs/cmake)
+[0.911s] -- Found TinyXML2 via Config file: /usr/lib/aarch64-linux-gnu/cmake/tinyxml2
+[0.973s] -- Found Python: /usr/include/python3.12 (found suitable exact version "3.12.3") found components: Development Development.Module Development.Embed 
+[1.185s] -- Configuring done (1.2s)
+[1.253s] -- Generating done (0.1s)
+[1.279s] -- Build files have been written to: /MRTP/MRTP/src/build/webots_ros2_driver
+[1.280s] Invoked command in '/MRTP/MRTP/src/build/webots_ros2_driver' returned '0': AMENT_PREFIX_PATH=/MRTP/MRTP/src/install/webots_ros2_msgs:/MRTP/MRTP/src/install/webots_ros2_importer:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/MRTP/MRTP/src/install/webots_ros2_msgs:/opt/ros/jazzy/opt/gz_sim_vendor:/opt/ros/jazzy/opt/gz_sensors_vendor:/opt/ros/jazzy/opt/gz_physics_vendor:/opt/ros/jazzy/opt/sdformat_vendor:/opt/ros/jazzy/opt/gz_gui_vendor:/opt/ros/jazzy/opt/gz_transport_vendor:/opt/ros/jazzy/opt/gz_rendering_vendor:/opt/ros/jazzy/opt/gz_plugin_vendor:/opt/ros/jazzy/opt/gz_fuel_tools_vendor:/opt/ros/jazzy/opt/gz_msgs_vendor:/opt/ros/jazzy/opt/gz_common_vendor:/opt/ros/jazzy/opt/gz_math_vendor:/opt/ros/jazzy/opt/gz_utils_vendor:/opt/ros/jazzy/opt/gz_tools_vendor:/opt/ros/jazzy/opt/gz_ogre_next_vendor:/opt/ros/jazzy/opt/gz_dartsim_vendor:/opt/ros/jazzy/opt/gz_cmake_vendor:/opt/ros/jazzy LD_LIBRARY_PATH=/MRTP/MRTP/src/install/webots_ros2_msgs/lib:${LD_LIBRARY_PATH} PS1=(.venv) \[\e]0;\u@\h: \w\a\]${debian_chroot:+($debian_chroot)}\u@\h:\w\$ PYTHONPATH=/MRTP/MRTP/src/install/webots_ros2_msgs/lib/python3.12/site-packages:/MRTP/MRTP/src/build/webots_ros2_importer:/MRTP/MRTP/src/install/webots_ros2_importer/lib/python3.12/site-packages:${PYTHONPATH} VIRTUAL_ENV_PROMPT=(.venv) /usr/bin/cmake /MRTP/MRTP/src/webots_ros2/webots_ros2_driver -DAMENT_CMAKE_SYMLINK_INSTALL=1 -DCMAKE_INSTALL_PREFIX=/MRTP/MRTP/src/install/webots_ros2_driver
+[1.281s] Invoking command in '/MRTP/MRTP/src/build/webots_ros2_driver': AMENT_PREFIX_PATH=/MRTP/MRTP/src/install/webots_ros2_msgs:/MRTP/MRTP/src/install/webots_ros2_importer:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/MRTP/MRTP/src/install/webots_ros2_msgs:/opt/ros/jazzy/opt/gz_sim_vendor:/opt/ros/jazzy/opt/gz_sensors_vendor:/opt/ros/jazzy/opt/gz_physics_vendor:/opt/ros/jazzy/opt/sdformat_vendor:/opt/ros/jazzy/opt/gz_gui_vendor:/opt/ros/jazzy/opt/gz_transport_vendor:/opt/ros/jazzy/opt/gz_rendering_vendor:/opt/ros/jazzy/opt/gz_plugin_vendor:/opt/ros/jazzy/opt/gz_fuel_tools_vendor:/opt/ros/jazzy/opt/gz_msgs_vendor:/opt/ros/jazzy/opt/gz_common_vendor:/opt/ros/jazzy/opt/gz_math_vendor:/opt/ros/jazzy/opt/gz_utils_vendor:/opt/ros/jazzy/opt/gz_tools_vendor:/opt/ros/jazzy/opt/gz_ogre_next_vendor:/opt/ros/jazzy/opt/gz_dartsim_vendor:/opt/ros/jazzy/opt/gz_cmake_vendor:/opt/ros/jazzy LD_LIBRARY_PATH=/MRTP/MRTP/src/install/webots_ros2_msgs/lib:${LD_LIBRARY_PATH} PS1=(.venv) \[\e]0;\u@\h: \w\a\]${debian_chroot:+($debian_chroot)}\u@\h:\w\$ PYTHONPATH=/MRTP/MRTP/src/install/webots_ros2_msgs/lib/python3.12/site-packages:/MRTP/MRTP/src/build/webots_ros2_importer:/MRTP/MRTP/src/install/webots_ros2_importer/lib/python3.12/site-packages:${PYTHONPATH} VIRTUAL_ENV_PROMPT=(.venv) /usr/bin/cmake --build /MRTP/MRTP/src/build/webots_ros2_driver -- -j12 -l12
+[1.340s] [  0%] Built target ament_cmake_python_symlink_webots_ros2_driver
+[1.341s] [  0%] Built target ament_cmake_python_symlink_controller
+[1.342s] [  0%] Built target ament_cmake_python_symlink_vehicle
+[1.405s] gmake[2]: *** [CMakeFiles/compile-lib-controller.dir/build.make:70: CMakeFiles/compile-lib-controller] Error 2
+[1.405s] gmake[1]: *** [CMakeFiles/Makefile2:156: CMakeFiles/compile-lib-controller.dir/all] Error 2
+[1.405s] gmake[1]: *** Waiting for unfinished jobs....
+[1.458s] running egg_info
+[1.458s] creating webots_ros2_driver.egg-info
+[1.463s] running egg_info
+[1.463s] creating vehicle.egg-info
+[1.468s] running egg_info
+[1.469s] writing webots_ros2_driver.egg-info/PKG-INFO
+[1.469s] creating controller.egg-info
+[1.470s] writing dependency_links to webots_ros2_driver.egg-info/dependency_links.txt
+[1.472s] writing top-level names to webots_ros2_driver.egg-info/top_level.txt
+[1.472s] writing manifest file 'webots_ros2_driver.egg-info/SOURCES.txt'
+[1.475s] writing vehicle.egg-info/PKG-INFO
+[1.476s] writing controller.egg-info/PKG-INFO
+[1.476s] writing dependency_links to vehicle.egg-info/dependency_links.txt
+[1.477s] writing dependency_links to controller.egg-info/dependency_links.txt
+[1.477s] writing top-level names to controller.egg-info/top_level.txt
+[1.478s] writing top-level names to vehicle.egg-info/top_level.txt
+[1.478s] writing manifest file 'vehicle.egg-info/SOURCES.txt'
+[1.478s] writing manifest file 'controller.egg-info/SOURCES.txt'
+[1.501s] reading manifest file 'webots_ros2_driver.egg-info/SOURCES.txt'
+[1.503s] writing manifest file 'webots_ros2_driver.egg-info/SOURCES.txt'
+[1.509s] reading manifest file 'vehicle.egg-info/SOURCES.txt'
+[1.511s] writing manifest file 'vehicle.egg-info/SOURCES.txt'
+[1.518s] reading manifest file 'controller.egg-info/SOURCES.txt'
+[1.522s] writing manifest file 'controller.egg-info/SOURCES.txt'
+[1.526s] [  0%] Built target ament_cmake_python_build_webots_ros2_driver_egg
+[1.531s] [  0%] Built target ament_cmake_python_build_vehicle_egg
+[1.541s] [  0%] Built target ament_cmake_python_build_controller_egg
+[1.542s] gmake: *** [Makefile:146: all] Error 2
+[1.543s] Invoked command in '/MRTP/MRTP/src/build/webots_ros2_driver' returned '2': AMENT_PREFIX_PATH=/MRTP/MRTP/src/install/webots_ros2_msgs:/MRTP/MRTP/src/install/webots_ros2_importer:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/MRTP/MRTP/src/install/webots_ros2_msgs:/opt/ros/jazzy/opt/gz_sim_vendor:/opt/ros/jazzy/opt/gz_sensors_vendor:/opt/ros/jazzy/opt/gz_physics_vendor:/opt/ros/jazzy/opt/sdformat_vendor:/opt/ros/jazzy/opt/gz_gui_vendor:/opt/ros/jazzy/opt/gz_transport_vendor:/opt/ros/jazzy/opt/gz_rendering_vendor:/opt/ros/jazzy/opt/gz_plugin_vendor:/opt/ros/jazzy/opt/gz_fuel_tools_vendor:/opt/ros/jazzy/opt/gz_msgs_vendor:/opt/ros/jazzy/opt/gz_common_vendor:/opt/ros/jazzy/opt/gz_math_vendor:/opt/ros/jazzy/opt/gz_utils_vendor:/opt/ros/jazzy/opt/gz_tools_vendor:/opt/ros/jazzy/opt/gz_ogre_next_vendor:/opt/ros/jazzy/opt/gz_dartsim_vendor:/opt/ros/jazzy/opt/gz_cmake_vendor:/opt/ros/jazzy LD_LIBRARY_PATH=/MRTP/MRTP/src/install/webots_ros2_msgs/lib:${LD_LIBRARY_PATH} PS1=(.venv) \[\e]0;\u@\h: \w\a\]${debian_chroot:+($debian_chroot)}\u@\h:\w\$ PYTHONPATH=/MRTP/MRTP/src/install/webots_ros2_msgs/lib/python3.12/site-packages:/MRTP/MRTP/src/build/webots_ros2_importer:/MRTP/MRTP/src/install/webots_ros2_importer/lib/python3.12/site-packages:${PYTHONPATH} VIRTUAL_ENV_PROMPT=(.venv) /usr/bin/cmake --build /MRTP/MRTP/src/build/webots_ros2_driver -- -j12 -l12

@@ -1,0 +1,1 @@
+ament_cmake_symlink_install_targets("TARGET_FILES" "/MRTP/MRTP/src/build/webots_ros2_control/libwebots_ros2_control.so" "/MRTP/MRTP/src/build/webots_ros2_control/libwebots_ros2_control_system.so" "TARGETS" "webots_ros2_control" "webots_ros2_control_system" "ARCHIVE_DESTINATION" "lib" "LIBRARY_DESTINATION" "lib" "RUNTIME_DESTINATION" "bin")

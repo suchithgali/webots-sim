@@ -1,0 +1,35 @@
+running develop
+running egg_info
+creating webots_ros2_husarion.egg-info
+writing webots_ros2_husarion.egg-info/PKG-INFO
+writing dependency_links to webots_ros2_husarion.egg-info/dependency_links.txt
+writing requirements to webots_ros2_husarion.egg-info/requires.txt
+writing top-level names to webots_ros2_husarion.egg-info/top_level.txt
+writing manifest file 'webots_ros2_husarion.egg-info/SOURCES.txt'
+reading manifest file 'webots_ros2_husarion.egg-info/SOURCES.txt'
+writing manifest file 'webots_ros2_husarion.egg-info/SOURCES.txt'
+running build_ext
+Creating /MRTP/MRTP/src/install/webots_ros2_husarion/lib/python3.12/site-packages/webots-ros2-husarion.egg-link (link to .)
+
+Installed /MRTP/MRTP/src/build/webots_ros2_husarion
+running symlink_data
+creating /MRTP/MRTP/src/install/webots_ros2_husarion/share/ament_index
+creating /MRTP/MRTP/src/install/webots_ros2_husarion/share/ament_index/resource_index
+creating /MRTP/MRTP/src/install/webots_ros2_husarion/share/ament_index/resource_index/packages
+symbolically linking /MRTP/MRTP/src/build/webots_ros2_husarion/resource/webots_ros2_husarion -> /MRTP/MRTP/src/install/webots_ros2_husarion/share/ament_index/resource_index/packages
+creating /MRTP/MRTP/src/install/webots_ros2_husarion/share/webots_ros2_husarion/launch
+symbolically linking /MRTP/MRTP/src/build/webots_ros2_husarion/launch/rosbot_launch.py -> /MRTP/MRTP/src/install/webots_ros2_husarion/share/webots_ros2_husarion/launch
+symbolically linking /MRTP/MRTP/src/build/webots_ros2_husarion/launch/rosbot_xl_launch.py -> /MRTP/MRTP/src/install/webots_ros2_husarion/share/webots_ros2_husarion/launch
+creating /MRTP/MRTP/src/install/webots_ros2_husarion/share/webots_ros2_husarion/resource
+symbolically linking /MRTP/MRTP/src/build/webots_ros2_husarion/resource/rosbot_controllers.yaml -> /MRTP/MRTP/src/install/webots_ros2_husarion/share/webots_ros2_husarion/resource
+symbolically linking /MRTP/MRTP/src/build/webots_ros2_husarion/resource/rosbot_xl_controllers.yaml -> /MRTP/MRTP/src/install/webots_ros2_husarion/share/webots_ros2_husarion/resource
+symbolically linking /MRTP/MRTP/src/build/webots_ros2_husarion/resource/ekf.yaml -> /MRTP/MRTP/src/install/webots_ros2_husarion/share/webots_ros2_husarion/resource
+symbolically linking /MRTP/MRTP/src/build/webots_ros2_husarion/resource/laser_filter.yaml -> /MRTP/MRTP/src/install/webots_ros2_husarion/share/webots_ros2_husarion/resource
+symbolically linking /MRTP/MRTP/src/build/webots_ros2_husarion/resource/rosbot_webots.urdf -> /MRTP/MRTP/src/install/webots_ros2_husarion/share/webots_ros2_husarion/resource
+symbolically linking /MRTP/MRTP/src/build/webots_ros2_husarion/resource/rosbot_links_remappings.yaml -> /MRTP/MRTP/src/install/webots_ros2_husarion/share/webots_ros2_husarion/resource
+creating /MRTP/MRTP/src/install/webots_ros2_husarion/share/webots_ros2_husarion/worlds
+symbolically linking /MRTP/MRTP/src/build/webots_ros2_husarion/worlds/rosbot.wbt -> /MRTP/MRTP/src/install/webots_ros2_husarion/share/webots_ros2_husarion/worlds
+symbolically linking /MRTP/MRTP/src/build/webots_ros2_husarion/worlds/rosbot_xl.wbt -> /MRTP/MRTP/src/install/webots_ros2_husarion/share/webots_ros2_husarion/worlds
+creating /MRTP/MRTP/src/install/webots_ros2_husarion/share/webots_ros2_husarion/worlds/meshes
+symbolically linking /MRTP/MRTP/src/build/webots_ros2_husarion/worlds/meshes/husarion_world.dae -> /MRTP/MRTP/src/install/webots_ros2_husarion/share/webots_ros2_husarion/worlds/meshes
+symbolically linking /MRTP/MRTP/src/build/webots_ros2_husarion/package.xml -> /MRTP/MRTP/src/install/webots_ros2_husarion/share/webots_ros2_husarion

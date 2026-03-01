@@ -1,0 +1,15 @@
+[3.617s] Invoking command in '/MRTP/MRTP/src/build/gazeboenvs': PS1=(.venv) \[\e]0;\u@\h: \w\a\]${debian_chroot:+($debian_chroot)}\u@\h:\w\$ PYTHONPATH=/MRTP/MRTP/src/build/gazeboenvs/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/MRTP/MRTP/src/install/gazeboenvs/lib/python3.12/site-packages:${PYTHONPATH} VIRTUAL_ENV_PROMPT=(.venv) /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py develop --editable --build-directory /MRTP/MRTP/src/build/gazeboenvs/build --no-deps symlink_data
+[4.980s] running develop
+[6.105s] running egg_info
+[6.146s] writing gazeboenvs.egg-info/PKG-INFO
+[6.147s] writing dependency_links to gazeboenvs.egg-info/dependency_links.txt
+[6.148s] writing requirements to gazeboenvs.egg-info/requires.txt
+[6.149s] writing top-level names to gazeboenvs.egg-info/top_level.txt
+[6.248s] reading manifest file 'gazeboenvs.egg-info/SOURCES.txt'
+[6.276s] writing manifest file 'gazeboenvs.egg-info/SOURCES.txt'
+[6.321s] running build_ext
+[6.344s] Creating /MRTP/MRTP/src/install/gazeboenvs/lib/python3.12/site-packages/gazeboenvs.egg-link (link to .)
+[6.437s] 
+[6.440s] Installed /MRTP/MRTP/src/build/gazeboenvs
+[6.441s] running symlink_data
+[6.504s] Invoked command in '/MRTP/MRTP/src/build/gazeboenvs' returned '0': PS1=(.venv) \[\e]0;\u@\h: \w\a\]${debian_chroot:+($debian_chroot)}\u@\h:\w\$ PYTHONPATH=/MRTP/MRTP/src/build/gazeboenvs/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/MRTP/MRTP/src/install/gazeboenvs/lib/python3.12/site-packages:${PYTHONPATH} VIRTUAL_ENV_PROMPT=(.venv) /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py develop --editable --build-directory /MRTP/MRTP/src/build/gazeboenvs/build --no-deps symlink_data

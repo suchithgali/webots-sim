@@ -1,0 +1,6 @@
+<?xml version="1.0" ?>
+<robot name="Mavic_2_PRO">
+  <webots>
+    <plugin type="my_package.mavic_driver.MavicDriver" />
+  </webots>
+</robot>

@@ -1,0 +1,58 @@
+-- Found ament_cmake: 2.5.5 (/opt/ros/jazzy/share/ament_cmake/cmake)
+-- Override CMake install command with custom implementation using symlinks instead of copying resources
+-- Found rclcpp: 28.1.16 (/opt/ros/jazzy/share/rclcpp/cmake)
+-- Found rosidl_generator_c: 4.6.7 (/opt/ros/jazzy/share/rosidl_generator_c/cmake)
+-- Found rosidl_generator_cpp: 4.6.7 (/opt/ros/jazzy/share/rosidl_generator_cpp/cmake)
+-- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+-- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+-- Found rmw_implementation_cmake: 7.3.3 (/opt/ros/jazzy/share/rmw_implementation_cmake/cmake)
+-- Found rmw_fastrtps_cpp: 8.4.3 (/opt/ros/jazzy/share/rmw_fastrtps_cpp/cmake)
+-- Using RMW implementation 'rmw_fastrtps_cpp' as default
+-- Found geometry_msgs: 5.3.6 (/opt/ros/jazzy/share/geometry_msgs/cmake)
+-- Found pluginlib: 5.4.4 (/opt/ros/jazzy/share/pluginlib/cmake)
+-- Found webots_ros2_driver: 2025.0.1 (/MRTP/MRTP/src/install/webots_ros2_driver/share/webots_ros2_driver/cmake)
+-- Found eigen3_cmake_module: 0.3.0 (/opt/ros/jazzy/share/eigen3_cmake_module/cmake)
+-- Ensuring Eigen3 include directory is part of orocos-kdl CMake target
+-- Configuring done (1.0s)
+-- Generating done (0.1s)
+-- Build files have been written to: /MRTP/MRTP/src/build/my_package
+[ 50%] [32mBuilding CXX object CMakeFiles/my_package.dir/src/mavic2pro_patrol.cpp.o[0m
+In file included from [01m[K/MRTP/MRTP/src/my_package/src/mavic2pro_patrol.cpp:23[m[K:
+[01m[K/MRTP/MRTP/src/install/webots_ros2_driver/include/webots/cpp/webots/GPS.hpp:37:5:[m[K [01;35m[Kwarning: [m[Ktype qualifiers ignored on function return type [[01;35m[K-Wignored-qualifiers[m[K]
+   37 |     [01;35m[Kconst[m[K CoordinateSystem getCoordinateSystem() const;
+      |     [01;35m[K^~~~~[m[K
+[01m[K/MRTP/MRTP/src/my_package/src/mavic2pro_patrol.cpp:[m[K In member function ‘[01m[Kstd::pair<double, double> Mavic::[01;32m[Kmove_to_target[m[K(const std::vector<std::array<double, 2> >&, bool, bool)[m[K’:
+[01m[K/MRTP/MRTP/src/my_package/src/mavic2pro_patrol.cpp:102:3:[m[K [01;36m[Knote: [m[Kparameter passing for argument of type ‘[01m[Kstd::pair<double, double>[m[K’ when C++17 is enabled changed to match C++14 in GCC 10.1
+  102 |   [01;36m[K{[m[K
+      |   [01;36m[K^[m[K
+[100%] [32m[1mLinking CXX shared library libmy_package.so[0m
+[100%] Built target my_package
+-- Install configuration: ""
+-- Execute custom install script
+-- Up-to-date symlink: /MRTP/MRTP/src/install/my_package/share/my_package//my_robot_driver.xml
+-- Up-to-date symlink: /MRTP/MRTP/src/install/my_package/lib/libmy_package.so
+-- Up-to-date symlink: /MRTP/MRTP/src/install/my_package/include/include/my_package/MyRobotDriver.hpp
+-- Up-to-date symlink: /MRTP/MRTP/src/install/my_package/share/my_package/my_robot_driver.xml
+-- Up-to-date symlink: /MRTP/MRTP/src/install/my_package/share/my_package/launch/robot_launch.py
+-- Up-to-date symlink: /MRTP/MRTP/src/install/my_package/share/my_package/resource/my_robot.urdf
+-- Up-to-date symlink: /MRTP/MRTP/src/install/my_package/share/my_package/worlds/wharehouse.wbt
+-- Up-to-date symlink: /MRTP/MRTP/src/install/my_package/share/my_package/environment/library_path.sh
+-- Up-to-date symlink: /MRTP/MRTP/src/install/my_package/share/my_package/environment/library_path.dsv
+-- Up-to-date symlink: /MRTP/MRTP/src/install/my_package/share/ament_index/resource_index/package_run_dependencies/my_package
+-- Up-to-date symlink: /MRTP/MRTP/src/install/my_package/share/ament_index/resource_index/parent_prefix_path/my_package
+-- Up-to-date symlink: /MRTP/MRTP/src/install/my_package/share/my_package/environment/ament_prefix_path.sh
+-- Up-to-date symlink: /MRTP/MRTP/src/install/my_package/share/my_package/environment/ament_prefix_path.dsv
+-- Up-to-date symlink: /MRTP/MRTP/src/install/my_package/share/my_package/environment/path.sh
+-- Up-to-date symlink: /MRTP/MRTP/src/install/my_package/share/my_package/environment/path.dsv
+-- Up-to-date symlink: /MRTP/MRTP/src/install/my_package/share/my_package/local_setup.bash
+-- Up-to-date symlink: /MRTP/MRTP/src/install/my_package/share/my_package/local_setup.sh
+-- Up-to-date symlink: /MRTP/MRTP/src/install/my_package/share/my_package/local_setup.zsh
+-- Up-to-date symlink: /MRTP/MRTP/src/install/my_package/share/my_package/local_setup.dsv
+-- Symlinking: /MRTP/MRTP/src/install/my_package/share/my_package/package.dsv
+-- Up-to-date symlink: /MRTP/MRTP/src/install/my_package/share/ament_index/resource_index/packages/my_package
+-- Up-to-date symlink: /MRTP/MRTP/src/install/my_package/share/ament_index/resource_index/webots_ros2_driver__pluginlib__plugin/my_package
+-- Up-to-date symlink: /MRTP/MRTP/src/install/my_package/share/my_package/cmake/ament_cmake_export_include_directories-extras.cmake
+-- Up-to-date symlink: /MRTP/MRTP/src/install/my_package/share/my_package/cmake/ament_cmake_export_libraries-extras.cmake
+-- Up-to-date symlink: /MRTP/MRTP/src/install/my_package/share/my_package/cmake/my_packageConfig.cmake
+-- Up-to-date symlink: /MRTP/MRTP/src/install/my_package/share/my_package/cmake/my_packageConfig-version.cmake
+-- Up-to-date symlink: /MRTP/MRTP/src/install/my_package/share/my_package/package.xml

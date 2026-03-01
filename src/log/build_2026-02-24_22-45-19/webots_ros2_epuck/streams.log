@@ -1,0 +1,50 @@
+[0.856s] Invoking command in '/MRTP/MRTP/src/build/webots_ros2_epuck': AMENT_PREFIX_PATH=/MRTP/MRTP/src/install/webots_ros2_control:/MRTP/MRTP/src/install/webots_ros2_driver:/MRTP/MRTP/src/install/webots_ros2_msgs:/MRTP/MRTP/src/install/webots_ros2_importer:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/MRTP/MRTP/src/install/webots_ros2_control:/MRTP/MRTP/src/install/webots_ros2_driver:/MRTP/MRTP/src/install/webots_ros2_msgs:${CMAKE_PREFIX_PATH} LD_LIBRARY_PATH=/MRTP/MRTP/src/install/webots_ros2_control/lib:/MRTP/MRTP/src/install/webots_ros2_driver/lib:/MRTP/MRTP/src/install/webots_ros2_msgs/lib:${LD_LIBRARY_PATH} PS1=(.venv) \[\e]0;\u@\h: \w\a\]${debian_chroot:+($debian_chroot)}\u@\h:\w\$ PYTHONPATH=/MRTP/MRTP/src/build/webots_ros2_epuck/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/MRTP/MRTP/src/install/webots_ros2_epuck/lib/python3.12/site-packages:/MRTP/MRTP/src/install/webots_ros2_driver/lib/python3.12/site-packages:/MRTP/MRTP/src/install/webots_ros2_msgs/lib/python3.12/site-packages:/MRTP/MRTP/src/build/webots_ros2_importer:/MRTP/MRTP/src/install/webots_ros2_importer/lib/python3.12/site-packages:${PYTHONPATH} VIRTUAL_ENV_PROMPT=(.venv) /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py develop --editable --build-directory /MRTP/MRTP/src/build/webots_ros2_epuck/build --no-deps symlink_data
+[1.062s] running develop
+[1.223s] running egg_info
+[1.223s] creating webots_ros2_epuck.egg-info
+[1.240s] writing webots_ros2_epuck.egg-info/PKG-INFO
+[1.245s] writing dependency_links to webots_ros2_epuck.egg-info/dependency_links.txt
+[1.245s] writing entry points to webots_ros2_epuck.egg-info/entry_points.txt
+[1.245s] writing requirements to webots_ros2_epuck.egg-info/requires.txt
+[1.246s] writing top-level names to webots_ros2_epuck.egg-info/top_level.txt
+[1.246s] writing manifest file 'webots_ros2_epuck.egg-info/SOURCES.txt'
+[1.284s] reading manifest file 'webots_ros2_epuck.egg-info/SOURCES.txt'
+[1.287s] writing manifest file 'webots_ros2_epuck.egg-info/SOURCES.txt'
+[1.298s] running build_ext
+[1.299s] Creating /MRTP/MRTP/src/install/webots_ros2_epuck/lib/python3.12/site-packages/webots-ros2-epuck.egg-link (link to .)
+[1.303s] Installing drive_calibrator script to /MRTP/MRTP/src/install/webots_ros2_epuck/lib/webots_ros2_epuck
+[1.305s] Installing epuck_node script to /MRTP/MRTP/src/install/webots_ros2_epuck/lib/webots_ros2_epuck
+[1.307s] Installing simple_mapper script to /MRTP/MRTP/src/install/webots_ros2_epuck/lib/webots_ros2_epuck
+[1.308s] 
+[1.308s] Installed /MRTP/MRTP/src/build/webots_ros2_epuck
+[1.309s] running symlink_data
+[1.310s] creating /MRTP/MRTP/src/install/webots_ros2_epuck/share/ament_index
+[1.311s] creating /MRTP/MRTP/src/install/webots_ros2_epuck/share/ament_index/resource_index
+[1.311s] creating /MRTP/MRTP/src/install/webots_ros2_epuck/share/ament_index/resource_index/packages
+[1.311s] symbolically linking /MRTP/MRTP/src/build/webots_ros2_epuck/resource/webots_ros2_epuck -> /MRTP/MRTP/src/install/webots_ros2_epuck/share/ament_index/resource_index/packages
+[1.311s] creating /MRTP/MRTP/src/install/webots_ros2_epuck/share/webots_ros2_epuck/launch
+[1.312s] symbolically linking /MRTP/MRTP/src/build/webots_ros2_epuck/launch/robot_launch.py -> /MRTP/MRTP/src/install/webots_ros2_epuck/share/webots_ros2_epuck/launch
+[1.312s] symbolically linking /MRTP/MRTP/src/build/webots_ros2_epuck/launch/robot_tools_launch.py -> /MRTP/MRTP/src/install/webots_ros2_epuck/share/webots_ros2_epuck/launch
+[1.313s] symbolically linking /MRTP/MRTP/src/build/webots_ros2_epuck/launch/rats_life_launch.py -> /MRTP/MRTP/src/install/webots_ros2_epuck/share/webots_ros2_epuck/launch
+[1.313s] symbolically linking /MRTP/MRTP/src/build/webots_ros2_epuck/launch/rats_life_waypoints_launch.py -> /MRTP/MRTP/src/install/webots_ros2_epuck/share/webots_ros2_epuck/launch
+[1.313s] creating /MRTP/MRTP/src/install/webots_ros2_epuck/share/webots_ros2_epuck/worlds
+[1.314s] symbolically linking /MRTP/MRTP/src/build/webots_ros2_epuck/worlds/epuck_world.wbt -> /MRTP/MRTP/src/install/webots_ros2_epuck/share/webots_ros2_epuck/worlds
+[1.314s] symbolically linking /MRTP/MRTP/src/build/webots_ros2_epuck/worlds/.epuck_world.wbproj -> /MRTP/MRTP/src/install/webots_ros2_epuck/share/webots_ros2_epuck/worlds
+[1.315s] symbolically linking /MRTP/MRTP/src/build/webots_ros2_epuck/worlds/rats_life_benchmark.wbt -> /MRTP/MRTP/src/install/webots_ros2_epuck/share/webots_ros2_epuck/worlds
+[1.315s] symbolically linking /MRTP/MRTP/src/build/webots_ros2_epuck/worlds/.rats_life_benchmark.wbproj -> /MRTP/MRTP/src/install/webots_ros2_epuck/share/webots_ros2_epuck/worlds
+[1.316s] creating /MRTP/MRTP/src/install/webots_ros2_epuck/share/webots_ros2_epuck/protos
+[1.317s] symbolically linking /MRTP/MRTP/src/build/webots_ros2_epuck/protos/LegoTallInterval.proto -> /MRTP/MRTP/src/install/webots_ros2_epuck/share/webots_ros2_epuck/protos
+[1.318s] symbolically linking /MRTP/MRTP/src/build/webots_ros2_epuck/protos/LegoTallWall.proto -> /MRTP/MRTP/src/install/webots_ros2_epuck/share/webots_ros2_epuck/protos
+[1.319s] creating /MRTP/MRTP/src/install/webots_ros2_epuck/share/webots_ros2_epuck/resource
+[1.323s] symbolically linking /MRTP/MRTP/src/build/webots_ros2_epuck/resource/all.rviz -> /MRTP/MRTP/src/install/webots_ros2_epuck/share/webots_ros2_epuck/resource
+[1.324s] symbolically linking /MRTP/MRTP/src/build/webots_ros2_epuck/resource/nav2_params.yaml -> /MRTP/MRTP/src/install/webots_ros2_epuck/share/webots_ros2_epuck/resource
+[1.325s] symbolically linking /MRTP/MRTP/src/build/webots_ros2_epuck/resource/nav2_params_iron.yaml -> /MRTP/MRTP/src/install/webots_ros2_epuck/share/webots_ros2_epuck/resource
+[1.326s] symbolically linking /MRTP/MRTP/src/build/webots_ros2_epuck/resource/map_rats_life.pgm -> /MRTP/MRTP/src/install/webots_ros2_epuck/share/webots_ros2_epuck/resource
+[1.327s] symbolically linking /MRTP/MRTP/src/build/webots_ros2_epuck/resource/map_rats_life.yaml -> /MRTP/MRTP/src/install/webots_ros2_epuck/share/webots_ros2_epuck/resource
+[1.328s] symbolically linking /MRTP/MRTP/src/build/webots_ros2_epuck/resource/nav2_rats_life_waypoints.yaml -> /MRTP/MRTP/src/install/webots_ros2_epuck/share/webots_ros2_epuck/resource
+[1.329s] symbolically linking /MRTP/MRTP/src/build/webots_ros2_epuck/resource/epuck_world_map.pgm -> /MRTP/MRTP/src/install/webots_ros2_epuck/share/webots_ros2_epuck/resource
+[1.330s] symbolically linking /MRTP/MRTP/src/build/webots_ros2_epuck/resource/epuck_world_map.yaml -> /MRTP/MRTP/src/install/webots_ros2_epuck/share/webots_ros2_epuck/resource
+[1.330s] symbolically linking /MRTP/MRTP/src/build/webots_ros2_epuck/resource/epuck_webots.urdf -> /MRTP/MRTP/src/install/webots_ros2_epuck/share/webots_ros2_epuck/resource
+[1.333s] symbolically linking /MRTP/MRTP/src/build/webots_ros2_epuck/resource/ros2_control.yml -> /MRTP/MRTP/src/install/webots_ros2_epuck/share/webots_ros2_epuck/resource
+[1.337s] symbolically linking /MRTP/MRTP/src/build/webots_ros2_epuck/package.xml -> /MRTP/MRTP/src/install/webots_ros2_epuck/share/webots_ros2_epuck
+[1.385s] Invoked command in '/MRTP/MRTP/src/build/webots_ros2_epuck' returned '0': AMENT_PREFIX_PATH=/MRTP/MRTP/src/install/webots_ros2_control:/MRTP/MRTP/src/install/webots_ros2_driver:/MRTP/MRTP/src/install/webots_ros2_msgs:/MRTP/MRTP/src/install/webots_ros2_importer:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/MRTP/MRTP/src/install/webots_ros2_control:/MRTP/MRTP/src/install/webots_ros2_driver:/MRTP/MRTP/src/install/webots_ros2_msgs:${CMAKE_PREFIX_PATH} LD_LIBRARY_PATH=/MRTP/MRTP/src/install/webots_ros2_control/lib:/MRTP/MRTP/src/install/webots_ros2_driver/lib:/MRTP/MRTP/src/install/webots_ros2_msgs/lib:${LD_LIBRARY_PATH} PS1=(.venv) \[\e]0;\u@\h: \w\a\]${debian_chroot:+($debian_chroot)}\u@\h:\w\$ PYTHONPATH=/MRTP/MRTP/src/build/webots_ros2_epuck/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/MRTP/MRTP/src/install/webots_ros2_epuck/lib/python3.12/site-packages:/MRTP/MRTP/src/install/webots_ros2_driver/lib/python3.12/site-packages:/MRTP/MRTP/src/install/webots_ros2_msgs/lib/python3.12/site-packages:/MRTP/MRTP/src/build/webots_ros2_importer:/MRTP/MRTP/src/install/webots_ros2_importer/lib/python3.12/site-packages:${PYTHONPATH} VIRTUAL_ENV_PROMPT=(.venv) /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py develop --editable --build-directory /MRTP/MRTP/src/build/webots_ros2_epuck/build --no-deps symlink_data

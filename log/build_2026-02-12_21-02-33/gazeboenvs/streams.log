@@ -1,0 +1,45 @@
+[0.572s] Invoking command in '/MRTP/MRTP/src/gazeboenvs': PS1=(.venv) \[\e]0;\u@\h: \w\a\]${debian_chroot:+($debian_chroot)}\u@\h:\w\$ PYTHONPATH=/MRTP/MRTP/build/gazeboenvs/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/MRTP/MRTP/install/gazeboenvs/lib/python3.12/site-packages:${PYTHONPATH} VIRTUAL_ENV_PROMPT=(.venv) /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/gazeboenvs build --build-base /MRTP/MRTP/build/gazeboenvs/build install --record /MRTP/MRTP/build/gazeboenvs/install.log --single-version-externally-managed install_data
+[0.717s] running egg_info
+[0.721s] creating ../../build/gazeboenvs/gazeboenvs.egg-info
+[0.726s] writing ../../build/gazeboenvs/gazeboenvs.egg-info/PKG-INFO
+[0.727s] writing dependency_links to ../../build/gazeboenvs/gazeboenvs.egg-info/dependency_links.txt
+[0.728s] writing requirements to ../../build/gazeboenvs/gazeboenvs.egg-info/requires.txt
+[0.728s] writing top-level names to ../../build/gazeboenvs/gazeboenvs.egg-info/top_level.txt
+[0.729s] writing manifest file '../../build/gazeboenvs/gazeboenvs.egg-info/SOURCES.txt'
+[0.749s] reading manifest file '../../build/gazeboenvs/gazeboenvs.egg-info/SOURCES.txt'
+[0.750s] writing manifest file '../../build/gazeboenvs/gazeboenvs.egg-info/SOURCES.txt'
+[0.751s] running build
+[0.751s] running build_py
+[0.751s] creating /MRTP/MRTP/build/gazeboenvs/build
+[0.752s] creating /MRTP/MRTP/build/gazeboenvs/build/lib
+[0.752s] creating /MRTP/MRTP/build/gazeboenvs/build/lib/gazeboenvs
+[0.752s] copying gazeboenvs/__init__.py -> /MRTP/MRTP/build/gazeboenvs/build/lib/gazeboenvs
+[0.759s] running install
+[0.759s] running install_lib
+[0.767s] creating /MRTP/MRTP/install/gazeboenvs/lib/python3.12/site-packages/gazeboenvs
+[0.767s] copying /MRTP/MRTP/build/gazeboenvs/build/lib/gazeboenvs/__init__.py -> /MRTP/MRTP/install/gazeboenvs/lib/python3.12/site-packages/gazeboenvs
+[0.768s] byte-compiling /MRTP/MRTP/install/gazeboenvs/lib/python3.12/site-packages/gazeboenvs/__init__.py to __init__.cpython-312.pyc
+[0.770s] running install_data
+[0.770s] creating /MRTP/MRTP/install/gazeboenvs/share/ament_index
+[0.770s] creating /MRTP/MRTP/install/gazeboenvs/share/ament_index/resource_index
+[0.771s] creating /MRTP/MRTP/install/gazeboenvs/share/ament_index/resource_index/packages
+[0.771s] copying resource/gazeboenvs -> /MRTP/MRTP/install/gazeboenvs/share/ament_index/resource_index/packages
+[0.771s] copying package.xml -> /MRTP/MRTP/install/gazeboenvs/share/gazeboenvs
+[0.772s] creating /MRTP/MRTP/install/gazeboenvs/share/gazeboenvs/launch
+[0.772s] copying launch/husky_orchard.launch.py -> /MRTP/MRTP/install/gazeboenvs/share/gazeboenvs/launch
+[0.773s] copying launch/tb4_warehouse.launch.py -> /MRTP/MRTP/install/gazeboenvs/share/gazeboenvs/launch
+[0.774s] copying launch/tb4_simulation.launch.py -> /MRTP/MRTP/install/gazeboenvs/share/gazeboenvs/launch
+[0.775s] copying launch/gazebo_husky.launch.py -> /MRTP/MRTP/install/gazeboenvs/share/gazeboenvs/launch
+[0.776s] copying launch/tb3_simulation.launch.py -> /MRTP/MRTP/install/gazeboenvs/share/gazeboenvs/launch
+[0.777s] creating /MRTP/MRTP/install/gazeboenvs/share/gazeboenvs/params
+[0.777s] copying params/nav2_params_tb4.yaml -> /MRTP/MRTP/install/gazeboenvs/share/gazeboenvs/params
+[0.777s] copying params/nav2_params_wh_tb4.yaml -> /MRTP/MRTP/install/gazeboenvs/share/gazeboenvs/params
+[0.778s] creating /MRTP/MRTP/install/gazeboenvs/share/gazeboenvs/params/indoor
+[0.779s] copying params/indoor/robot.yaml -> /MRTP/MRTP/install/gazeboenvs/share/gazeboenvs/params/indoor
+[0.779s] creating /MRTP/MRTP/install/gazeboenvs/share/gazeboenvs/params/outdoor
+[0.780s] copying params/outdoor/robot.yaml -> /MRTP/MRTP/install/gazeboenvs/share/gazeboenvs/params/outdoor
+[0.780s] running install_egg_info
+[0.791s] Copying ../../build/gazeboenvs/gazeboenvs.egg-info to /MRTP/MRTP/install/gazeboenvs/lib/python3.12/site-packages/gazeboenvs-0.0.1-py3.12.egg-info
+[0.795s] running install_scripts
+[0.865s] writing list of installed files to '/MRTP/MRTP/build/gazeboenvs/install.log'
+[0.883s] Invoked command in '/MRTP/MRTP/src/gazeboenvs' returned '0': PS1=(.venv) \[\e]0;\u@\h: \w\a\]${debian_chroot:+($debian_chroot)}\u@\h:\w\$ PYTHONPATH=/MRTP/MRTP/build/gazeboenvs/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/MRTP/MRTP/install/gazeboenvs/lib/python3.12/site-packages:${PYTHONPATH} VIRTUAL_ENV_PROMPT=(.venv) /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/gazeboenvs build --build-base /MRTP/MRTP/build/gazeboenvs/build install --record /MRTP/MRTP/build/gazeboenvs/install.log --single-version-externally-managed install_data

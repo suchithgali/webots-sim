@@ -1,0 +1,37 @@
+[0.861s] Invoking command in '/MRTP/MRTP/src/build/webots_ros2_husarion': AMENT_PREFIX_PATH=/MRTP/MRTP/src/install/webots_ros2_control:/MRTP/MRTP/src/install/webots_ros2_driver:/MRTP/MRTP/src/install/webots_ros2_msgs:/MRTP/MRTP/src/install/webots_ros2_importer:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/MRTP/MRTP/src/install/webots_ros2_control:/MRTP/MRTP/src/install/webots_ros2_driver:/MRTP/MRTP/src/install/webots_ros2_msgs:${CMAKE_PREFIX_PATH} LD_LIBRARY_PATH=/MRTP/MRTP/src/install/webots_ros2_control/lib:/MRTP/MRTP/src/install/webots_ros2_driver/lib:/MRTP/MRTP/src/install/webots_ros2_msgs/lib:${LD_LIBRARY_PATH} PS1=(.venv) \[\e]0;\u@\h: \w\a\]${debian_chroot:+($debian_chroot)}\u@\h:\w\$ PYTHONPATH=/MRTP/MRTP/src/build/webots_ros2_husarion/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/MRTP/MRTP/src/install/webots_ros2_husarion/lib/python3.12/site-packages:/MRTP/MRTP/src/install/webots_ros2_driver/lib/python3.12/site-packages:/MRTP/MRTP/src/install/webots_ros2_msgs/lib/python3.12/site-packages:/MRTP/MRTP/src/build/webots_ros2_importer:/MRTP/MRTP/src/install/webots_ros2_importer/lib/python3.12/site-packages:${PYTHONPATH} VIRTUAL_ENV_PROMPT=(.venv) /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py develop --editable --build-directory /MRTP/MRTP/src/build/webots_ros2_husarion/build --no-deps symlink_data
+[1.082s] running develop
+[1.246s] running egg_info
+[1.246s] creating webots_ros2_husarion.egg-info
+[1.256s] writing webots_ros2_husarion.egg-info/PKG-INFO
+[1.257s] writing dependency_links to webots_ros2_husarion.egg-info/dependency_links.txt
+[1.258s] writing requirements to webots_ros2_husarion.egg-info/requires.txt
+[1.259s] writing top-level names to webots_ros2_husarion.egg-info/top_level.txt
+[1.259s] writing manifest file 'webots_ros2_husarion.egg-info/SOURCES.txt'
+[1.312s] reading manifest file 'webots_ros2_husarion.egg-info/SOURCES.txt'
+[1.320s] writing manifest file 'webots_ros2_husarion.egg-info/SOURCES.txt'
+[1.351s] running build_ext
+[1.353s] Creating /MRTP/MRTP/src/install/webots_ros2_husarion/lib/python3.12/site-packages/webots-ros2-husarion.egg-link (link to .)
+[1.361s] 
+[1.361s] Installed /MRTP/MRTP/src/build/webots_ros2_husarion
+[1.365s] running symlink_data
+[1.366s] creating /MRTP/MRTP/src/install/webots_ros2_husarion/share/ament_index
+[1.366s] creating /MRTP/MRTP/src/install/webots_ros2_husarion/share/ament_index/resource_index
+[1.369s] creating /MRTP/MRTP/src/install/webots_ros2_husarion/share/ament_index/resource_index/packages
+[1.371s] symbolically linking /MRTP/MRTP/src/build/webots_ros2_husarion/resource/webots_ros2_husarion -> /MRTP/MRTP/src/install/webots_ros2_husarion/share/ament_index/resource_index/packages
+[1.372s] creating /MRTP/MRTP/src/install/webots_ros2_husarion/share/webots_ros2_husarion/launch
+[1.374s] symbolically linking /MRTP/MRTP/src/build/webots_ros2_husarion/launch/rosbot_launch.py -> /MRTP/MRTP/src/install/webots_ros2_husarion/share/webots_ros2_husarion/launch
+[1.376s] symbolically linking /MRTP/MRTP/src/build/webots_ros2_husarion/launch/rosbot_xl_launch.py -> /MRTP/MRTP/src/install/webots_ros2_husarion/share/webots_ros2_husarion/launch
+[1.377s] creating /MRTP/MRTP/src/install/webots_ros2_husarion/share/webots_ros2_husarion/resource
+[1.378s] symbolically linking /MRTP/MRTP/src/build/webots_ros2_husarion/resource/rosbot_controllers.yaml -> /MRTP/MRTP/src/install/webots_ros2_husarion/share/webots_ros2_husarion/resource
+[1.378s] symbolically linking /MRTP/MRTP/src/build/webots_ros2_husarion/resource/rosbot_xl_controllers.yaml -> /MRTP/MRTP/src/install/webots_ros2_husarion/share/webots_ros2_husarion/resource
+[1.380s] symbolically linking /MRTP/MRTP/src/build/webots_ros2_husarion/resource/ekf.yaml -> /MRTP/MRTP/src/install/webots_ros2_husarion/share/webots_ros2_husarion/resource
+[1.380s] symbolically linking /MRTP/MRTP/src/build/webots_ros2_husarion/resource/laser_filter.yaml -> /MRTP/MRTP/src/install/webots_ros2_husarion/share/webots_ros2_husarion/resource
+[1.381s] symbolically linking /MRTP/MRTP/src/build/webots_ros2_husarion/resource/rosbot_webots.urdf -> /MRTP/MRTP/src/install/webots_ros2_husarion/share/webots_ros2_husarion/resource
+[1.381s] symbolically linking /MRTP/MRTP/src/build/webots_ros2_husarion/resource/rosbot_links_remappings.yaml -> /MRTP/MRTP/src/install/webots_ros2_husarion/share/webots_ros2_husarion/resource
+[1.383s] creating /MRTP/MRTP/src/install/webots_ros2_husarion/share/webots_ros2_husarion/worlds
+[1.383s] symbolically linking /MRTP/MRTP/src/build/webots_ros2_husarion/worlds/rosbot.wbt -> /MRTP/MRTP/src/install/webots_ros2_husarion/share/webots_ros2_husarion/worlds
+[1.384s] symbolically linking /MRTP/MRTP/src/build/webots_ros2_husarion/worlds/rosbot_xl.wbt -> /MRTP/MRTP/src/install/webots_ros2_husarion/share/webots_ros2_husarion/worlds
+[1.386s] creating /MRTP/MRTP/src/install/webots_ros2_husarion/share/webots_ros2_husarion/worlds/meshes
+[1.387s] symbolically linking /MRTP/MRTP/src/build/webots_ros2_husarion/worlds/meshes/husarion_world.dae -> /MRTP/MRTP/src/install/webots_ros2_husarion/share/webots_ros2_husarion/worlds/meshes
+[1.389s] symbolically linking /MRTP/MRTP/src/build/webots_ros2_husarion/package.xml -> /MRTP/MRTP/src/install/webots_ros2_husarion/share/webots_ros2_husarion
+[1.432s] Invoked command in '/MRTP/MRTP/src/build/webots_ros2_husarion' returned '0': AMENT_PREFIX_PATH=/MRTP/MRTP/src/install/webots_ros2_control:/MRTP/MRTP/src/install/webots_ros2_driver:/MRTP/MRTP/src/install/webots_ros2_msgs:/MRTP/MRTP/src/install/webots_ros2_importer:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/MRTP/MRTP/src/install/webots_ros2_control:/MRTP/MRTP/src/install/webots_ros2_driver:/MRTP/MRTP/src/install/webots_ros2_msgs:${CMAKE_PREFIX_PATH} LD_LIBRARY_PATH=/MRTP/MRTP/src/install/webots_ros2_control/lib:/MRTP/MRTP/src/install/webots_ros2_driver/lib:/MRTP/MRTP/src/install/webots_ros2_msgs/lib:${LD_LIBRARY_PATH} PS1=(.venv) \[\e]0;\u@\h: \w\a\]${debian_chroot:+($debian_chroot)}\u@\h:\w\$ PYTHONPATH=/MRTP/MRTP/src/build/webots_ros2_husarion/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/MRTP/MRTP/src/install/webots_ros2_husarion/lib/python3.12/site-packages:/MRTP/MRTP/src/install/webots_ros2_driver/lib/python3.12/site-packages:/MRTP/MRTP/src/install/webots_ros2_msgs/lib/python3.12/site-packages:/MRTP/MRTP/src/build/webots_ros2_importer:/MRTP/MRTP/src/install/webots_ros2_importer/lib/python3.12/site-packages:${PYTHONPATH} VIRTUAL_ENV_PROMPT=(.venv) /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py develop --editable --build-directory /MRTP/MRTP/src/build/webots_ros2_husarion/build --no-deps symlink_data

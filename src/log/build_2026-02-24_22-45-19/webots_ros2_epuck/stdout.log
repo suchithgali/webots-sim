@@ -1,0 +1,48 @@
+running develop
+running egg_info
+creating webots_ros2_epuck.egg-info
+writing webots_ros2_epuck.egg-info/PKG-INFO
+writing dependency_links to webots_ros2_epuck.egg-info/dependency_links.txt
+writing entry points to webots_ros2_epuck.egg-info/entry_points.txt
+writing requirements to webots_ros2_epuck.egg-info/requires.txt
+writing top-level names to webots_ros2_epuck.egg-info/top_level.txt
+writing manifest file 'webots_ros2_epuck.egg-info/SOURCES.txt'
+reading manifest file 'webots_ros2_epuck.egg-info/SOURCES.txt'
+writing manifest file 'webots_ros2_epuck.egg-info/SOURCES.txt'
+running build_ext
+Creating /MRTP/MRTP/src/install/webots_ros2_epuck/lib/python3.12/site-packages/webots-ros2-epuck.egg-link (link to .)
+Installing drive_calibrator script to /MRTP/MRTP/src/install/webots_ros2_epuck/lib/webots_ros2_epuck
+Installing epuck_node script to /MRTP/MRTP/src/install/webots_ros2_epuck/lib/webots_ros2_epuck
+Installing simple_mapper script to /MRTP/MRTP/src/install/webots_ros2_epuck/lib/webots_ros2_epuck
+
+Installed /MRTP/MRTP/src/build/webots_ros2_epuck
+running symlink_data
+creating /MRTP/MRTP/src/install/webots_ros2_epuck/share/ament_index
+creating /MRTP/MRTP/src/install/webots_ros2_epuck/share/ament_index/resource_index
+creating /MRTP/MRTP/src/install/webots_ros2_epuck/share/ament_index/resource_index/packages
+symbolically linking /MRTP/MRTP/src/build/webots_ros2_epuck/resource/webots_ros2_epuck -> /MRTP/MRTP/src/install/webots_ros2_epuck/share/ament_index/resource_index/packages
+creating /MRTP/MRTP/src/install/webots_ros2_epuck/share/webots_ros2_epuck/launch
+symbolically linking /MRTP/MRTP/src/build/webots_ros2_epuck/launch/robot_launch.py -> /MRTP/MRTP/src/install/webots_ros2_epuck/share/webots_ros2_epuck/launch
+symbolically linking /MRTP/MRTP/src/build/webots_ros2_epuck/launch/robot_tools_launch.py -> /MRTP/MRTP/src/install/webots_ros2_epuck/share/webots_ros2_epuck/launch
+symbolically linking /MRTP/MRTP/src/build/webots_ros2_epuck/launch/rats_life_launch.py -> /MRTP/MRTP/src/install/webots_ros2_epuck/share/webots_ros2_epuck/launch
+symbolically linking /MRTP/MRTP/src/build/webots_ros2_epuck/launch/rats_life_waypoints_launch.py -> /MRTP/MRTP/src/install/webots_ros2_epuck/share/webots_ros2_epuck/launch
+creating /MRTP/MRTP/src/install/webots_ros2_epuck/share/webots_ros2_epuck/worlds
+symbolically linking /MRTP/MRTP/src/build/webots_ros2_epuck/worlds/epuck_world.wbt -> /MRTP/MRTP/src/install/webots_ros2_epuck/share/webots_ros2_epuck/worlds
+symbolically linking /MRTP/MRTP/src/build/webots_ros2_epuck/worlds/.epuck_world.wbproj -> /MRTP/MRTP/src/install/webots_ros2_epuck/share/webots_ros2_epuck/worlds
+symbolically linking /MRTP/MRTP/src/build/webots_ros2_epuck/worlds/rats_life_benchmark.wbt -> /MRTP/MRTP/src/install/webots_ros2_epuck/share/webots_ros2_epuck/worlds
+symbolically linking /MRTP/MRTP/src/build/webots_ros2_epuck/worlds/.rats_life_benchmark.wbproj -> /MRTP/MRTP/src/install/webots_ros2_epuck/share/webots_ros2_epuck/worlds
+creating /MRTP/MRTP/src/install/webots_ros2_epuck/share/webots_ros2_epuck/protos
+symbolically linking /MRTP/MRTP/src/build/webots_ros2_epuck/protos/LegoTallInterval.proto -> /MRTP/MRTP/src/install/webots_ros2_epuck/share/webots_ros2_epuck/protos
+symbolically linking /MRTP/MRTP/src/build/webots_ros2_epuck/protos/LegoTallWall.proto -> /MRTP/MRTP/src/install/webots_ros2_epuck/share/webots_ros2_epuck/protos
+creating /MRTP/MRTP/src/install/webots_ros2_epuck/share/webots_ros2_epuck/resource
+symbolically linking /MRTP/MRTP/src/build/webots_ros2_epuck/resource/all.rviz -> /MRTP/MRTP/src/install/webots_ros2_epuck/share/webots_ros2_epuck/resource
+symbolically linking /MRTP/MRTP/src/build/webots_ros2_epuck/resource/nav2_params.yaml -> /MRTP/MRTP/src/install/webots_ros2_epuck/share/webots_ros2_epuck/resource
+symbolically linking /MRTP/MRTP/src/build/webots_ros2_epuck/resource/nav2_params_iron.yaml -> /MRTP/MRTP/src/install/webots_ros2_epuck/share/webots_ros2_epuck/resource
+symbolically linking /MRTP/MRTP/src/build/webots_ros2_epuck/resource/map_rats_life.pgm -> /MRTP/MRTP/src/install/webots_ros2_epuck/share/webots_ros2_epuck/resource
+symbolically linking /MRTP/MRTP/src/build/webots_ros2_epuck/resource/map_rats_life.yaml -> /MRTP/MRTP/src/install/webots_ros2_epuck/share/webots_ros2_epuck/resource
+symbolically linking /MRTP/MRTP/src/build/webots_ros2_epuck/resource/nav2_rats_life_waypoints.yaml -> /MRTP/MRTP/src/install/webots_ros2_epuck/share/webots_ros2_epuck/resource
+symbolically linking /MRTP/MRTP/src/build/webots_ros2_epuck/resource/epuck_world_map.pgm -> /MRTP/MRTP/src/install/webots_ros2_epuck/share/webots_ros2_epuck/resource
+symbolically linking /MRTP/MRTP/src/build/webots_ros2_epuck/resource/epuck_world_map.yaml -> /MRTP/MRTP/src/install/webots_ros2_epuck/share/webots_ros2_epuck/resource
+symbolically linking /MRTP/MRTP/src/build/webots_ros2_epuck/resource/epuck_webots.urdf -> /MRTP/MRTP/src/install/webots_ros2_epuck/share/webots_ros2_epuck/resource
+symbolically linking /MRTP/MRTP/src/build/webots_ros2_epuck/resource/ros2_control.yml -> /MRTP/MRTP/src/install/webots_ros2_epuck/share/webots_ros2_epuck/resource
+symbolically linking /MRTP/MRTP/src/build/webots_ros2_epuck/package.xml -> /MRTP/MRTP/src/install/webots_ros2_epuck/share/webots_ros2_epuck

@@ -1,0 +1,43 @@
+running egg_info
+creating ../../build/gazeboenvs/gazeboenvs.egg-info
+writing ../../build/gazeboenvs/gazeboenvs.egg-info/PKG-INFO
+writing dependency_links to ../../build/gazeboenvs/gazeboenvs.egg-info/dependency_links.txt
+writing requirements to ../../build/gazeboenvs/gazeboenvs.egg-info/requires.txt
+writing top-level names to ../../build/gazeboenvs/gazeboenvs.egg-info/top_level.txt
+writing manifest file '../../build/gazeboenvs/gazeboenvs.egg-info/SOURCES.txt'
+reading manifest file '../../build/gazeboenvs/gazeboenvs.egg-info/SOURCES.txt'
+writing manifest file '../../build/gazeboenvs/gazeboenvs.egg-info/SOURCES.txt'
+running build
+running build_py
+creating /MRTP/MRTP/build/gazeboenvs/build
+creating /MRTP/MRTP/build/gazeboenvs/build/lib
+creating /MRTP/MRTP/build/gazeboenvs/build/lib/gazeboenvs
+copying gazeboenvs/__init__.py -> /MRTP/MRTP/build/gazeboenvs/build/lib/gazeboenvs
+running install
+running install_lib
+creating /MRTP/MRTP/install/gazeboenvs/lib/python3.12/site-packages/gazeboenvs
+copying /MRTP/MRTP/build/gazeboenvs/build/lib/gazeboenvs/__init__.py -> /MRTP/MRTP/install/gazeboenvs/lib/python3.12/site-packages/gazeboenvs
+byte-compiling /MRTP/MRTP/install/gazeboenvs/lib/python3.12/site-packages/gazeboenvs/__init__.py to __init__.cpython-312.pyc
+running install_data
+creating /MRTP/MRTP/install/gazeboenvs/share/ament_index
+creating /MRTP/MRTP/install/gazeboenvs/share/ament_index/resource_index
+creating /MRTP/MRTP/install/gazeboenvs/share/ament_index/resource_index/packages
+copying resource/gazeboenvs -> /MRTP/MRTP/install/gazeboenvs/share/ament_index/resource_index/packages
+copying package.xml -> /MRTP/MRTP/install/gazeboenvs/share/gazeboenvs
+creating /MRTP/MRTP/install/gazeboenvs/share/gazeboenvs/launch
+copying launch/husky_orchard.launch.py -> /MRTP/MRTP/install/gazeboenvs/share/gazeboenvs/launch
+copying launch/tb4_warehouse.launch.py -> /MRTP/MRTP/install/gazeboenvs/share/gazeboenvs/launch
+copying launch/tb4_simulation.launch.py -> /MRTP/MRTP/install/gazeboenvs/share/gazeboenvs/launch
+copying launch/gazebo_husky.launch.py -> /MRTP/MRTP/install/gazeboenvs/share/gazeboenvs/launch
+copying launch/tb3_simulation.launch.py -> /MRTP/MRTP/install/gazeboenvs/share/gazeboenvs/launch
+creating /MRTP/MRTP/install/gazeboenvs/share/gazeboenvs/params
+copying params/nav2_params_tb4.yaml -> /MRTP/MRTP/install/gazeboenvs/share/gazeboenvs/params
+copying params/nav2_params_wh_tb4.yaml -> /MRTP/MRTP/install/gazeboenvs/share/gazeboenvs/params
+creating /MRTP/MRTP/install/gazeboenvs/share/gazeboenvs/params/indoor
+copying params/indoor/robot.yaml -> /MRTP/MRTP/install/gazeboenvs/share/gazeboenvs/params/indoor
+creating /MRTP/MRTP/install/gazeboenvs/share/gazeboenvs/params/outdoor
+copying params/outdoor/robot.yaml -> /MRTP/MRTP/install/gazeboenvs/share/gazeboenvs/params/outdoor
+running install_egg_info
+Copying ../../build/gazeboenvs/gazeboenvs.egg-info to /MRTP/MRTP/install/gazeboenvs/lib/python3.12/site-packages/gazeboenvs-0.0.1-py3.12.egg-info
+running install_scripts
+writing list of installed files to '/MRTP/MRTP/build/gazeboenvs/install.log'

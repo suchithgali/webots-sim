@@ -1,0 +1,17 @@
+{
+  "package_name": "webots_ros2_msgs",
+  "non_idl_tuples": [
+    "/MRTP/MRTP/src/webots_ros2/webots_ros2_msgs:msg/BoolStamped.msg",
+    "/MRTP/MRTP/src/webots_ros2/webots_ros2_msgs:msg/FloatStamped.msg",
+    "/MRTP/MRTP/src/webots_ros2/webots_ros2_msgs:msg/StringStamped.msg",
+    "/MRTP/MRTP/src/webots_ros2/webots_ros2_msgs:msg/CameraRecognitionObject.msg",
+    "/MRTP/MRTP/src/webots_ros2/webots_ros2_msgs:msg/CameraRecognitionObjects.msg",
+    "/MRTP/MRTP/src/webots_ros2/webots_ros2_msgs:msg/UrdfRobot.msg",
+    "/MRTP/MRTP/src/webots_ros2/webots_ros2_msgs:msg/PenInkProperties.msg",
+    "/MRTP/MRTP/src/webots_ros2/webots_ros2_msgs:srv/EmitterSendString.srv",
+    "/MRTP/MRTP/src/webots_ros2/webots_ros2_msgs:srv/GetBool.srv",
+    "/MRTP/MRTP/src/webots_ros2/webots_ros2_msgs:srv/SetString.srv",
+    "/MRTP/MRTP/src/webots_ros2/webots_ros2_msgs:srv/SpawnNodeFromString.srv",
+    "/MRTP/MRTP/src/webots_ros2/webots_ros2_msgs:srv/SpawnUrdfRobot.srv"
+  ]
+}

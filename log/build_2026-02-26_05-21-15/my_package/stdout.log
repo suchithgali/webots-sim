@@ -1,0 +1,63 @@
+-- The C compiler identification is GNU 13.3.0
+-- The CXX compiler identification is GNU 13.3.0
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Check for working C compiler: /usr/bin/cc - skipped
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: /usr/bin/c++ - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- Found ament_cmake: 2.5.5 (/opt/ros/jazzy/share/ament_cmake/cmake)
+-- Found Python3: /.venv/bin/python3 (found version "3.12.3") found components: Interpreter 
+-- Found webots_ros2_driver: 2025.0.1 (/MRTP/MRTP/src/install/webots_ros2_driver/share/webots_ros2_driver/cmake)
+-- Found rosidl_generator_c: 4.6.7 (/opt/ros/jazzy/share/rosidl_generator_c/cmake)
+-- Found rosidl_generator_cpp: 4.6.7 (/opt/ros/jazzy/share/rosidl_generator_cpp/cmake)
+-- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+-- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+-- Found rmw_implementation_cmake: 7.3.3 (/opt/ros/jazzy/share/rmw_implementation_cmake/cmake)
+-- Found rmw_fastrtps_cpp: 8.4.3 (/opt/ros/jazzy/share/rmw_fastrtps_cpp/cmake)
+-- Found OpenSSL: /usr/lib/aarch64-linux-gnu/libcrypto.so (found version "3.0.13")  
+-- Found FastRTPS: /opt/ros/jazzy/include (Required is at least version "2.13") 
+-- Using RMW implementation 'rmw_fastrtps_cpp' as default
+-- Found eigen3_cmake_module: 0.3.0 (/opt/ros/jazzy/share/eigen3_cmake_module/cmake)
+-- Found Eigen3: TRUE (found version "3.4.0") 
+-- Ensuring Eigen3 include directory is part of orocos-kdl CMake target
+-- Found nav_msgs: 5.3.6 (/opt/ros/jazzy/share/nav_msgs/cmake)
+-- Configuring done (7.1s)
+-- Generating done (0.2s)
+-- Build files have been written to: /MRTP/MRTP/build/my_package
+[ 25%] [32mBuilding CXX object CMakeFiles/mavic2pro_patrol.dir/src/mavic2pro_patrol.cpp.o[0m
+[ 50%] [32mBuilding CXX object CMakeFiles/autopilot_node.dir/src/autopilot_node.cpp.o[0m
+[ 75%] [32m[1mLinking CXX executable mavic2pro_patrol[0m
+[ 75%] Built target mavic2pro_patrol
+[100%] [32m[1mLinking CXX executable autopilot_node[0m
+[100%] Built target autopilot_node
+-- Install configuration: ""
+-- Installing: /MRTP/MRTP/install/my_package/lib/my_package/autopilot_node
+-- Set non-toolchain portion of runtime path of "/MRTP/MRTP/install/my_package/lib/my_package/autopilot_node" to ""
+-- Installing: /MRTP/MRTP/install/my_package/lib/my_package/mavic2pro_patrol
+-- Set non-toolchain portion of runtime path of "/MRTP/MRTP/install/my_package/lib/my_package/mavic2pro_patrol" to ""
+-- Installing: /MRTP/MRTP/install/my_package/share/my_package/launch
+-- Installing: /MRTP/MRTP/install/my_package/share/my_package/launch/robot_launch.py
+-- Installing: /MRTP/MRTP/install/my_package/share/my_package/resource
+-- Installing: /MRTP/MRTP/install/my_package/share/my_package/resource/my_robot.urdf
+-- Installing: /MRTP/MRTP/install/my_package/share/my_package/worlds
+-- Installing: /MRTP/MRTP/install/my_package/share/my_package/worlds/wharehouse.wbt
+-- Installing: /MRTP/MRTP/install/my_package/share/ament_index/resource_index/package_run_dependencies/my_package
+-- Installing: /MRTP/MRTP/install/my_package/share/ament_index/resource_index/parent_prefix_path/my_package
+-- Installing: /MRTP/MRTP/install/my_package/share/my_package/environment/ament_prefix_path.sh
+-- Installing: /MRTP/MRTP/install/my_package/share/my_package/environment/ament_prefix_path.dsv
+-- Installing: /MRTP/MRTP/install/my_package/share/my_package/environment/path.sh
+-- Installing: /MRTP/MRTP/install/my_package/share/my_package/environment/path.dsv
+-- Installing: /MRTP/MRTP/install/my_package/share/my_package/local_setup.bash
+-- Installing: /MRTP/MRTP/install/my_package/share/my_package/local_setup.sh
+-- Installing: /MRTP/MRTP/install/my_package/share/my_package/local_setup.zsh
+-- Installing: /MRTP/MRTP/install/my_package/share/my_package/local_setup.dsv
+-- Installing: /MRTP/MRTP/install/my_package/share/my_package/package.dsv
+-- Installing: /MRTP/MRTP/install/my_package/share/ament_index/resource_index/packages/my_package
+-- Installing: /MRTP/MRTP/install/my_package/share/my_package/cmake/my_packageConfig.cmake
+-- Installing: /MRTP/MRTP/install/my_package/share/my_package/cmake/my_packageConfig-version.cmake
+-- Installing: /MRTP/MRTP/install/my_package/share/my_package/package.xml

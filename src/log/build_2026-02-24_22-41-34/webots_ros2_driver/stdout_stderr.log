@@ -1,0 +1,73 @@
+-- The C compiler identification is GNU 13.3.0
+-- The CXX compiler identification is GNU 13.3.0
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Check for working C compiler: /usr/bin/cc - skipped
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: /usr/bin/c++ - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- Found ament_cmake: 2.5.5 (/opt/ros/jazzy/share/ament_cmake/cmake)
+-- Found Python3: /.venv/bin/python3 (found version "3.12.3") found components: Interpreter 
+-- Override CMake install command with custom implementation using symlinks instead of copying resources
+-- Found rosgraph_msgs: 2.0.3 (/opt/ros/jazzy/share/rosgraph_msgs/cmake)
+-- Found rosidl_generator_c: 4.6.7 (/opt/ros/jazzy/share/rosidl_generator_c/cmake)
+-- Found rosidl_generator_cpp: 4.6.7 (/opt/ros/jazzy/share/rosidl_generator_cpp/cmake)
+-- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+-- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+-- Found rclcpp: 28.1.16 (/opt/ros/jazzy/share/rclcpp/cmake)
+-- Found rmw_implementation_cmake: 7.3.3 (/opt/ros/jazzy/share/rmw_implementation_cmake/cmake)
+-- Found rmw_fastrtps_cpp: 8.4.3 (/opt/ros/jazzy/share/rmw_fastrtps_cpp/cmake)
+-- Found OpenSSL: /usr/lib/aarch64-linux-gnu/libcrypto.so (found version "3.0.13")  
+-- Found FastRTPS: /opt/ros/jazzy/include (Required is at least version "2.13") 
+-- Using RMW implementation 'rmw_fastrtps_cpp' as default
+-- Found pluginlib: 5.4.4 (/opt/ros/jazzy/share/pluginlib/cmake)
+-- Found sensor_msgs: 5.3.6 (/opt/ros/jazzy/share/sensor_msgs/cmake)
+-- Found tf2_geometry_msgs: 0.36.19 (/opt/ros/jazzy/share/tf2_geometry_msgs/cmake)
+-- Found eigen3_cmake_module: 0.3.0 (/opt/ros/jazzy/share/eigen3_cmake_module/cmake)
+-- Found Eigen3: TRUE (found version "3.4.0") 
+-- Ensuring Eigen3 include directory is part of orocos-kdl CMake target
+-- Found vision_msgs: 4.1.1 (/opt/ros/jazzy/share/vision_msgs/cmake)
+-- Found webots_ros2_msgs: 2025.0.1 (/MRTP/MRTP/src/install/webots_ros2_msgs/share/webots_ros2_msgs/cmake)
+-- Found TinyXML2 via Config file: /usr/lib/aarch64-linux-gnu/cmake/tinyxml2
+-- Found Python: /usr/include/python3.12 (found suitable exact version "3.12.3") found components: Development Development.Module Development.Embed 
+-- Configuring done (1.2s)
+-- Generating done (0.1s)
+-- Build files have been written to: /MRTP/MRTP/src/build/webots_ros2_driver
+[  0%] Built target ament_cmake_python_symlink_webots_ros2_driver
+[  0%] Built target ament_cmake_python_symlink_controller
+[  0%] Built target ament_cmake_python_symlink_vehicle
+gmake[2]: *** [CMakeFiles/compile-lib-controller.dir/build.make:70: CMakeFiles/compile-lib-controller] Error 2
+gmake[1]: *** [CMakeFiles/Makefile2:156: CMakeFiles/compile-lib-controller.dir/all] Error 2
+gmake[1]: *** Waiting for unfinished jobs....
+running egg_info
+creating webots_ros2_driver.egg-info
+running egg_info
+creating vehicle.egg-info
+running egg_info
+writing webots_ros2_driver.egg-info/PKG-INFO
+creating controller.egg-info
+writing dependency_links to webots_ros2_driver.egg-info/dependency_links.txt
+writing top-level names to webots_ros2_driver.egg-info/top_level.txt
+writing manifest file 'webots_ros2_driver.egg-info/SOURCES.txt'
+writing vehicle.egg-info/PKG-INFO
+writing controller.egg-info/PKG-INFO
+writing dependency_links to vehicle.egg-info/dependency_links.txt
+writing dependency_links to controller.egg-info/dependency_links.txt
+writing top-level names to controller.egg-info/top_level.txt
+writing top-level names to vehicle.egg-info/top_level.txt
+writing manifest file 'vehicle.egg-info/SOURCES.txt'
+writing manifest file 'controller.egg-info/SOURCES.txt'
+reading manifest file 'webots_ros2_driver.egg-info/SOURCES.txt'
+writing manifest file 'webots_ros2_driver.egg-info/SOURCES.txt'
+reading manifest file 'vehicle.egg-info/SOURCES.txt'
+writing manifest file 'vehicle.egg-info/SOURCES.txt'
+reading manifest file 'controller.egg-info/SOURCES.txt'
+writing manifest file 'controller.egg-info/SOURCES.txt'
+[  0%] Built target ament_cmake_python_build_webots_ros2_driver_egg
+[  0%] Built target ament_cmake_python_build_vehicle_egg
+[  0%] Built target ament_cmake_python_build_controller_egg
+gmake: *** [Makefile:146: all] Error 2

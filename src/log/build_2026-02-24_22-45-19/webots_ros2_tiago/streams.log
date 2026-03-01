@@ -1,0 +1,44 @@
+[0.874s] Invoking command in '/MRTP/MRTP/src/build/webots_ros2_tiago': AMENT_PREFIX_PATH=/MRTP/MRTP/src/install/webots_ros2_control:/MRTP/MRTP/src/install/webots_ros2_driver:/MRTP/MRTP/src/install/webots_ros2_msgs:/MRTP/MRTP/src/install/webots_ros2_importer:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/MRTP/MRTP/src/install/webots_ros2_control:/MRTP/MRTP/src/install/webots_ros2_driver:/MRTP/MRTP/src/install/webots_ros2_msgs:${CMAKE_PREFIX_PATH} LD_LIBRARY_PATH=/MRTP/MRTP/src/install/webots_ros2_control/lib:/MRTP/MRTP/src/install/webots_ros2_driver/lib:/MRTP/MRTP/src/install/webots_ros2_msgs/lib:${LD_LIBRARY_PATH} PS1=(.venv) \[\e]0;\u@\h: \w\a\]${debian_chroot:+($debian_chroot)}\u@\h:\w\$ PYTHONPATH=/MRTP/MRTP/src/build/webots_ros2_tiago/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/MRTP/MRTP/src/install/webots_ros2_tiago/lib/python3.12/site-packages:/MRTP/MRTP/src/install/webots_ros2_driver/lib/python3.12/site-packages:/MRTP/MRTP/src/install/webots_ros2_msgs/lib/python3.12/site-packages:/MRTP/MRTP/src/build/webots_ros2_importer:/MRTP/MRTP/src/install/webots_ros2_importer/lib/python3.12/site-packages:${PYTHONPATH} VIRTUAL_ENV_PROMPT=(.venv) /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py develop --editable --build-directory /MRTP/MRTP/src/build/webots_ros2_tiago/build --no-deps symlink_data
+[1.106s] running develop
+[1.239s] running egg_info
+[1.239s] creating webots_ros2_tiago.egg-info
+[1.254s] writing webots_ros2_tiago.egg-info/PKG-INFO
+[1.259s] writing dependency_links to webots_ros2_tiago.egg-info/dependency_links.txt
+[1.260s] writing entry points to webots_ros2_tiago.egg-info/entry_points.txt
+[1.262s] writing requirements to webots_ros2_tiago.egg-info/requires.txt
+[1.262s] writing top-level names to webots_ros2_tiago.egg-info/top_level.txt
+[1.263s] writing manifest file 'webots_ros2_tiago.egg-info/SOURCES.txt'
+[1.277s] reading manifest file 'webots_ros2_tiago.egg-info/SOURCES.txt'
+[1.285s] writing manifest file 'webots_ros2_tiago.egg-info/SOURCES.txt'
+[1.301s] running build_ext
+[1.319s] Creating /MRTP/MRTP/src/install/webots_ros2_tiago/lib/python3.12/site-packages/webots-ros2-tiago.egg-link (link to .)
+[1.323s] 
+[1.324s] Installed /MRTP/MRTP/src/build/webots_ros2_tiago
+[1.327s] running symlink_data
+[1.329s] creating /MRTP/MRTP/src/install/webots_ros2_tiago/share/ament_index
+[1.330s] creating /MRTP/MRTP/src/install/webots_ros2_tiago/share/ament_index/resource_index
+[1.336s] creating /MRTP/MRTP/src/install/webots_ros2_tiago/share/ament_index/resource_index/packages
+[1.341s] symbolically linking /MRTP/MRTP/src/build/webots_ros2_tiago/resource/webots_ros2_tiago -> /MRTP/MRTP/src/install/webots_ros2_tiago/share/ament_index/resource_index/packages
+[1.343s] creating /MRTP/MRTP/src/install/webots_ros2_tiago/share/webots_ros2_tiago/launch
+[1.350s] symbolically linking /MRTP/MRTP/src/build/webots_ros2_tiago/launch/robot_launch.py -> /MRTP/MRTP/src/install/webots_ros2_tiago/share/webots_ros2_tiago/launch
+[1.351s] symbolically linking /MRTP/MRTP/src/build/webots_ros2_tiago/launch/robot_bringup_launch.py -> /MRTP/MRTP/src/install/webots_ros2_tiago/share/webots_ros2_tiago/launch
+[1.353s] creating /MRTP/MRTP/src/install/webots_ros2_tiago/share/webots_ros2_tiago/resource
+[1.353s] symbolically linking /MRTP/MRTP/src/build/webots_ros2_tiago/resource/tiago_webots.urdf -> /MRTP/MRTP/src/install/webots_ros2_tiago/share/webots_ros2_tiago/resource
+[1.359s] symbolically linking /MRTP/MRTP/src/build/webots_ros2_tiago/resource/tiago_bringup_webots.urdf -> /MRTP/MRTP/src/install/webots_ros2_tiago/share/webots_ros2_tiago/resource
+[1.361s] symbolically linking /MRTP/MRTP/src/build/webots_ros2_tiago/resource/ros2_control.yml -> /MRTP/MRTP/src/install/webots_ros2_tiago/share/webots_ros2_tiago/resource
+[1.364s] symbolically linking /MRTP/MRTP/src/build/webots_ros2_tiago/resource/ros2_control_bringup.yml -> /MRTP/MRTP/src/install/webots_ros2_tiago/share/webots_ros2_tiago/resource
+[1.368s] symbolically linking /MRTP/MRTP/src/build/webots_ros2_tiago/resource/nav2_params.yaml -> /MRTP/MRTP/src/install/webots_ros2_tiago/share/webots_ros2_tiago/resource
+[1.369s] symbolically linking /MRTP/MRTP/src/build/webots_ros2_tiago/resource/nav2_params_iron.yaml -> /MRTP/MRTP/src/install/webots_ros2_tiago/share/webots_ros2_tiago/resource
+[1.371s] symbolically linking /MRTP/MRTP/src/build/webots_ros2_tiago/resource/default.rviz -> /MRTP/MRTP/src/install/webots_ros2_tiago/share/webots_ros2_tiago/resource
+[1.372s] symbolically linking /MRTP/MRTP/src/build/webots_ros2_tiago/resource/default_bringup.rviz -> /MRTP/MRTP/src/install/webots_ros2_tiago/share/webots_ros2_tiago/resource
+[1.373s] symbolically linking /MRTP/MRTP/src/build/webots_ros2_tiago/resource/map.pgm -> /MRTP/MRTP/src/install/webots_ros2_tiago/share/webots_ros2_tiago/resource
+[1.374s] symbolically linking /MRTP/MRTP/src/build/webots_ros2_tiago/resource/map.yaml -> /MRTP/MRTP/src/install/webots_ros2_tiago/share/webots_ros2_tiago/resource
+[1.374s] symbolically linking /MRTP/MRTP/src/build/webots_ros2_tiago/resource/cartographer.lua -> /MRTP/MRTP/src/install/webots_ros2_tiago/share/webots_ros2_tiago/resource
+[1.375s] symbolically linking /MRTP/MRTP/src/build/webots_ros2_tiago/resource/slam_toolbox_params.yaml -> /MRTP/MRTP/src/install/webots_ros2_tiago/share/webots_ros2_tiago/resource
+[1.376s] symbolically linking /MRTP/MRTP/src/build/webots_ros2_tiago/package.xml -> /MRTP/MRTP/src/install/webots_ros2_tiago/share/webots_ros2_tiago
+[1.377s] creating /MRTP/MRTP/src/install/webots_ros2_tiago/share/webots_ros2_tiago/worlds
+[1.378s] symbolically linking /MRTP/MRTP/src/build/webots_ros2_tiago/worlds/default.wbt -> /MRTP/MRTP/src/install/webots_ros2_tiago/share/webots_ros2_tiago/worlds
+[1.380s] symbolically linking /MRTP/MRTP/src/build/webots_ros2_tiago/worlds/.default.wbproj -> /MRTP/MRTP/src/install/webots_ros2_tiago/share/webots_ros2_tiago/worlds
+[1.381s] symbolically linking /MRTP/MRTP/src/build/webots_ros2_tiago/worlds/default_bringup.wbt -> /MRTP/MRTP/src/install/webots_ros2_tiago/share/webots_ros2_tiago/worlds
+[1.383s] symbolically linking /MRTP/MRTP/src/build/webots_ros2_tiago/worlds/.default_bringup.wbproj -> /MRTP/MRTP/src/install/webots_ros2_tiago/share/webots_ros2_tiago/worlds
+[1.400s] Invoked command in '/MRTP/MRTP/src/build/webots_ros2_tiago' returned '0': AMENT_PREFIX_PATH=/MRTP/MRTP/src/install/webots_ros2_control:/MRTP/MRTP/src/install/webots_ros2_driver:/MRTP/MRTP/src/install/webots_ros2_msgs:/MRTP/MRTP/src/install/webots_ros2_importer:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/MRTP/MRTP/src/install/webots_ros2_control:/MRTP/MRTP/src/install/webots_ros2_driver:/MRTP/MRTP/src/install/webots_ros2_msgs:${CMAKE_PREFIX_PATH} LD_LIBRARY_PATH=/MRTP/MRTP/src/install/webots_ros2_control/lib:/MRTP/MRTP/src/install/webots_ros2_driver/lib:/MRTP/MRTP/src/install/webots_ros2_msgs/lib:${LD_LIBRARY_PATH} PS1=(.venv) \[\e]0;\u@\h: \w\a\]${debian_chroot:+($debian_chroot)}\u@\h:\w\$ PYTHONPATH=/MRTP/MRTP/src/build/webots_ros2_tiago/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/MRTP/MRTP/src/install/webots_ros2_tiago/lib/python3.12/site-packages:/MRTP/MRTP/src/install/webots_ros2_driver/lib/python3.12/site-packages:/MRTP/MRTP/src/install/webots_ros2_msgs/lib/python3.12/site-packages:/MRTP/MRTP/src/build/webots_ros2_importer:/MRTP/MRTP/src/install/webots_ros2_importer/lib/python3.12/site-packages:${PYTHONPATH} VIRTUAL_ENV_PROMPT=(.venv) /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py develop --editable --build-directory /MRTP/MRTP/src/build/webots_ros2_tiago/build --no-deps symlink_data

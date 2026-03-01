@@ -1,0 +1,4 @@
+In file included from [01m[K/MRTP/MRTP/src/my_package/src/mavic2pro_patrol.cpp:21[m[K:
+[01m[K/MRTP/MRTP/src/install/webots_ros2_driver/include/webots/cpp/webots/GPS.hpp:37:5:[m[K [01;35m[Kwarning: [m[Ktype qualifiers ignored on function return type [[01;35m[K-Wignored-qualifiers[m[K]
+   37 |     [01;35m[Kconst[m[K CoordinateSystem getCoordinateSystem() const;
+      |     [01;35m[K^~~~~[m[K

@@ -1,0 +1,384 @@
+[0.007s] Invoking command in '/MRTP/MRTP/src/build/webots_ros2_driver': AMENT_PREFIX_PATH=/MRTP/MRTP/src/install/webots_ros2_msgs:/MRTP/MRTP/src/install/webots_ros2_importer:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/MRTP/MRTP/src/install/webots_ros2_msgs:/opt/ros/jazzy/opt/gz_sim_vendor:/opt/ros/jazzy/opt/gz_sensors_vendor:/opt/ros/jazzy/opt/gz_physics_vendor:/opt/ros/jazzy/opt/sdformat_vendor:/opt/ros/jazzy/opt/gz_gui_vendor:/opt/ros/jazzy/opt/gz_transport_vendor:/opt/ros/jazzy/opt/gz_rendering_vendor:/opt/ros/jazzy/opt/gz_plugin_vendor:/opt/ros/jazzy/opt/gz_fuel_tools_vendor:/opt/ros/jazzy/opt/gz_msgs_vendor:/opt/ros/jazzy/opt/gz_common_vendor:/opt/ros/jazzy/opt/gz_math_vendor:/opt/ros/jazzy/opt/gz_utils_vendor:/opt/ros/jazzy/opt/gz_tools_vendor:/opt/ros/jazzy/opt/gz_ogre_next_vendor:/opt/ros/jazzy/opt/gz_dartsim_vendor:/opt/ros/jazzy/opt/gz_cmake_vendor:/opt/ros/jazzy LD_LIBRARY_PATH=/MRTP/MRTP/src/install/webots_ros2_msgs/lib:${LD_LIBRARY_PATH} PS1=(.venv) \[\e]0;\u@\h: \w\a\]${debian_chroot:+($debian_chroot)}\u@\h:\w\$ PYTHONPATH=/MRTP/MRTP/src/install/webots_ros2_msgs/lib/python3.12/site-packages:/MRTP/MRTP/src/build/webots_ros2_importer:/MRTP/MRTP/src/install/webots_ros2_importer/lib/python3.12/site-packages:${PYTHONPATH} VIRTUAL_ENV_PROMPT=(.venv) /usr/bin/cmake /MRTP/MRTP/src/webots_ros2/webots_ros2_driver -DAMENT_CMAKE_SYMLINK_INSTALL=1 -DCMAKE_INSTALL_PREFIX=/MRTP/MRTP/src/install/webots_ros2_driver
+[0.042s] -- The C compiler identification is GNU 13.3.0
+[0.076s] -- The CXX compiler identification is GNU 13.3.0
+[0.084s] -- Detecting C compiler ABI info
+[0.153s] -- Detecting C compiler ABI info - done
+[0.161s] -- Check for working C compiler: /usr/bin/cc - skipped
+[0.161s] -- Detecting C compile features
+[0.162s] -- Detecting C compile features - done
+[0.167s] -- Detecting CXX compiler ABI info
+[0.237s] -- Detecting CXX compiler ABI info - done
+[0.246s] -- Check for working CXX compiler: /usr/bin/c++ - skipped
+[0.246s] -- Detecting CXX compile features
+[0.246s] -- Detecting CXX compile features - done
+[0.253s] -- Found ament_cmake: 2.5.5 (/opt/ros/jazzy/share/ament_cmake/cmake)
+[0.318s] -- Found Python3: /.venv/bin/python3 (found version "3.12.3") found components: Interpreter 
+[0.356s] -- Override CMake install command with custom implementation using symlinks instead of copying resources
+[0.419s] -- Found rosgraph_msgs: 2.0.3 (/opt/ros/jazzy/share/rosgraph_msgs/cmake)
+[0.466s] -- Found rosidl_generator_c: 4.6.7 (/opt/ros/jazzy/share/rosidl_generator_c/cmake)
+[0.482s] -- Found rosidl_generator_cpp: 4.6.7 (/opt/ros/jazzy/share/rosidl_generator_cpp/cmake)
+[0.500s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[0.520s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[0.551s] -- Found rclcpp: 28.1.16 (/opt/ros/jazzy/share/rclcpp/cmake)
+[0.606s] -- Found rmw_implementation_cmake: 7.3.3 (/opt/ros/jazzy/share/rmw_implementation_cmake/cmake)
+[0.611s] -- Found rmw_fastrtps_cpp: 8.4.3 (/opt/ros/jazzy/share/rmw_fastrtps_cpp/cmake)
+[0.662s] -- Found OpenSSL: /usr/lib/aarch64-linux-gnu/libcrypto.so (found version "3.0.13")  
+[0.672s] -- Found FastRTPS: /opt/ros/jazzy/include (Required is at least version "2.13") 
+[0.683s] -- Using RMW implementation 'rmw_fastrtps_cpp' as default
+[0.725s] -- Found pluginlib: 5.4.4 (/opt/ros/jazzy/share/pluginlib/cmake)
+[0.746s] -- Found sensor_msgs: 5.3.6 (/opt/ros/jazzy/share/sensor_msgs/cmake)
+[0.782s] -- Found tf2_geometry_msgs: 0.36.19 (/opt/ros/jazzy/share/tf2_geometry_msgs/cmake)
+[0.802s] -- Found eigen3_cmake_module: 0.3.0 (/opt/ros/jazzy/share/eigen3_cmake_module/cmake)
+[0.803s] -- Found Eigen3: TRUE (found version "3.4.0") 
+[0.804s] -- Ensuring Eigen3 include directory is part of orocos-kdl CMake target
+[0.898s] -- Found vision_msgs: 4.1.1 (/opt/ros/jazzy/share/vision_msgs/cmake)
+[0.909s] -- Found webots_ros2_msgs: 2025.0.1 (/MRTP/MRTP/src/install/webots_ros2_msgs/share/webots_ros2_msgs/cmake)
+[0.930s] -- Found TinyXML2 via Config file: /usr/lib/aarch64-linux-gnu/cmake/tinyxml2
+[0.993s] -- Found Python: /usr/include/python3.12 (found suitable exact version "3.12.3") found components: Development Development.Module Development.Embed 
+[1.202s] -- Configuring done (1.2s)
+[1.271s] -- Generating done (0.1s)
+[1.300s] -- Build files have been written to: /MRTP/MRTP/src/build/webots_ros2_driver
+[1.303s] Invoked command in '/MRTP/MRTP/src/build/webots_ros2_driver' returned '0': AMENT_PREFIX_PATH=/MRTP/MRTP/src/install/webots_ros2_msgs:/MRTP/MRTP/src/install/webots_ros2_importer:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/MRTP/MRTP/src/install/webots_ros2_msgs:/opt/ros/jazzy/opt/gz_sim_vendor:/opt/ros/jazzy/opt/gz_sensors_vendor:/opt/ros/jazzy/opt/gz_physics_vendor:/opt/ros/jazzy/opt/sdformat_vendor:/opt/ros/jazzy/opt/gz_gui_vendor:/opt/ros/jazzy/opt/gz_transport_vendor:/opt/ros/jazzy/opt/gz_rendering_vendor:/opt/ros/jazzy/opt/gz_plugin_vendor:/opt/ros/jazzy/opt/gz_fuel_tools_vendor:/opt/ros/jazzy/opt/gz_msgs_vendor:/opt/ros/jazzy/opt/gz_common_vendor:/opt/ros/jazzy/opt/gz_math_vendor:/opt/ros/jazzy/opt/gz_utils_vendor:/opt/ros/jazzy/opt/gz_tools_vendor:/opt/ros/jazzy/opt/gz_ogre_next_vendor:/opt/ros/jazzy/opt/gz_dartsim_vendor:/opt/ros/jazzy/opt/gz_cmake_vendor:/opt/ros/jazzy LD_LIBRARY_PATH=/MRTP/MRTP/src/install/webots_ros2_msgs/lib:${LD_LIBRARY_PATH} PS1=(.venv) \[\e]0;\u@\h: \w\a\]${debian_chroot:+($debian_chroot)}\u@\h:\w\$ PYTHONPATH=/MRTP/MRTP/src/install/webots_ros2_msgs/lib/python3.12/site-packages:/MRTP/MRTP/src/build/webots_ros2_importer:/MRTP/MRTP/src/install/webots_ros2_importer/lib/python3.12/site-packages:${PYTHONPATH} VIRTUAL_ENV_PROMPT=(.venv) /usr/bin/cmake /MRTP/MRTP/src/webots_ros2/webots_ros2_driver -DAMENT_CMAKE_SYMLINK_INSTALL=1 -DCMAKE_INSTALL_PREFIX=/MRTP/MRTP/src/install/webots_ros2_driver
+[1.304s] Invoking command in '/MRTP/MRTP/src/build/webots_ros2_driver': AMENT_PREFIX_PATH=/MRTP/MRTP/src/install/webots_ros2_msgs:/MRTP/MRTP/src/install/webots_ros2_importer:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/MRTP/MRTP/src/install/webots_ros2_msgs:/opt/ros/jazzy/opt/gz_sim_vendor:/opt/ros/jazzy/opt/gz_sensors_vendor:/opt/ros/jazzy/opt/gz_physics_vendor:/opt/ros/jazzy/opt/sdformat_vendor:/opt/ros/jazzy/opt/gz_gui_vendor:/opt/ros/jazzy/opt/gz_transport_vendor:/opt/ros/jazzy/opt/gz_rendering_vendor:/opt/ros/jazzy/opt/gz_plugin_vendor:/opt/ros/jazzy/opt/gz_fuel_tools_vendor:/opt/ros/jazzy/opt/gz_msgs_vendor:/opt/ros/jazzy/opt/gz_common_vendor:/opt/ros/jazzy/opt/gz_math_vendor:/opt/ros/jazzy/opt/gz_utils_vendor:/opt/ros/jazzy/opt/gz_tools_vendor:/opt/ros/jazzy/opt/gz_ogre_next_vendor:/opt/ros/jazzy/opt/gz_dartsim_vendor:/opt/ros/jazzy/opt/gz_cmake_vendor:/opt/ros/jazzy LD_LIBRARY_PATH=/MRTP/MRTP/src/install/webots_ros2_msgs/lib:${LD_LIBRARY_PATH} PS1=(.venv) \[\e]0;\u@\h: \w\a\]${debian_chroot:+($debian_chroot)}\u@\h:\w\$ PYTHONPATH=/MRTP/MRTP/src/install/webots_ros2_msgs/lib/python3.12/site-packages:/MRTP/MRTP/src/build/webots_ros2_importer:/MRTP/MRTP/src/install/webots_ros2_importer/lib/python3.12/site-packages:${PYTHONPATH} VIRTUAL_ENV_PROMPT=(.venv) /usr/bin/cmake --build /MRTP/MRTP/src/build/webots_ros2_driver -- -j12 -l12
+[1.353s] Using bundled prebuilt Webots controller libraries.
+[1.364s] [  0%] Built target compile-lib-controller
+[1.366s] [  0%] Built target ament_cmake_python_symlink_controller
+[1.366s] [  0%] Built target ament_cmake_python_symlink_vehicle
+[1.366s] [  0%] Built target ament_cmake_python_symlink_webots_ros2_driver
+[1.391s] Using bundled prebuilt Webots generic robot window library.
+[1.392s] Using bundled prebuilt Webots vehicle libraries.
+[1.406s] [  0%] Built target compile-lib-vehicle
+[1.407s] [  0%] Built target compile-generic-window
+[1.447s] [  3%] [32mBuilding CXX object CMakeFiles/webots_ros2_driver_rgbd.dir/src/plugins/dynamic/Ros2RGBD.cpp.o[0m
+[1.455s] [  7%] [32mBuilding CXX object CMakeFiles/webots_ros2_driver_rgbd.dir/src/plugins/Ros2SensorPlugin.cpp.o[0m
+[1.459s] [ 11%] [32mBuilding CXX object CMakeFiles/webots_ros2_driver_imu.dir/src/utils/Utils.cpp.o[0m
+[1.465s] [ 14%] [32mBuilding CXX object CMakeFiles/webots_ros2_driver_imu.dir/src/plugins/Ros2SensorPlugin.cpp.o[0m
+[1.468s] [ 25%] [32mBuilding CXX object CMakeFiles/driver.dir/src/Driver.cpp.o[0m
+[1.470s] [ 29%] [32mBuilding CXX object CMakeFiles/driver.dir/src/PythonPlugin.cpp.o[0m
+[1.472s] [ 29%] [32mBuilding CXX object CMakeFiles/driver.dir/src/WebotsNode.cpp.o[0m
+[1.473s] [ 29%] [32mBuilding CXX object CMakeFiles/webots_ros2_driver_rgbd.dir/src/utils/Utils.cpp.o[0m
+[1.474s] [ 33%] [32mBuilding CXX object CMakeFiles/webots_ros2_driver_imu.dir/src/plugins/dynamic/Ros2IMU.cpp.o[0m
+[1.500s] running egg_info
+[1.500s] creating webots_ros2_driver.egg-info
+[1.512s] writing webots_ros2_driver.egg-info/PKG-INFO
+[1.514s] writing dependency_links to webots_ros2_driver.egg-info/dependency_links.txt
+[1.516s] writing top-level names to webots_ros2_driver.egg-info/top_level.txt
+[1.517s] writing manifest file 'webots_ros2_driver.egg-info/SOURCES.txt'
+[1.523s] running egg_info
+[1.523s] creating controller.egg-info
+[1.524s] running egg_info
+[1.525s] creating vehicle.egg-info
+[1.537s] writing controller.egg-info/PKG-INFO
+[1.537s] writing vehicle.egg-info/PKG-INFO
+[1.538s] writing dependency_links to controller.egg-info/dependency_links.txt
+[1.539s] writing dependency_links to vehicle.egg-info/dependency_links.txt
+[1.540s] writing top-level names to vehicle.egg-info/top_level.txt
+[1.541s] writing top-level names to controller.egg-info/top_level.txt
+[1.541s] writing manifest file 'vehicle.egg-info/SOURCES.txt'
+[1.543s] writing manifest file 'controller.egg-info/SOURCES.txt'
+[1.576s] reading manifest file 'webots_ros2_driver.egg-info/SOURCES.txt'
+[1.579s] writing manifest file 'webots_ros2_driver.egg-info/SOURCES.txt'
+[1.601s] [ 33%] Built target ament_cmake_python_build_webots_ros2_driver_egg
+[1.614s] reading manifest file 'vehicle.egg-info/SOURCES.txt'
+[1.616s] [ 37%] [32mBuilding CXX object CMakeFiles/driver.dir/src/plugins/Ros2SensorPlugin.cpp.o[0m
+[1.616s] writing manifest file 'vehicle.egg-info/SOURCES.txt'
+[1.630s] reading manifest file 'controller.egg-info/SOURCES.txt'
+[1.634s] writing manifest file 'controller.egg-info/SOURCES.txt'
+[1.645s] [ 37%] Built target ament_cmake_python_build_vehicle_egg
+[1.659s] [ 40%] [32mBuilding CXX object CMakeFiles/driver.dir/src/plugins/static/Ros2Lidar.cpp.o[0m
+[1.676s] [ 40%] Built target ament_cmake_python_build_controller_egg
+[1.688s] [ 44%] [32mBuilding CXX object CMakeFiles/driver.dir/src/plugins/static/Ros2LED.cpp.o[0m
+[1.710s] [ 48%] [32mBuilding CXX object CMakeFiles/driver.dir/src/plugins/static/Ros2Pen.cpp.o[0m
+[1.803s] [ 51%] [32mBuilding CXX object CMakeFiles/driver.dir/src/plugins/static/Ros2Camera.cpp.o[0m
+[4.534s] [ 55%] [32mBuilding CXX object CMakeFiles/driver.dir/src/plugins/static/Ros2GPS.cpp.o[0m
+[6.618s] [ 59%] [32mBuilding CXX object CMakeFiles/driver.dir/src/plugins/static/Ros2RangeFinder.cpp.o[0m
+[6.719s] [ 62%] [32m[1mLinking CXX shared library libwebots_ros2_driver_rgbd.so[0m
+[6.752s] [ 66%] [32mBuilding CXX object CMakeFiles/driver.dir/src/plugins/static/Ros2DistanceSensor.cpp.o[0m
+[6.771s] [ 70%] [32mBuilding CXX object CMakeFiles/driver.dir/src/plugins/static/Ros2LightSensor.cpp.o[0m
+[6.841s] [ 74%] [32mBuilding CXX object CMakeFiles/driver.dir/src/plugins/static/Ros2Emitter.cpp.o[0m
+[7.337s] [ 74%] Built target webots_ros2_driver_rgbd
+[7.360s] [ 77%] [32mBuilding CXX object CMakeFiles/driver.dir/src/plugins/static/Ros2Receiver.cpp.o[0m
+[7.754s] [ 81%] [32m[1mLinking CXX shared library libwebots_ros2_driver_imu.so[0m
+[8.195s] [ 81%] Built target webots_ros2_driver_imu
+[8.220s] [ 85%] [32mBuilding CXX object CMakeFiles/driver.dir/src/plugins/static/Ros2Compass.cpp.o[0m
+[8.233s] [ 88%] [32mBuilding CXX object CMakeFiles/driver.dir/src/plugins/static/Ros2VacuumGripper.cpp.o[0m
+[9.745s] [ 92%] [32mBuilding CXX object CMakeFiles/driver.dir/src/utils/Math.cpp.o[0m
+[10.677s] [ 96%] [32mBuilding CXX object CMakeFiles/driver.dir/src/utils/Utils.cpp.o[0m
+[14.193s] [100%] [32m[1mLinking CXX executable driver[0m
+[15.273s] [100%] Built target driver
+[15.289s] Invoked command in '/MRTP/MRTP/src/build/webots_ros2_driver' returned '0': AMENT_PREFIX_PATH=/MRTP/MRTP/src/install/webots_ros2_msgs:/MRTP/MRTP/src/install/webots_ros2_importer:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/MRTP/MRTP/src/install/webots_ros2_msgs:/opt/ros/jazzy/opt/gz_sim_vendor:/opt/ros/jazzy/opt/gz_sensors_vendor:/opt/ros/jazzy/opt/gz_physics_vendor:/opt/ros/jazzy/opt/sdformat_vendor:/opt/ros/jazzy/opt/gz_gui_vendor:/opt/ros/jazzy/opt/gz_transport_vendor:/opt/ros/jazzy/opt/gz_rendering_vendor:/opt/ros/jazzy/opt/gz_plugin_vendor:/opt/ros/jazzy/opt/gz_fuel_tools_vendor:/opt/ros/jazzy/opt/gz_msgs_vendor:/opt/ros/jazzy/opt/gz_common_vendor:/opt/ros/jazzy/opt/gz_math_vendor:/opt/ros/jazzy/opt/gz_utils_vendor:/opt/ros/jazzy/opt/gz_tools_vendor:/opt/ros/jazzy/opt/gz_ogre_next_vendor:/opt/ros/jazzy/opt/gz_dartsim_vendor:/opt/ros/jazzy/opt/gz_cmake_vendor:/opt/ros/jazzy LD_LIBRARY_PATH=/MRTP/MRTP/src/install/webots_ros2_msgs/lib:${LD_LIBRARY_PATH} PS1=(.venv) \[\e]0;\u@\h: \w\a\]${debian_chroot:+($debian_chroot)}\u@\h:\w\$ PYTHONPATH=/MRTP/MRTP/src/install/webots_ros2_msgs/lib/python3.12/site-packages:/MRTP/MRTP/src/build/webots_ros2_importer:/MRTP/MRTP/src/install/webots_ros2_importer/lib/python3.12/site-packages:${PYTHONPATH} VIRTUAL_ENV_PROMPT=(.venv) /usr/bin/cmake --build /MRTP/MRTP/src/build/webots_ros2_driver -- -j12 -l12
+[15.302s] Invoking command in '/MRTP/MRTP/src/build/webots_ros2_driver': AMENT_PREFIX_PATH=/MRTP/MRTP/src/install/webots_ros2_msgs:/MRTP/MRTP/src/install/webots_ros2_importer:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/MRTP/MRTP/src/install/webots_ros2_msgs:/opt/ros/jazzy/opt/gz_sim_vendor:/opt/ros/jazzy/opt/gz_sensors_vendor:/opt/ros/jazzy/opt/gz_physics_vendor:/opt/ros/jazzy/opt/sdformat_vendor:/opt/ros/jazzy/opt/gz_gui_vendor:/opt/ros/jazzy/opt/gz_transport_vendor:/opt/ros/jazzy/opt/gz_rendering_vendor:/opt/ros/jazzy/opt/gz_plugin_vendor:/opt/ros/jazzy/opt/gz_fuel_tools_vendor:/opt/ros/jazzy/opt/gz_msgs_vendor:/opt/ros/jazzy/opt/gz_common_vendor:/opt/ros/jazzy/opt/gz_math_vendor:/opt/ros/jazzy/opt/gz_utils_vendor:/opt/ros/jazzy/opt/gz_tools_vendor:/opt/ros/jazzy/opt/gz_ogre_next_vendor:/opt/ros/jazzy/opt/gz_dartsim_vendor:/opt/ros/jazzy/opt/gz_cmake_vendor:/opt/ros/jazzy LD_LIBRARY_PATH=/MRTP/MRTP/src/install/webots_ros2_msgs/lib:${LD_LIBRARY_PATH} PS1=(.venv) \[\e]0;\u@\h: \w\a\]${debian_chroot:+($debian_chroot)}\u@\h:\w\$ PYTHONPATH=/MRTP/MRTP/src/install/webots_ros2_msgs/lib/python3.12/site-packages:/MRTP/MRTP/src/build/webots_ros2_importer:/MRTP/MRTP/src/install/webots_ros2_importer/lib/python3.12/site-packages:${PYTHONPATH} VIRTUAL_ENV_PROMPT=(.venv) /usr/bin/cmake --install /MRTP/MRTP/src/build/webots_ros2_driver
+[15.313s] -- Install configuration: ""
+[15.314s] -- Execute custom install script
+[15.316s] -- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/share/webots_ros2_driver/environment/pythonpath.sh
+[15.324s] -- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/share/webots_ros2_driver/environment/pythonpath.dsv
+[15.335s] -- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/lib/python3.12/site-packages/controller-2025.0.1-py3.12.egg-info/PKG-INFO
+[15.345s] -- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/lib/python3.12/site-packages/controller-2025.0.1-py3.12.egg-info/SOURCES.txt
+[15.355s] -- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/lib/python3.12/site-packages/controller-2025.0.1-py3.12.egg-info/dependency_links.txt
+[15.365s] -- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/lib/python3.12/site-packages/controller-2025.0.1-py3.12.egg-info/top_level.txt
+[15.378s] -- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/lib/python3.12/site-packages/controller/__init__.py
+[15.390s] -- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/lib/python3.12/site-packages/controller/accelerometer.py
+[15.401s] -- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/lib/python3.12/site-packages/controller/altimeter.py
+[15.413s] -- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/lib/python3.12/site-packages/controller/ansi_codes.py
+[15.422s] -- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/lib/python3.12/site-packages/controller/brake.py
+[15.430s] -- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/lib/python3.12/site-packages/controller/camera.py
+[15.438s] -- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/lib/python3.12/site-packages/controller/compass.py
+[15.446s] -- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/lib/python3.12/site-packages/controller/connector.py
+[15.454s] -- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/lib/python3.12/site-packages/controller/constants.py
+[15.461s] -- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/lib/python3.12/site-packages/controller/device.py
+[15.467s] -- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/lib/python3.12/site-packages/controller/display.py
+[15.473s] -- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/lib/python3.12/site-packages/controller/distance_sensor.py
+[15.479s] -- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/lib/python3.12/site-packages/controller/emitter.py
+[15.486s] -- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/lib/python3.12/site-packages/controller/field.py
+[15.492s] -- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/lib/python3.12/site-packages/controller/gps.py
+[15.498s] -- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/lib/python3.12/site-packages/controller/gyro.py
+[15.505s] -- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/lib/python3.12/site-packages/controller/inertial_unit.py
+[15.511s] -- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/lib/python3.12/site-packages/controller/joystick.py
+[15.517s] -- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/lib/python3.12/site-packages/controller/keyboard.py
+[15.523s] -- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/lib/python3.12/site-packages/controller/led.py
+[15.530s] -- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/lib/python3.12/site-packages/controller/lidar.py
+[15.537s] -- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/lib/python3.12/site-packages/controller/lidar_point.py
+[15.543s] -- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/lib/python3.12/site-packages/controller/light_sensor.py
+[15.549s] -- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/lib/python3.12/site-packages/controller/motion.py
+[15.555s] -- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/lib/python3.12/site-packages/controller/motor.py
+[15.561s] -- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/lib/python3.12/site-packages/controller/mouse.py
+[15.567s] -- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/lib/python3.12/site-packages/controller/node.py
+[15.572s] -- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/lib/python3.12/site-packages/controller/pen.py
+[15.578s] -- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/lib/python3.12/site-packages/controller/position_sensor.py
+[15.585s] -- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/lib/python3.12/site-packages/controller/proto.py
+[15.591s] -- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/lib/python3.12/site-packages/controller/radar.py
+[15.597s] -- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/lib/python3.12/site-packages/controller/radar_target.py
+[15.603s] -- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/lib/python3.12/site-packages/controller/range_finder.py
+[15.608s] -- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/lib/python3.12/site-packages/controller/receiver.py
+[15.614s] -- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/lib/python3.12/site-packages/controller/robot.py
+[15.620s] -- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/lib/python3.12/site-packages/controller/sensor.py
+[15.626s] -- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/lib/python3.12/site-packages/controller/skin.py
+[15.632s] -- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/lib/python3.12/site-packages/controller/speaker.py
+[15.638s] -- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/lib/python3.12/site-packages/controller/supervisor.py
+[15.644s] -- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/lib/python3.12/site-packages/controller/touch_sensor.py
+[15.649s] -- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/lib/python3.12/site-packages/controller/vacuum_gripper.py
+[15.655s] -- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/lib/python3.12/site-packages/controller/wb.py
+[15.663s] -- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/lib/python3.12/site-packages/vehicle-2025.0.1-py3.12.egg-info/PKG-INFO
+[15.669s] -- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/lib/python3.12/site-packages/vehicle-2025.0.1-py3.12.egg-info/SOURCES.txt
+[15.675s] -- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/lib/python3.12/site-packages/vehicle-2025.0.1-py3.12.egg-info/dependency_links.txt
+[15.681s] -- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/lib/python3.12/site-packages/vehicle-2025.0.1-py3.12.egg-info/top_level.txt
+[15.690s] -- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/lib/python3.12/site-packages/vehicle/__init__.py
+[15.698s] -- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/lib/python3.12/site-packages/vehicle/car.py
+[15.706s] -- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/lib/python3.12/site-packages/vehicle/driver.py
+[15.713s] -- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/lib/python3.12/site-packages/webots_ros2_driver-2025.0.1-py3.12.egg-info/PKG-INFO
+[15.719s] -- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/lib/python3.12/site-packages/webots_ros2_driver-2025.0.1-py3.12.egg-info/SOURCES.txt
+[15.725s] -- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/lib/python3.12/site-packages/webots_ros2_driver-2025.0.1-py3.12.egg-info/dependency_links.txt
+[15.731s] -- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/lib/python3.12/site-packages/webots_ros2_driver-2025.0.1-py3.12.egg-info/top_level.txt
+[15.737s] -- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/lib/python3.12/site-packages/webots_ros2_driver/__init__.py
+[15.743s] -- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/lib/python3.12/site-packages/webots_ros2_driver/ros2_supervisor.py
+[15.748s] -- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/lib/python3.12/site-packages/webots_ros2_driver/urdf_spawner.py
+[15.754s] -- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/lib/python3.12/site-packages/webots_ros2_driver/utils.py
+[15.759s] -- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/lib/python3.12/site-packages/webots_ros2_driver/wait_for_controller_connection.py
+[15.766s] -- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/lib/python3.12/site-packages/webots_ros2_driver/webots_controller.py
+[15.771s] -- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/lib/python3.12/site-packages/webots_ros2_driver/webots_launcher.py
+[15.779s] -- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/include/webots_ros2_driver/PluginInterface.hpp
+[15.784s] -- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/include/webots_ros2_driver/PythonPlugin.hpp
+[15.790s] -- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/include/webots_ros2_driver/WebotsNode.hpp
+[15.796s] -- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/include/webots_ros2_driver/plugins/Ros2SensorPlugin.hpp
+[15.802s] -- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/include/webots_ros2_driver/plugins/dynamic/Ros2IMU.hpp
+[15.807s] -- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/include/webots_ros2_driver/plugins/dynamic/Ros2RGBD.hpp
+[15.813s] -- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/include/webots_ros2_driver/plugins/static/Ros2Camera.hpp
+[15.819s] -- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/include/webots_ros2_driver/plugins/static/Ros2Compass.hpp
+[15.824s] -- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/include/webots_ros2_driver/plugins/static/Ros2DistanceSensor.hpp
+[15.831s] -- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/include/webots_ros2_driver/plugins/static/Ros2Emitter.hpp
+[15.837s] -- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/include/webots_ros2_driver/plugins/static/Ros2GPS.hpp
+[15.843s] -- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/include/webots_ros2_driver/plugins/static/Ros2LED.hpp
+[15.850s] -- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/include/webots_ros2_driver/plugins/static/Ros2Lidar.hpp
+[15.856s] -- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/include/webots_ros2_driver/plugins/static/Ros2LightSensor.hpp
+[15.862s] -- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/include/webots_ros2_driver/plugins/static/Ros2Pen.hpp
+[15.867s] -- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/include/webots_ros2_driver/plugins/static/Ros2RangeFinder.hpp
+[15.873s] -- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/include/webots_ros2_driver/plugins/static/Ros2Receiver.hpp
+[15.899s] -- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/include/webots_ros2_driver/plugins/static/Ros2VacuumGripper.hpp
+[15.911s] -- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/include/webots_ros2_driver/utils/Math.hpp
+[15.918s] -- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/include/webots_ros2_driver/utils/Utils.hpp
+[15.925s] -- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/lib/webots_ros2_driver/driver
+[15.932s] -- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/lib/libwebots_ros2_driver_imu.so
+[15.938s] -- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/lib/libwebots_ros2_driver_rgbd.so
+[15.948s] -- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/include/webots/c/webots/accelerometer.h
+[15.954s] -- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/include/webots/c/webots/altimeter.h
+[15.960s] -- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/include/webots/c/webots/brake.h
+[15.967s] -- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/include/webots/c/webots/camera.h
+[15.972s] -- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/include/webots/c/webots/camera_recognition_object.h
+[15.978s] -- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/include/webots/c/webots/compass.h
+[15.984s] -- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/include/webots/c/webots/connector.h
+[15.989s] -- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/include/webots/c/webots/console.h
+[15.996s] -- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/include/webots/c/webots/contact_point.h
+[16.001s] -- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/include/webots/c/webots/device.h
+[16.007s] -- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/include/webots/c/webots/display.h
+[16.013s] -- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/include/webots/c/webots/distance_sensor.h
+[16.019s] -- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/include/webots/c/webots/emitter.h
+[16.025s] -- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/include/webots/c/webots/gps.h
+[16.031s] -- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/include/webots/c/webots/gyro.h
+[16.037s] -- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/include/webots/c/webots/inertial_unit.h
+[16.043s] -- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/include/webots/c/webots/joystick.h
+[16.048s] -- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/include/webots/c/webots/keyboard.h
+[16.054s] -- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/include/webots/c/webots/led.h
+[16.059s] -- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/include/webots/c/webots/lidar.h
+[16.065s] -- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/include/webots/c/webots/lidar_point.h
+[16.071s] -- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/include/webots/c/webots/light_sensor.h
+[16.076s] -- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/include/webots/c/webots/microphone.h
+[16.081s] -- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/include/webots/c/webots/motor.h
+[16.087s] -- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/include/webots/c/webots/mouse.h
+[16.093s] -- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/include/webots/c/webots/mouse_state.h
+[16.099s] -- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/include/webots/c/webots/nodes.h
+[16.105s] -- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/include/webots/c/webots/pen.h
+[16.112s] -- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/include/webots/c/webots/plugins/robot_window/default.h
+[16.120s] -- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/include/webots/c/webots/plugins/robot_window/generic_robot_window/generic.h
+[16.128s] -- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/include/webots/c/webots/plugins/robot_window/robot_window.h
+[16.135s] -- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/include/webots/c/webots/plugins/robot_window/robot_wwi.h
+[16.141s] -- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/include/webots/c/webots/position_sensor.h
+[16.147s] -- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/include/webots/c/webots/radar.h
+[16.152s] -- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/include/webots/c/webots/radar_target.h
+[16.159s] -- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/include/webots/c/webots/radio.h
+[16.165s] -- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/include/webots/c/webots/range_finder.h
+[16.172s] -- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/include/webots/c/webots/receiver.h
+[16.181s] -- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/include/webots/c/webots/remote_control.h
+[16.190s] -- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/include/webots/c/webots/robot.h
+[16.201s] -- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/include/webots/c/webots/skin.h
+[16.207s] -- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/include/webots/c/webots/speaker.h
+[16.214s] -- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/include/webots/c/webots/supervisor.h
+[16.220s] -- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/include/webots/c/webots/touch_sensor.h
+[16.226s] -- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/include/webots/c/webots/types.h
+[16.232s] -- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/include/webots/c/webots/utils/ansi_codes.h
+[16.239s] -- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/include/webots/c/webots/utils/motion.h
+[16.245s] -- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/include/webots/c/webots/utils/string.h
+[16.251s] -- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/include/webots/c/webots/utils/system.h
+[16.256s] -- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/include/webots/c/webots/vacuum_gripper.h
+[16.263s] -- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/include/webots/c/webots/vehicle/car.h
+[16.269s] -- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/include/webots/c/webots/vehicle/driver.h
+[16.279s] -- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/include/webots/cpp/webots/Accelerometer.hpp
+[16.286s] -- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/include/webots/cpp/webots/Altimeter.hpp
+[16.292s] -- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/include/webots/cpp/webots/Brake.hpp
+[16.298s] -- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/include/webots/cpp/webots/Camera.hpp
+[16.303s] -- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/include/webots/cpp/webots/Compass.hpp
+[16.309s] -- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/include/webots/cpp/webots/Connector.hpp
+[16.315s] -- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/include/webots/cpp/webots/Device.hpp
+[16.321s] -- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/include/webots/cpp/webots/Display.hpp
+[16.327s] -- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/include/webots/cpp/webots/DistanceSensor.hpp
+[16.333s] -- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/include/webots/cpp/webots/Emitter.hpp
+[16.339s] -- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/include/webots/cpp/webots/Field.hpp
+[16.345s] -- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/include/webots/cpp/webots/GPS.hpp
+[16.351s] -- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/include/webots/cpp/webots/Gyro.hpp
+[16.358s] -- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/include/webots/cpp/webots/ImageRef.hpp
+[16.365s] -- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/include/webots/cpp/webots/InertialUnit.hpp
+[16.371s] -- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/include/webots/cpp/webots/Joystick.hpp
+[16.377s] -- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/include/webots/cpp/webots/Keyboard.hpp
+[16.383s] -- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/include/webots/cpp/webots/LED.hpp
+[16.389s] -- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/include/webots/cpp/webots/Lidar.hpp
+[16.395s] -- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/include/webots/cpp/webots/LightSensor.hpp
+[16.401s] -- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/include/webots/cpp/webots/Motor.hpp
+[16.407s] -- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/include/webots/cpp/webots/Mouse.hpp
+[16.413s] -- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/include/webots/cpp/webots/Node.hpp
+[16.419s] -- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/include/webots/cpp/webots/Pen.hpp
+[16.425s] -- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/include/webots/cpp/webots/PositionSensor.hpp
+[16.431s] -- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/include/webots/cpp/webots/Proto.hpp
+[16.437s] -- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/include/webots/cpp/webots/Radar.hpp
+[16.443s] -- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/include/webots/cpp/webots/RangeFinder.hpp
+[16.449s] -- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/include/webots/cpp/webots/Receiver.hpp
+[16.454s] -- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/include/webots/cpp/webots/Robot.hpp
+[16.460s] -- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/include/webots/cpp/webots/Skin.hpp
+[16.466s] -- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/include/webots/cpp/webots/Speaker.hpp
+[16.471s] -- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/include/webots/cpp/webots/Supervisor.hpp
+[16.478s] -- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/include/webots/cpp/webots/TouchSensor.hpp
+[16.483s] -- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/include/webots/cpp/webots/VacuumGripper.hpp
+[16.489s] -- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/include/webots/cpp/webots/utils/AnsiCodes.hpp
+[16.495s] -- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/include/webots/cpp/webots/utils/Motion.hpp
+[16.501s] -- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/include/webots/cpp/webots/vehicle/Car.hpp
+[16.507s] -- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/include/webots/cpp/webots/vehicle/Driver.hpp
+[16.519s] -- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/lib/controller/libController.so
+[16.525s] -- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/lib/controller/libCppCar.so
+[16.531s] -- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/lib/controller/libCppController.so
+[16.536s] -- Up-to-date symlink: /MRTP/MRTP/src/install/webots_ros2_driver/lib/controller/libCppController.so
+[16.537s] -- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/lib/controller/libCppDriver.so
+[16.542s] -- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/lib/controller/libcar.so
+[16.548s] -- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/lib/controller/libdriver.so
+[16.554s] -- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/lib/controller/libgeneric_robot_window.so
+[16.560s] -- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/lib/controller/python/vehicle/car.py
+[16.566s] -- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/lib/controller/python/vehicle/driver.py
+[16.571s] -- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/share/webots_ros2_driver//webots_ros2_imu.xml
+[16.578s] -- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/share/webots_ros2_driver//webots_ros2_rgbd.xml
+[16.583s] -- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/lib/webots_ros2_driver/ros2_supervisor.py
+[16.589s] -- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/share/webots_ros2_driver/scripts/webots_tcp_client.py
+[16.608s] -- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/share/webots_ros2_driver/scripts/webots-controller
+[16.623s] -- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/share/webots_ros2_driver/environment/library_path.sh
+[16.634s] -- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/share/webots_ros2_driver/environment/library_path.dsv
+[16.640s] -- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/share/ament_index/resource_index/package_run_dependencies/webots_ros2_driver
+[16.647s] -- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/share/ament_index/resource_index/parent_prefix_path/webots_ros2_driver
+[16.653s] -- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/share/webots_ros2_driver/environment/ament_prefix_path.sh
+[16.658s] -- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/share/webots_ros2_driver/environment/ament_prefix_path.dsv
+[16.664s] -- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/share/webots_ros2_driver/environment/path.sh
+[16.670s] -- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/share/webots_ros2_driver/environment/path.dsv
+[16.676s] -- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/share/webots_ros2_driver/local_setup.bash
+[16.681s] -- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/share/webots_ros2_driver/local_setup.sh
+[16.687s] -- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/share/webots_ros2_driver/local_setup.zsh
+[16.693s] -- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/share/webots_ros2_driver/local_setup.dsv
+[16.698s] -- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/share/webots_ros2_driver/package.dsv
+[16.704s] -- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/share/ament_index/resource_index/packages/webots_ros2_driver
+[16.711s] -- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/share/ament_index/resource_index/webots_ros2_driver__pluginlib__plugin/webots_ros2_driver
+[16.718s] -- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/share/webots_ros2_driver/cmake/ament_cmake_export_include_directories-extras.cmake
+[16.723s] -- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/share/webots_ros2_driver/cmake/ament_cmake_export_dependencies-extras.cmake
+[16.729s] -- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/share/webots_ros2_driver/cmake/ament_cmake_export_libraries-extras.cmake
+[16.735s] -- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/share/webots_ros2_driver/cmake/webots_ros2_driverConfig.cmake
+[16.740s] -- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/share/webots_ros2_driver/cmake/webots_ros2_driverConfig-version.cmake
+[16.746s] -- Symlinking: /MRTP/MRTP/src/install/webots_ros2_driver/share/webots_ros2_driver/package.xml
+[16.818s] Listing '/MRTP/MRTP/src/install/webots_ros2_driver/lib/python3.12/site-packages/controller'...
+[16.818s] Compiling '/MRTP/MRTP/src/install/webots_ros2_driver/lib/python3.12/site-packages/controller/__init__.py'...
+[16.818s] Compiling '/MRTP/MRTP/src/install/webots_ros2_driver/lib/python3.12/site-packages/controller/accelerometer.py'...
+[16.819s] Compiling '/MRTP/MRTP/src/install/webots_ros2_driver/lib/python3.12/site-packages/controller/altimeter.py'...
+[16.819s] Compiling '/MRTP/MRTP/src/install/webots_ros2_driver/lib/python3.12/site-packages/controller/ansi_codes.py'...
+[16.819s] Compiling '/MRTP/MRTP/src/install/webots_ros2_driver/lib/python3.12/site-packages/controller/brake.py'...
+[16.819s] Compiling '/MRTP/MRTP/src/install/webots_ros2_driver/lib/python3.12/site-packages/controller/camera.py'...
+[16.820s] Compiling '/MRTP/MRTP/src/install/webots_ros2_driver/lib/python3.12/site-packages/controller/compass.py'...
+[16.820s] Compiling '/MRTP/MRTP/src/install/webots_ros2_driver/lib/python3.12/site-packages/controller/connector.py'...
+[16.820s] Compiling '/MRTP/MRTP/src/install/webots_ros2_driver/lib/python3.12/site-packages/controller/constants.py'...
+[16.820s] Compiling '/MRTP/MRTP/src/install/webots_ros2_driver/lib/python3.12/site-packages/controller/device.py'...
+[16.821s] Compiling '/MRTP/MRTP/src/install/webots_ros2_driver/lib/python3.12/site-packages/controller/display.py'...
+[16.821s] Compiling '/MRTP/MRTP/src/install/webots_ros2_driver/lib/python3.12/site-packages/controller/distance_sensor.py'...
+[16.821s] Compiling '/MRTP/MRTP/src/install/webots_ros2_driver/lib/python3.12/site-packages/controller/emitter.py'...
+[16.821s] Compiling '/MRTP/MRTP/src/install/webots_ros2_driver/lib/python3.12/site-packages/controller/field.py'...
+[16.821s] Compiling '/MRTP/MRTP/src/install/webots_ros2_driver/lib/python3.12/site-packages/controller/gps.py'...
+[16.821s] Compiling '/MRTP/MRTP/src/install/webots_ros2_driver/lib/python3.12/site-packages/controller/gyro.py'...
+[16.821s] Compiling '/MRTP/MRTP/src/install/webots_ros2_driver/lib/python3.12/site-packages/controller/inertial_unit.py'...
+[16.822s] Compiling '/MRTP/MRTP/src/install/webots_ros2_driver/lib/python3.12/site-packages/controller/joystick.py'...
+[16.822s] Compiling '/MRTP/MRTP/src/install/webots_ros2_driver/lib/python3.12/site-packages/controller/keyboard.py'...
+[16.822s] Compiling '/MRTP/MRTP/src/install/webots_ros2_driver/lib/python3.12/site-packages/controller/led.py'...
+[16.822s] Compiling '/MRTP/MRTP/src/install/webots_ros2_driver/lib/python3.12/site-packages/controller/lidar.py'...
+[16.822s] Compiling '/MRTP/MRTP/src/install/webots_ros2_driver/lib/python3.12/site-packages/controller/lidar_point.py'...
+[16.823s] Compiling '/MRTP/MRTP/src/install/webots_ros2_driver/lib/python3.12/site-packages/controller/light_sensor.py'...
+[16.823s] Compiling '/MRTP/MRTP/src/install/webots_ros2_driver/lib/python3.12/site-packages/controller/motion.py'...
+[16.823s] Compiling '/MRTP/MRTP/src/install/webots_ros2_driver/lib/python3.12/site-packages/controller/motor.py'...
+[16.823s] Compiling '/MRTP/MRTP/src/install/webots_ros2_driver/lib/python3.12/site-packages/controller/mouse.py'...
+[16.823s] Compiling '/MRTP/MRTP/src/install/webots_ros2_driver/lib/python3.12/site-packages/controller/node.py'...
+[16.823s] Compiling '/MRTP/MRTP/src/install/webots_ros2_driver/lib/python3.12/site-packages/controller/pen.py'...
+[16.824s] Compiling '/MRTP/MRTP/src/install/webots_ros2_driver/lib/python3.12/site-packages/controller/position_sensor.py'...
+[16.824s] Compiling '/MRTP/MRTP/src/install/webots_ros2_driver/lib/python3.12/site-packages/controller/proto.py'...
+[16.824s] Compiling '/MRTP/MRTP/src/install/webots_ros2_driver/lib/python3.12/site-packages/controller/radar.py'...
+[16.824s] Compiling '/MRTP/MRTP/src/install/webots_ros2_driver/lib/python3.12/site-packages/controller/radar_target.py'...
+[16.825s] Compiling '/MRTP/MRTP/src/install/webots_ros2_driver/lib/python3.12/site-packages/controller/range_finder.py'...
+[16.825s] Compiling '/MRTP/MRTP/src/install/webots_ros2_driver/lib/python3.12/site-packages/controller/receiver.py'...
+[16.825s] Compiling '/MRTP/MRTP/src/install/webots_ros2_driver/lib/python3.12/site-packages/controller/robot.py'...
+[16.825s] Compiling '/MRTP/MRTP/src/install/webots_ros2_driver/lib/python3.12/site-packages/controller/sensor.py'...
+[16.825s] Compiling '/MRTP/MRTP/src/install/webots_ros2_driver/lib/python3.12/site-packages/controller/skin.py'...
+[16.825s] Compiling '/MRTP/MRTP/src/install/webots_ros2_driver/lib/python3.12/site-packages/controller/speaker.py'...
+[16.825s] Compiling '/MRTP/MRTP/src/install/webots_ros2_driver/lib/python3.12/site-packages/controller/supervisor.py'...
+[16.826s] Compiling '/MRTP/MRTP/src/install/webots_ros2_driver/lib/python3.12/site-packages/controller/touch_sensor.py'...
+[16.826s] Compiling '/MRTP/MRTP/src/install/webots_ros2_driver/lib/python3.12/site-packages/controller/vacuum_gripper.py'...
+[16.826s] Compiling '/MRTP/MRTP/src/install/webots_ros2_driver/lib/python3.12/site-packages/controller/wb.py'...
+[16.846s] Listing '/MRTP/MRTP/src/install/webots_ros2_driver/lib/python3.12/site-packages/vehicle'...
+[16.846s] Compiling '/MRTP/MRTP/src/install/webots_ros2_driver/lib/python3.12/site-packages/vehicle/__init__.py'...
+[16.846s] Compiling '/MRTP/MRTP/src/install/webots_ros2_driver/lib/python3.12/site-packages/vehicle/car.py'...
+[16.846s] Compiling '/MRTP/MRTP/src/install/webots_ros2_driver/lib/python3.12/site-packages/vehicle/driver.py'...
+[16.879s] Listing '/MRTP/MRTP/src/install/webots_ros2_driver/lib/python3.12/site-packages/webots_ros2_driver'...
+[16.880s] Compiling '/MRTP/MRTP/src/install/webots_ros2_driver/lib/python3.12/site-packages/webots_ros2_driver/__init__.py'...
+[16.880s] Compiling '/MRTP/MRTP/src/install/webots_ros2_driver/lib/python3.12/site-packages/webots_ros2_driver/ros2_supervisor.py'...
+[16.880s] Compiling '/MRTP/MRTP/src/install/webots_ros2_driver/lib/python3.12/site-packages/webots_ros2_driver/urdf_spawner.py'...
+[16.880s] Compiling '/MRTP/MRTP/src/install/webots_ros2_driver/lib/python3.12/site-packages/webots_ros2_driver/utils.py'...
+[16.881s] Compiling '/MRTP/MRTP/src/install/webots_ros2_driver/lib/python3.12/site-packages/webots_ros2_driver/wait_for_controller_connection.py'...
+[16.882s] Compiling '/MRTP/MRTP/src/install/webots_ros2_driver/lib/python3.12/site-packages/webots_ros2_driver/webots_controller.py'...
+[16.882s] Compiling '/MRTP/MRTP/src/install/webots_ros2_driver/lib/python3.12/site-packages/webots_ros2_driver/webots_launcher.py'...
+[16.882s] Invoked command in '/MRTP/MRTP/src/build/webots_ros2_driver' returned '0': AMENT_PREFIX_PATH=/MRTP/MRTP/src/install/webots_ros2_msgs:/MRTP/MRTP/src/install/webots_ros2_importer:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/MRTP/MRTP/src/install/webots_ros2_msgs:/opt/ros/jazzy/opt/gz_sim_vendor:/opt/ros/jazzy/opt/gz_sensors_vendor:/opt/ros/jazzy/opt/gz_physics_vendor:/opt/ros/jazzy/opt/sdformat_vendor:/opt/ros/jazzy/opt/gz_gui_vendor:/opt/ros/jazzy/opt/gz_transport_vendor:/opt/ros/jazzy/opt/gz_rendering_vendor:/opt/ros/jazzy/opt/gz_plugin_vendor:/opt/ros/jazzy/opt/gz_fuel_tools_vendor:/opt/ros/jazzy/opt/gz_msgs_vendor:/opt/ros/jazzy/opt/gz_common_vendor:/opt/ros/jazzy/opt/gz_math_vendor:/opt/ros/jazzy/opt/gz_utils_vendor:/opt/ros/jazzy/opt/gz_tools_vendor:/opt/ros/jazzy/opt/gz_ogre_next_vendor:/opt/ros/jazzy/opt/gz_dartsim_vendor:/opt/ros/jazzy/opt/gz_cmake_vendor:/opt/ros/jazzy LD_LIBRARY_PATH=/MRTP/MRTP/src/install/webots_ros2_msgs/lib:${LD_LIBRARY_PATH} PS1=(.venv) \[\e]0;\u@\h: \w\a\]${debian_chroot:+($debian_chroot)}\u@\h:\w\$ PYTHONPATH=/MRTP/MRTP/src/install/webots_ros2_msgs/lib/python3.12/site-packages:/MRTP/MRTP/src/build/webots_ros2_importer:/MRTP/MRTP/src/install/webots_ros2_importer/lib/python3.12/site-packages:${PYTHONPATH} VIRTUAL_ENV_PROMPT=(.venv) /usr/bin/cmake --install /MRTP/MRTP/src/build/webots_ros2_driver

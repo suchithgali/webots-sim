@@ -1,0 +1,1 @@
+ament_cmake_symlink_install_targets("TARGET_FILES" "/MRTP/MRTP/src/build/webots_ros2_driver/libwebots_ros2_driver_imu.so" "TARGETS" "webots_ros2_driver_imu" "RUNTIME_DESTINATION" "bin" "ARCHIVE_DESTINATION" "lib" "LIBRARY_DESTINATION" "lib")
