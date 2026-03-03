@@ -1,4 +1,15 @@
 import math 
+from enum import Enum
+
+
+class DroneState(Enum):
+    IDLE = 0
+    SCANNING = 1
+    FAILURE = 2
+    PAUSED = 3
+    RETURNING = 4
+    CHARGING = 5
+    COMPLETED = 6
 
 # These are constants that control how the drone flies
 
@@ -66,6 +77,19 @@ class MavicDriver:
         self._hover_count = 0
         self._stop_count  = 0
 
+        # High-level mission state (finite state machine)
+        self.state = DroneState.IDLE
+        self._last_state = None
+
+        # Simple interrupt flags (can be updated externally)
+        self.battery_low = False
+        self.obstacle_detected = False
+        self.drone_damaged = False
+        self.temperature_unsafe = False
+        self.manual_stop = False
+        self.at_base = False
+        self.mission_finished = False
+
         # This is the list of waypoints (x, y) the drone will visit in order
         # The last waypoint is usually the home/landing spot
         self._wps = [
@@ -81,6 +105,59 @@ class MavicDriver:
             (7.41166, 2.71991),  
         ]
         print('[Mavic] Init done — warming up sensors')
+
+    def _set_state(self, new_state: DroneState):
+        if new_state is None or new_state == self.state:
+            return
+        prev = self.state
+        self.state = new_state
+        print(f'[Mavic] FSM {prev.name} -> {new_state.name}', flush=True)
+
+    def _check_interrupts(self):
+        """Evaluate interrupt conditions and update the high-level FSM state."""
+        # ANY STATE → FAILURE (critical error)
+        if self.drone_damaged:
+            if self.state != DroneState.FAILURE:
+                self._set_state(DroneState.FAILURE)
+            return
+
+        # State-specific transitions
+        if self.state == DroneState.SCANNING:
+            # SCANNING → RETURNING (battery low or temperature unsafe)
+            if self.battery_low or self.temperature_unsafe:
+                self._set_state(DroneState.RETURNING)
+                return
+            # SCANNING → PAUSED (obstacle detected or manual stop)
+            if self.obstacle_detected or self.manual_stop:
+                self._set_state(DroneState.PAUSED)
+                return
+
+        elif self.state == DroneState.PAUSED:
+            # PAUSED → SCANNING (resume when obstacle cleared and manual stop released)
+            if not (self.obstacle_detected or self.manual_stop):
+                self._set_state(DroneState.SCANNING)
+                return
+
+        elif self.state == DroneState.RETURNING:
+            # RETURNING → CHARGING (at base)
+            if self.at_base:
+                self._set_state(DroneState.CHARGING)
+                return
+
+        elif self.state == DroneState.CHARGING:
+            # CHARGING → SCANNING (resume mission, here modeled as battery recovered)
+            if not self.battery_low and not self.manual_stop:
+                self._set_state(DroneState.SCANNING)
+                return
+
+        elif self.state == DroneState.COMPLETED:
+            # COMPLETED → IDLE
+            self._set_state(DroneState.IDLE)
+            return
+
+        # IDLE → SCANNING (start mission automatically on first run)
+        if self.state == DroneState.IDLE:
+            self._set_state(DroneState.SCANNING)
 
     # This function is called every time step to update the drone
     def step(self):
@@ -109,10 +186,37 @@ class MavicDriver:
 
         # vx_w, vy_w, vz_w: estimated velocity in world coordinates
 
-        # Decide what to do next (navigate, land, etc.)
-        self._navigate(gx, gy, gz)
+        # Update high-level mission state based on interrupt conditions
+        self._check_interrupts()
 
-        if self._state == 'DONE':
+        # Wrap existing mission logic inside the high-level FSM
+        if self.state == DroneState.IDLE:
+            # Stay idle, keep motors stopped
+            for m in self._motors:
+                m.setVelocity(0.0)
+            return
+        elif self.state == DroneState.SCANNING:
+            # Normal mission execution
+            self._navigate(gx, gy, gz)
+        elif self.state == DroneState.RETURNING:
+            # For now, reuse the same navigation logic; RETURNING is a semantic label
+            self._navigate(gx, gy, gz)
+        elif self.state == DroneState.PAUSED:
+            # Hold position: no new navigation commands, maintain current altitude
+            self._cmd_vx = 0.0
+            self._cmd_vy = 0.0
+        elif self.state in (DroneState.CHARGING, DroneState.COMPLETED, DroneState.FAILURE):
+            # These states keep the drone grounded with motors stopped
+            for m in self._motors:
+                m.setVelocity(0.0)
+            return
+
+        # Detect mission completion from existing navigation state
+        if self._state == 'DONE' and self.state not in (DroneState.COMPLETED, DroneState.FAILURE):
+            self.mission_finished = True
+            self._set_state(DroneState.COMPLETED)
+            for m in self._motors:
+                m.setVelocity(0.0)
             return
 
         # Print info every so often
