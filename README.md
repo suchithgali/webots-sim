@@ -30,7 +30,7 @@ United States Cold Storage (USCS) operates large-scale temperature-controlled wa
 
 ### Software Stack / Technologies Used
 
-- Robotics: ROS2 + barcode reader
+- Robotics: Barcode reader, Webots
 - Frontend: HTML/CSS/JS
 - Backend: FastAPI (Python)
 - Database: SQLite
@@ -46,6 +46,8 @@ Summary for developers with links to setup, build, test instructions in wiki or 
 
 Include: what constitutes passing (e.g., all tests green, coverage threshold).
 - information pending
+
+## Team Members and Roles
 
 ## Coding & Collaboration Conventions
 
