@@ -1,49 +1,53 @@
 <div align="center">
 
-# Project Title
+# Autonomous Inventory Drone for Pallet Location Verification (After-Hours Scan + Map + Exceptions List)
 
-Project Description
+Project Description: Warehouses rely on operators scanning pallet identifiers when moving products to a new location. When a pallet is moved but the drop-off scan is missed, the WMS still shows the old location — leading to time wasted searching, picking delays, and “lost pallet” investigations
 
 </div>
 
 
 ## Overview
 
-Project details
+United States Cold Storage (USCS) operates large-scale temperature-controlled warehouses across the United States, managing over 376 million cubic feet of refrigerated distribution space. Accurate pallet tracking is essential to maintaining efficient warehouse operations. When pallet relocations are not properly scanned, the Warehouse Management System (WMS) retains incorrect location data, leading to lost inventory searches, picking delays, and operational inefficiencies. This project develops an autonomous indoor drone capable of performing after-hours warehouse audits by scanning pallet identifiers, mapping storage locations, and automatically identifying discrepancies between physical inventory and WMS records.
 
 ### Goals
 
-List main objectives, problems you aim to solve.
+- [ ] Autonomously patrol warehouse aisles after operating hours
+- [ ] Detect and track problem zones with frequent inventory errors
+- [ ] Scan pallet identifiers without human intervention
+- [ ] Compare scanned results against WMS expectations
+- [ ]  Generate automated discrepancy and analytics reports
+- [ ]   Reduce manual inventory verification labor
 
 ### Features
 
-- [x] Feature 1
-- [x] Feature 2
-- [ ] Feature 3
+- [ ] Drone payload + sensing package selection (camera/illumination, depth/LiDAR)
+- [ ] Navigation + mapping pipeline (SLAM/waypoint patrol routes) with rack/aisle localization
+- [ ] Identifier scanning module (barcode, confidence scoring, duplicate handling)
+- [ ] Reconciliation report: “Found vs Expected” + exception list + heatmap of problem zones
+- [ ] Dashboard view showing scanned pallets on a warehouse map and trend tracking over time
 
 ### Software Stack / Technologies Used
 
-- Language: ...
-- Framework: ...
-- Database: ...
-- etc...
-
+- Robotics: Barcode reader, Webots
+- Frontend: HTML/CSS/JS
+- Backend: FastAPI (Python)
+- Database: SQLite
+- PI: REST over HTTP (JSON)
+- Export: CSV/XLSX generator (pandas)
+- Simulation: Webots
 ## Quickstart
 
 Summary for developers with links to setup, build, test instructions in wiki or docs.
-
-### Instructions
-
-1. Click "Use this template" on GitHub to create your private repository.
-2. Clone your repo locally.
-3. Fill in the metadata table above.
-4. Create an initial branch (e.g., `setup`), never commit directly to `main` (unless instructed).
-5. Open an Issue for each lab / feature before starting work.
-6. Use Pull Requests to merge changes (each PR should reference at least one Issue).
+- information pending 
 
 ## Structure
 
 Include: what constitutes passing (e.g., all tests green, coverage threshold).
+- information pending
+
+## Team Members and Roles
 
 ## Coding & Collaboration Conventions
 
