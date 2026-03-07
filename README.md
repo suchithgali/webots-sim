@@ -41,7 +41,7 @@ United States Cold Storage (USCS) operates large-scale temperature-controlled wa
 
 Summary for developers with links to setup, build, test instructions in wiki or docs.
 - information pending 
-
+- 
 ## Structure
 
 Include: what constitutes passing (e.g., all tests green, coverage threshold).
@@ -49,6 +49,7 @@ Include: what constitutes passing (e.g., all tests green, coverage threshold).
 
 ## Team Members and Roles
 - Abaigael Savio: Backend Developer, Computer Vision Specialist
+- Suchith Gali - Fullstack Engineer/Technical Lead
 
 ## Coding & Collaboration Conventions
 
