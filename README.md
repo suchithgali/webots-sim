@@ -49,6 +49,7 @@ Include: what constitutes passing (e.g., all tests green, coverage threshold).
 
 ## Team Members and Roles
 Suchith Gali - Fullstack Engineer/Technical Lead
+Alexander Ruvalcaba - Front-End Developer, UI/UX Designer
 
 ## Coding & Collaboration Conventions
 
