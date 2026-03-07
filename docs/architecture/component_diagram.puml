@@ -1,0 +1,52 @@
+@startuml
+left to right direction
+
+title Autonomous Inventory Drone for Pallet Location Verification\n System Architecture
+
+package "Simulation Layer" {
+  component "Webots Environment" as Webots
+  component "Drone Controller" as DroneController
+}
+
+package "Perception Layer" {
+  component "Barcode Detection Module\n(OpenCV)" as BarcodeCV
+}
+
+package "Frontend Layer" {
+  component "Dashboard UI\n(Web Interface)" as Frontend
+}
+
+package "Backend Layer" {
+  component "FastAPI Backend API\n(REST Interface)" as API
+  component "Scan Processing Service" as ScanService
+  component "Report Export Service\n(XLSX Generator)" as ExportService
+  component "Authentication Service\n(JWT Issuer)" as AuthService
+}
+
+package "Data Layer" {
+  database "SQLite Database\n(Scan Records + Users)" as DB
+}
+
+' Simulation → Perception
+Webots --> DroneController
+DroneController --> BarcodeCV : camera stream\n(RGB frames)
+
+' Perception → Backend
+BarcodeCV --> API : HTTP POST /scans\nJSON payload\n201 Created
+
+' Frontend → Backend
+Frontend --> API : HTTP GET /scans\n200 OK (JSON)
+Frontend --> API : HTTP GET /reports/export\n200 OK (XLSX)
+Frontend --> API : HTTP POST /auth/login\n200 OK (JWT)
+
+' Backend internal services
+API --> ScanService : validate + process scan event
+API --> ExportService : generate XLSX report
+API --> AuthService : authenticate user\nissue JWT
+
+' Database interactions
+ScanService --> DB : store / retrieve scan records\nSQL INSERT / SELECT
+ExportService --> DB : query scan history\nSQL SELECT
+AuthService --> DB : verify user credentials
+
+@enduml
