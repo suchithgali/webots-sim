@@ -49,6 +49,7 @@ Include: what constitutes passing (e.g., all tests green, coverage threshold).
 
 ## Team Members and Roles
 Suchith Gali - Fullstack Engineer/Technical Lead
+Laith Darras - Backend & DevOps Engineer
 
 ## Coding & Collaboration Conventions
 
