@@ -48,6 +48,7 @@ Include: what constitutes passing (e.g., all tests green, coverage threshold).
 - information pending
 
 ## Team Members and Roles
+- Abaigael Savio: Backend Developer, Computer Vision Specialist
 
 ## Coding & Collaboration Conventions
 
