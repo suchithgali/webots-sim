@@ -41,15 +41,17 @@ United States Cold Storage (USCS) operates large-scale temperature-controlled wa
 
 Summary for developers with links to setup, build, test instructions in wiki or docs.
 - information pending 
-
+- 
 ## Structure
 
 Include: what constitutes passing (e.g., all tests green, coverage threshold).
 - information pending
 
-## Team Members and Roles
-Suchith Gali - Fullstack Engineer/Technical Lead
-Laith Darras - Backend & DevOps Engineer
+## Team Members and Role
+- Alexander Ruvalcaba - Front-End Developer, UI/UX Designer
+- Abaigael Savio: Backend Developer, Computer Vision Specialist
+- Suchith Gali - Fullstack Engineer/Technical Lead
+- Laith Darras - Backend & DevOps Engineer
 
 ## Coding & Collaboration Conventions
 
