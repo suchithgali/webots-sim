@@ -27,24 +27,24 @@ package "Data Layer" {
   database "SQLite Database\n(Scan Records + Users)" as DB
 }
 
-' Simulation → Perception
+' Simulation layer
 Webots --> DroneController
-DroneController --> BarcodeCV : camera stream\n(RGB frames)
+DroneController --> BarcodeCV : camera detection\n
 
-' Perception → Backend
+' Perception layer
 BarcodeCV --> API : HTTP POST /scans\nJSON payload\n201 Created
 
-' Frontend → Backend
+' Frontend layer
 Frontend --> API : HTTP GET /scans\n200 OK (JSON)
 Frontend --> API : HTTP GET /reports/export\n200 OK (XLSX)
 Frontend --> API : HTTP POST /auth/login\n200 OK (JWT)
 
-' Backend internal services
-API --> ScanService : validate + process scan event
+' Backend layer
+API --> ScanService : validate + process scan
 API --> ExportService : generate XLSX report
 API --> AuthService : authenticate user\nissue JWT
 
-' Database interactions
+' Database layer
 ScanService --> DB : store / retrieve scan records\nSQL INSERT / SELECT
 ExportService --> DB : query scan history\nSQL SELECT
 AuthService --> DB : verify user credentials
