@@ -13,7 +13,7 @@ package "Perception Layer" {
 }
 
 package "Frontend Layer" {
-  component "Dashboard UI\n(Web Interface)" as Frontend
+  component "Dashboard UI" as Frontend
 }
 
 package "Backend Layer" {
@@ -27,26 +27,21 @@ package "Data Layer" {
   database "SQLite Database\n(Scan Records + Users)" as DB
 }
 
-' Simulation layer
 Webots --> DroneController
 DroneController --> BarcodeCV : camera detection\n
 
-' Perception layer
 BarcodeCV --> API : HTTP POST /scans\nJSON payload\n201 Created
 
-' Frontend layer
 Frontend --> API : HTTP GET /scans\n200 OK (JSON)
 Frontend --> API : HTTP GET /reports/export\n200 OK (XLSX)
 Frontend --> API : HTTP POST /auth/login\n200 OK (JWT)
 
-' Backend layer
 API --> ScanService : validate + process scan
 API --> ExportService : generate XLSX report
 API --> AuthService : authenticate user\nissue JWT
 
-' Database layer
 ScanService --> DB : store / retrieve scan records\nSQL INSERT / SELECT
-ExportService --> DB : query scan history\nSQL SELECT
+ExportService --> DB : retrieve scan history\nSQL SELECT
 AuthService --> DB : verify user credentials
 
 @enduml
