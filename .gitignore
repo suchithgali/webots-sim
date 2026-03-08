@@ -1,25 +1,10 @@
-# python jargon
 __pycache__/
 *.pyc
-
-# virtual environments
+*.pyo
+*.pyd
 venv/
-.env/
 .env
-
-# environment files
-*.env
-
-# database files
-*.db
-*.sqlite3
-
-# fastapi stuff
 *.log
-
-# OS stuff
+.vscode/
 .DS_Store
 Thumbs.db
-
-# IDE files
-.vscode/
