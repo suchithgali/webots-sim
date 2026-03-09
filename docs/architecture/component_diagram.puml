@@ -19,8 +19,8 @@ package "Frontend Layer" {
 package "Backend Layer" {
   component "FastAPI Backend API\n(REST Interface)" as API
   component "Scan Processing Service" as ScanService
-  component "Report Export Service\n(XLSX Generator)" as ExportService
-  component "Authentication Service\n(JWT Issuer)" as AuthService
+  component "Report Export Service" as ExportService
+  component "Authentication Service" as AuthService
 }
 
 package "Data Layer" {
@@ -33,15 +33,15 @@ DroneController --> BarcodeCV : camera detection\n
 BarcodeCV --> API : HTTP POST /scans\nJSON payload\n201 Created
 
 Frontend --> API : HTTP GET /scans\n200 OK (JSON)
-Frontend --> API : HTTP GET /reports/export\n200 OK (XLSX)
+Frontend --> API : HTTP GET /reports/export\n200 OK (XLSX/csv)
 Frontend --> API : HTTP POST /auth/login\n200 OK (JWT)
 
 API --> ScanService : validate + process scan
-API --> ExportService : generate XLSX report
+API --> ExportService : generate report
 API --> AuthService : authenticate user\nissue JWT
 
-ScanService --> DB : store / retrieve scan records\nSQL INSERT / SELECT
-ExportService --> DB : retrieve scan history\nSQL SELECT
+ScanService --> DB : store / retrieve scan records
+ExportService --> DB : retrieve scan records
 AuthService --> DB : verify user credentials
 
 @enduml
