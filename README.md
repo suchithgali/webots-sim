@@ -30,18 +30,11 @@ United States Cold Storage (USCS) operates large-scale temperature-controlled wa
 
 ### Software Stack / Technologies Used
 
-- Robotics: Barcode reader, Webots
-- Frontend: HTML/CSS/JS
-- Backend: FastAPI (Python)
-- Database: SQLite
-- PI: REST over HTTP (JSON)
-- Export: CSV/XLSX generator (pandas)
-- Simulation: Webots
+- See the detailed technology stack in the Wiki: [Software Stack and Development Setup](https://github.com/cse120-ucm/S26-CSE-303/wiki/Software-Stack-and-Development-Setup#technology-stack).
+
 ## Quickstart
 
-Summary for developers with links to setup, build, test instructions in wiki or docs.
-- information pending 
-- 
+- For development setup, see the project [Quick Start Guide](https://github.com/cse120-ucm/S26-CSE-303/wiki/Software-Stack-and-Development-Setup) in the GitHub Wiki.
 ## Structure
 
 Include: what constitutes passing (e.g., all tests green, coverage threshold).
@@ -51,7 +44,7 @@ Include: what constitutes passing (e.g., all tests green, coverage threshold).
 - Alexander Ruvalcaba - Front-End Developer, UI/UX Designer
 - Abaigael Savio: Backend Developer, Computer Vision Specialist
 - Suchith Gali - Fullstack Engineer/Technical Lead
-- Laith Darras - Backend & DevOps Engineer
+- Laith Darras - Backend & DevSecOps Engineer
 
 ## Coding & Collaboration Conventions
 

@@ -1,3 +1,8 @@
+.venv/
 venv/
 __pycache__/
 *.pyc
+backend/warehouse.db
+backend/warehouse.db-journal
+backend/scans.xlsx
+backend/scans.csv
