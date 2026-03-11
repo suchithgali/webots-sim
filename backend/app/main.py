@@ -2,16 +2,20 @@ from fastapi import FastAPI
 from fastapi.responses import FileResponse
 from app.scan_router import router as scan_router
 from app.services.report_service import export_scans_xlsx, export_scans_csv
+from app.exception_router import router as exception_router
 
 app = FastAPI(title="Scanner API")
+
 
 @app.get("/")
 def root():
     return {"message": "Backend API running"}
 
+
 @app.get("/health")
 def health_check():
     return {"status": "ok"}
+
 
 @app.get("/reports/export")
 def export_report():
@@ -22,6 +26,7 @@ def export_report():
         filename="scans.xlsx",
     )
 
+
 @app.get("/reports/export-csv")
 def export_report_csv():
     path = export_scans_csv()
@@ -31,4 +36,6 @@ def export_report_csv():
         filename="scans.csv",
     )
 
+
 app.include_router(scan_router)
+app.include_router(exception_router)

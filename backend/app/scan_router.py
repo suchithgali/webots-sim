@@ -2,10 +2,8 @@ from fastapi import APIRouter
 from pydantic import BaseModel
 from app.db import get_connection
 
-
 # Router for all scan-related API endpoints
 router = APIRouter(prefix="/scans")
-
 
 # Request body structure for creating a scan
 class ScanCreate(BaseModel):
@@ -19,18 +17,39 @@ class ScanCreate(BaseModel):
 # Insert a new row into the scan table and return that new scan as JSON
 @router.post("/", status_code=201)
 def create_scan(scan: ScanCreate):
+
+    connect = get_connection()
+
+    # trigger exception if barcode not detected
+    if not scan.palletID or scan.palletID.strip() == "":
+        connect.execute(
+            """
+            INSERT INTO Exceptions (aisle, bay, level, reason)
+            VALUES (?, ?, ?, ?)
+            """,
+            (scan.aisle, scan.bay, scan.level, "BARCODE_NOT_FOUND"),
+        )
+
+        connect.commit()
+        connect.close()
+
+        return {"error": "Barcode not detected. Exception recorded."}
+
+    # normal scan logic
     if scan.confidence is None:
         confidence_value = 1.0
     else:
         confidence_value = float(scan.confidence)
 
-    connect = get_connection()
     cursor = connect.execute(
         "INSERT INTO Scan (palletID, aisle, bay, level, confidence) VALUES (?, ?, ?, ?, ?)",
         (scan.palletID, scan.aisle, scan.bay, scan.level, confidence_value),
     )
-    connect.commit()
+
+
     scan_id = cursor.lastrowid
+
+    connect.commit()
     connect.close()
 
     return {
