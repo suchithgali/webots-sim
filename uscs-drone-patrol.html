@@ -1,0 +1,2193 @@
+<!DOCTYPE html>
+<!-- Declares this file as an HTML5 document so the browser knows how to render it -->
+<html lang="en">
+<!-- Opens the HTML document and sets the language to English for accessibility -->
+<head>
+<!-- The <head> section contains metadata and resources that are not visible on screen -->
+<meta charset="UTF-8">
+<!-- Tells the browser to use UTF-8 character encoding so all text and symbols display correctly -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- Ensures the page scales correctly on mobile and tablet devices -->
+<title>USCS Drone Patrol System</title>
+<!-- Sets the text shown in the browser tab -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<!-- Loads the Chart.js library from a CDN (Content Delivery Network) so we can draw graphs and charts without writing that code ourselves -->
+<style>
+/* Everything inside <style> tags is CSS — it controls how the page looks */
+
+@import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Barlow:wght@300;400;500;600;700&family=Barlow+Condensed:wght@400;600;700&display=swap');
+/* Imports custom fonts from Google Fonts: Share Tech Mono (monospace/terminal look), Barlow (body text), and Barlow Condensed (compact headings) */
+
+:root {
+/* :root defines CSS variables — reusable color values we can reference anywhere in the stylesheet */
+  --bg: #070b10;         /* Main background — very dark navy */
+  --panel: #0c1219;      /* Sidebar and card background — slightly lighter dark */
+  --panel2: #101820;     /* Secondary panel background used for inputs */
+  --border: #1a3050;     /* Standard border color — muted blue */
+  --border2: #0f2040;    /* Darker border used for subtle dividers */
+  --accent: #00c8f0;     /* Primary accent color — cyan/electric blue */
+  --accent2: #ff6030;    /* Secondary accent — orange, used for warnings/toggles */
+  --green: #00e878;      /* Green used for confirmed/OK states */
+  --yellow: #ffc820;     /* Yellow used for pending/coverage stats */
+  --red: #ff3a3a;        /* Red used for errors and mismatches */
+  --orange: #ff8c00;     /* Orange used specifically for damaged barcode alerts */
+  --text: #b8cce0;       /* Primary text color — soft light blue */
+  --text2: #6080a0;      /* Secondary/dimmed text color */
+  --dim: #304860;        /* Very dim color used for subtle labels and grid lines */
+}
+
+* { margin:0; padding:0; box-sizing:border-box; }
+/* Resets default browser spacing on every element and makes sizing include padding/border */
+
+html, body { height:100%; overflow:hidden; }
+/* Makes the page fill the full viewport height and hides scrollbars on the root elements */
+
+body {
+  background: var(--bg);       /* Sets the page background to our dark navy variable */
+  color: var(--text);          /* Sets the default text color */
+  font-family: 'Barlow', sans-serif; /* Sets the default font for all body text */
+  display: flex;               /* Uses flexbox so we can stack the nav and content vertically */
+  flex-direction: column;      /* Stacks children top to bottom */
+}
+
+/* ── NAV ── */
+nav {
+  background: var(--panel);           /* Dark background for the top navigation bar */
+  border-bottom: 1px solid var(--border); /* Thin line separating nav from content below */
+  display: flex;                      /* Lays out nav items in a row */
+  align-items: center;                /* Vertically centers all items in the nav */
+  padding: 0 16px;                    /* Adds horizontal spacing inside the nav */
+  height: 46px;                       /* Fixed height for the navigation bar */
+  flex-shrink: 0;                     /* Prevents the nav from shrinking when the page is small */
+  gap: 0;                             /* No gap between nav items (spacing is handled by padding) */
+}
+
+.nav-brand {
+  font-family: 'Barlow Condensed', sans-serif; /* Compact bold font for the brand name */
+  font-weight: 700;                            /* Bold weight */
+  font-size: 0.95rem;                          /* Slightly smaller than default */
+  color: var(--accent);                        /* Cyan color to make the brand stand out */
+  letter-spacing: 2px;                         /* Adds space between letters for a technical look */
+  text-transform: uppercase;                   /* Forces all letters to be uppercase */
+  margin-right: 24px;                          /* Pushes the nav tabs away from the brand */
+  white-space: nowrap;                         /* Prevents the brand name from wrapping to a new line */
+}
+
+.nav-brand span { color: var(--text2); font-weight: 400; }
+/* The subtitle part of the brand ("/ Drone Patrol") is dimmer and lighter weight */
+
+.nav-tab {
+  height: 46px;                          /* Matches the nav height so the tab fills it top to bottom */
+  padding: 0 18px;                       /* Horizontal padding inside each tab button */
+  background: transparent;              /* No background by default */
+  border: none;                         /* No visible border */
+  border-bottom: 2px solid transparent; /* Invisible bottom border that becomes visible when active */
+  color: var(--text2);                  /* Dim color for inactive tabs */
+  font-family: 'Barlow Condensed', sans-serif; /* Compact font for tab labels */
+  font-size: 0.8rem;                    /* Slightly small font size */
+  font-weight: 600;                     /* Semi-bold */
+  letter-spacing: 1.5px;               /* Spaced letters for a technical look */
+  text-transform: uppercase;           /* All caps */
+  cursor: pointer;                     /* Shows hand cursor on hover */
+  transition: all 0.15s;              /* Smooth color change on hover/active */
+}
+.nav-tab:hover { color: var(--text); }
+/* Brightens the tab text when hovered */
+
+.nav-tab.active { color: var(--accent); border-bottom-color: var(--accent); }
+/* Active tab gets cyan text and a cyan underline */
+
+.nav-right {
+  margin-left: auto;                        /* Pushes this element all the way to the right */
+  font-family: 'Share Tech Mono', monospace; /* Monospace font gives a clock/terminal feel */
+  font-size: 0.6rem;                        /* Small font for the live clock */
+  color: var(--dim);                        /* Very dim so it doesn't distract */
+}
+
+/* ── PAGES ── */
+.page { display: none; flex: 1; overflow: hidden; }
+/* All pages are hidden by default and fill the remaining vertical space */
+
+.page.active { display: flex; }
+/* The active page becomes visible using flexbox */
+
+/* ══════════════════════════════════
+   PAGE 1 — SIMULATOR
+══════════════════════════════════ */
+.sim-layout {
+  display: flex;    /* Side-by-side layout: sidebar on left, canvas on right */
+  flex: 1;          /* Fills all available space */
+  overflow: hidden; /* Prevents content from spilling outside */
+}
+
+.sim-sidebar {
+  width: 210px;                         /* Fixed width for the tool panel */
+  background: var(--panel);            /* Dark panel background */
+  border-right: 1px solid var(--border); /* Line separating sidebar from canvas */
+  display: flex;                        /* Stack sections vertically */
+  flex-direction: column;               /* Top to bottom layout */
+  overflow-y: auto;                     /* Adds scrollbar if content overflows */
+  flex-shrink: 0;                       /* Prevents sidebar from shrinking */
+}
+
+.sb-section {
+  padding: 10px 12px;                     /* Spacing inside each sidebar section */
+  border-bottom: 1px solid var(--border2); /* Thin divider between sections */
+}
+
+.sb-title {
+  font-family: 'Share Tech Mono', monospace; /* Terminal-style font for section titles */
+  font-size: 0.58rem;                        /* Very small label font */
+  color: var(--accent);                      /* Cyan to make titles stand out */
+  letter-spacing: 2px;                       /* Wide letter spacing for a header look */
+  text-transform: uppercase;                 /* All caps */
+  margin-bottom: 8px;                        /* Space below the title */
+}
+
+.tool-grid { display: flex; flex-direction: column; gap: 3px; }
+/* Stacks tool buttons vertically with small gaps between them */
+
+.tbtn {
+  width: 100%;             /* Button stretches to fill the sidebar width */
+  padding: 7px 10px;       /* Comfortable click area */
+  background: transparent; /* No background by default */
+  border: 1px solid var(--border); /* Subtle border */
+  color: var(--text2);     /* Dim text for inactive state */
+  font-family: 'Barlow', sans-serif; /* Body font */
+  font-size: 0.73rem;      /* Slightly small text */
+  cursor: pointer;         /* Hand cursor */
+  text-align: left;        /* Icon and text aligned to the left */
+  border-radius: 2px;      /* Slightly rounded corners */
+  transition: all 0.12s;   /* Fast smooth hover transition */
+  display: flex;           /* Aligns icon and text side by side */
+  align-items: center;     /* Vertically centers icon and text */
+  gap: 7px;                /* Space between icon and text */
+}
+.tbtn:hover { border-color: var(--accent); color: var(--text); }
+/* On hover, border and text brighten to cyan/white */
+
+.tbtn.active { background: rgba(0,200,240,0.08); border-color: var(--accent); color: var(--accent); }
+/* Active/selected tool gets a subtle cyan background and bright cyan text */
+
+.tbtn.red-btn { color: #ff6060; border-color: #2a1010; }
+/* Destructive buttons (like Clear All) use red styling */
+
+.tbtn.red-btn:hover { border-color: var(--red); background: rgba(255,58,58,0.06); }
+/* On hover, the red button becomes more vivid */
+
+.tbtn.green-btn { color: var(--green); border-color: #0a2a1a; }
+/* The Start Patrol button uses green styling */
+
+.tbtn.green-btn:hover { background: rgba(0,232,120,0.06); border-color: var(--green); }
+/* On hover, the green button brightens */
+
+.tbtn.green-btn:disabled { opacity: 0.35; cursor: not-allowed; }
+/* Disabled green button looks faded and shows a blocked cursor */
+
+.tbtn .ico { width: 13px; font-size: 0.8rem; }
+/* Reserves consistent space for the icon inside each button */
+
+.toggle-row {
+  display: flex;               /* Icon and label side by side */
+  align-items: center;         /* Vertically centers label and toggle */
+  justify-content: space-between; /* Pushes label left and toggle right */
+  padding: 5px 0;             /* Vertical spacing */
+  font-size: 0.72rem;          /* Small label text */
+}
+.toggle-label { color: var(--text2); }
+/* Labels for toggle switches use dim text */
+
+.toggle {
+  position: relative; /* Required for the slider pseudo-element to position inside it */
+  width: 32px; height: 16px; /* Fixed size for the toggle switch */
+}
+.toggle input { opacity: 0; width: 0; height: 0; }
+/* The actual checkbox input is hidden — the visual slider handles appearance */
+
+.toggle-slider {
+  position: absolute; /* Fills the .toggle container */
+  inset: 0;           /* Shorthand for top/right/bottom/left: 0 */
+  background: var(--border); /* Default off-state background */
+  border-radius: 8px; /* Pill shape */
+  cursor: pointer;    /* Hand cursor */
+  transition: 0.2s;   /* Smooth animation when toggling */
+}
+.toggle-slider:before {
+  content: '';          /* Required for pseudo-elements to appear */
+  position: absolute;   /* Positioned inside the slider */
+  width: 12px; height: 12px; /* Circle size */
+  left: 2px; top: 2px;  /* Initial position (off state) */
+  background: var(--text2); /* Dim circle when off */
+  border-radius: 50%;   /* Makes it a perfect circle */
+  transition: 0.2s;     /* Slides smoothly when toggled */
+}
+.toggle input:checked + .toggle-slider { background: rgba(255,96,48,0.3); border: 1px solid var(--accent2); }
+/* When the checkbox is checked, the slider background turns orange */
+
+.toggle input:checked + .toggle-slider:before { transform: translateX(16px); background: var(--accent2); }
+/* The circle slides to the right and turns orange when checked */
+
+.stat-mini {
+  display: flex;                          /* Label and value side by side */
+  justify-content: space-between;        /* Label on left, value on right */
+  align-items: center;                   /* Vertically centered */
+  padding: 3px 0;                        /* Small vertical spacing */
+  font-size: 0.7rem;                     /* Small stat text */
+  border-bottom: 1px solid rgba(26,48,80,0.4); /* Very subtle divider between stats */
+}
+.stat-mini:last-child { border-bottom: none; }
+/* Removes the divider after the last stat row to avoid a double border */
+
+.stat-mini .lbl { color: var(--text2); }
+/* Stat labels are dimmed */
+
+.stat-mini .val { font-family: 'Share Tech Mono', monospace; }
+/* Stat values use monospace font so numbers align cleanly */
+
+.val-c { color: var(--accent); }  /* Cyan value */
+.val-g { color: var(--green); }   /* Green value */
+.val-r { color: var(--red); }     /* Red value */
+.val-y { color: var(--yellow); }  /* Yellow value */
+.val-o { color: var(--orange); }  /* Orange value — used for damaged barcodes */
+
+.speed-wrap { display: flex; align-items: center; gap: 8px; padding: 4px 0; }
+/* Row layout for the speed slider and its label */
+
+.speed-wrap label { font-size: 0.65rem; color: var(--text2); white-space: nowrap; }
+/* Small non-wrapping label next to the speed slider */
+
+.speed-wrap input[type=range] { flex:1; accent-color: var(--accent); }
+/* Slider stretches to fill remaining space and uses our accent color */
+
+.speed-wrap .sv { font-family: 'Share Tech Mono', monospace; font-size: 0.65rem; color: var(--accent); width: 24px; }
+/* Speed value display next to the slider */
+
+.log-area {
+  background: #040810;              /* Very dark background simulating a terminal */
+  border: 1px solid var(--border2); /* Subtle border */
+  border-radius: 2px;               /* Slightly rounded */
+  padding: 6px 8px;                 /* Inner spacing */
+  font-family: 'Share Tech Mono', monospace; /* Monospace for log lines */
+  font-size: 0.58rem;               /* Very small text for log entries */
+  height: 130px;                    /* Fixed height with scrolling */
+  overflow-y: auto;                 /* Scroll when log fills up */
+  line-height: 1.7;                 /* Comfortable line spacing */
+}
+.log-ok   { color: var(--green); }  /* Green for confirmed scans */
+.log-warn { color: var(--yellow); } /* Yellow for mismatches/warnings */
+.log-err  { color: var(--red); }    /* Red for critical errors */
+.log-info { color: var(--accent); } /* Cyan for general info */
+.log-dim  { color: var(--dim); }    /* Dim for minor/system messages */
+.log-dmg  { color: var(--orange); } /* Orange for damaged barcode events */
+
+.sim-canvas-wrap {
+  flex: 1;           /* Canvas area fills all remaining horizontal space */
+  position: relative; /* Needed so HUD overlays position relative to this container */
+  overflow: hidden;  /* Clips the canvas at the container boundary */
+}
+#simCanvas { display: block; }
+/* Block display removes the small default gap below canvas elements */
+
+.canvas-hud {
+  position: absolute;    /* Floats over the canvas */
+  top: 10px;             /* 10px from the top of the canvas */
+  left: 50%;             /* Start at horizontal center */
+  transform: translateX(-50%); /* Shift left by half its own width to truly center it */
+  background: rgba(7,11,16,0.92); /* Semi-transparent dark background */
+  border: 1px solid var(--border); /* Subtle border */
+  padding: 4px 14px;     /* Internal spacing */
+  font-family: 'Share Tech Mono', monospace; /* Terminal font */
+  font-size: 0.6rem;     /* Small status text */
+  color: var(--accent);  /* Cyan text */
+  letter-spacing: 1px;   /* Spaced letters */
+  pointer-events: none;  /* Clicks pass through this overlay to the canvas below */
+  border-radius: 2px;    /* Slightly rounded */
+  white-space: nowrap;   /* Prevents wrapping onto multiple lines */
+}
+.canvas-coords {
+  position: absolute;    /* Floats over the canvas */
+  bottom: 10px;          /* 10px from the bottom */
+  left: 12px;            /* 12px from the left edge */
+  font-family: 'Share Tech Mono', monospace; /* Terminal font */
+  font-size: 0.58rem;    /* Very small */
+  color: var(--dim);     /* Dim so it doesn't distract */
+  pointer-events: none;  /* Clicks pass through to canvas */
+}
+
+/* ══════════════════════════════════
+   PAGE 2 — ANALYTICS
+══════════════════════════════════ */
+.analytics-layout {
+  flex: 1;          /* Fills the full page height */
+  overflow-y: auto; /* Allows scrolling if charts don't fit on screen */
+  padding: 16px;    /* Spacing around the content */
+  display: flex;    /* Stack header, KPIs, and charts vertically */
+  flex-direction: column; /* Top to bottom */
+  gap: 14px;        /* Space between each section */
+}
+
+.analytics-header {
+  display: flex;                   /* Title and export buttons side by side */
+  align-items: center;             /* Vertically centered */
+  justify-content: space-between;  /* Title on left, buttons on right */
+}
+
+.analytics-header h2 {
+  font-family: 'Barlow Condensed', sans-serif; /* Compact font for the page title */
+  font-size: 1.1rem;                           /* Slightly larger heading */
+  font-weight: 700;                            /* Bold */
+  color: var(--accent);                        /* Cyan */
+  letter-spacing: 2px;                         /* Wide spacing */
+  text-transform: uppercase;                   /* All caps */
+}
+
+.export-btns { display: flex; gap: 8px; }
+/* Lays out the CSV and PDF export buttons side by side with a gap */
+
+.exp-btn {
+  padding: 7px 14px;                           /* Click area */
+  border-radius: 2px;                          /* Slightly rounded */
+  font-family: 'Barlow Condensed', sans-serif; /* Compact font */
+  font-size: 0.75rem;                          /* Small button text */
+  font-weight: 600;                            /* Semi-bold */
+  letter-spacing: 1px;                         /* Spaced letters */
+  cursor: pointer;                             /* Hand cursor */
+  transition: all 0.15s;                       /* Smooth hover effect */
+}
+.exp-btn.csv { background: rgba(0,232,120,0.08); border: 1px solid var(--green); color: var(--green); }
+/* CSV export button uses green styling */
+
+.exp-btn.csv:hover { background: rgba(0,232,120,0.15); }
+/* CSV button background brightens slightly on hover */
+
+.exp-btn.pdf { background: rgba(255,96,48,0.08); border: 1px solid var(--accent2); color: var(--accent2); }
+/* PDF export button uses orange styling */
+
+.exp-btn.pdf:hover { background: rgba(255,96,48,0.15); }
+/* PDF button brightens on hover */
+
+.kpi-row {
+  display: grid;                          /* Grid layout for the KPI cards */
+  grid-template-columns: repeat(5, 1fr); /* Five equal-width columns (added Damaged Barcodes KPI) */
+  gap: 10px;                              /* Space between cards */
+}
+
+.kpi-card {
+  background: var(--panel);    /* Dark card background */
+  border: 1px solid var(--border); /* Subtle card border */
+  border-radius: 3px;          /* Slightly rounded corners */
+  padding: 14px;               /* Internal spacing */
+  position: relative;          /* Needed for the colored top bar pseudo-element */
+  overflow: hidden;            /* Clips the colored bar at the card edge */
+}
+.kpi-card::before {
+  content: '';           /* Required for pseudo-elements to appear */
+  position: absolute;    /* Positioned inside the card */
+  top: 0; left: 0; right: 0; /* Spans the full top edge */
+  height: 2px;           /* Thin colored accent bar at the top of each card */
+}
+.kpi-card.blue::before   { background: var(--accent); }  /* Blue/cyan top bar */
+.kpi-card.green::before  { background: var(--green); }   /* Green top bar */
+.kpi-card.red::before    { background: var(--red); }     /* Red top bar */
+.kpi-card.yellow::before { background: var(--yellow); }  /* Yellow top bar */
+.kpi-card.orange::before { background: var(--orange); }  /* Orange top bar for damaged barcodes */
+
+.kpi-label { font-size: 0.62rem; color: var(--text2); letter-spacing: 1px; text-transform: uppercase; margin-bottom: 6px; }
+/* Small uppercase label above the big number in each KPI card */
+
+.kpi-value { font-family: 'Barlow Condensed', sans-serif; font-size: 2rem; font-weight: 700; line-height: 1; }
+/* Large bold number that is the main focus of each KPI card */
+
+.kpi-value.blue   { color: var(--accent); }  /* Cyan number */
+.kpi-value.green  { color: var(--green); }   /* Green number */
+.kpi-value.red    { color: var(--red); }     /* Red number */
+.kpi-value.yellow { color: var(--yellow); }  /* Yellow number */
+.kpi-value.orange { color: var(--orange); }  /* Orange number for damaged barcodes */
+
+.kpi-sub { font-size: 0.65rem; color: var(--text2); margin-top: 4px; }
+/* Small subtitle below the KPI number explaining what it represents */
+
+.charts-row {
+  display: grid;                         /* Grid layout for chart cards */
+  grid-template-columns: 1fr 1fr;       /* Two equal columns */
+  gap: 14px;                             /* Space between chart cards */
+}
+.charts-row.three { grid-template-columns: 1fr 1fr 1fr; }
+/* Three-column variant for the bottom row of charts */
+
+.chart-card {
+  background: var(--panel);           /* Dark card background */
+  border: 1px solid var(--border);    /* Subtle border */
+  border-radius: 3px;                 /* Slightly rounded */
+  padding: 14px;                      /* Internal spacing */
+}
+.chart-title {
+  font-family: 'Barlow Condensed', sans-serif; /* Compact font */
+  font-size: 0.72rem;                          /* Small title */
+  font-weight: 600;                            /* Semi-bold */
+  color: var(--text2);                         /* Dim title text */
+  letter-spacing: 1.5px;                       /* Wide spacing */
+  text-transform: uppercase;                   /* All caps */
+  margin-bottom: 12px;                         /* Space between title and chart */
+}
+.chart-wrap { position: relative; height: 180px; }
+/* Container for each chart with a fixed height so charts don't grow infinitely */
+
+/* ══════════════════════════════════
+   PAGE 3 — INVENTORY
+══════════════════════════════════ */
+.inventory-layout {
+  flex: 1;          /* Fills the full page area */
+  overflow-y: auto; /* Scrolls when there are many inventory rows */
+  padding: 16px;    /* Page margin */
+  display: flex;    /* Stack header and table vertically */
+  flex-direction: column; /* Top to bottom */
+  gap: 14px;        /* Space between header and table */
+}
+
+.inv-header {
+  display: flex;                   /* Title and controls side by side */
+  align-items: center;             /* Vertically centered */
+  justify-content: space-between;  /* Title on left, controls on right */
+  flex-wrap: wrap;                 /* Wraps to next line on small screens */
+  gap: 10px;                       /* Gap between wrapped rows */
+}
+
+.inv-header h2 {
+  font-family: 'Barlow Condensed', sans-serif; /* Compact heading font */
+  font-size: 1.1rem;                           /* Page title size */
+  font-weight: 700;                            /* Bold */
+  color: var(--accent);                        /* Cyan */
+  letter-spacing: 2px;                         /* Wide spacing */
+  text-transform: uppercase;                   /* All caps */
+}
+
+.inv-controls { display: flex; gap: 8px; align-items: center; }
+/* Lays out the search box and download button side by side */
+
+.inv-search {
+  background: var(--panel2);       /* Slightly lighter dark background for input */
+  border: 1px solid var(--border); /* Subtle border */
+  border-radius: 2px;              /* Slightly rounded */
+  color: var(--text);              /* Text color */
+  font-family: 'Barlow', sans-serif; /* Body font */
+  font-size: 0.78rem;              /* Small text */
+  padding: 6px 10px;               /* Input padding */
+  width: 200px;                    /* Fixed width */
+  outline: none;                   /* Removes default browser focus ring */
+}
+.inv-search:focus { border-color: var(--accent); }
+/* Cyan border when the search box is focused */
+
+.inv-search::placeholder { color: var(--dim); }
+/* Placeholder text is very dim */
+
+.inv-table-wrap {
+  background: var(--panel); /* Dark background for the table container */
+  border: 1px solid var(--border); /* Container border */
+  border-radius: 3px;       /* Slightly rounded */
+  overflow: auto;           /* Enables both horizontal and vertical scrolling */
+}
+
+.inv-table {
+  width: 100%;              /* Table fills its container */
+  border-collapse: collapse; /* Removes gaps between table cell borders */
+  font-family: 'Share Tech Mono', monospace; /* Monospace for aligned columns */
+  font-size: 0.68rem;       /* Small text for dense data rows */
+}
+
+.inv-table thead tr {
+  background: #060e18;             /* Very dark header row background */
+  border-bottom: 2px solid var(--border); /* Stronger border under the header */
+}
+
+.inv-table th {
+  padding: 8px 12px;               /* Cell padding */
+  text-align: left;                /* Left-aligned header text */
+  color: var(--accent);            /* Cyan column headers */
+  letter-spacing: 1px;             /* Spaced letters */
+  font-size: 0.6rem;               /* Very small header text */
+  font-weight: normal;             /* Not bold — all caps already makes it read as a header */
+  text-transform: uppercase;       /* All caps */
+  white-space: nowrap;             /* Prevents column headers from wrapping */
+  border-right: 1px solid var(--border2); /* Thin vertical divider between columns */
+}
+.inv-table th:last-child { border-right: none; }
+/* No right border on the last column header */
+
+.inv-table tbody tr {
+  border-bottom: 1px solid var(--border2); /* Thin divider between rows */
+  transition: background 0.1s;             /* Smooth highlight on hover */
+}
+.inv-table tbody tr:hover { background: rgba(0,200,240,0.04); }
+/* Very subtle cyan tint on row hover */
+
+.inv-table td {
+  padding: 6px 12px;               /* Cell padding */
+  color: var(--text);              /* Standard text color */
+  white-space: nowrap;             /* Keeps cell content on one line */
+  border-right: 1px solid rgba(26,48,80,0.3); /* Subtle column divider */
+}
+.inv-table td:last-child { border-right: none; }
+/* No right border on the last data cell */
+
+.inv-table .mismatch-row td { color: #ff8888; }
+/* All cells in a mismatch row turn red */
+
+.inv-table .mismatch-row { background: rgba(255,58,58,0.04); }
+/* Mismatch rows get a very subtle red background tint */
+
+.inv-table .damaged-row td { color: #ffb060; }
+/* All cells in a damaged barcode row turn orange */
+
+.inv-table .damaged-row { background: rgba(255,140,0,0.04); }
+/* Damaged rows get a subtle orange background tint */
+
+.status-badge {
+  padding: 2px 8px;    /* Small pill shape padding */
+  border-radius: 2px;  /* Slightly rounded corners */
+  font-size: 0.6rem;   /* Very small text */
+  letter-spacing: 1px; /* Spaced letters */
+  text-transform: uppercase; /* All caps */
+}
+.badge-ok      { background: rgba(0,232,120,0.1);  color: var(--green);  border: 1px solid rgba(0,232,120,0.3); }
+/* Green badge for confirmed pallets */
+
+.badge-miss    { background: rgba(255,58,58,0.1);  color: var(--red);    border: 1px solid rgba(255,58,58,0.3); }
+/* Red badge for WMS mismatches */
+
+.badge-pending { background: rgba(255,200,32,0.1); color: var(--yellow); border: 1px solid rgba(255,200,32,0.3); }
+/* Yellow badge for unscanned/pending pallets */
+
+.badge-damaged { background: rgba(255,140,0,0.1);  color: var(--orange); border: 1px solid rgba(255,140,0,0.3); }
+/* Orange badge for pallets with damaged/unreadable barcodes */
+
+.inv-footer {
+  display: flex;                   /* Record count and plant info side by side */
+  justify-content: space-between;  /* Spread to opposite ends */
+  align-items: center;             /* Vertically centered */
+  padding: 8px 0;                  /* Vertical spacing */
+  font-size: 0.7rem;               /* Small footer text */
+  color: var(--text2);             /* Dim text */
+}
+
+/* scrollbar */
+::-webkit-scrollbar { width: 4px; height: 4px; }
+/* Makes scrollbars very thin in Chrome/Safari */
+
+::-webkit-scrollbar-track { background: transparent; }
+/* Scrollbar track is invisible */
+
+::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
+/* Scrollbar thumb is a subtle dark color */
+</style>
+</head>
+<body>
+
+<!-- The <nav> bar contains the brand name, page tabs, and live clock -->
+<nav>
+  <div class="nav-brand">USCS <span>/ Drone Patrol</span></div>
+  <!-- Brand name with a dimmer subtitle -->
+  <button class="nav-tab active" onclick="showPage('sim', this)">⬡ Simulator</button>
+  <!-- Simulator tab — active by default on page load -->
+  <button class="nav-tab" onclick="showPage('analytics', this)">◈ Analytics</button>
+  <!-- Analytics tab — switches to the charts/reports page -->
+  <button class="nav-tab" onclick="showPage('inventory', this)">≡ Inventory</button>
+  <!-- Inventory tab — switches to the pallet inventory table -->
+  <div class="nav-right" id="clockDisplay"></div>
+  <!-- Live clock — updated every second by JavaScript -->
+</nav>
+
+<!-- ══ PAGE: SIMULATOR ══ -->
+<div class="page active" id="page-sim">
+<!-- The simulator page is the default visible page -->
+  <div class="sim-layout">
+    <div class="sim-sidebar">
+    <!-- Left sidebar contains all drawing tools, toggles, stats, and the event log -->
+
+      <div class="sb-section">
+        <div class="sb-title">Draw Tools</div>
+        <!-- Section header label -->
+        <div class="tool-grid">
+          <button class="tbtn active" id="btn-rack"  onclick="setTool('rack')"><span class="ico">▬</span> Rack Row</button>
+          <!-- Places a rack (3-cell wide shelf) on the canvas -->
+          <button class="tbtn"        id="btn-pallet" onclick="setTool('pallet')"><span class="ico">◼</span> Pallet</button>
+          <!-- Places a pallet; respects the Mismatch and Damaged toggles below -->
+          <button class="tbtn"        id="btn-wall"   onclick="setTool('wall')"><span class="ico">█</span> Wall (2 clicks)</button>
+          <!-- Draws a wall segment between two clicked points -->
+          <button class="tbtn"        id="btn-path"   onclick="setTool('path')"><span class="ico">✎</span> Draw Path</button>
+          <!-- Adds waypoints for the drone to follow; right-click removes the last point -->
+          <button class="tbtn"        id="btn-start"  onclick="setTool('start')"><span class="ico">⊕</span> Drone Start</button>
+          <!-- Sets the drone's starting position on the canvas -->
+        </div>
+      </div>
+
+      <div class="sb-section">
+        <div class="sb-title">Pallet Options</div>
+        <!-- Toggles that affect how the next pallet will be placed -->
+
+        <div class="toggle-row">
+          <span class="toggle-label">Place as Mismatch</span>
+          <!-- Label for the mismatch toggle -->
+          <label class="toggle">
+            <input type="checkbox" id="mismatchToggle">
+            <!-- Checkbox that controls whether new pallets are WMS mismatches -->
+            <span class="toggle-slider"></span>
+            <!-- Visual slider element styled by CSS -->
+          </label>
+        </div>
+
+        <div class="toggle-row" style="margin-top:6px;">
+          <span class="toggle-label">Place as Damaged Barcode</span>
+          <!-- Label for the damaged barcode toggle -->
+          <label class="toggle">
+            <input type="checkbox" id="damagedToggle">
+            <!-- Checkbox that marks new pallets as having an unreadable barcode -->
+            <span class="toggle-slider"></span>
+          </label>
+        </div>
+        <div style="font-size:0.62rem;color:var(--dim);margin-top:6px;">Mismatch = wrong WMS location. Damaged = barcode unreadable.</div>
+        <!-- Short explanation of what each toggle does -->
+      </div>
+
+      <div class="sb-section">
+        <div class="sb-title">Controls</div>
+        <div class="speed-wrap">
+          <label>SPEED</label>
+          <!-- Label for the simulation speed slider -->
+          <input type="range" id="speedSlider" min="1" max="12" value="5"
+            oninput="simSpeed=+this.value;document.getElementById('sv').textContent=this.value+'x'">
+          <!-- Slider that controls how fast the drone moves; updates simSpeed variable and display in real time -->
+          <span class="sv" id="sv">5x</span>
+          <!-- Displays the current speed multiplier next to the slider -->
+        </div>
+        <div class="tool-grid" style="margin-top:6px;">
+          <button class="tbtn green-btn" id="btn-run" onclick="toggleSim()"><span class="ico">▶</span> Start Patrol</button>
+          <!-- Starts or pauses the drone simulation -->
+          <button class="tbtn" onclick="resetDrone()"><span class="ico">↺</span> Reset Drone</button>
+          <!-- Resets the drone back to its start position without clearing the map -->
+          <button class="tbtn" onclick="clearPath()"><span class="ico">⌫</span> Clear Path</button>
+          <!-- Removes all drawn path waypoints -->
+          <button class="tbtn red-btn" onclick="clearAll()"><span class="ico">✕</span> Clear All</button>
+          <!-- Clears the entire canvas including racks, pallets, walls, and path -->
+        </div>
+      </div>
+
+      <div class="sb-section">
+        <div class="sb-title">Scan Stats</div>
+        <!-- Live counters updated during and after simulation -->
+        <div class="stat-mini"><span class="lbl">Pallets</span><span class="val val-c" id="s-placed">0</span></div>
+        <!-- Total number of pallets placed on the canvas -->
+        <div class="stat-mini"><span class="lbl">Scanned</span><span class="val val-g" id="s-scanned">0</span></div>
+        <!-- Number of pallets the drone has successfully scanned -->
+        <div class="stat-mini"><span class="lbl">Mismatches</span><span class="val val-r" id="s-miss">0</span></div>
+        <!-- Number of pallets flagged as WMS location errors -->
+        <div class="stat-mini"><span class="lbl">Damaged</span><span class="val val-o" id="s-dmg">0</span></div>
+        <!-- Number of pallets with damaged/unreadable barcodes found during patrol -->
+        <div class="stat-mini"><span class="lbl">Coverage</span><span class="val val-y" id="s-cov">0%</span></div>
+        <!-- Percentage of total pallets that have been scanned -->
+        <div class="stat-mini"><span class="lbl">Path Pts</span><span class="val val-c" id="s-path">0</span></div>
+        <!-- Number of waypoints in the currently drawn drone path -->
+      </div>
+
+      <div class="sb-section" style="flex:1;">
+        <div class="sb-title">Event Log</div>
+        <!-- Real-time log of everything that happens during simulation -->
+        <div class="log-area" id="logBox"></div>
+        <!-- Scrollable log box populated by the log() JavaScript function -->
+      </div>
+
+    </div>
+
+    <div class="sim-canvas-wrap">
+    <!-- The right side of the simulator — takes up all remaining space -->
+      <canvas id="simCanvas"></canvas>
+      <!-- The HTML5 canvas element where the warehouse map is drawn -->
+      <div class="canvas-hud" id="hudText">READY — Select a tool and draw your warehouse</div>
+      <!-- Status message displayed over the canvas; updated by setHud() -->
+      <div class="canvas-coords" id="coordsText">X:0 Y:0</div>
+      <!-- Shows the current mouse coordinates and active tool in the bottom-left -->
+    </div>
+  </div>
+</div>
+
+<!-- ══ PAGE: ANALYTICS ══ -->
+<div class="page" id="page-analytics">
+<!-- Analytics page — hidden until the user clicks the Analytics tab -->
+  <div class="analytics-layout">
+    <div class="analytics-header">
+      <h2>◈ Patrol Analytics</h2>
+      <!-- Page title -->
+      <div class="export-btns">
+        <button class="exp-btn csv" onclick="exportAnalyticsCSV()">⬇ Export CSV</button>
+        <!-- Downloads analytics data as a timestamped CSV file -->
+        <button class="exp-btn pdf" onclick="exportAnalyticsPDF()">⬇ Export PDF</button>
+        <!-- Opens a print-ready PDF report in a new tab with timestamp -->
+      </div>
+    </div>
+
+    <div class="kpi-row">
+    <!-- Row of summary KPI (Key Performance Indicator) cards -->
+      <div class="kpi-card blue">
+        <div class="kpi-label">Total Patrols</div>
+        <div class="kpi-value blue" id="kpi-patrols">0</div>
+        <!-- Total number of completed patrol runs -->
+        <div class="kpi-sub">lifetime runs</div>
+      </div>
+      <div class="kpi-card green">
+        <div class="kpi-label">Avg Coverage</div>
+        <div class="kpi-value green" id="kpi-coverage">0%</div>
+        <!-- Average percentage of pallets scanned across all patrols -->
+        <div class="kpi-sub">pallets confirmed</div>
+      </div>
+      <div class="kpi-card red">
+        <div class="kpi-label">Total Mismatches</div>
+        <div class="kpi-value red" id="kpi-mismatches">0</div>
+        <!-- Total WMS location errors found across all patrols -->
+        <div class="kpi-sub">WMS errors found</div>
+      </div>
+      <div class="kpi-card orange">
+        <div class="kpi-label">Damaged Barcodes</div>
+        <div class="kpi-value orange" id="kpi-damaged">0</div>
+        <!-- Total pallets with unreadable barcodes found across all patrols -->
+        <div class="kpi-sub">unreadable labels</div>
+      </div>
+      <div class="kpi-card yellow">
+        <div class="kpi-label">Mismatch Rate</div>
+        <div class="kpi-value yellow" id="kpi-rate">0%</div>
+        <!-- Mismatches as a percentage of all scanned pallets -->
+        <div class="kpi-sub">of scanned pallets</div>
+      </div>
+    </div>
+
+    <div class="charts-row">
+      <div class="chart-card">
+        <div class="chart-title">Pallets Scanned Per Patrol</div>
+        <div class="chart-wrap"><canvas id="chartScanned"></canvas></div>
+        <!-- Line chart showing how many pallets were scanned on each patrol run -->
+      </div>
+      <div class="chart-card">
+        <div class="chart-title">Mismatches &amp; Damaged Per Patrol</div>
+        <div class="chart-wrap"><canvas id="chartMismatches"></canvas></div>
+        <!-- Grouped bar chart comparing mismatches and damaged barcodes per run -->
+      </div>
+    </div>
+
+    <div class="charts-row three">
+      <div class="chart-card">
+        <div class="chart-title">Coverage Rate Trend</div>
+        <div class="chart-wrap"><canvas id="chartCoverage"></canvas></div>
+        <!-- Line chart showing how coverage % changes across patrols -->
+      </div>
+      <div class="chart-card">
+        <div class="chart-title">Scan Result Breakdown</div>
+        <div class="chart-wrap"><canvas id="chartDoughnut"></canvas></div>
+        <!-- Doughnut chart breaking down Confirmed / Mismatch / Damaged totals -->
+      </div>
+      <div class="chart-card">
+        <div class="chart-title">Cumulative Issues Found</div>
+        <div class="chart-wrap"><canvas id="chartCumulative"></canvas></div>
+        <!-- Line chart showing total issues (mismatches + damaged) accumulating over time -->
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ PAGE: INVENTORY ══ -->
+<div class="page" id="page-inventory">
+<!-- Inventory page — hidden until the user clicks the Inventory tab -->
+  <div class="inventory-layout">
+    <div class="inv-header">
+      <div>
+        <h2>≡ Pallet Inventory</h2>
+        <!-- Page title -->
+        <div style="font-size:0.68rem;color:var(--text2);margin-top:3px;font-family:'Share Tech Mono',monospace;">
+          Plant: 550 &nbsp;|&nbsp; Location Maintenance &nbsp;|&nbsp; <span id="inv-timestamp"></span>
+          <!-- Shows plant number and the timestamp of when inventory data was last loaded -->
+        </div>
+      </div>
+      <div class="inv-controls">
+        <input class="inv-search" type="text" id="invSearch"
+          placeholder="Search location, license, customer…" oninput="filterInventory()">
+        <!-- Live search input — filters table rows as the user types -->
+        <button class="exp-btn csv" onclick="exportInventoryCSV()">⬇ Download CSV</button>
+        <!-- Downloads the current (filtered) inventory as a timestamped CSV for Excel -->
+      </div>
+    </div>
+
+    <div class="inv-table-wrap">
+      <table class="inv-table" id="invTable">
+      <!-- The main inventory data table matching the USCS Location Maintenance format -->
+        <thead>
+          <tr>
+            <th>Opt</th>          <!-- Option codes (e.g., movement actions) -->
+            <th>Location</th>     <!-- Physical rack/aisle/slot location in the warehouse -->
+            <th>License #</th>    <!-- License plate number on the pallet -->
+            <th>Lot Number</th>   <!-- Product lot/batch number -->
+            <th>Customer</th>     <!-- Customer account number -->
+            <th>Description</th>  <!-- Product description -->
+            <th>Quantity</th>     <!-- Number of units on the pallet -->
+            <th>On-Hand</th>      <!-- Quantity confirmed physically present -->
+            <th>PIP</th>          <!-- Product In Progress — units being picked/processed -->
+            <th>Available</th>    <!-- Units available for new orders -->
+            <th>Hold</th>         <!-- Units on hold (quality, customs, etc.) -->
+            <th>Stat</th>         <!-- Status code -->
+            <th>Hold Type</th>    <!-- Reason code for any hold -->
+            <th>Pallet-ID</th>    <!-- Unique internal pallet identifier -->
+            <th>WMS Status</th>   <!-- Result from the drone scan: CONFIRMED, MISMATCH, DAMAGED, or PENDING -->
+            <th>Last Scanned</th> <!-- Date and time of the most recent drone scan -->
+          </tr>
+        </thead>
+        <tbody id="invBody"></tbody>
+        <!-- Table body rows are populated dynamically by renderInventory() -->
+      </table>
+    </div>
+
+    <div class="inv-footer">
+      <span id="inv-count">0 records</span>
+      <!-- Shows how many rows are currently displayed (updates when filtering) -->
+      <span style="font-family:'Share Tech Mono',monospace;font-size:0.6rem;color:var(--dim);">USCS Location Maintenance — Plant 550</span>
+      <!-- Static footer label matching USCS system branding -->
+    </div>
+  </div>
+</div>
+
+<script>
+// ═══════════════════════════════════════════════
+// GLOBAL STATE
+// All variables here are accessible throughout the entire script
+// ═══════════════════════════════════════════════
+
+const canvas = document.getElementById('simCanvas');
+// Grabs the canvas HTML element so we can draw on it with JavaScript
+
+const ctx = canvas.getContext('2d');
+// Gets the 2D drawing context from the canvas — this is what we use to draw shapes, lines, and text
+
+const GRID = 40;
+// Defines the grid cell size in pixels — all snapping and placement is based on this value
+
+let tool = 'rack';
+// Tracks which drawing tool is currently active; starts on 'rack' by default
+
+let running = false;
+// Boolean that tracks whether the drone patrol simulation is currently running
+
+let animId = null;
+// Stores the ID returned by requestAnimationFrame so we can cancel the animation loop when needed
+
+let simSpeed = 5;
+// Controls how fast the drone moves; multiplied by a base speed in the simulation step
+
+let wallStart = null;
+// Stores the first click point when drawing a wall — null until the user clicks once in wall mode
+
+let racks = [], pallets = [], walls = [], userPath = [];
+// Arrays storing all drawn objects: rack rows, pallets, wall segments, and drone path waypoints
+
+let droneStart = null, drone = null;
+// droneStart stores the fixed starting position; drone tracks the current animated position and angle
+
+let pathIndex = 0;
+// Tracks which waypoint in the path array the drone is currently moving toward
+
+let scannedPallets = new Set(), mismatchFound = new Set(), damagedFound = new Set();
+// Sets (collections of unique values) tracking which pallets have been scanned, which are mismatches, and which have damaged barcodes
+
+let scanTrail = [];
+// Array of {x,y} points recording where the drone has flown — drawn as a faint glow trail
+
+let lastTime = 0;
+// Stores the timestamp of the last animation frame — used to calculate delta time (dt) for smooth movement
+
+let patrolHistory = [];
+// Array of objects recording the results of each completed patrol run for the Analytics page
+
+let inventoryData = [];
+// Array of pallet records that populate the Inventory table
+
+let charts = {};
+// Object storing Chart.js chart instances so we can destroy and recreate them when refreshing Analytics
+
+// ═══════════════════════════════════════════════
+// CLOCK
+// Updates the live clock in the top-right of the nav bar every second
+// ═══════════════════════════════════════════════
+function updateClock() {
+  const now = new Date();
+  // Creates a new Date object representing the current date and time
+
+  document.getElementById('clockDisplay').textContent =
+    now.toLocaleDateString('en-US',{month:'2-digit',day:'2-digit',year:'numeric'}) + '  ' +
+    now.toLocaleTimeString('en-US',{hour12:false});
+  // Sets the clock element's text to formatted date + 24-hour time (e.g. "03/09/2026  14:35:22")
+}
+setInterval(updateClock, 1000);
+// Calls updateClock every 1000 milliseconds (1 second) to keep the clock live
+
+updateClock();
+// Calls it immediately on page load so the clock shows right away instead of waiting 1 second
+
+// ═══════════════════════════════════════════════
+// PAGE NAVIGATION
+// Switches between the three pages (Simulator, Analytics, Inventory)
+// ═══════════════════════════════════════════════
+function showPage(id, btn) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  // Hides all pages by removing the 'active' class from each one
+
+  document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
+  // Deactivates all nav tabs by removing 'active' from each
+
+  document.getElementById('page-' + id).classList.add('active');
+  // Makes the selected page visible by adding 'active' to its element
+
+  btn.classList.add('active');
+  // Highlights the clicked nav tab as active
+
+  if (id === 'analytics') refreshAnalytics();
+  // If switching to Analytics, rebuild the charts with the latest data
+
+  if (id === 'inventory') refreshInventory();
+  // If switching to Inventory, reload the table with the latest pallet data
+
+  if (id === 'sim') { resizeCanvas(); draw(); }
+  // If switching back to Simulator, resize the canvas in case the window changed and redraw everything
+}
+
+// ═══════════════════════════════════════════════
+// CANVAS SETUP
+// Makes the canvas fill its container and redraws when the window is resized
+// ═══════════════════════════════════════════════
+function resizeCanvas() {
+  const wrap = canvas.parentElement;
+  // Gets the container div that wraps the canvas
+
+  canvas.width = wrap.clientWidth;
+  // Sets the canvas pixel width to match its container
+
+  canvas.height = wrap.clientHeight;
+  // Sets the canvas pixel height to match its container
+
+  draw();
+  // Redraws everything since changing canvas size clears it
+}
+window.addEventListener('resize', resizeCanvas);
+// Listens for window resize events and calls resizeCanvas to keep the canvas filling its space
+
+resizeCanvas();
+// Runs immediately on load to set the correct initial canvas size
+
+// ═══════════════════════════════════════════════
+// TOOL SELECTION
+// Activates a drawing tool and updates the UI to show which is selected
+// ═══════════════════════════════════════════════
+function setTool(t) {
+  tool = t;
+  // Updates the global tool variable to the newly selected tool
+
+  wallStart = null;
+  // Resets any pending wall start point when switching tools
+
+  ['rack','pallet','wall','path','start'].forEach(id => {
+    document.getElementById('btn-'+id)?.classList.remove('active');
+  });
+  // Removes the 'active' highlight from all tool buttons
+
+  document.getElementById('btn-'+t)?.classList.add('active');
+  // Adds 'active' highlight to the button matching the selected tool
+
+  const hints = {
+    rack:   'Click to place a rack row (3 cells wide)',
+    pallet: 'Click to place a pallet — use toggles above to set type',
+    wall:   'Click 2 points to draw a wall segment',
+    path:   'Click to add waypoints — Right-click to undo last',
+    start:  'Click to set drone starting position'
+  };
+  // Object mapping each tool name to a helpful instruction string
+
+  setHud(hints[t] || '');
+  // Displays the instruction for the selected tool in the HUD overlay
+}
+
+// ═══════════════════════════════════════════════
+// CANVAS EVENTS
+// Handles all mouse interactions on the warehouse canvas
+// ═══════════════════════════════════════════════
+canvas.addEventListener('contextmenu', e => {
+  e.preventDefault();
+  // Stops the browser's default right-click menu from appearing
+
+  if (tool === 'path' && userPath.length > 0) {
+    userPath.pop();
+    // Removes the last waypoint from the path array (undo last point)
+
+    updatePathCount();
+    // Updates the "Path Pts" stat in the sidebar
+
+    draw();
+    // Redraws the canvas to reflect the removed waypoint
+  }
+});
+
+canvas.addEventListener('mousemove', e => {
+  const r = canvas.getBoundingClientRect();
+  // Gets the canvas position on screen so we can calculate the mouse position relative to the canvas
+
+  const mx = e.clientX - r.left, my = e.clientY - r.top;
+  // Calculates the mouse X and Y position relative to the canvas top-left corner
+
+  const sx = snap(mx), sy = snap(my);
+  // Snaps the mouse position to the nearest grid intersection
+
+  document.getElementById('coordsText').textContent = `X:${sx}  Y:${sy} | TOOL: ${tool.toUpperCase()}`;
+  // Updates the coordinate display in the bottom-left with current position and active tool
+
+  draw();
+  // Redraws the full canvas every mouse move to update the ghost preview
+
+  ctx.save(); ctx.globalAlpha = 0.35;
+  // Saves the current drawing state and sets transparency for the ghost preview
+
+  drawPreview(sx, sy);
+  // Draws a semi-transparent preview of what will be placed at the cursor position
+
+  ctx.restore();
+  // Restores the drawing state back to normal (removes the transparency)
+
+  if (tool === 'path' && userPath.length > 0) {
+    const last = userPath[userPath.length-1];
+    // Gets the last placed waypoint
+
+    ctx.save();
+    // Saves drawing state before drawing the rubber-band line
+
+    ctx.setLineDash([5,5]);
+    // Sets a dashed line pattern for the rubber-band line
+
+    ctx.strokeStyle = 'rgba(0,200,240,0.4)';
+    // Sets the rubber-band line color to semi-transparent cyan
+
+    ctx.lineWidth = 1.5;
+    // Thin line for the rubber-band preview
+
+    ctx.beginPath(); ctx.moveTo(last.x, last.y); ctx.lineTo(mx, my); ctx.stroke();
+    // Draws a dashed line from the last waypoint to the current mouse position
+
+    ctx.restore();
+    // Restores drawing state, removing the dash pattern
+  }
+});
+
+canvas.addEventListener('click', e => {
+  if (running) return;
+  // Ignores clicks while the simulation is running to prevent map changes mid-patrol
+
+  const r = canvas.getBoundingClientRect();
+  // Gets the canvas bounding box for coordinate calculation
+
+  const mx = e.clientX - r.left, my = e.clientY - r.top;
+  // Mouse position relative to the canvas
+
+  const sx = snap(mx), sy = snap(my);
+  // Snapped to grid
+
+  if (tool === 'rack') {
+    racks.push({x:sx, y:sy, w:GRID*3, h:GRID});
+    // Adds a new rack object to the racks array — 3 grid cells wide, 1 tall
+
+    log(`Rack at (${sx},${sy})`, 'info');
+    // Logs the placement in the event log
+
+  } else if (tool === 'pallet') {
+    const isMismatch = document.getElementById('mismatchToggle').checked;
+    // Reads the Mismatch toggle state — true if the pallet should be a WMS error
+
+    const isDamaged = document.getElementById('damagedToggle').checked;
+    // Reads the Damaged Barcode toggle state — true if the barcode is unreadable
+
+    pallets.push({x:sx+5, y:sy+5, w:GRID-10, h:GRID-10, mismatch:isMismatch, damaged:isDamaged, scanned:false});
+    // Adds the pallet with a 5px inset from the grid cell and flags for its type
+
+    const typeLabel = isDamaged ? '[DAMAGED]' : isMismatch ? '[MISMATCH]' : '[OK]';
+    // Picks a log label based on which flag is set
+
+    const logType = isDamaged ? 'dmg' : isMismatch ? 'warn' : 'ok';
+    // Picks a log color class to match
+
+    log(`Pallet at (${sx},${sy}) ${typeLabel}`, logType);
+    // Logs the placement with its type
+
+    updateSimStats();
+    // Updates the sidebar stat counters
+
+  } else if (tool === 'wall') {
+    if (!wallStart) {
+      wallStart = {x:sx,y:sy};
+      // Stores the first click as the wall's start point
+
+      log(`Wall start (${sx},${sy})`, 'info');
+    } else {
+      walls.push({x1:wallStart.x,y1:wallStart.y,x2:sx,y2:sy});
+      // Adds a wall segment from the stored start point to the current click
+
+      wallStart = null;
+      // Resets the start point so the next click starts a new wall
+
+      log(`Wall end (${sx},${sy})`, 'info');
+    }
+  } else if (tool === 'path') {
+    userPath.push({x:mx, y:my});
+    // Adds the exact (unsnapped) click position as a waypoint — allows precise path drawing
+
+    updatePathCount();
+    // Updates the "Path Pts" counter
+
+    log(`Waypoint #${userPath.length} at (${Math.round(mx)},${Math.round(my)})`, 'dim');
+    // Logs the waypoint number and position
+
+  } else if (tool === 'start') {
+    droneStart = {x:sx, y:sy};
+    // Stores the snapped position as the drone's fixed starting point
+
+    drone = {x:sx, y:sy, angle:0};
+    // Creates the drone object at the start position with angle 0 (facing right)
+
+    log(`Drone start set (${sx},${sy})`, 'ok');
+  }
+  draw();
+  // Redraws the canvas after any placement to show the new element immediately
+});
+
+function snap(v) { return Math.round(v/GRID)*GRID; }
+// Rounds a pixel value to the nearest grid line — used to align placements to the grid
+
+// ═══════════════════════════════════════════════
+// DRAW
+// Renders the entire warehouse canvas every frame
+// ═══════════════════════════════════════════════
+function draw() {
+  ctx.clearRect(0,0,canvas.width,canvas.height);
+  // Wipes the entire canvas clean before redrawing everything from scratch
+
+  // Grid lines
+  ctx.strokeStyle = 'rgba(26,48,80,0.25)';
+  // Very dim blue color for the background grid lines
+
+  ctx.lineWidth = 0.5;
+  // Thin lines for the grid
+
+  for (let x=0;x<canvas.width;x+=GRID){ctx.beginPath();ctx.moveTo(x,0);ctx.lineTo(x,canvas.height);ctx.stroke();}
+  // Draws vertical grid lines spaced GRID pixels apart across the full canvas width
+
+  for (let y=0;y<canvas.height;y+=GRID){ctx.beginPath();ctx.moveTo(0,y);ctx.lineTo(canvas.width,y);ctx.stroke();}
+  // Draws horizontal grid lines spaced GRID pixels apart across the full canvas height
+
+  // Scan trail (glowing path the drone has flown)
+  if (scanTrail.length > 1) {
+    ctx.beginPath();
+    ctx.moveTo(scanTrail[0].x, scanTrail[0].y);
+    // Starts the trail path at the oldest recorded position
+
+    for (let i=1;i<scanTrail.length;i++) ctx.lineTo(scanTrail[i].x, scanTrail[i].y);
+    // Connects each recorded position to form the trail line
+
+    ctx.strokeStyle = 'rgba(0,200,240,0.07)';
+    // Very faint cyan color for the trail glow
+
+    ctx.lineWidth = 20;
+    // Wide line creates a soft glow effect
+
+    ctx.lineJoin = 'round';
+    // Rounded corners where the trail changes direction
+
+    ctx.stroke();
+    // Renders the trail on the canvas
+  }
+
+  // User-drawn path (dashed waypoint line)
+  if (userPath.length > 1) {
+    ctx.save();
+    // Saves drawing state before applying dash pattern
+
+    ctx.setLineDash([6,4]);
+    // Dashed line: 6px dash, 4px gap
+
+    ctx.strokeStyle = 'rgba(0,200,240,0.35)';
+    // Semi-transparent cyan for the path line
+
+    ctx.lineWidth = 1.5;
+    // Thin dashed line
+
+    ctx.beginPath();
+    ctx.moveTo(userPath[0].x, userPath[0].y);
+    // Starts the path at the first waypoint
+
+    for (let i=1;i<userPath.length;i++) ctx.lineTo(userPath[i].x, userPath[i].y);
+    // Connects each waypoint in sequence
+
+    ctx.stroke();
+    // Draws the dashed path line
+
+    ctx.restore();
+    // Removes the dash pattern for subsequent drawing
+
+    userPath.forEach((p,i) => {
+      ctx.beginPath();
+      ctx.arc(p.x,p.y,3,0,Math.PI*2);
+      // Draws a small circle at each waypoint
+
+      ctx.fillStyle = i===0 ? var_green : 'rgba(0,200,240,0.6)';
+      // First waypoint is green (start); others are cyan
+
+      ctx.fill();
+      // Fills the circle
+    });
+  }
+
+  // Walls
+  walls.forEach(w => {
+    ctx.beginPath(); ctx.moveTo(w.x1,w.y1); ctx.lineTo(w.x2,w.y2);
+    // Draws a line from the wall's start point to its end point
+
+    ctx.strokeStyle = '#3a6090'; ctx.lineWidth = 5; ctx.stroke();
+    // Thick blue-grey line represents a physical wall
+  });
+  if (wallStart) {
+    ctx.beginPath(); ctx.arc(wallStart.x,wallStart.y,4,0,Math.PI*2);
+    // Draws a dot at the pending wall start point
+
+    ctx.fillStyle = var_accent; ctx.fill();
+    // Cyan dot indicates the wall is waiting for a second click
+  }
+
+  // Rack rows
+  racks.forEach(r => {
+    ctx.fillStyle = '#0b1e33';
+    // Dark blue interior fill for the rack
+
+    ctx.fillRect(r.x,r.y,r.w,r.h);
+    // Draws the rack rectangle
+
+    ctx.strokeStyle = '#1a5080'; ctx.lineWidth=1.5;
+    ctx.strokeRect(r.x,r.y,r.w,r.h);
+    // Draws a brighter blue border around the rack
+
+    ctx.strokeStyle='rgba(26,80,128,0.3)'; ctx.lineWidth=1;
+    for(let i=1;i<3;i++){const lx=r.x+(r.w/3)*i;ctx.beginPath();ctx.moveTo(lx,r.y);ctx.lineTo(lx,r.y+r.h);ctx.stroke();}
+    // Draws two internal divider lines to visually split the rack into 3 bays
+
+    ctx.fillStyle='rgba(0,200,240,0.2)';
+    ctx.font='500 8px Barlow Condensed';
+    ctx.fillText('RACK', r.x+4,r.y+12);
+    // Draws a small 'RACK' label in the top-left corner of each rack
+  });
+
+  // Pallets
+  pallets.forEach((p,i) => {
+    const sc = scannedPallets.has(i);
+    // Checks if this pallet index has been scanned by the drone
+
+    if (p.damaged) {
+      ctx.fillStyle = sc ? '#3a2000' : '#1e1000';
+      ctx.strokeStyle = sc ? '#ff8c00' : '#6a3000';
+      // Orange color scheme for damaged barcodes
+    } else if (p.mismatch) {
+      ctx.fillStyle = sc ? '#3a1010' : '#1e0a0a';
+      ctx.strokeStyle = sc ? '#ff4444' : '#6a1010';
+      // Red color scheme for mismatched pallets
+    } else {
+      ctx.fillStyle = sc ? '#0a2a18' : '#081510';
+      ctx.strokeStyle = sc ? var_green : '#1a5030';
+      // Green color scheme for confirmed OK pallets
+    }
+
+    ctx.lineWidth = sc ? 1.5 : 1;
+    // Scanned pallets have a slightly thicker border to stand out
+
+    ctx.fillRect(p.x,p.y,p.w,p.h);
+    // Draws the pallet rectangle
+
+    ctx.strokeRect(p.x,p.y,p.w,p.h);
+    // Draws the pallet border
+
+    ctx.fillStyle = sc ? (p.damaged ? '#ffaa44' : p.mismatch ? '#ff8888' : '#88ffbb') : 'rgba(255,255,255,0.15)';
+    // Icon color: orange for damaged, red for mismatch, green for OK, dim if not yet scanned
+
+    ctx.font = 'bold 9px Share Tech Mono';
+    ctx.fillText(p.damaged ? '?' : p.mismatch ? '!' : '✓', p.x+p.w/2-4, p.y+p.h/2+3);
+    // Draws '?' for damaged barcodes, '!' for mismatches, '✓' for confirmed OK pallets
+  });
+
+  // Drone
+  if (drone) {
+    const dx=drone.x, dy=drone.y;
+    // Shorthand for the drone's current position
+
+    ctx.beginPath(); ctx.arc(dx,dy,65,0,Math.PI*2);
+    // Draws the outer scan radius circle
+
+    ctx.fillStyle='rgba(0,200,240,0.03)'; ctx.fill();
+    // Very faint fill inside the scan radius
+
+    ctx.strokeStyle='rgba(0,200,240,0.12)'; ctx.lineWidth=1; ctx.stroke();
+    // Faint cyan border on the scan radius
+
+    ctx.save(); ctx.translate(dx,dy); ctx.rotate(drone.angle);
+    // Moves the drawing origin to the drone's position and rotates it to face its direction of travel
+
+    [[-1,-1],[1,-1],[1,1],[-1,1]].forEach(([ax,ay])=>{
+      ctx.beginPath(); ctx.moveTo(0,0); ctx.lineTo(ax*13,ay*13);
+      ctx.strokeStyle='#005a80'; ctx.lineWidth=2; ctx.stroke();
+      // Draws each of the 4 drone arms extending diagonally from the center
+
+      ctx.beginPath(); ctx.arc(ax*13,ay*13,4.5,0,Math.PI*2);
+      ctx.fillStyle='rgba(0,200,240,0.7)'; ctx.fill();
+      // Draws a small circle at the tip of each arm (representing rotors)
+    });
+
+    ctx.beginPath(); ctx.arc(0,0,6,0,Math.PI*2);
+    ctx.fillStyle=var_accent; ctx.fill();
+    // Draws the drone's central body as a bright cyan circle
+
+    ctx.restore();
+    // Restores the saved drawing state, undoing the translation and rotation
+
+    ctx.fillStyle='rgba(0,200,240,0.6)';
+    ctx.font='500 7px Share Tech Mono';
+    ctx.fillText('DRONE-01',dx+12,dy-12);
+    // Draws a small label next to the drone
+  }
+}
+
+function drawPreview(x,y) {
+  // Draws a ghost preview of what will be placed at the cursor position
+
+  if(tool==='rack'){ctx.fillStyle='#1a5080';ctx.fillRect(x,y,GRID*3,GRID);}
+  // Shows a blue rectangle preview for rack placement
+
+  else if(tool==='pallet'){
+    const isMm=document.getElementById('mismatchToggle').checked;
+    // Reads the mismatch toggle for preview color
+
+    const isDmg=document.getElementById('damagedToggle').checked;
+    // Reads the damaged toggle for preview color
+
+    ctx.fillStyle=isDmg?'#6a3000':isMm?'#6a1010':'#1a5030';
+    // Orange preview for damaged, red for mismatch, green for normal
+
+    ctx.fillRect(x+5,y+5,GRID-10,GRID-10);
+    // Draws the preview pallet with the same 5px inset as real pallets
+  }
+  else if(tool==='start'){ctx.beginPath();ctx.arc(x,y,10,0,Math.PI*2);ctx.fillStyle='rgba(0,200,240,0.4)';ctx.fill();}
+  // Shows a cyan circle preview for drone start placement
+}
+
+const var_accent = '#00c8f0', var_green = '#00e878';
+// Stores the two most-used colors as JavaScript constants for reuse in the draw functions
+
+// ═══════════════════════════════════════════════
+// SIMULATION
+// Controls the drone patrol animation and scan detection
+// ═══════════════════════════════════════════════
+function toggleSim() {
+  if (running) {
+    running=false; cancelAnimationFrame(animId);
+    // Stops the animation loop
+
+    document.getElementById('btn-run').innerHTML='<span class="ico">▶</span> Start Patrol';
+    // Resets the button text back to "Start Patrol"
+
+    setHud('PAUSED'); return;
+    // Updates the status HUD and exits the function
+  }
+  if (!droneStart) { log('Set drone start position first!','warn'); setHud('ERROR — Set drone start position'); return; }
+  // Prevents starting without a drone start position
+
+  const path = userPath.length >= 2 ? userPath : autoPath();
+  // Uses the user-drawn path if it has at least 2 points; otherwise falls back to the auto-generated sweep path
+
+  if (path.length < 2) { log('Draw a path or add more waypoints','warn'); return; }
+  // Safety check — requires at least 2 points to define a path
+
+  pathIndex=0;
+  // Resets to the beginning of the path
+
+  scannedPallets.clear(); mismatchFound.clear(); damagedFound.clear(); scanTrail=[];
+  // Clears all scan results and the visual trail from any previous patrol
+
+  drone={x:droneStart.x,y:droneStart.y,angle:0};
+  // Resets the drone to its starting position
+
+  running=true; lastTime=performance.now();
+  // Starts the simulation and records the current timestamp for delta-time calculation
+
+  document.getElementById('btn-run').innerHTML='<span class="ico">⏸</span> Pause';
+  // Changes the button to show "Pause" while running
+
+  setHud('PATROL ACTIVE — Scanning aisles...');
+  // Updates the status message
+
+  log('--- Patrol started ---','info');
+  // Logs the patrol start event
+
+  animId=requestAnimationFrame(ts=>simStep(ts,path));
+  // Starts the animation loop, passing the current timestamp and path to simStep
+}
+
+function simStep(ts, path) {
+  // Called every animation frame (~60fps) to move the drone and check for scans
+
+  if (!running) return;
+  // Stops the loop if the simulation has been paused or stopped
+
+  const dt = Math.min(ts-lastTime,50)/1000;
+  // Calculates time elapsed since the last frame in seconds; capped at 50ms to prevent jumps after tab switching
+
+  lastTime=ts;
+  // Updates lastTime for the next frame's delta calculation
+
+  if (pathIndex >= path.length-1) { finishSim(); return; }
+  // If the drone has reached the last waypoint, end the patrol
+
+  const target=path[pathIndex+1];
+  // Gets the next waypoint the drone needs to move toward
+
+  const dx=target.x-drone.x, dy=target.y-drone.y;
+  // Calculates the X and Y distance to the target waypoint
+
+  const dist=Math.sqrt(dx*dx+dy*dy);
+  // Calculates the straight-line distance to the target using the Pythagorean theorem
+
+  const spd=simSpeed*75;
+  // Calculates the drone speed in pixels per second based on the speed slider value
+
+  drone.angle=Math.atan2(dy,dx);
+  // Updates the drone's rotation angle so it faces the direction it's moving
+
+  if (dist < spd*dt) { drone.x=target.x; drone.y=target.y; pathIndex++; }
+  // If close enough to reach the target this frame, snap to it and advance to the next waypoint
+
+  else { drone.x+=dx/dist*spd*dt; drone.y+=dy/dist*spd*dt; }
+  // Otherwise, move the drone a proportional step toward the target based on speed and elapsed time
+
+  scanTrail.push({x:drone.x,y:drone.y});
+  // Records the drone's current position for the visual trail
+
+  if (scanTrail.length>500) scanTrail.shift();
+  // Keeps the trail array from growing too large by removing the oldest point
+
+  // Scan nearby pallets
+  pallets.forEach((p,i)=>{
+    if(scannedPallets.has(i)) return;
+    // Skips pallets that have already been scanned this patrol
+
+    const cx=p.x+p.w/2, cy=p.y+p.h/2;
+    // Calculates the center point of the pallet
+
+    const d=Math.sqrt((cx-drone.x)**2+(cy-drone.y)**2);
+    // Calculates the distance from the drone to the pallet's center
+
+    if(d<70){
+      // If the pallet center is within 70 pixels of the drone (the scan radius)
+
+      scannedPallets.add(i);
+      // Marks this pallet as scanned
+
+      if(p.damaged){
+        damagedFound.add(i);
+        // Records this pallet as having a damaged/unreadable barcode
+
+        log(`⚠ DAMAGED BARCODE pallet #${i+1} — Label unreadable`,'dmg');
+        // Logs the damaged barcode event in orange
+      } else if(p.mismatch){
+        mismatchFound.add(i);
+        // Records this pallet as a WMS mismatch
+
+        log(`⚠ MISMATCH pallet #${i+1} — WMS location error`,'err');
+        // Logs the mismatch event in red
+      } else {
+        log(`✓ Pallet #${i+1} confirmed`,'ok');
+        // Logs a successful confirmed scan in green
+      }
+    }
+  });
+
+  updateSimStats();
+  // Refreshes the sidebar stat counters
+
+  draw();
+  // Redraws the canvas to show the drone's new position and any newly scanned pallets
+
+  animId=requestAnimationFrame(t=>simStep(t,path));
+  // Schedules the next animation frame, continuing the loop
+}
+
+function finishSim() {
+  running=false;
+  // Marks the simulation as stopped
+
+  document.getElementById('btn-run').innerHTML='<span class="ico">▶</span> Start Patrol';
+  // Resets the button text
+
+  const total=pallets.length, sc=scannedPallets.size, mm=mismatchFound.size, dmg=damagedFound.size;
+  // Collects final counts for the summary
+
+  setHud(`COMPLETE — ${sc}/${total} scanned | ${mm} mismatches | ${dmg} damaged`);
+  // Shows the patrol summary in the HUD
+
+  log(`--- Done: ${sc}/${total} scanned, ${mm} mismatches, ${dmg} damaged barcodes ---`, (mm+dmg)>0?'warn':'ok');
+  // Logs the final summary to the event log
+
+  patrolHistory.push({
+    date: new Date().toLocaleString(),
+    total, scanned:sc, mismatches:mm, damaged:dmg,
+    coverage: total>0?Math.round(sc/total*100):0
+  });
+  // Appends a patrol result record to history with timestamp and all counts — used by Analytics page
+
+  buildInventory();
+  // Rebuilds the inventory table to reflect the completed patrol's scan results
+
+  updateSimStats();
+  // Final refresh of the sidebar stats
+}
+
+function autoPath() {
+  // Generates a default aisle-sweep path if the user hasn't drawn one manually
+
+  if (!droneStart) return [];
+  // Returns empty if no start point exists
+
+  const path=[{x:droneStart.x,y:droneStart.y}];
+  // Starts the path at the drone's start position
+
+  const cols=Math.floor((canvas.width-GRID*2)/(GRID*4));
+  // Calculates how many vertical sweep columns fit across the canvas width
+
+  for(let c=0;c<cols;c++){
+    const cx=GRID*2+c*GRID*4;
+    // X position for this column
+
+    if(c%2===0){path.push({x:cx,y:GRID*2});path.push({x:cx,y:canvas.height-GRID*2});}
+    // Even columns go top to bottom
+
+    else{path.push({x:cx,y:canvas.height-GRID*2});path.push({x:cx,y:GRID*2});}
+    // Odd columns go bottom to top (snake/boustrophedon pattern for full coverage)
+  }
+  path.push({x:droneStart.x,y:droneStart.y});
+  // Returns the drone to its start position at the end
+
+  return path;
+  // Returns the completed auto-generated path array
+}
+
+function resetDrone(){
+  running=false; cancelAnimationFrame(animId);
+  // Stops any running simulation
+
+  scannedPallets.clear(); mismatchFound.clear(); damagedFound.clear(); scanTrail=[];
+  // Clears all scan results and trail from the previous patrol
+
+  if(droneStart) drone={x:droneStart.x,y:droneStart.y,angle:0};
+  // Moves the drone back to its start position if one is set
+
+  document.getElementById('btn-run').innerHTML='<span class="ico">▶</span> Start Patrol';
+  // Resets the button text
+
+  setHud('RESET'); updateSimStats(); draw();
+  // Updates HUD, stats, and redraws
+}
+
+function clearPath(){
+  userPath=[]; updatePathCount(); draw();
+  // Empties the waypoint array, updates the counter, and redraws
+
+  log('Path cleared','dim');
+  // Logs the action
+}
+
+function clearAll(){
+  running=false; cancelAnimationFrame(animId);
+  // Stops simulation if running
+
+  racks=[]; pallets=[]; walls=[]; userPath=[];
+  // Clears all drawn elements
+
+  droneStart=null; drone=null; wallStart=null; scanTrail=[];
+  // Resets drone position references and trail
+
+  scannedPallets.clear(); mismatchFound.clear(); damagedFound.clear();
+  // Clears all scan tracking sets
+
+  document.getElementById('btn-run').innerHTML='<span class="ico">▶</span> Start Patrol';
+  // Resets button text
+
+  setHud('CLEARED'); updateSimStats(); draw();
+  // Updates HUD, stats, and redraws the now-empty canvas
+
+  log('Canvas cleared','dim');
+  // Logs the clear action
+}
+
+function updateSimStats(){
+  document.getElementById('s-placed').textContent=pallets.length;
+  // Updates the "Pallets" counter with the total number placed
+
+  document.getElementById('s-scanned').textContent=scannedPallets.size;
+  // Updates the "Scanned" counter
+
+  document.getElementById('s-miss').textContent=mismatchFound.size;
+  // Updates the "Mismatches" counter
+
+  document.getElementById('s-dmg').textContent=damagedFound.size;
+  // Updates the "Damaged" counter
+
+  const pct=pallets.length>0?Math.round(scannedPallets.size/pallets.length*100):0;
+  // Calculates coverage percentage — avoids division by zero if no pallets placed
+
+  document.getElementById('s-cov').textContent=pct+'%';
+  // Updates the "Coverage" percentage display
+}
+
+function updatePathCount(){
+  document.getElementById('s-path').textContent=userPath.length;
+  // Updates the "Path Pts" counter in the sidebar stats
+}
+
+function setHud(t){document.getElementById('hudText').textContent=t;}
+// Updates the status message displayed over the canvas
+
+function log(msg,type='info'){
+  const box=document.getElementById('logBox');
+  // Gets the log box element
+
+  const d=document.createElement('div');
+  // Creates a new div element for this log entry
+
+  d.className='log-'+type;
+  // Sets the CSS class (log-ok, log-err, log-dmg, etc.) which controls the text color
+
+  const now=new Date();
+  // Gets the current time for the timestamp
+
+  const ts=`${now.getHours().toString().padStart(2,'0')}:${now.getMinutes().toString().padStart(2,'0')}:${now.getSeconds().toString().padStart(2,'0')}`;
+  // Formats the time as HH:MM:SS with zero-padding
+
+  d.textContent=`[${ts}] ${msg}`;
+  // Sets the log entry text with the timestamp prefix
+
+  box.appendChild(d);
+  // Adds the new log entry to the bottom of the log box
+
+  box.scrollTop=box.scrollHeight;
+  // Scrolls the log box to the bottom so the newest entry is always visible
+}
+
+// ═══════════════════════════════════════════════
+// ANALYTICS
+// Builds and refreshes the analytics charts and KPI cards
+// ═══════════════════════════════════════════════
+function refreshAnalytics(){
+  if(patrolHistory.length===0){
+    // Seeds with demo data if no real patrols have been run yet
+
+    const demos=[
+      {date:'2/27/26 22:00',total:24,scanned:22,mismatches:3,damaged:1,coverage:92},
+      {date:'2/28/26 22:15',total:24,scanned:24,mismatches:5,damaged:2,coverage:100},
+      {date:'3/1/26 22:05', total:26,scanned:24,mismatches:2,damaged:0,coverage:92},
+      {date:'3/2/26 22:10', total:26,scanned:25,mismatches:4,damaged:3,coverage:96},
+      {date:'3/3/26 22:08', total:28,scanned:27,mismatches:6,damaged:1,coverage:96},
+    ];
+    // Sample historical patrol data matching the USCS schedule (after-hours runs)
+
+    patrolHistory.push(...demos);
+    // Adds the demo records to the history array
+  }
+
+  const labels=patrolHistory.map((_,i)=>`Run ${i+1}`);
+  // Creates chart labels like "Run 1", "Run 2", etc.
+
+  const scannedData=patrolHistory.map(p=>p.scanned);
+  // Array of scanned pallet counts per patrol
+
+  const mmData=patrolHistory.map(p=>p.mismatches);
+  // Array of mismatch counts per patrol
+
+  const dmgData=patrolHistory.map(p=>p.damaged||0);
+  // Array of damaged barcode counts per patrol (defaults to 0 for old records without this field)
+
+  const covData=patrolHistory.map(p=>p.coverage);
+  // Array of coverage percentages per patrol
+
+  const totalMM=patrolHistory.reduce((a,p)=>a+p.mismatches,0);
+  // Sums all mismatches across all patrols
+
+  const totalDmg=patrolHistory.reduce((a,p)=>a+(p.damaged||0),0);
+  // Sums all damaged barcodes across all patrols
+
+  const totalSc=patrolHistory.reduce((a,p)=>a+p.scanned,0);
+  // Sums all scanned pallets across all patrols
+
+  const avgCov=Math.round(patrolHistory.reduce((a,p)=>a+p.coverage,0)/patrolHistory.length);
+  // Calculates the average coverage percentage across all patrols
+
+  const rate=totalSc>0?Math.round(totalMM/totalSc*100):0;
+  // Calculates the mismatch rate as a percentage of all scanned pallets
+
+  document.getElementById('kpi-patrols').textContent=patrolHistory.length;
+  document.getElementById('kpi-coverage').textContent=avgCov+'%';
+  document.getElementById('kpi-mismatches').textContent=totalMM;
+  document.getElementById('kpi-damaged').textContent=totalDmg;
+  document.getElementById('kpi-rate').textContent=rate+'%';
+  // Updates all five KPI card values with the calculated totals
+
+  const cfg={
+    responsive:true,
+    maintainAspectRatio:false,
+    // Chart fills its container height without distorting
+
+    plugins:{legend:{display:false}},
+    // Hides the chart legend to keep charts compact
+
+    scales:{
+      x:{ticks:{color:'#4a6080',font:{family:'Share Tech Mono',size:9}},grid:{color:'rgba(26,48,80,0.3)'}},
+      // X axis: dim monospace labels, subtle grid lines
+
+      y:{ticks:{color:'#4a6080',font:{family:'Share Tech Mono',size:9}},grid:{color:'rgba(26,48,80,0.3)'}}
+      // Y axis: same styling
+    }
+  };
+  // Shared Chart.js configuration object used by all line/bar charts
+
+  const mkChart=(id,type,data,color,fill=false)=>{
+    // Helper function that creates or recreates a single chart
+
+    if(charts[id]) charts[id].destroy();
+    // Destroys the existing chart instance if one exists (prevents canvas reuse errors)
+
+    charts[id]=new Chart(document.getElementById(id),{
+      type,
+      // Chart type (line, bar, etc.)
+
+      data:{labels,datasets:[{
+        data,
+        borderColor:color,
+        backgroundColor:fill?color.replace(')',',0.1)').replace('rgb','rgba'):color+'22',
+        // Fill color: if fill=true uses a 10% opacity version of the line color; otherwise nearly transparent
+
+        borderWidth:2,pointRadius:3,pointBackgroundColor:color,fill,tension:0.3
+        // Line styling: 2px border, small dots, smooth curves
+      }]},
+      options:{...cfg}
+      // Spreads the shared config into this chart's options
+    });
+  };
+
+  mkChart('chartScanned','line',scannedData,'rgb(0,200,240)',true);
+  // Cyan area chart showing pallets scanned per patrol
+
+  // Grouped bar chart for mismatches and damaged barcodes
+  if(charts['chartMismatches']) charts['chartMismatches'].destroy();
+  // Destroys existing chart before recreating
+
+  charts['chartMismatches']=new Chart(document.getElementById('chartMismatches'),{
+    type:'bar',
+    data:{labels,datasets:[
+      {label:'Mismatches',data:mmData,backgroundColor:'rgba(255,58,58,0.7)',borderColor:'#ff3a3a',borderWidth:1},
+      // Red bars for mismatches
+
+      {label:'Damaged',data:dmgData,backgroundColor:'rgba(255,140,0,0.7)',borderColor:'#ff8c00',borderWidth:1}
+      // Orange bars for damaged barcodes
+    ]},
+    options:{...cfg,plugins:{legend:{display:true,labels:{color:'#6080a0',font:{family:'Barlow',size:10}}}}}
+    // Shows a legend for this chart since it has two datasets
+  });
+
+  mkChart('chartCoverage','line',covData,'rgb(0,232,120)',true);
+  // Green area chart showing coverage rate trend across patrols
+
+  // Cumulative issues (mismatches + damaged combined)
+  let cum=[],acc=0;
+  // Accumulator for running total of all issues
+
+  patrolHistory.forEach(p=>{acc+=(p.mismatches+(p.damaged||0));cum.push(acc);});
+  // Adds each patrol's total issues to the running sum and records it
+
+  mkChart('chartCumulative','line',cum,'rgb(255,200,32)',true);
+  // Yellow area chart showing cumulative issues growing over time
+
+  // Doughnut breakdown: Confirmed OK / Mismatch / Damaged
+  const totalOk=totalSc-totalMM-totalDmg;
+  // Calculates the count of pallets with no issues
+
+  if(charts['chartDoughnut']) charts['chartDoughnut'].destroy();
+  // Destroys existing doughnut chart
+
+  charts['chartDoughnut']=new Chart(document.getElementById('chartDoughnut'),{
+    type:'doughnut',
+    data:{
+      labels:['Confirmed OK','Mismatch','Damaged Barcode'],
+      // Three categories in the breakdown
+
+      datasets:[{
+        data:[totalOk,totalMM,totalDmg],
+        // Slice sizes for each category
+
+        backgroundColor:['rgba(0,232,120,0.7)','rgba(255,58,58,0.7)','rgba(255,140,0,0.7)'],
+        // Green, red, orange slices
+
+        borderColor:['#00e878','#ff3a3a','#ff8c00'],
+        // Matching solid borders
+
+        borderWidth:1
+      }]
+    },
+    options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{labels:{color:'#6080a0',font:{family:'Barlow',size:10}}}}}
+    // Responsive with a visible legend for the three categories
+  });
+}
+
+function exportAnalyticsCSV(){
+  const exportTime = new Date().toLocaleString();
+  // Captures the exact date and time the export button was clicked
+
+  let csv=`USCS Drone Patrol — Analytics Export\n`;
+  csv+=`Report Generated: ${exportTime}\n`;
+  csv+=`Plant: 550\n\n`;
+  // Adds a header block with the export timestamp and plant number before the data rows
+
+  csv+='Run,Date,Total Pallets,Scanned,Mismatches,Damaged Barcodes,Coverage %\n';
+  // Column headers row
+
+  patrolHistory.forEach((p,i)=>{
+    csv+=`${i+1},"${p.date}",${p.total},${p.scanned},${p.mismatches},${p.damaged||0},${p.coverage}\n`;
+    // One data row per patrol run
+  });
+
+  const fileName=`uscs_analytics_${formatFileTimestamp(new Date())}.csv`;
+  // Creates a timestamped filename (e.g. uscs_analytics_2026-03-09_14-35-22.csv)
+
+  downloadFile(fileName,csv,'text/csv');
+  // Triggers the file download
+}
+
+function exportAnalyticsPDF(){
+  const w=window.open('','_blank','width=800,height=600');
+  // Opens a new browser tab/window for the print-ready PDF report
+
+  if(!w){alert('Please allow popups to export PDF');return;}
+  // Alerts the user if the popup was blocked
+
+  const exportTime=new Date().toLocaleString();
+  // Captures the exact time of export
+
+  const totalMM=patrolHistory.reduce((a,p)=>a+p.mismatches,0);
+  const totalDmg=patrolHistory.reduce((a,p)=>a+(p.damaged||0),0);
+  const totalSc=patrolHistory.reduce((a,p)=>a+p.scanned,0);
+  const avgCov=patrolHistory.length>0?Math.round(patrolHistory.reduce((a,p)=>a+p.coverage,0)/patrolHistory.length):0;
+  // Recalculates summary totals to embed in the PDF header
+
+  let rows=patrolHistory.map((p,i)=>
+    `<tr><td>${i+1}</td><td>${p.date}</td><td>${p.total}</td><td>${p.scanned}</td>
+     <td style="color:#cc2222">${p.mismatches}</td>
+     <td style="color:#cc6600">${p.damaged||0}</td>
+     <td>${p.coverage}%</td></tr>`
+  ).join('');
+  // Builds the HTML table rows for the report, coloring mismatches red and damaged orange
+
+  w.document.write(`<!DOCTYPE html><html><head><title>USCS Analytics Report</title>
+  <style>
+    body{font-family:monospace;background:#fff;color:#000;padding:30px;font-size:12px;}
+    h1{font-size:16px;margin-bottom:4px;}
+    .sub{color:#555;font-size:11px;margin-bottom:4px;}
+    .ts{color:#003060;font-weight:bold;font-size:11px;margin-bottom:20px;}
+    table{width:100%;border-collapse:collapse;margin-top:16px;}
+    th{background:#003060;color:#fff;padding:6px 10px;text-align:left;font-size:11px;}
+    td{padding:5px 10px;border-bottom:1px solid #ddd;}
+    .kpis{display:flex;gap:20px;margin:16px 0;flex-wrap:wrap;}
+    .kpi{border:1px solid #ccc;padding:10px 16px;border-radius:4px;}
+    .kv{font-size:20px;font-weight:bold;}
+    .kl{font-size:10px;color:#555;}
+    @media print{button{display:none}}
+  </style></head><body>
+  <h1>USCS Drone Patrol — Analytics Report</h1>
+  <div class="sub">United States Cold Storage | Plant 550</div>
+  <div class="ts">Report Generated: ${exportTime}</div>
+  <!-- The export timestamp is prominently displayed so recipients know exactly when data was pulled -->
+  <div class="kpis">
+    <div class="kpi"><div class="kv">${patrolHistory.length}</div><div class="kl">Total Patrols</div></div>
+    <div class="kpi"><div class="kv">${avgCov}%</div><div class="kl">Avg Coverage</div></div>
+    <div class="kpi"><div class="kv" style="color:#cc2222">${totalMM}</div><div class="kl">Total Mismatches</div></div>
+    <div class="kpi"><div class="kv" style="color:#cc6600">${totalDmg}</div><div class="kl">Damaged Barcodes</div></div>
+    <div class="kpi"><div class="kv">${totalSc>0?Math.round(totalMM/totalSc*100):0}%</div><div class="kl">Mismatch Rate</div></div>
+  </div>
+  <table>
+    <thead><tr><th>#</th><th>Date</th><th>Total</th><th>Scanned</th><th>Mismatches</th><th>Damaged</th><th>Coverage</th></tr></thead>
+    <tbody>${rows}</tbody>
+  </table>
+  <br><button onclick="window.print()">🖨 Print / Save as PDF</button>
+  </body></html>`);
+  // Writes the full HTML report into the new window
+
+  w.document.close();
+  // Finalizes the document so the browser renders it
+}
+
+// ═══════════════════════════════════════════════
+// INVENTORY
+// Builds and manages the pallet inventory table
+// ═══════════════════════════════════════════════
+const CUSTOMERS=['20001','20042','30015','10088','50200'];
+// Sample customer account numbers matching USCS format
+
+const DESCS=['FF BASIL BLCH SF 45#','FZ SPINACH CHPD 12OZ','RF KALE BLEND 20LB','FZ BROCCOLI FLRT 10LB','FF MIXED GREENS 5LB','FZ CORN WHOLE KNL 15LB'];
+// Sample product descriptions in USCS abbreviated format
+
+const HOLD_TYPES=['---','FIFO','QUAL','CUST'];
+// Hold type codes: no hold, First In First Out, Quality hold, Customer hold
+
+const LOT_PREFIXES=['G0159','G0200','G0312','G0401','H0055'];
+// Sample lot number prefixes matching the format seen in the USCS screenshot
+
+function buildInventory(){
+  inventoryData=[];
+  // Clears existing inventory data before rebuilding from current patrol results
+
+  const now=new Date();
+  // Records the time of the rebuild for "Last Scanned" timestamps
+
+  pallets.forEach((p,i)=>{
+    const scanned=scannedPallets.has(i);
+    // Checks if this pallet was scanned in the most recent patrol
+
+    let wmsStatus;
+    if(!scanned)        wmsStatus='PENDING';
+    else if(p.damaged)  wmsStatus='DAMAGED';
+    else if(p.mismatch) wmsStatus='MISMATCH';
+    else                wmsStatus='CONFIRMED';
+    // Assigns one of four possible WMS statuses based on scan result
+
+    inventoryData.push({
+      opt:'--',
+      location:`0${Math.floor(Math.random()*3)+1} ${String(Math.floor(Math.random()*8)+1).padStart(2,'0')} ${String(Math.floor(Math.random()*4)+1).padStart(3,'0')} ${Math.floor(Math.random()*2)+1}`,
+      // Generates a random rack location in the format used by USCS (aisle/bay/slot/level)
+
+      license:Math.floor(5700000+Math.random()*10000),
+      // Random license plate number in the 5.7 million range (matching screenshot)
+
+      lotNumber:LOT_PREFIXES[i%LOT_PREFIXES.length],
+      customer:CUSTOMERS[i%CUSTOMERS.length],
+      description:DESCS[i%DESCS.length],
+      quantity:Math.floor(18+Math.random()*10),
+      onHand:Math.floor(18+Math.random()*10),
+      pip:Math.floor(Math.random()*3),
+      available:Math.floor(16+Math.random()*10),
+      hold:0,
+      stat:Math.floor(Math.random()*2),
+      holdType:HOLD_TYPES[i%HOLD_TYPES.length],
+      palletId:`000LCP${String(i).padStart(4,'0')}`,
+      // Unique pallet ID in the format seen in the USCS screenshot
+
+      wmsStatus,
+      lastScanned:scanned?now.toLocaleString():'---',
+      // Records the scan time if scanned; shows dashes if not yet scanned
+
+      mismatch:p.mismatch,
+      damaged:p.damaged
+      // Carries over the type flags for row coloring in the table
+    });
+  });
+
+  if(inventoryData.length===0) seedDemoInventory();
+  // Falls back to demo data if no pallets have been placed on the canvas
+
+  refreshInventory();
+  // Reloads the inventory table with the newly built data
+}
+
+function seedDemoInventory(){
+  const now=new Date();
+  // Gets current time for demo scan timestamps
+
+  for(let i=0;i<18;i++){
+    // Creates 18 demo pallet records
+
+    const mismatch=Math.random()<0.2;
+    // 20% chance of being a mismatch
+
+    const damaged=!mismatch && Math.random()<0.1;
+    // 10% chance of being damaged (only if not already a mismatch)
+
+    const scanned=Math.random()>0.1;
+    // 90% chance of being scanned
+
+    let wmsStatus;
+    if(!scanned)       wmsStatus='PENDING';
+    else if(damaged)   wmsStatus='DAMAGED';
+    else if(mismatch)  wmsStatus='MISMATCH';
+    else               wmsStatus='CONFIRMED';
+    // Assigns WMS status using the same logic as buildInventory
+
+    inventoryData.push({
+      opt:'--',
+      location:`0${Math.floor(Math.random()*3)+1} ${String(Math.floor(Math.random()*8)+1).padStart(2,'0')} ${String(Math.floor(Math.random()*4)+1).padStart(3,'0')} ${Math.floor(Math.random()*2)+1}`,
+      license:Math.floor(5700000+Math.random()*10000),
+      lotNumber:LOT_PREFIXES[i%LOT_PREFIXES.length],
+      customer:CUSTOMERS[i%CUSTOMERS.length],
+      description:DESCS[i%DESCS.length],
+      quantity:21,onHand:21,pip:0,available:21,hold:0,stat:0,
+      holdType:HOLD_TYPES[i%HOLD_TYPES.length],
+      palletId:`000LCP${String(i).padStart(4,'0')}`,
+      wmsStatus,
+      lastScanned:scanned?now.toLocaleString():'---',
+      mismatch, damaged
+    });
+  }
+}
+
+let filteredInv=[];
+// Holds the currently filtered subset of inventoryData shown in the table
+
+function refreshInventory(){
+  if(inventoryData.length===0) seedDemoInventory();
+  // Seeds demo data if inventory is empty
+
+  document.getElementById('inv-timestamp').textContent=new Date().toLocaleString();
+  // Updates the "data as of" timestamp shown in the inventory header
+
+  filteredInv=[...inventoryData];
+  // Resets the filtered view to show all records
+
+  renderInventory();
+  // Populates the table with the full dataset
+}
+
+function filterInventory(){
+  const q=document.getElementById('invSearch').value.toLowerCase();
+  // Gets the search query in lowercase for case-insensitive matching
+
+  filteredInv=inventoryData.filter(r=>
+    r.location.toLowerCase().includes(q)||
+    String(r.license).includes(q)||
+    r.customer.includes(q)||
+    r.description.toLowerCase().includes(q)||
+    r.palletId.toLowerCase().includes(q)||
+    r.lotNumber.toLowerCase().includes(q)
+  );
+  // Filters records that match the query across any of these key fields
+
+  renderInventory();
+  // Re-renders the table with only the matching rows
+}
+
+function renderInventory(){
+  const tbody=document.getElementById('invBody');
+  // Gets the table body element
+
+  tbody.innerHTML='';
+  // Clears existing rows before re-rendering
+
+  filteredInv.forEach(r=>{
+    const tr=document.createElement('tr');
+    // Creates a new table row element for this record
+
+    if(r.damaged)      tr.className='damaged-row';
+    else if(r.mismatch) tr.className='mismatch-row';
+    // Applies orange row styling for damaged barcodes, red for mismatches
+
+    let badge;
+    if(r.wmsStatus==='CONFIRMED')  badge='badge-ok';
+    else if(r.wmsStatus==='MISMATCH') badge='badge-miss';
+    else if(r.wmsStatus==='DAMAGED')  badge='badge-damaged';
+    else badge='badge-pending';
+    // Selects the correct badge CSS class for the WMS Status column
+
+    tr.innerHTML=`
+      <td>${r.opt}</td>
+      <td>${r.location}</td>
+      <td>${r.license}</td>
+      <td>${r.lotNumber}</td>
+      <td>${r.customer}</td>
+      <td>${r.description}</td>
+      <td>${r.quantity}</td>
+      <td>${r.onHand}</td>
+      <td>${r.pip}</td>
+      <td>${r.available}</td>
+      <td>${r.hold}</td>
+      <td>${r.stat}</td>
+      <td>${r.holdType}</td>
+      <td>${r.palletId}</td>
+      <td><span class="status-badge ${badge}">${r.wmsStatus}</span></td>
+      <td>${r.lastScanned}</td>
+    `;
+    // Fills in all table cells with the record's data; WMS Status gets a colored badge
+
+    tbody.appendChild(tr);
+    // Adds the completed row to the table body
+  });
+
+  document.getElementById('inv-count').textContent=`${filteredInv.length} records`;
+  // Updates the footer record count to reflect how many rows are shown
+}
+
+function exportInventoryCSV(){
+  const exportTime=new Date().toLocaleString();
+  // Captures the exact moment the export was triggered
+
+  const headers=['Opt','Location','License #','Lot Number','Customer','Description',
+    'Quantity','On-Hand','PIP','Available','Hold','Stat','Hold Type','Pallet-ID','WMS Status','Last Scanned'];
+  // Column headers matching the USCS Location Maintenance screen format
+
+  let csv=`USCS Location Maintenance — Inventory Export\n`;
+  csv+=`Report Generated: ${exportTime}\n`;
+  csv+=`Plant: 550\n\n`;
+  // Adds a header block with export timestamp so the recipient knows exactly when data was exported
+
+  csv+=headers.join(',')+'\n';
+  // Writes the column header row
+
+  filteredInv.forEach(r=>{
+    csv+=`${r.opt},"${r.location}",${r.license},${r.lotNumber},${r.customer},"${r.description}",${r.quantity},${r.onHand},${r.pip},${r.available},${r.hold},${r.stat},${r.holdType},${r.palletId},${r.wmsStatus},"${r.lastScanned}"\n`;
+    // Writes one CSV row per inventory record; text fields with commas are wrapped in quotes
+  });
+
+  const fileName=`uscs_inventory_${formatFileTimestamp(new Date())}.csv`;
+  // Creates a timestamped filename so exports don't overwrite each other
+
+  downloadFile(fileName,csv,'text/csv');
+  // Triggers the browser download
+}
+
+// ═══════════════════════════════════════════════
+// UTILITIES
+// Shared helper functions used across the application
+// ═══════════════════════════════════════════════
+function formatFileTimestamp(d){
+  const pad=n=>String(n).padStart(2,'0');
+  // Helper that zero-pads a number to at least 2 digits
+
+  return `${d.getFullYear()}-${pad(d.getMonth()+1)}-${pad(d.getDate())}_${pad(d.getHours())}-${pad(d.getMinutes())}-${pad(d.getSeconds())}`;
+  // Returns a timestamp string safe for use in filenames (e.g. 2026-03-09_14-35-22)
+}
+
+function downloadFile(filename, content, type){
+  const a=document.createElement('a');
+  // Creates a temporary invisible anchor (link) element
+
+  a.href=URL.createObjectURL(new Blob([content],{type}));
+  // Creates a temporary URL pointing to the file content stored in memory
+
+  a.download=filename;
+  // Sets the filename the browser will use when saving the file
+
+  a.click();
+  // Programmatically clicks the link to trigger the browser download dialog
+}
+
+// Initialize the inventory page with demo data on first load
+seedDemoInventory();
+// Populates the inventory array with sample records so the table isn't empty on first visit
+</script>
+</body>
+</html>
