@@ -6,3 +6,5 @@ backend/warehouse.db
 backend/warehouse.db-journal
 backend/scans.xlsx
 backend/scans.csv
+*.db
+*.db-journal

@@ -1,5 +1,6 @@
-from fastapi import APIRouter
-from pydantic import BaseModel
+from fastapi import APIRouter, HTTPException
+from pydantic import BaseModel, Field
+from typing import Optional
 from app.db import get_connection
 
 # Router for all scan-related API endpoints
@@ -7,11 +8,11 @@ router = APIRouter(prefix="/scans")
 
 # Request body structure for creating a scan
 class ScanCreate(BaseModel):
-    palletID: str
-    aisle: str
-    bay: str
-    level: int
-    confidence: float | None = None
+    palletID: str = Field(..., example="PAL123")
+    aisle: str = Field(..., example="A1")
+    bay: str = Field(..., example="B2")
+    level: int = Field(..., ge=0, example=1)
+    confidence: Optional[float] = Field(default=1.0, ge=0, le=1)
 
 
 # Insert a new row into the scan table and return that new scan as JSON
@@ -33,7 +34,10 @@ def create_scan(scan: ScanCreate):
         connect.commit()
         connect.close()
 
-        return {"error": "Barcode not detected. Exception recorded."}
+        raise HTTPException(
+            status_code=400,
+            detail="Barcode not detected. Exception recorded."
+        )
 
     # normal scan logic
     if scan.confidence is None:
