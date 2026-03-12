@@ -18,7 +18,6 @@ class ExceptionCreate(BaseModel):
 
 
 # GET all exceptions
-@router.get("/")
 def get_all_exceptions():
 
     db = get_connection()

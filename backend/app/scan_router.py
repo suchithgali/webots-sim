@@ -23,20 +23,21 @@ def create_scan(scan: ScanCreate):
 
     # trigger exception if barcode not detected
     if not scan.palletID or scan.palletID.strip() == "":
-        connect.execute(
+        cursor=connect.execute(
             """
             INSERT INTO Exceptions (aisle, bay, level, reason)
             VALUES (?, ?, ?, ?)
             """,
             (scan.aisle, scan.bay, scan.level, "BARCODE_NOT_FOUND"),
         )
-
+        exception_id = cursor.lastrowid
+        
         connect.commit()
         connect.close()
 
         raise HTTPException(
             status_code=400,
-            detail="Barcode not detected. Exception recorded."
+            detail=f"Barcode not detected. Exception recorded with exceptionID {exception_id}."
         )
 
     # normal scan logic
