@@ -57,7 +57,7 @@ def create_scan(scan: ScanCreate):
         connect.commit()
         connect.close()
         raise HTTPException(
-            status_code=400,
+            status_code=422,
             detail=f"Barcode not detected. Exception recorded with exceptionID {exception_id}."
         )
 
