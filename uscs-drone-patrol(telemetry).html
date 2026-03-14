@@ -1,11 +1,7 @@
 <!DOCTYPE html>
-<!-- Declares this file as an HTML5 document so the browser knows how to render it -->
 <html lang="en">
-<!-- Opens the HTML document and sets the language to English for accessibility -->
 <head>
-<!-- The <head> section contains metadata and resources that are not visible on screen -->
 <meta charset="UTF-8">
-<!-- Tells the browser to use UTF-8 character encoding so all text and symbols display correctly -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <!-- Ensures the page scales correctly on mobile and tablet devices -->
 <title>USCS Drone Patrol System</title>
@@ -13,13 +9,11 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
 <!-- Loads the Chart.js library from a CDN (Content Delivery Network) so we can draw graphs and charts without writing that code ourselves -->
 <style>
-/* Everything inside <style> tags is CSS — it controls how the page looks */
 
 @import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Barlow:wght@300;400;500;600;700&family=Barlow+Condensed:wght@400;600;700&display=swap');
 /* Imports custom fonts from Google Fonts: Share Tech Mono (monospace/terminal look), Barlow (body text), and Barlow Condensed (compact headings) */
 
 :root {
-/* :root defines CSS variables — reusable color values we can reference anywhere in the stylesheet */
   --bg: #070b10;         /* Main background — very dark navy */
   --panel: #0c1219;      /* Sidebar and card background — slightly lighter dark */
   --panel2: #101820;     /* Secondary panel background used for inputs */
@@ -580,6 +574,81 @@ nav {
 
 ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
 /* Scrollbar thumb is a subtle dark color */
+
+/* ── WEBOTS TELEMETRY CONNECTION STATUS ── */
+.telemetry-status {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 8px;
+  border-radius: 2px;
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.58rem;
+  letter-spacing: 1px;
+  border: 1px solid var(--border2);
+  background: #040810;
+  margin-bottom: 6px;
+}
+/* Status bar showing whether the telemetry server is reachable */
+
+.tel-dot {
+  width: 7px; height: 7px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+/* Colored dot indicating connection state */
+
+.tel-dot.connected    { background: var(--green); box-shadow: 0 0 6px var(--green); animation: blink 1.5s infinite; }
+.tel-dot.disconnected { background: var(--red); }
+.tel-dot.polling      { background: var(--yellow); box-shadow: 0 0 6px var(--yellow); animation: blink 0.8s infinite; }
+/* Green = live feed active, Red = no connection, Yellow = attempting */
+
+@keyframes blink { 0%,100%{opacity:1;} 50%{opacity:0.3;} }
+/* Pulsing animation for active connection dots */
+
+.tel-label { color: var(--text2); }
+.tel-label.connected    { color: var(--green); }
+.tel-label.disconnected { color: var(--red); }
+.tel-label.polling      { color: var(--yellow); }
+/* Label color matches the dot state */
+
+.barcode-input-row {
+  display: flex;
+  gap: 4px;
+  margin-top: 4px;
+}
+/* Row holding the manual barcode entry input and assign button */
+
+.barcode-input {
+  flex: 1;
+  background: var(--panel2);
+  border: 1px solid var(--border);
+  border-radius: 2px;
+  color: var(--text);
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.65rem;
+  padding: 4px 6px;
+  outline: none;
+}
+/* Text input for manually typing a barcode ID to assign to the next pallet */
+
+.barcode-input:focus { border-color: var(--accent); }
+/* Cyan border when focused */
+
+.barcode-input::placeholder { color: var(--dim); }
+/* Dim placeholder text */
+
+.barcode-assign-btn {
+  padding: 4px 8px;
+  background: rgba(0,200,240,0.08);
+  border: 1px solid var(--accent);
+  color: var(--accent);
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.6rem;
+  border-radius: 2px;
+  cursor: pointer;
+}
+/* Small button to confirm the barcode ID for the next pallet placed */
 </style>
 </head>
 <body>
@@ -648,6 +717,42 @@ nav {
         </div>
         <div style="font-size:0.62rem;color:var(--dim);margin-top:6px;">Mismatch = wrong WMS location. Damaged = barcode unreadable.</div>
         <!-- Short explanation of what each toggle does -->
+
+        <div style="margin-top:8px;font-size:0.62rem;color:var(--text2);">Barcode ID for next pallet:</div>
+        <!-- Label above the barcode input field -->
+        <div class="barcode-input-row">
+          <input class="barcode-input" type="text" id="barcodeIdInput" placeholder="e.g. ABC-abc-1234">
+          <!-- Text field where the operator types the barcode that Webots will scan on this pallet -->
+          <button class="barcode-assign-btn" onclick="setBarcodeId()">Set</button>
+          <!-- Confirms the barcode ID and stores it for the next pallet placement -->
+        </div>
+        <div style="font-size:0.58rem;color:var(--dim);margin-top:3px;" id="barcodeIdDisplay">Next ID: auto</div>
+        <!-- Shows which barcode ID will be assigned to the next placed pallet -->
+      </div>
+
+      <div class="sb-section">
+        <div class="sb-title">Webots Feed</div>
+        <!-- Section showing live connection status to the telemetry server -->
+
+        <div class="telemetry-status" id="telStatus">
+          <div class="tel-dot disconnected" id="telDot"></div>
+          <!-- Colored dot — red=offline, yellow=polling, green=live -->
+          <span class="tel-label disconnected" id="telLabel">NOT CONNECTED</span>
+          <!-- Text label showing the current connection state -->
+        </div>
+
+        <div style="font-size:0.6rem;color:var(--dim);margin-bottom:6px;">localhost:8765 (telemetry_server.py)</div>
+        <!-- Shows which URL the app is polling for Webots data -->
+
+        <div class="tool-grid">
+          <button class="tbtn green-btn" id="btn-telemetry" onclick="toggleTelemetry()"><span class="ico">⊙</span> Connect Feed</button>
+          <!-- Starts or stops polling the Webots telemetry server -->
+        </div>
+
+        <div class="stat-mini" style="margin-top:6px;"><span class="lbl">Codes Received</span><span class="val val-c" id="tel-codes">0</span></div>
+        <!-- Number of unique barcodes received from Webots this session -->
+        <div class="stat-mini"><span class="lbl">Last Update</span><span class="val val-y" id="tel-lastupdate">---</span></div>
+        <!-- Timestamp of the most recent successful data fetch from the telemetry server -->
       </div>
 
       <div class="sb-section">
@@ -910,6 +1015,29 @@ let charts = {};
 // Object storing Chart.js chart instances so we can destroy and recreate them when refreshing Analytics
 
 // ═══════════════════════════════════════════════
+// WEBOTS TELEMETRY STATE
+// Variables that manage the live connection to the Webots telemetry server
+// ═══════════════════════════════════════════════
+
+const TELEMETRY_URL = 'http://localhost:8765';
+// The URL of the telemetry_server.py HTTP server — reads telemetry.json at 20Hz and serves it here
+
+let telemetryInterval = null;
+// Stores the setInterval ID so we can stop polling when needed
+
+let telemetryActive = false;
+// Boolean tracking whether the telemetry polling loop is currently running
+
+let lastSeenCodes = new Set();
+// Tracks which barcode IDs have already been processed this session to avoid duplicate scans
+
+let totalCodesReceived = 0;
+// Running count of unique barcodes received from Webots — shown in the sidebar
+
+let nextBarcodeId = null;
+// Stores the barcode ID the operator typed in — assigned to the next pallet placed on the canvas
+
+// ═══════════════════════════════════════════════
 // CLOCK
 // Updates the live clock in the top-right of the nav bar every second
 // ═══════════════════════════════════════════════
@@ -1106,8 +1234,17 @@ canvas.addEventListener('click', e => {
     const isDamaged = document.getElementById('damagedToggle').checked;
     // Reads the Damaged Barcode toggle state — true if the barcode is unreadable
 
-    pallets.push({x:sx+5, y:sy+5, w:GRID-10, h:GRID-10, mismatch:isMismatch, damaged:isDamaged, scanned:false});
-    // Adds the pallet with a 5px inset from the grid cell and flags for its type
+    const barcodeId = nextBarcodeId || `AUTO-${String(pallets.length).padStart(4,'0')}`;
+    // Uses the user-set barcode ID if one was entered, or auto-generates one based on pallet index
+
+    pallets.push({x:sx+5, y:sy+5, w:GRID-10, h:GRID-10, mismatch:isMismatch, damaged:isDamaged, scanned:false, barcodeId});
+    // Adds the pallet with a 5px inset from the grid cell, type flags, and its barcode ID
+
+    nextBarcodeId = null;
+    // Resets the pending barcode ID so the next pallet auto-generates unless manually set again
+
+    document.getElementById('barcodeIdDisplay').textContent = 'Next ID: auto';
+    // Resets the display to show "auto" since no barcode is queued anymore
 
     const typeLabel = isDamaged ? '[DAMAGED]' : isMismatch ? '[MISMATCH]' : '[OK]';
     // Picks a log label based on which flag is set
@@ -1115,8 +1252,8 @@ canvas.addEventListener('click', e => {
     const logType = isDamaged ? 'dmg' : isMismatch ? 'warn' : 'ok';
     // Picks a log color class to match
 
-    log(`Pallet at (${sx},${sy}) ${typeLabel}`, logType);
-    // Logs the placement with its type
+    log(`Pallet at (${sx},${sy}) ${typeLabel} ID:${barcodeId}`, logType);
+    // Logs the placement with its type and barcode ID
 
     updateSimStats();
     // Updates the sidebar stat counters
@@ -1589,6 +1726,9 @@ function resetDrone(){
   scannedPallets.clear(); mismatchFound.clear(); damagedFound.clear(); scanTrail=[];
   // Clears all scan results and trail from the previous patrol
 
+  resetTelemetrySession();
+  // Resets all Webots telemetry tracking so the next patrol starts with a clean slate
+
   if(droneStart) drone={x:droneStart.x,y:droneStart.y,angle:0};
   // Moves the drone back to its start position if one is set
 
@@ -1619,6 +1759,9 @@ function clearAll(){
 
   scannedPallets.clear(); mismatchFound.clear(); damagedFound.clear();
   // Clears all scan tracking sets
+
+  resetTelemetrySession();
+  // Resets all Webots telemetry tracking data alongside the canvas clear
 
   document.getElementById('btn-run').innerHTML='<span class="ico">▶</span> Start Patrol';
   // Resets button text
@@ -2188,6 +2331,231 @@ function downloadFile(filename, content, type){
 // Initialize the inventory page with demo data on first load
 seedDemoInventory();
 // Populates the inventory array with sample records so the table isn't empty on first visit
+
+// ═══════════════════════════════════════════════
+// WEBOTS TELEMETRY INTEGRATION
+// All functions that connect the frontend to the live Webots telemetry server
+// ═══════════════════════════════════════════════
+
+function setBarcodeId() {
+  // Called when the operator clicks "Set" next to the barcode input field
+
+  const val = document.getElementById('barcodeIdInput').value.trim();
+  // Reads and trims whitespace from the barcode input field
+
+  if (!val) return;
+  // Does nothing if the field is empty
+
+  nextBarcodeId = val;
+  // Stores the entered barcode ID — it will be assigned to the next pallet placed on the canvas
+
+  document.getElementById('barcodeIdDisplay').textContent = `Next ID: ${val}`;
+  // Updates the display label to confirm which barcode is queued
+
+  document.getElementById('barcodeIdInput').value = '';
+  // Clears the input field after setting the ID
+}
+
+function setTelStatus(state, label) {
+  // Updates the connection status dot and label in the Webots Feed section of the sidebar
+
+  const dot = document.getElementById('telDot');
+  const lbl = document.getElementById('telLabel');
+  // Gets the dot and label elements
+
+  dot.className = `tel-dot ${state}`;
+  // Sets the dot's CSS class to 'connected', 'disconnected', or 'polling'
+
+  lbl.className = `tel-label ${state}`;
+  // Sets the label's CSS class to match the dot state
+
+  lbl.textContent = label;
+  // Updates the visible text next to the dot
+}
+
+function toggleTelemetry() {
+  // Starts or stops the live telemetry polling loop
+
+  if (telemetryActive) {
+    stopTelemetry();
+    // If already running, stop it
+  } else {
+    startTelemetry();
+    // If not running, start it
+  }
+}
+
+function startTelemetry() {
+  // Begins polling the Webots telemetry server every 2 seconds
+
+  telemetryActive = true;
+  // Marks the feed as active
+
+  setTelStatus('polling', 'CONNECTING...');
+  // Shows yellow "connecting" state immediately
+
+  document.getElementById('btn-telemetry').innerHTML = '<span class="ico">⊙</span> Disconnect Feed';
+  // Changes the button text to "Disconnect"
+
+  log('Connecting to Webots telemetry server at localhost:8765...', 'info');
+  // Logs the connection attempt
+
+  telemetryInterval = setInterval(fetchTelemetry, 2000);
+  // Polls fetchTelemetry every 2000 milliseconds (2 seconds)
+
+  fetchTelemetry();
+  // Calls it immediately so there's no 2-second wait on first connect
+}
+
+function stopTelemetry() {
+  // Stops the polling loop and resets the connection state
+
+  telemetryActive = false;
+  // Marks the feed as inactive
+
+  clearInterval(telemetryInterval);
+  // Cancels the repeating poll
+
+  telemetryInterval = null;
+  // Clears the interval reference
+
+  setTelStatus('disconnected', 'NOT CONNECTED');
+  // Resets the status indicator to red/disconnected
+
+  document.getElementById('btn-telemetry').innerHTML = '<span class="ico">⊙</span> Connect Feed';
+  // Resets the button text
+
+  log('Telemetry feed disconnected.', 'dim');
+  // Logs the disconnection
+}
+
+async function fetchTelemetry() {
+  // Makes a single HTTP GET request to the telemetry server and processes the result
+
+  try {
+    const res = await fetch(TELEMETRY_URL, { signal: AbortSignal.timeout(1500) });
+    // Fetches the telemetry endpoint with a 1.5 second timeout so slow responses don't block the UI
+
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    // Throws an error if the server returned a non-200 status code
+
+    const data = await res.json();
+    // Parses the JSON response — expected shape: { timestamp: number, scanned_codes: string[] }
+
+    if (!data.scanned_codes || !Array.isArray(data.scanned_codes)) return;
+    // Ignores the response if it doesn't contain a valid scanned_codes array
+
+    setTelStatus('connected', 'LIVE');
+    // Updates the dot to green/connected now that we have a valid response
+
+    const now = new Date();
+    document.getElementById('tel-lastupdate').textContent =
+      `${now.getHours().toString().padStart(2,'0')}:${now.getMinutes().toString().padStart(2,'0')}:${now.getSeconds().toString().padStart(2,'0')}`;
+    // Updates the "Last Update" timestamp in the sidebar with the current time
+
+    data.scanned_codes.forEach(code => {
+      // Loops through every barcode the Webots drone has scanned
+
+      if (lastSeenCodes.has(code)) return;
+      // Skips barcodes we've already processed to avoid double-counting
+
+      lastSeenCodes.add(code);
+      // Marks this barcode as seen so it won't be processed again
+
+      totalCodesReceived++;
+      // Increments the total received counter
+
+      document.getElementById('tel-codes').textContent = totalCodesReceived;
+      // Updates the "Codes Received" count in the sidebar
+
+      matchBarcodeTopallets(code);
+      // Tries to match this barcode to a pallet on the canvas and mark it as scanned
+    });
+
+  } catch (err) {
+    // Runs if the fetch failed — server is offline or unreachable
+
+    setTelStatus('disconnected', 'NO RESPONSE');
+    // Updates the dot to red
+
+    log(`⚠ Telemetry server unreachable — is telemetry_server.py running?`, 'warn');
+    // Logs a helpful warning with the fix
+
+    stopTelemetry();
+    // Stops the polling loop since there's no point continuing if the server is down
+  }
+}
+
+function matchBarcodeTopallets(code) {
+  // Finds any pallet on the canvas whose barcodeId matches the scanned code and marks it scanned
+
+  let matched = false;
+  // Tracks whether we found a matching pallet
+
+  pallets.forEach((p, i) => {
+    if (p.barcodeId !== code) return;
+    // Skips pallets whose barcode ID doesn't match the scanned code
+
+    if (scannedPallets.has(i)) return;
+    // Skips pallets already marked as scanned
+
+    scannedPallets.add(i);
+    // Marks this pallet as scanned
+
+    matched = true;
+    // Records that we found a match
+
+    if (p.damaged) {
+      damagedFound.add(i);
+      // Records this as a damaged barcode pallet
+
+      log(`⚠ [WEBOTS] DAMAGED BARCODE — ID: ${code}`, 'dmg');
+      // Logs the damaged barcode event in orange
+
+    } else if (p.mismatch) {
+      mismatchFound.add(i);
+      // Records this as a WMS mismatch
+
+      log(`⚠ [WEBOTS] MISMATCH — ID: ${code} — WMS location error`, 'err');
+      // Logs the mismatch in red
+
+    } else {
+      log(`✓ [WEBOTS] Confirmed — ID: ${code}`, 'ok');
+      // Logs a successful confirmed scan in green
+    }
+  });
+
+  if (!matched) {
+    log(`? [WEBOTS] Unknown barcode: ${code} — not mapped to any pallet`, 'warn');
+    // Logs a warning if the scanned barcode doesn't match any pallet on the canvas
+    // This happens when Webots scans a barcode that wasn't placed on the map
+  }
+
+  updateSimStats();
+  // Refreshes the sidebar stat counters to reflect the new scan
+
+  draw();
+  // Redraws the canvas so the newly scanned pallet changes color immediately
+
+  buildInventory();
+  // Rebuilds the inventory table so the WMS Status column updates in real time
+}
+
+function resetTelemetrySession() {
+  // Clears all telemetry tracking data — called by resetDrone() and clearAll()
+
+  lastSeenCodes.clear();
+  // Resets the set of seen barcodes so the next patrol starts fresh
+
+  totalCodesReceived = 0;
+  // Resets the counter
+
+  document.getElementById('tel-codes').textContent = '0';
+  // Resets the display
+
+  document.getElementById('tel-lastupdate').textContent = '---';
+  // Clears the last update timestamp
+}
 </script>
 </body>
 </html>
