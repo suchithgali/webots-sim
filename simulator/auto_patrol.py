@@ -24,6 +24,8 @@ import math
 import threading
 from enum import Enum
 import subprocess
+import time
+import json  
 
 # manually add the Homebrew site-packages to the path
 # this ensures Python looks where 'pip3 install --break-system-packages' put them
@@ -338,6 +340,21 @@ class Mavic(Robot):
         yaw_disturbance = 0
         pitch_disturbance = 0
 
+        # Setup telemetry file path - use fixed location
+        telemetry_file = "/Users/suchithgali/C++ Files/CSE120/S26-CSE-303/simulator/telemetry.json"
+        print("="*50, flush=True)
+        print(f"[TELEMETRY] Controller started!", flush=True)
+        print(f"[TELEMETRY] Writing to: {telemetry_file}", flush=True)
+        print("="*50, flush=True)
+        
+        # Test write to verify file permissions
+        try:
+            with open(telemetry_file, "w") as f:
+                json.dump({"status": "initializing"}, f)
+            print("[TELEMETRY] Test file write successful!", flush=True)
+        except Exception as e:
+            print(f"[TELEMETRY] File write FAILED: {e}", flush=True)
+
         self._set_state(DroneState.TAKEOFF)
         self.target_position[0:2] = waypoints[0][0:2]
 
@@ -366,6 +383,9 @@ class Mavic(Robot):
             if self.state in (DroneState.FAILURE, DroneState.COMPLETED, DroneState.CHARGING, DroneState.IDLE):
                 for motor in self.motors:
                     motor.setVelocity(0.0)
+                if self.state == DroneState.COMPLETED:
+                    print("Patrol completed. Shutting down controller.")
+                    break
                 continue
 
             elif self.state == DroneState.PAUSED:
@@ -405,12 +425,35 @@ class Mavic(Robot):
             elif self.state == DroneState.LANDING:
                 yaw_disturbance, pitch_disturbance = self._hold_position(self.target_position[0:2])
                 
-                if self.target_altitude > 0.1:
+                if self.target_altitude > 0.05:
                     self.target_altitude -= 0.001
                 
-                if altitude <= 0.11:
+                if altitude <= 0.15: # Raised threshold to ensure it detects landing
                     self._set_state(DroneState.COMPLETED)
                     continue
+
+                # Write telemetry data to file
+                telemetry = {
+                    "timestamp": time.time(),
+                    #"state": self.state.name,
+                    #"x": round(self.current_pose[0], 3),
+                    #"y": round(self.current_pose[1], 3),
+                    #"z": round(self.current_pose[2], 3),
+                    #"roll": round(self.current_pose[3], 3),
+                    #"pitch": round(self.current_pose[4], 3),
+                    #"yaw": round(self.current_pose[5], 3),
+                    #"altitude": round(altitude, 3),
+                    #"battery_low": self.battery_low,
+                    #"obstacle_detected": self.obstacle_detected,
+                    #"temperature_unsafe": self.temperature_unsafe,
+                    #"waypoint_index": self.target_index,
+                    "scanned_codes": list(self.scanned_codes)
+                }
+                try:
+                    with open(telemetry_file, "w") as f:
+                        json.dump(telemetry, f)
+                except Exception as e:
+                    pass  # Silently ignore file write errors to avoid crashing simulation
 
             # low level motor fixing
             roll_input = self.K_ROLL_P * clamp(roll, -1, 1) + roll_acceleration + self.roll_disturbance
@@ -430,7 +473,48 @@ class Mavic(Robot):
             self.rear_left_motor.setVelocity(-rear_left_input)
             self.rear_right_motor.setVelocity(rear_right_input)
 
-# To use this controller, the basicTimeStep should be set to 8 and the defaultDamping
-# with a linear and angular damping both of 0.5
-robot = Mavic()
-robot.run()
+
+if __name__ == "__main__":
+    # Calculate path to the world file
+    simulator_dir = os.path.dirname(os.path.abspath(__file__))
+    wbt_path = os.path.join(simulator_dir, "world", "worlds", "wharehouse.wbt")
+    
+    print("[Launcher] Starting Webots automatically...", flush=True)
+    # Start webots as a background process
+    # Clear DYLD_LIBRARY_PATH just for the webots subprocess so it doesn't conflict with Homebrew ODE
+    webots_env = os.environ.copy()
+    if 'DYLD_LIBRARY_PATH' in webots_env:
+        del webots_env['DYLD_LIBRARY_PATH']
+        
+    webots_process = subprocess.Popen(
+        ["/Applications/Webots.app/Contents/MacOS/webots", wbt_path],
+        env=webots_env
+    )
+    
+    try:
+        # To use this controller, the basicTimeStep should be set to 8 and the defaultDamping
+        # with a linear and angular damping both of 0.5
+        robot = Mavic()
+        robot.run()
+        
+        # Save the scanned barcodes to the database once completed
+        print(f"[Launcher] Saving {len(robot.scanned_codes)} scanned barcodes to database...", flush=True)
+        
+        # Add the backend to sys.path to import the get_connection code
+        backend_path = os.path.join(simulator_dir, "..", "backend")
+        sys.path.append(backend_path)
+        from app.db import insert_scan
+        
+        insert_scan(list(robot.scanned_codes))
+        print("[Launcher] Database updated successfully!")
+
+    except KeyboardInterrupt:
+        print("\n[Launcher] Manual interrupt received.")
+    finally:
+        print("[Launcher] Closing Webots...", flush=True)
+        webots_process.terminate()
+        try:
+            webots_process.wait(timeout=5)
+        except subprocess.TimeoutExpired:
+            webots_process.kill()
+        print("[Launcher] Done.")
