@@ -1,8 +1,6 @@
 name: CI
 
 on:
-  push:
-    branches: [ main ]
   pull_request:
     branches: [ main ]
 
@@ -22,6 +20,7 @@ jobs:
         with:
           python-version: "3.11"
 
+        # cache files to speedup installs
       - name: Cache pip
         uses: actions/cache@v4
         with:
@@ -43,4 +42,15 @@ jobs:
       
       - name: Run tests
         run: pytest
+
+      - name: Dependency security scan
+        run: pip-audit
         
+      - name: Security scan (Bandit)
+        run: bandit -r app
+      
+      - name: Lint with ruff
+        run: ruff check app
+      
+      - name: Type check (mypy)
+        run: mypy app --ignore-missing-imports
