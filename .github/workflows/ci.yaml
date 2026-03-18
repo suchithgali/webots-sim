@@ -40,3 +40,7 @@ jobs:
 
       - name: Test FastAPI import
         run: python -c "from app.main import app"
+      
+      - name: Run tests
+        run: pytest
+        
