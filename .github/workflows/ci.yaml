@@ -40,6 +40,11 @@ jobs:
       - name: Test FastAPI import
         run: python -c "from app.main import app"
       
+      - name: Initialize database schema
+        env:
+          PYTHONPATH: ${{ github.workspace }}/backend
+        run: python -m app.init_db 
+      
       - name: Run tests
         env:
           PYTHONPATH: ${{ github.workspace }}/backend
