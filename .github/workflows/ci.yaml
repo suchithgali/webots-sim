@@ -41,6 +41,8 @@ jobs:
         run: python -c "from app.main import app"
       
       - name: Run tests
+        env:
+          PYTHONPATH: ${{ github.workspace }}/backend
         run: pytest
 
       - name: Dependency security scan
