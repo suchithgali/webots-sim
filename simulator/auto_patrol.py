@@ -18,9 +18,29 @@
    Supports 'fly-by' waypoints that skip the 360-degree scan.
    Cross-platform: works on macOS and Windows."""
 
-from controller import Robot
 import sys
 import os
+import platform
+
+# --- Webots Early Python Path Extension ---
+# If you run this file from the terminal (not through Webots), it needs to know
+# where the Webots controller API is located so the import doesn't fail.
+if "WEBOTS_HOME" not in os.environ:
+    _sys = platform.system()
+    if _sys == "Darwin":
+        os.environ["WEBOTS_HOME"] = "/Applications/Webots.app"
+        _webots_py_path = os.path.join(os.environ["WEBOTS_HOME"], "Contents", "lib", "controller", "python")
+    elif _sys == "Windows":
+        os.environ["WEBOTS_HOME"] = r"C:\Program Files\Webots"
+        _webots_py_path = os.path.join(os.environ["WEBOTS_HOME"], "lib", "controller", "python")
+    else:
+        os.environ["WEBOTS_HOME"] = "/usr/local/webots"
+        _webots_py_path = os.path.join(os.environ["WEBOTS_HOME"], "lib", "controller", "python")
+        
+    if os.path.exists(_webots_py_path) and _webots_py_path not in sys.path:
+        sys.path.append(_webots_py_path)
+
+from controller import Robot
 import math
 import threading
 from enum import Enum
@@ -32,17 +52,18 @@ import platform
 # --- Cross-platform site-packages resolution ---
 # Only needed on macOS where Homebrew installs packages outside the default path
 if platform.system() == "Darwin":
-    py_version = f"{sys.version_info.major}.{sys.version_info.minor}"
+    # manually add the Homebrew site-packages to the path
+    # this ensures Python looks where 'pip3 install --break-system-packages' put them
     homebrew_site_packages = [
-        f'/opt/homebrew/lib/python{py_version}/site-packages',
-        f'/usr/local/lib/python{py_version}/site-packages',
-        os.path.expanduser(f'~/Library/Python/{py_version}/lib/python/site-packages')
+        '/opt/homebrew/lib/python3.11/site-packages', # Update '3.11' to your version
+        '/usr/local/lib/python3.11/site-packages',
+        os.path.expanduser('~/Library/Python/3.11/lib/python/site-packages')
     ]
     for path in homebrew_site_packages:
         if os.path.exists(path) and path not in sys.path:
             sys.path.append(path)
 
-    # Fix ZBar dynamic library path on macOS only
+    # fix the ZBar dynamic library path for macOS
     if os.path.exists('/opt/homebrew/lib'):
         os.environ['DYLD_LIBRARY_PATH'] = '/opt/homebrew/lib'
     elif os.path.exists('/usr/local/lib'):
@@ -162,7 +183,6 @@ class Mavic(Robot):
         self.is_scanning    = False
 
     # --- FSM ---
-
     def _set_state(self, new_state: DroneState):
         if new_state is None or new_state == self.state:
             return
@@ -211,7 +231,6 @@ class Mavic(Robot):
                 return
 
     # --- Barcode scanning ---
-
     def _save_barcode(self, data, kind):
         log_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "scanned_barcodes.txt")
         with open(log_path, "a") as f:
@@ -235,13 +254,7 @@ class Mavic(Robot):
         print(f"╚══════════════════════════════════════════════", flush=True)
 
         self._save_barcode(data, kind)
-        self.scanned_detail.append({
-            "data":    data,
-            "type":    kind,
-            "rect":    {"left": rect.left, "top": rect.top,
-                        "width": rect.width, "height": rect.height},
-            "polygon": [(p.x, p.y) for p in polygon]
-        })
+        self.scanned_detail.append(data)
         return data
 
     def _process_image_worker(self, image_data, width, height):
@@ -283,7 +296,6 @@ class Mavic(Robot):
         worker.start()
 
     # --- Flight helpers ---
-
     def set_position(self, pos):
         self.current_pose = pos
 
@@ -329,7 +341,6 @@ class Mavic(Robot):
         return yaw_disturbance, pitch_disturbance
 
     # --- Main loop ---
-
     def run(self):
         waypoints = [
             [3.50,     2.00,    True],
@@ -392,7 +403,7 @@ class Mavic(Robot):
                         print("\n╔══════════════════════════════════════════════")
                         print(f"║ MISSION COMPLETE — {len(self.scanned_codes)} unique barcode(s) found:")
                         for i, detail in enumerate(self.scanned_detail, 1):
-                            print(f"║  {i}. [{detail['type']}] {detail['data']}")
+                            print(f"║  {i}. {detail}")
                         print("╚══════════════════════════════════════════════\n")
                     else:
                         print("No barcodes were detected during this mission.")

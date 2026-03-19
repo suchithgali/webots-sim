@@ -1,5 +1,10 @@
+import os
+import sys
 from app.db import get_connection
 
+# Automatically put backend directory in Python path
+backend_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+sys.path.append(backend_dir)
 
 def init_db():
     create_scan_table_sql = """
@@ -11,6 +16,14 @@ def init_db():
         level INTEGER NOT NULL,
         confidence REAL DEFAULT 1.0,
         timestamp DATETIME DEFAULT CURRENT_TIMESTAMP
+    );
+    """
+
+    create_skeleton_table_sql = """
+    CREATE TABLE IF NOT EXISTS Skeleton (
+        scanID INTEGER PRIMARY KEY AUTOINCREMENT,
+        timestamp DATETIME DEFAULT CURRENT_TIMESTAMP,
+        barcodes TEXT NOT NULL
     );
     """
 
@@ -39,6 +52,7 @@ def init_db():
 
     connect = get_connection()
     connect.execute(create_scan_table_sql)
+    connect.execute(create_skeleton_table_sql)
     connect.execute(create_exceptions_table_sql)  
     connect.execute(create_index_pallet_sql)
     connect.execute(create_index_location_sql)
