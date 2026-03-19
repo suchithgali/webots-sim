@@ -1,7 +1,7 @@
 from fastapi import APIRouter, HTTPException
-from pydantic import BaseModel
-from typing import Optional
+from pydantic import BaseModel, field_validator
 from app.db import get_connection
+from typing import Any
 
 # Router for all scan-related API endpoints
 router = APIRouter(prefix="/scans")
@@ -12,7 +12,44 @@ class ScanCreate(BaseModel):
     aisle: str
     bay: str
     level: int
-    confidence: Optional[float] = 1.0
+    confidence: float
+
+    @field_validator("palletID")
+    def validate_pallet_id(cls, v: str) -> str:
+        # Allow empty palletID so the endpoint can record BARCODE_NOT_FOUND exceptions
+        return v.strip()
+
+    @field_validator("aisle")
+    def validate_aisle(cls, v: str) -> str:
+        v = v.strip()
+        if v == "":
+            raise ValueError("aisle must be non-empty")
+        return v
+
+    @field_validator("bay")
+    def validate_bay(cls, v: str) -> str:
+        v = v.strip()
+        if v == "":
+            raise ValueError("bay must be non-empty")
+        return v
+
+    @field_validator("level")
+    def validate_level(cls, v: int) -> int:
+        if v < 0:
+            raise ValueError("level must be >= 0")
+        return v
+    
+    @field_validator("confidence")
+    def validate_confidence(cls, v: float, info: Any) -> float:
+        if v < 0.0 or v > 1.0:
+            raise ValueError("confidence must be between 0.0 and 1.0")
+
+        # If we have a pallet barcode, enforce 99%+ confidence as required by the project
+        pallet_id = info.data.get("palletID", "")
+        if pallet_id != "" and v < 0.99:
+            raise ValueError("confidence must be >= 0.99")
+
+        return float(v)
 
 # Read all rows from the Scan table and return them as a list of JSON objects
 @router.get("/", status_code=200)
@@ -62,7 +99,7 @@ def create_scan(scan: ScanCreate):
         )
 
     # normal scan logic
-    confidence_value = float(scan.confidence) if scan.confidence is not None else 1.0
+    confidence_value = float(scan.confidence)
 
     cursor = connect.execute(
         "INSERT INTO Scan (palletID, aisle, bay, level, confidence) VALUES (?, ?, ?, ?, ?)",
