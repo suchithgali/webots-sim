@@ -1,7 +1,5 @@
 from fastapi import APIRouter, HTTPException
 from pydantic import BaseModel
-from datetime import datetime
-
 
 # fixed database import to match rest of project
 from app.db import get_connection

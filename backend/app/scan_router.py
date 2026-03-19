@@ -1,5 +1,5 @@
 from fastapi import APIRouter, HTTPException
-from pydantic import BaseModel, Field
+from pydantic import BaseModel
 from typing import Optional
 from app.db import get_connection
 
@@ -8,11 +8,11 @@ router = APIRouter(prefix="/scans")
 
 # Request body structure for creating a scan
 class ScanCreate(BaseModel):
-    palletID: str = Field(..., min_length=1, example="PAL123")
-    aisle: str = Field(..., example="A1")
-    bay: str = Field(..., example="B2")
-    level: int = Field(..., ge=0, example=1)
-    confidence: Optional[float] = Field(default=1.0, ge=0, le=1)
+    palletID: str
+    aisle: str
+    bay: str
+    level: int
+    confidence: Optional[float] = 1.0
 
 # Read all rows from the Scan table and return them as a list of JSON objects
 @router.get("/", status_code=200)
