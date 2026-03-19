@@ -403,7 +403,7 @@ class Mavic(Robot):
                         print("\n╔══════════════════════════════════════════════")
                         print(f"║ MISSION COMPLETE — {len(self.scanned_codes)} unique barcode(s) found:")
                         for i, detail in enumerate(self.scanned_detail, 1):
-                            print(f"║  {i}. [{detail['type']}] {detail['data']}")
+                            print(f"║  {i}. {detail}")
                         print("╚══════════════════════════════════════════════\n")
                     else:
                         print("No barcodes were detected during this mission.")
