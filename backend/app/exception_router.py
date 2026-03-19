@@ -1,7 +1,5 @@
-from fastapi import APIRouter
+from fastapi import APIRouter, HTTPException
 from pydantic import BaseModel
-from datetime import datetime
-
 
 # fixed database import to match rest of project
 from app.db import get_connection
@@ -13,12 +11,12 @@ router = APIRouter(prefix="/exceptions", tags=["Exceptions"])
 def get_all_exceptions():
 
     db = get_connection()
-
-    rows = db.execute(
-        "SELECT * FROM Exceptions"
-    ).fetchall()
-
-    db.close()
+    try:
+        rows = db.execute(
+            "SELECT * FROM Exceptions"
+        ).fetchall()
+    finally:
+        db.close()
 
     return [dict(row) for row in rows]
 
@@ -28,16 +26,16 @@ def get_all_exceptions():
 def get_exception(exception_id: int):
 
     db = get_connection()
-
-    row = db.execute(
-        "SELECT * FROM Exceptions WHERE exceptionID = ?",
-        (exception_id,)
-    ).fetchone()
-
-    db.close()
+    try:
+        row = db.execute(
+            "SELECT * FROM Exceptions WHERE exceptionID = ?",
+            (exception_id,)
+        ).fetchone()
+    finally:
+        db.close()
 
     if row is None:
-        return {"error": "Exception not found"}
+        raise HTTPException(status_code=404, detail="Exception not found")
 
     return dict(row)
 
@@ -48,7 +46,7 @@ def create_exception(data: ExceptionCreate):
 
     db = get_connection()
 
-    db.execute(
+    cursor = db.execute(
         """
         INSERT INTO Exceptions (palletID, aisle, bay, level, reason)
         VALUES (?, ?, ?, ?, ?)
@@ -65,7 +63,7 @@ def create_exception(data: ExceptionCreate):
     db.commit()
     db.close()
 
-    return {"message": "Exception recorded"}
+    return {"message": "Exception recorded", "exceptionID": cursor.lastrowid}
 
 
 # DELETE exception (useful for clearing logs)
