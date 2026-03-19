@@ -126,9 +126,10 @@ class Mavic(Robot):
     K_VERTICAL_P         = 3.0
     K_ROLL_P             = 50.0
     K_PITCH_P            = 30.0
-    MAX_YAW_DISTURBANCE  = 0.4
-    MAX_PITCH_DISTURBANCE = -1
-    target_precision     = 0.5
+    MAX_YAW_DISTURBANCE  = 1.5
+    MAX_PITCH_DISTURBANCE = -3.0
+    target_precision     = 0.4  # Default catch radius for scan waypoints
+    transit_precision    = 0.15 # Tighter precision for transit corners
     SPIN_POSITION_GAIN   = 5.0
 
     def __init__(self):
@@ -191,7 +192,7 @@ class Mavic(Robot):
         print(f'[Mavic FSM] {prev.name} -> {new_state.name}', flush=True)
 
         if new_state == DroneState.TAKEOFF:
-            self.target_altitude = 0.3
+            self.target_altitude = 1.3  # Fly at 1.3m to see barcodes on top of pallet stacks
             self.camera_pitch_motor.setPosition(0.7)
             self.target_position[0:2] = self.current_pose[0:2]
         elif new_state == DroneState.NAVIGATING:
@@ -199,12 +200,15 @@ class Mavic(Robot):
             self.pitch_disturbance = 0
             self.roll_disturbance  = 0
         elif new_state == DroneState.CAPTURING:
-            self.camera_pitch_motor.setPosition(-0.3)
+            self.camera_pitch_motor.setPosition(0.7)  # Set camera to its default pitch
+            self.target_altitude += 0.1  # Increase altitude by 0.1 when scanning
             self.spin_accumulated   = 0.0
             self.last_yaw           = None
             self.spin_hold_position = list(self.current_pose[0:2])
         elif new_state == DroneState.LANDING:
             self.camera_pitch_motor.setPosition(0.7)
+        elif new_state == DroneState.NAVIGATING and prev == DroneState.CAPTURING:
+            self.target_altitude -= 0.1  # Restore altitude after scanning
 
     def _check_interrupts(self):
         if self.drone_damaged:
@@ -313,54 +317,149 @@ class Mavic(Robot):
         current_yaw = self.current_pose[5]
         if self.last_yaw is None:
             self.last_yaw = current_yaw
+            self._spin_steps = 0
             return False, 0, 0
+        self._spin_steps = getattr(self, '_spin_steps', 0) + 1
         delta = current_yaw - self.last_yaw
         delta = (delta + np.pi) % (2 * np.pi) - np.pi
         self.spin_accumulated += abs(delta)
         self.last_yaw = current_yaw
         _, pitch_corr = self._hold_position(self.spin_hold_position)
         if self.spin_accumulated >= 2 * np.pi:
+            self._spin_steps = 0
             return True, 0, 0
-        yaw_error      = 0.5 - yaw_rate
+        yaw_error      = 1.5 - yaw_rate
         yaw_correction = clamp(yaw_error * 2.0, -self.MAX_YAW_DISTURBANCE, self.MAX_YAW_DISTURBANCE)
         return False, yaw_correction, pitch_corr
 
     def _navigate_forward(self):
-        self.target_position[2] = np.arctan2(
+        # Desired heading toward target
+        desired_yaw = np.arctan2(
             self.target_position[1] - self.current_pose[1],
             self.target_position[0] - self.current_pose[0])
-        angle_left = self.target_position[2] - self.current_pose[5]
+        self.target_position[2] = desired_yaw
+
+        angle_left = desired_yaw - self.current_pose[5]
         angle_left = (angle_left + 2 * np.pi) % (2 * np.pi)
         if angle_left > np.pi:
             angle_left -= 2 * np.pi
-        yaw_disturbance = clamp(angle_left, -self.MAX_YAW_DISTURBANCE, self.MAX_YAW_DISTURBANCE)
-        if abs(angle_left) > 0.4:
-            pitch_disturbance = 0.0
+
+        xy_dist = np.sqrt((self.target_position[0] - self.current_pose[0]) ** 2 +
+                          (self.target_position[1] - self.current_pose[1]) ** 2)
+
+        # Two-phase navigation:
+        # Phase 1 — FAR (>2m): only yaw if heading is very wrong (>34 deg), else fly straight
+        # Phase 2 — NEAR (<2m): full yaw+pitch to home in on waypoint
+        if xy_dist > 2.0:
+            if abs(angle_left) > 0.6:
+                # Heading badly off — correct yaw first, don't pitch yet
+                yaw_disturbance   = clamp(angle_left * 0.6, -self.MAX_YAW_DISTURBANCE, self.MAX_YAW_DISTURBANCE)
+                pitch_disturbance = 0.0
+            else:
+                # Heading good — fly forward with gentle yaw trim only
+                yaw_disturbance   = clamp(angle_left * 0.3, -0.3, 0.3)
+                pitch_disturbance = self.MAX_PITCH_DISTURBANCE * 0.6
         else:
-            pitch_disturbance = clamp(np.log10(abs(angle_left) + 0.001), self.MAX_PITCH_DISTURBANCE, 0.1)
+            # Close to waypoint — full yaw + pitch control
+            yaw_disturbance = clamp(angle_left, -self.MAX_YAW_DISTURBANCE, self.MAX_YAW_DISTURBANCE)
+            if abs(angle_left) > 0.4:
+                pitch_disturbance = 0.0
+            else:
+                pitch_disturbance = clamp(np.log10(abs(angle_left) + 0.001), self.MAX_PITCH_DISTURBANCE, 0.1)
+
         return yaw_disturbance, pitch_disturbance
 
     # --- Main loop ---
     def run(self):
         waypoints = [
-            [3.50,     2.00,    True],
-            [-0.07,    1.86,    True],
-            [-3.89,    1.85,    True],
-            [-7.15,    1.85,    True],
-            [-8.8,     2.2,     False],
-            [-8.8,    -1.5,     False],
-            [-7.25,   -1.00,    True],
-            [-3.72,   -2.41,    True],
-            [-0.19,   -1.75,    True],
-            [3.31,    -1.51,    True],
-            [7.41166,  2.71991, False]
+            # [x, y, do_scan]  — do_scan=True: hover+scan, False: fly-through transit
+            # Takeoff hover at base station
+            [  -8.500,    3.000, False],
+            # ── TRANSIT: fly to SW corner of south outer aisle
+            [  -6.500,  -10.500, False],
+            # ── AISLE S-OUTER (Y=-10.5): scan east →  (Aisle 1 front face)
+            [  -5.400,  -10.500, True ],
+            [  -4.200,  -10.500, True ],
+            [  -3.000,  -10.500, True ],
+            [  -1.800,  -10.500, True ],
+            [  -0.600,  -10.500, True ],
+            [   0.600,  -10.500, True ],
+            [   1.800,  -10.500, True ],
+            [   3.000,  -10.500, True ],
+            [   4.200,  -10.500, True ],
+            [   5.400,  -10.500, True ],
+            # ── TRANSIT: cross north to south inner aisle corridor
+            [   6.500,  -10.500, False],
+            [   6.500,   -7.350, False],
+            # ── AISLE S-INNER (Y=-7.35): scan west ←  (A1 back + A2 front faces)
+            [   5.400,   -7.350, True ],
+            [   4.200,   -7.350, True ],
+            [   3.000,   -7.350, True ],
+            [   1.800,   -7.350, True ],
+            [   0.600,   -7.350, True ],
+            [  -0.600,   -7.350, True ],
+            [  -1.800,   -7.350, True ],
+            [  -3.000,   -7.350, True ],
+            [  -4.200,   -7.350, True ],
+            [  -5.400,   -7.350, True ],
+            # ── TRANSIT: cross north to middle aisle corridor
+            [  -6.500,   -7.350, False],
+            [  -6.500,   -4.000, False],
+            # ── AISLE MIDDLE (Y=-4.0): scan east →   (A2 back + A3 front faces)
+            [  -5.400,   -4.000, True ],
+            [  -4.200,   -4.000, True ],
+            [  -3.000,   -4.000, True ],
+            [  -1.800,   -4.000, True ],
+            [  -0.600,   -4.000, True ],
+            [   0.600,   -4.000, True ],
+            [   1.800,   -4.000, True ],
+            [   3.000,   -4.000, True ],
+            [   4.200,   -4.000, True ],
+            [   5.400,   -4.000, True ],
+            # ── TRANSIT: cross north to north inner aisle corridor
+            [   6.500,   -4.000, False],
+            [   6.500,   -0.650, False],
+            # ── AISLE N-INNER (Y=-0.65): scan west ←  (A3 back + A4 front faces)
+            [   5.400,   -0.650, True ],
+            [   4.200,   -0.650, True ],
+            [   3.000,   -0.650, True ],
+            [   1.800,   -0.650, True ],
+            [   0.600,   -0.650, True ],
+            [  -0.600,   -0.650, True ],
+            [  -1.800,   -0.650, True ],
+            [  -3.000,   -0.650, True ],
+            [  -4.200,   -0.650, True ],
+            [  -5.400,   -0.650, True ],
+            # ── TRANSIT: cross north to north outer aisle corridor
+            [  -6.500,   -0.650, False],
+            [  -6.500,    2.500, False],
+            # ── AISLE N-OUTER (Y=2.5): scan east →   (A4 back face)
+            [  -5.400,    2.500, True ],
+            [  -4.200,    2.500, True ],
+            [  -3.000,    2.500, True ],
+            [  -1.800,    2.500, True ],
+            [  -0.600,    2.500, True ],
+            [   0.600,    2.500, True ],
+            [   1.800,    2.500, True ],
+            [   3.000,    2.500, True ],
+            [   4.200,    2.500, True ],
+            [   5.400,    2.500, True ],
+            # ── Return to base station and land
+            [   6.500,    2.500, False],
+            [   6.500,    3.000, False],
+            [  -8.500,    3.000, False],
         ]
 
         yaw_disturbance   = 0
         pitch_disturbance = 0
 
         telemetry_file = get_telemetry_path()
-        print("=" * 50, flush=True)
+        print("=" * 60, flush=True)
+        print(f"[MISSION] USCS Cold Storage Inventory Patrol", flush=True)
+        print(f"[MISSION] Waypoints : {len(waypoints)} total", flush=True)
+        print(f"[MISSION] Scan stops: {sum(1 for w in waypoints if w[2])}", flush=True)
+        print(f"[MISSION] Aisles    : S-Outer, S-Inner, Middle, N-Inner, N-Outer", flush=True)
+        print("=" * 60, flush=True)
         print(f"[TELEMETRY] Running on : {platform.system()}", flush=True)
         print(f"[TELEMETRY] Writing to : {telemetry_file}",   flush=True)
         print("=" * 50, flush=True)
@@ -424,17 +523,25 @@ class Mavic(Robot):
                 self.roll_disturbance  = 0
                 xy_dist = np.sqrt((self.target_position[0] - x_pos) ** 2 +
                                   (self.target_position[1] - y_pos) ** 2)
-                if xy_dist < self.target_precision:
+                # Use tighter precision for transit corners, looser for scan stops
+                current_wp_is_scan = waypoints[self.target_index][2]
+                precision = self.target_precision if current_wp_is_scan else self.transit_precision
+                if xy_dist < precision:
+                    # Arrived at waypoint[target_index]
                     if self.target_index == len(waypoints) - 1:
+                        # Last waypoint → land
                         self.target_position[0:2] = waypoints[-1][0:2]
                         self._set_state(DroneState.LANDING)
                     else:
-                        do_spin = waypoints[self.target_index][2]
-                        if do_spin:
+                        if current_wp_is_scan:
+                            # Scan stop: spin 360° here
                             self._set_state(DroneState.CAPTURING)
                         else:
+                            # Transit corner reached — advance to next waypoint
                             self.target_index += 1
                             self.target_position[0:2] = waypoints[self.target_index][0:2]
+                            print(f"[NAV] Transit done → waypoint {self.target_index} "
+                                  f"({self.target_position[0]:.1f}, {self.target_position[1]:.1f})", flush=True)
 
             elif self.state == DroneState.CAPTURING:
                 spin_done, yaw_disturbance, pitch_disturbance = self._perform_spin(yaw_rate)
@@ -493,7 +600,7 @@ if __name__ == "__main__":
     webots_process = None
     if not already_in_webots:
         webots_exe = get_webots_path()
-        wbt_path   = os.path.join(simulator_dir, "world", "worlds", "wharehouse.wbt")
+        wbt_path   = os.path.join(simulator_dir, "world", "worlds", "uscs_cold_storage.wbt")
 
         if webots_exe and os.path.exists(webots_exe):
             print(f"[Launcher] Starting Webots: {webots_exe}", flush=True)
