@@ -1,11 +1,10 @@
 import os
 import sys
+from app.db import get_connection
 
 # Automatically put backend directory in Python path
 backend_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.append(backend_dir)
-
-from app.db import get_connection
 
 def init_db():
     create_scan_table_sql = """
