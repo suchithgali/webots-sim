@@ -4,3 +4,9 @@ pydantic
 sqlite-utils
 python-dotenv
 openpyxl
+pytest
+httpx
+pip-audit
+bandit
+ruff
+mypy

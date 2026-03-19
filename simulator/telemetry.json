@@ -1,1 +1,11 @@
-{"timestamp": 1773454657.1325922, "scanned_codes": ["ABC-abc-1234"]}
+{
+  "timestamp": 1773884472.857067,
+  "scanned_codes": [
+    "",
+    "ABC-abc-1234"
+  ],
+  "scanned_detail": [
+    "ABC-abc-1234",
+    ""
+  ]
+}
