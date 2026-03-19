@@ -8,15 +8,6 @@ from app.db import get_connection
 
 router = APIRouter(prefix="/exceptions", tags=["Exceptions"])
 
-
-class ExceptionCreate(BaseModel):
-    palletID: str
-    aisle: str
-    bay: str
-    level: int
-    confidence: float | None = None  
-
-
 # GET all exceptions
 @router.get("/")
 def get_all_exceptions():
