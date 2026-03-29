@@ -23,6 +23,7 @@ def test_create_scan():
     assert data["bay"] == 1
     assert data["level"] == 1
     assert data["confidence"] == payload["confidence"]
+    assert data["duplicate"] is False
 
 
 def test_reject_low_confidence():
@@ -122,3 +123,24 @@ def test_reject_out_of_bounds_y_high():
     }
     response = client.post("/scans/", json=payload)
     assert response.status_code == 422
+
+
+def test_dedupe_same_scan_within_time_window():
+    payload = {
+        "palletID": "P_DEDUPE",
+        "x": 10.0,
+        "y": 10.0,
+        "z": 10.0,
+        "confidence": 0.99,
+    }
+
+    first_response = client.post("/scans/", json=payload)
+    assert first_response.status_code == 201
+    first_data = first_response.json()
+
+    second_response = client.post("/scans/", json=payload)
+    assert second_response.status_code == 201
+    second_data = second_response.json()
+
+    assert second_data["duplicate"] is True
+    assert second_data["scanID"] == first_data["scanID"]
