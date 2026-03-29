@@ -1,7 +1,7 @@
 from fastapi import APIRouter, HTTPException
 from pydantic import BaseModel, field_validator
 from app.db import get_connection
-from app.services.location_mapper import map_to_location, MappingError
+from app.services.scan_service import process_scan, ScanProcessingError
 from typing import Any
 
 # Router for all scan-related API endpoints
@@ -60,54 +60,13 @@ def get_scan(scan_id: int):
 # Insert a new row into the scan table and return that new scan as JSON
 @router.post("/", status_code=201)
 def create_scan(scan: ScanCreate):
-
-    connect = get_connection()
-
-    # Convert physical drone coordinates into logical warehouse location
     try:
-        mapped_aisle, mapped_bay, mapped_level = map_to_location(scan.x, scan.y, scan.z)
-    except MappingError as e:
-        connect.close()
-        raise HTTPException(status_code=422, detail=str(e))
-
-    # If barcode is missing, store an exception event instead of a normal scan row.
-    if not scan.palletID or scan.palletID.strip() == "":
-        cursor = connect.execute(
-            """
-            INSERT INTO Exceptions (palletID, aisle, bay, level, reason)
-            VALUES (?, ?, ?, ?, ?)
-            """,
-            ("", str(mapped_aisle), str(mapped_bay), mapped_level, "BARCODE_NOT_FOUND"),
+        return process_scan(
+            pallet_id=scan.palletID,
+            x=scan.x,
+            y=scan.y,
+            z=scan.z,
+            confidence=scan.confidence,
         )
-        exception_id = cursor.lastrowid
-        connect.commit()
-        connect.close()
-        raise HTTPException(
-            status_code=422,
-            detail=f"Barcode not detected. Exception recorded with exceptionID {exception_id}."
-        )
-
-    # save mapped location and confidence to Scan table
-    confidence_value = float(scan.confidence)
-
-    cursor = connect.execute(
-        "INSERT INTO Scan (palletID, aisle, bay, level, confidence) VALUES (?, ?, ?, ?, ?)",
-        (scan.palletID, str(mapped_aisle), str(mapped_bay), mapped_level, confidence_value),
-    )
-
-    scan_id = cursor.lastrowid
-    connect.commit()
-    connect.close()
-
-    # Return both mapped location and raw xyz for debugging purposes
-    return {
-        "scanID": scan_id,
-        "palletID": scan.palletID,
-        "aisle": mapped_aisle,
-        "bay": mapped_bay,
-        "level": mapped_level,
-        "x": scan.x,
-        "y": scan.y,
-        "z": scan.z,
-        "confidence": confidence_value,
-    }
+    except ScanProcessingError as e:
+        raise HTTPException(status_code=e.status_code, detail=e.detail)
