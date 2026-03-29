@@ -1,8 +1,9 @@
 from fastapi import APIRouter, HTTPException
 from pydantic import BaseModel
+from sqlmodel import Session, select
 
-# fixed database import to match rest of project
-from app.db import get_connection
+from app.db import engine
+from app.models import WarehouseException
 
 router = APIRouter(prefix="/exceptions", tags=["Exceptions"])
 
@@ -12,81 +13,50 @@ class ExceptionCreate(BaseModel):
     aisle: str
     bay: str
     level: int
-    confidence: float | None = None  
+    confidence: float | None = None
 
 
-# GET all exceptions
 @router.get("/")
 def get_all_exceptions():
-
-    db = get_connection()
-    try:
-        rows = db.execute(
-            "SELECT * FROM Exceptions"
-        ).fetchall()
-    finally:
-        db.close()
-
-    return [dict(row) for row in rows]
+    with Session(engine) as session:
+        rows = session.exec(select(WarehouseException)).all()
+    return [r.model_dump() for r in rows]
 
 
-# GET a specific exception
 @router.get("/{exception_id}")
 def get_exception(exception_id: int):
-
-    db = get_connection()
-    try:
-        row = db.execute(
-            "SELECT * FROM Exceptions WHERE exceptionID = ?",
-            (exception_id,)
-        ).fetchone()
-    finally:
-        db.close()
-
+    with Session(engine) as session:
+        row = session.get(WarehouseException, exception_id)
     if row is None:
         raise HTTPException(status_code=404, detail="Exception not found")
+    return row.model_dump()
 
-    return dict(row)
 
-
-# CREATE a new exception
 @router.post("/")
 def create_exception(data: ExceptionCreate):
-
-    db = get_connection()
-
-    cursor = db.execute(
-        """
-        INSERT INTO Exceptions (palletID, aisle, bay, level, reason)
-        VALUES (?, ?, ?, ?, ?)
-        """,
-        (
-            data.palletID,
-            data.aisle,
-            data.bay,
-            data.level,
-            "BARCODE_NOT_FOUND"
+    with Session(engine) as session:
+        exc = WarehouseException(
+            palletID=data.palletID,
+            aisle=data.aisle,
+            bay=data.bay,
+            level=data.level,
+            reason="BARCODE_NOT_FOUND",
         )
-    )
+        session.add(exc)
+        session.commit()
+        session.refresh(exc)
+        exc_id = exc.exceptionID
 
-    db.commit()
-    db.close()
-
-    return {"message": "Exception recorded", "exceptionID": cursor.lastrowid}
+    return {"message": "Exception recorded", "exceptionID": exc_id}
 
 
-# DELETE exception (useful for clearing logs)
 @router.delete("/{exception_id}")
 def delete_exception(exception_id: int):
-
-    db = get_connection()
-
-    db.execute(
-        "DELETE FROM Exceptions WHERE exceptionID = ?",
-        (exception_id,)
-    )
-
-    db.commit()
-    db.close()
+    with Session(engine) as session:
+        row = session.get(WarehouseException, exception_id)
+        if row is None:
+            raise HTTPException(status_code=404, detail="Exception not found")
+        session.delete(row)
+        session.commit()
 
     return {"message": "Exception deleted"}

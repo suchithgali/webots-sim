@@ -1,13 +1,15 @@
 import csv
+
 import openpyxl
-from app.db import get_connection
+from sqlmodel import Session, select
+
+from app.db import engine
+from app.models import Scan
 
 
-# Export all scan records to an Excel sheet
 def export_scans_xlsx(path="scans.xlsx"):
-    connect = get_connection()
-    rows = connect.execute("SELECT * FROM Scan").fetchall()
-    connect.close()
+    with Session(engine) as session:
+        rows = session.exec(select(Scan)).all()
 
     workbook = openpyxl.Workbook()
     sheet = workbook.active
@@ -21,23 +23,20 @@ def export_scans_xlsx(path="scans.xlsx"):
     sheet.column_dimensions["C"].width = 20
 
     for row in rows:
-        license_plate = row["palletID"]
-        location = f"{row['aisle']}-{row['bay']}-{row['level']}"
-        timestamp = row["timestamp"]
+        license_plate = row.palletID
+        location = f"{row.aisle}-{row.bay}-{row.level}"
+        timestamp = row.timestamp
 
-        row_values = [license_plate, location, timestamp]
-        sheet.append(row_values)
+        sheet.append([license_plate, location, timestamp])
 
     workbook.save(path)
 
     return path
 
 
-# Export all scan records to a CSV file
 def export_scans_csv(path="scans.csv"):
-    connect = get_connection()
-    rows = connect.execute("SELECT * FROM Scan").fetchall()
-    connect.close()
+    with Session(engine) as session:
+        rows = session.exec(select(Scan)).all()
 
     with open(path, "w", newline="", encoding="utf-8") as file:
         writer = csv.writer(file)
@@ -45,11 +44,10 @@ def export_scans_csv(path="scans.csv"):
         writer.writerow(["License Plate", "Location", "Timestamp"])
 
         for row in rows:
-            license_plate = row["palletID"]
-            location = f"{row['aisle']}-{row['bay']}-{row['level']}"
-            timestamp = row["timestamp"]
+            license_plate = row.palletID
+            location = f"{row.aisle}-{row.bay}-{row.level}"
+            timestamp = row.timestamp
 
             writer.writerow([license_plate, location, timestamp])
 
     return path
-

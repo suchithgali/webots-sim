@@ -1,4 +1,8 @@
-from app.db import get_connection
+from sqlalchemy import desc, text
+from sqlmodel import Session, select
+
+from app.db import engine
+from app.models import Scan, WarehouseException
 from app.services.location_mapper import map_to_location, MappingError
 
 
@@ -21,57 +25,51 @@ def process_scan(
     z: float,
     confidence: float,
 ):
-    # Open one DB connection for this scan-processing request.
-    connect = get_connection()
-
     try:
-        # Convert physical drone coordinates into logical warehouse location.
-        try:
-            mapped_aisle, mapped_bay, mapped_level = map_to_location(x, y, z)
-        except MappingError as e:
-            raise ScanProcessingError(status_code=422, detail=str(e))
+        mapped_aisle, mapped_bay, mapped_level = map_to_location(x, y, z)
+    except MappingError as e:
+        raise ScanProcessingError(status_code=422, detail=str(e))
 
-        # If barcode is missing, store an exception event instead of a normal scan row.
-        if not pallet_id or pallet_id.strip() == "":
-            cursor = connect.execute(
-                """
-                INSERT INTO Exceptions (palletID, aisle, bay, level, reason)
-                VALUES (?, ?, ?, ?, ?)
-                """,
-                ("", str(mapped_aisle), str(mapped_bay), mapped_level, "BARCODE_NOT_FOUND"),
+    if not pallet_id or pallet_id.strip() == "":
+        with Session(engine) as session:
+            exc_row = WarehouseException(
+                palletID="",
+                aisle=str(mapped_aisle),
+                bay=str(mapped_bay),
+                level=int(mapped_level),
+                reason="BARCODE_NOT_FOUND",
             )
-            exception_id = cursor.lastrowid
-            connect.commit()
-            raise ScanProcessingError(
-                status_code=422,
-                detail=f"Barcode not detected. Exception recorded with exceptionID {exception_id}.",
-            )
+            session.add(exc_row)
+            session.commit()
+            session.refresh(exc_row)
+            exception_id = exc_row.exceptionID
 
-        # Simple dedupe heuristic for current project phase:
-        # if same pallet/location appears within a short time window, return existing row.
-        existing_row = connect.execute(
-            """
-            SELECT * FROM Scan
-            WHERE palletID = ?
-              AND aisle = ?
-              AND bay = ?
-              AND level = ?
-              AND timestamp >= datetime('now', ?)
-            ORDER BY scanID DESC
-            LIMIT 1
-            """,
-            (
-                pallet_id,
-                str(mapped_aisle),
-                str(mapped_bay),
-                mapped_level,
-                f"-{DUPLICATE_WINDOW_SECONDS} seconds",
+        raise ScanProcessingError(
+            status_code=422,
+            detail=(
+                f"Barcode not detected. Exception recorded with exceptionID {exception_id}."
             ),
-        ).fetchone()
+        )
+
+    with Session(engine) as session:
+        existing_row = session.exec(
+            select(Scan)
+            .where(Scan.palletID == pallet_id)
+            .where(Scan.aisle == str(mapped_aisle))
+            .where(Scan.bay == str(mapped_bay))
+            .where(Scan.level == mapped_level)
+            .where(
+                text(
+                    f"datetime(Scan.timestamp) >= datetime('now', '-{DUPLICATE_WINDOW_SECONDS} seconds')"
+                )
+            )
+            .order_by(desc(Scan.scanID))
+            .limit(1)
+        ).first()
 
         if existing_row is not None:
             return {
-                "scanID": existing_row["scanID"],
+                "scanID": existing_row.scanID,
                 "palletID": pallet_id,
                 "aisle": mapped_aisle,
                 "bay": mapped_bay,
@@ -79,32 +77,32 @@ def process_scan(
                 "x": x,
                 "y": y,
                 "z": z,
-                "confidence": existing_row["confidence"],
+                "confidence": existing_row.confidence,
                 "duplicate": True,
             }
 
-        # Normal scan: save mapped location and confidence to Scan table.
         confidence_value = float(confidence)
-        cursor = connect.execute(
-            "INSERT INTO Scan (palletID, aisle, bay, level, confidence) VALUES (?, ?, ?, ?, ?)",
-            (pallet_id, str(mapped_aisle), str(mapped_bay), mapped_level, confidence_value),
+        row = Scan(
+            palletID=pallet_id,
+            aisle=str(mapped_aisle),
+            bay=str(mapped_bay),
+            level=int(mapped_level),
+            confidence=confidence_value,
         )
-        scan_id = cursor.lastrowid
-        connect.commit()
+        session.add(row)
+        session.commit()
+        session.refresh(row)
+        scan_id = row.scanID
 
-        # Return both mapped location and raw xyz for debugging purposes
-        return {
-            "scanID": scan_id,
-            "palletID": pallet_id,
-            "aisle": mapped_aisle,
-            "bay": mapped_bay,
-            "level": mapped_level,
-            "x": x,
-            "y": y,
-            "z": z,
-            "confidence": confidence_value,
-            "duplicate": False,
-        }
-    finally:
-        connect.close()
-
+    return {
+        "scanID": scan_id,
+        "palletID": pallet_id,
+        "aisle": mapped_aisle,
+        "bay": mapped_bay,
+        "level": mapped_level,
+        "x": x,
+        "y": y,
+        "z": z,
+        "confidence": confidence_value,
+        "duplicate": False,
+    }

@@ -99,6 +99,14 @@ def build_reference_layout() -> WarehouseLayout:
 LAYOUT = build_reference_layout()
 
 
+def ensure_coordinates_map(x: float, y: float, z: float) -> None:
+    """Raise ValueError if (x, y, z) cannot map to a rack cell (for API validation)."""
+    try:
+        map_to_location(x, y, z)
+    except MappingError as e:
+        raise ValueError(str(e)) from e
+
+
 def map_to_location(x: float, y: float, z: float) -> Tuple[int, int, int]:
     # Deterministic mapping entrypoint used by backend ingestion
     # Global bounds

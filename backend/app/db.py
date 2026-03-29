@@ -1,21 +1,20 @@
-import sqlite3
 import json
-import os
+from pathlib import Path
 
-BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-DB_NAME = os.path.join(BASE_DIR, "warehouse.db")
+from sqlmodel import Session, create_engine
 
-def get_connection():
-    connection = sqlite3.connect(DB_NAME)
-    connection.row_factory = sqlite3.Row
-    return connection
+BASE_DIR = Path(__file__).resolve().parent
+DB_NAME = str(BASE_DIR / "warehouse.db")
 
-def insert_scan(barcodes_list):
-    db = get_connection()
-    barcodes_json = json.dumps(barcodes_list)
-    db.execute(
-        "INSERT INTO Skeleton (barcodes) VALUES (?)",
-        (barcodes_json,)
-    )
-    db.commit()
-    db.close()
+engine = create_engine(
+    f"sqlite:///{DB_NAME}",
+    connect_args={"check_same_thread": False},
+)
+
+
+def insert_scan(barcodes_list: object) -> None:
+    from app.models import Skeleton
+
+    with Session(engine) as session:
+        session.add(Skeleton(barcodes=json.dumps(barcodes_list)))
+        session.commit()
