@@ -3,12 +3,14 @@ from app.main import app
 
 client = TestClient(app)
 
+
+# all valid record
 def test_create_scan():
     payload = {
         "palletID": "P1",
-        "aisle": "01",
-        "bay": "02",
-        "level": 1,
+        "x": 10.0,
+        "y": 10.0,
+        "z": 10.0,
         "confidence": 0.99,
     }
 
@@ -17,18 +19,18 @@ def test_create_scan():
 
     data = response.json()
     assert data["palletID"] == payload["palletID"]
-    assert data["aisle"] == payload["aisle"]
-    assert data["bay"] == payload["bay"]
-    assert data["level"] == payload["level"]
+    assert data["aisle"] == 1
+    assert data["bay"] == 1
+    assert data["level"] == 1
     assert data["confidence"] == payload["confidence"]
 
 
-def reject_low_confidence():
+def test_reject_low_confidence():
     payload = {
         "palletID": "P1",
-        "aisle": "01",
-        "bay": "02",
-        "level": 1,
+        "x": 10.0,
+        "y": 10.0,
+        "z": 10.0,
         "confidence": 0.5,
     }
 
@@ -36,12 +38,12 @@ def reject_low_confidence():
     assert response.status_code == 422
 
 
-def reject_negative_level():
+def test_reject_out_of_bounds_z():
     payload = {
         "palletID": "P1",
-        "aisle": "01",
-        "bay": "02",
-        "level": -1,
+        "x": 10.0,
+        "y": 10.0,
+        "z": -1.0,
         "confidence": 0.99,
     }
 
@@ -49,12 +51,12 @@ def reject_negative_level():
     assert response.status_code == 422
 
 
-def reject_negative_confidence():
+def test_reject_negative_confidence():
     payload = {
         "palletID": "P1",
-        "aisle": "01",
-        "bay": "02",
-        "level": 1,
+        "x": 10.0,
+        "y": 10.0,
+        "z": 10.0,
         "confidence": -0.1,
     }
 
@@ -62,12 +64,12 @@ def reject_negative_confidence():
     assert response.status_code == 422
 
 
-def reject_confidence_above_one():
+def test_reject_confidence_above_one():
     payload = {
         "palletID": "P1",
-        "aisle": "01",
-        "bay": "02",
-        "level": 1,
+        "x": 10.0,
+        "y": 10.0,
+        "z": 10.0,
         "confidence": 1.1,
     }
 
@@ -75,12 +77,12 @@ def reject_confidence_above_one():
     assert response.status_code == 422
 
 
-def reject_empty_aisle():
+def test_reject_out_of_bounds_x():
     payload = {
         "palletID": "P1",
-        "aisle": "   ",
-        "bay": "02",
-        "level": 1,
+        "x": -1.0,
+        "y": 10.0,
+        "z": 10.0,
         "confidence": 0.99,
     }
 
@@ -88,12 +90,13 @@ def reject_empty_aisle():
     assert response.status_code == 422
 
 
-def reject_empty_bay():
+# x in a configured aisle gap should fail deterministic aisle lookup
+def test_reject_between_aisles():
     payload = {
         "palletID": "P1",
-        "aisle": "01",
-        "bay": "",
-        "level": 1,
+        "x": 150.0,
+        "y": 10.0,
+        "z": 10.0,
         "confidence": 0.99,
     }
 
