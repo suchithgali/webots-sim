@@ -89,8 +89,6 @@ def test_reject_out_of_bounds_x():
     response = client.post("/scans/", json=payload)
     assert response.status_code == 422
 
-
-# x in a configured aisle gap should fail deterministic aisle lookup
 def test_reject_between_aisles():
     payload = {
         "palletID": "P1",
@@ -100,5 +98,27 @@ def test_reject_between_aisles():
         "confidence": 0.99,
     }
 
+    response = client.post("/scans/", json=payload)
+    assert response.status_code == 422
+
+def test_reject_out_of_bounds_y_low():
+    payload = {
+        "palletID": "P1",
+        "x": 10.0, 
+        "y": -1.0, 
+        "z": 10.0, 
+        "confidence": 0.99
+    }
+    response = client.post("/scans/", json=payload)
+    assert response.status_code == 422
+
+def test_reject_out_of_bounds_y_high():
+    payload = {
+        "palletID": "P1", 
+        "x": 10.0, 
+        "y": 7000.0, 
+        "z": 10.0, 
+        "confidence": 0.99
+    }
     response = client.post("/scans/", json=payload)
     assert response.status_code == 422
