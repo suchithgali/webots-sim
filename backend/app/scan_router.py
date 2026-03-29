@@ -1,17 +1,19 @@
 from fastapi import APIRouter, HTTPException
 from pydantic import BaseModel, field_validator
 from app.db import get_connection
+from app.services.location_mapper import map_to_location, MappingError
 from typing import Any
 
 # Router for all scan-related API endpoints
 router = APIRouter(prefix="/scans")
 
 # Request body structure for creating a scan
+# Drone sends xyz + palletID/confidence; backend maps xyz -> aisle/bay/level.
 class ScanCreate(BaseModel):
     palletID: str
-    aisle: str
-    bay: str
-    level: int
+    x: float
+    y: float
+    z: float
     confidence: float
 
     @field_validator("palletID")
@@ -19,26 +21,6 @@ class ScanCreate(BaseModel):
         # Allow empty palletID so the endpoint can record BARCODE_NOT_FOUND exceptions
         return v.strip()
 
-    @field_validator("aisle")
-    def validate_aisle(cls, v: str) -> str:
-        v = v.strip()
-        if v == "":
-            raise ValueError("aisle must be non-empty")
-        return v
-
-    @field_validator("bay")
-    def validate_bay(cls, v: str) -> str:
-        v = v.strip()
-        if v == "":
-            raise ValueError("bay must be non-empty")
-        return v
-
-    @field_validator("level")
-    def validate_level(cls, v: int) -> int:
-        if v < 0:
-            raise ValueError("level must be >= 0")
-        return v
-    
     @field_validator("confidence")
     def validate_confidence(cls, v: float, info: Any) -> float:
         if v < 0.0 or v > 1.0:
@@ -81,14 +63,21 @@ def create_scan(scan: ScanCreate):
 
     connect = get_connection()
 
-    # trigger exception if barcode not detected
+    # Convert physical drone coordinates into logical warehouse location
+    try:
+        mapped_aisle, mapped_bay, mapped_level = map_to_location(scan.x, scan.y, scan.z)
+    except MappingError as e:
+        connect.close()
+        raise HTTPException(status_code=422, detail=str(e))
+
+    # If barcode is missing, store an exception event instead of a normal scan row.
     if not scan.palletID or scan.palletID.strip() == "":
         cursor = connect.execute(
             """
-            INSERT INTO Exceptions (aisle, bay, level, reason)
-            VALUES (?, ?, ?, ?)
+            INSERT INTO Exceptions (palletID, aisle, bay, level, reason)
+            VALUES (?, ?, ?, ?, ?)
             """,
-            (scan.aisle, scan.bay, scan.level, "BARCODE_NOT_FOUND"),
+            ("", str(mapped_aisle), str(mapped_bay), mapped_level, "BARCODE_NOT_FOUND"),
         )
         exception_id = cursor.lastrowid
         connect.commit()
@@ -98,23 +87,27 @@ def create_scan(scan: ScanCreate):
             detail=f"Barcode not detected. Exception recorded with exceptionID {exception_id}."
         )
 
-    # normal scan logic
+    # save mapped location and confidence to Scan table
     confidence_value = float(scan.confidence)
 
     cursor = connect.execute(
         "INSERT INTO Scan (palletID, aisle, bay, level, confidence) VALUES (?, ?, ?, ?, ?)",
-        (scan.palletID, scan.aisle, scan.bay, scan.level, confidence_value),
+        (scan.palletID, str(mapped_aisle), str(mapped_bay), mapped_level, confidence_value),
     )
 
     scan_id = cursor.lastrowid
     connect.commit()
     connect.close()
 
+    # Return both mapped location and raw xyz for debugging purposes
     return {
         "scanID": scan_id,
         "palletID": scan.palletID,
-        "aisle": scan.aisle,
-        "bay": scan.bay,
-        "level": scan.level,
+        "aisle": mapped_aisle,
+        "bay": mapped_bay,
+        "level": mapped_level,
+        "x": scan.x,
+        "y": scan.y,
+        "z": scan.z,
         "confidence": confidence_value,
     }
