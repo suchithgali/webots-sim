@@ -6,31 +6,38 @@ from sqlmodel import Session, select
 
 from app.db import engine
 from app.models import Scan
-from app.services.location_mapper import LAYOUT, ensure_coordinates_map
+from app.services.location_mapper import ensure_coordinates_map, get_layout
 from app.services.scan_service import ScanProcessingError, process_scan
 
 router = APIRouter(prefix="/scans")
+DEFAULT_LAYOUT = get_layout("default")
 
 
 class ScanCreate(BaseModel):
     """Scan payload; x/y/z are in warehouse inches (same units as ``location_mapper``)."""
 
+    warehouseID: str = Field(
+        default="default",
+        min_length=1,
+        description="Warehouse profile ID used to load mapping rules.",
+    )
     palletID: str = Field(..., description="Barcode / license plate; may be empty for no-read.")
     x: float = Field(
         ...,
-        ge=LAYOUT.x_bounds.start,
+        ge=DEFAULT_LAYOUT.x_bounds.start,
+        lt=DEFAULT_LAYOUT.x_bounds.end,
         description="X position (inches); must fall inside a rack aisle band.",
     )
     y: float = Field(
         ...,
-        ge=LAYOUT.y_bounds.start,
-        lt=LAYOUT.y_bounds.end,
+        ge=DEFAULT_LAYOUT.y_bounds.start,
+        lt=DEFAULT_LAYOUT.y_bounds.end,
         description="Y position (inches) along bay depth.",
     )
     z: float = Field(
         ...,
-        ge=LAYOUT.z_bounds.start,
-        lt=LAYOUT.z_bounds.end,
+        ge=DEFAULT_LAYOUT.z_bounds.start,
+        lt=DEFAULT_LAYOUT.z_bounds.end,
         description="Z height (inches); must match a defined rack level band.",
     )
     confidence: float = Field(
@@ -43,6 +50,11 @@ class ScanCreate(BaseModel):
     @field_validator("palletID")
     @classmethod
     def validate_pallet_id(cls, v: str) -> str:
+        return v.strip()
+
+    @field_validator("warehouseID")
+    @classmethod
+    def validate_warehouse_id(cls, v: str) -> str:
         return v.strip()
 
     @field_validator("confidence")
@@ -59,7 +71,7 @@ class ScanCreate(BaseModel):
 
     @model_validator(mode="after")
     def coordinates_must_map_to_rack(self) -> Self:
-        ensure_coordinates_map(self.x, self.y, self.z)
+        ensure_coordinates_map(self.x, self.y, self.z, warehouse_id=self.warehouseID)
         return self
 
 
@@ -83,6 +95,7 @@ def get_scan(scan_id: int):
 def create_scan(scan: ScanCreate):
     try:
         return process_scan(
+            warehouse_id=scan.warehouseID,
             pallet_id=scan.palletID,
             x=scan.x,
             y=scan.y,

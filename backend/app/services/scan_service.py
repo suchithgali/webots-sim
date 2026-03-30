@@ -19,6 +19,7 @@ DUPLICATE_WINDOW_SECONDS = 10
 
 
 def process_scan(
+    warehouse_id: str,
     pallet_id: str,
     x: float,
     y: float,
@@ -26,7 +27,9 @@ def process_scan(
     confidence: float,
 ):
     try:
-        mapped_aisle, mapped_bay, mapped_level = map_to_location(x, y, z)
+        mapped_aisle, mapped_bay, mapped_level = map_to_location(
+            x, y, z, warehouse_id=warehouse_id
+        )
     except MappingError as e:
         raise ScanProcessingError(status_code=422, detail=str(e))
 

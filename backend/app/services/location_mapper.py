@@ -1,5 +1,7 @@
+import json
 from dataclasses import dataclass
-from typing import List, Tuple
+from pathlib import Path
+from typing import Any, List, Tuple
 
 
 class MappingError(ValueError):
@@ -56,85 +58,104 @@ class WarehouseLayout:
     blocked_areas: List[Rect]
 
 
-def build_reference_layout() -> WarehouseLayout:
-    # Reference spacing values (inches)
-    aisle_width = 100.0
-    aisle_gap = 128.0
-    aisles: List[AisleBand] = []
+def _to_interval(raw: dict[str, Any]) -> Interval:
+    return Interval(start=float(raw["start"]), end=float(raw["end"]))
 
-    # Vertical shelf bands (z -> level)
-    levels = [
-        LevelBand(level_id=1, z_range=Interval(0.0, 72.0)),
-        LevelBand(level_id=2, z_range=Interval(72.0, 144.0)),
-        LevelBand(level_id=3, z_range=Interval(144.0, 216.0)),
-        LevelBand(level_id=4, z_range=Interval(216.0, 288.0)),
+
+def _load_layout(warehouse_id: str) -> WarehouseLayout:
+    config_dir = Path(__file__).resolve().parent.parent / "configs" / "warehouses"
+    config_path = config_dir / f"{warehouse_id}.json"
+    if not config_path.exists():
+        raise MappingError(f"unknown warehouse_id: {warehouse_id}")
+
+    with config_path.open("r", encoding="utf-8") as f:
+        data = json.load(f)
+
+    aisles = [
+        AisleBand(
+            aisle_id=int(a["aisle_id"]),
+            x_range=Interval(start=float(a["x_start"]), end=float(a["x_end"])),
+        )
+        for a in data.get("aisles", [])
     ]
-
-    # Example blocked floor zones (ex penthouse areas)
-    blocked = [
-        Rect(x_start=1200.0, x_end=1540.0, y_start=1800.0, y_end=2140.0),
-        Rect(x_start=3400.0, x_end=3740.0, y_start=1800.0, y_end=2140.0),
+    levels = [
+        LevelBand(level_id=int(level["level_id"]), z_range=_to_interval(level["z_range"]))
+        for level in data["levels"]
+    ]
+    blocked_areas = [
+        Rect(
+            x_start=float(area["x_start"]),
+            x_end=float(area["x_end"]),
+            y_start=float(area["y_start"]),
+            y_end=float(area["y_end"]),
+        )
+        for area in data.get("blocked_areas", [])
     ]
 
     return WarehouseLayout(
         aisles=aisles,
-        bay_origin_y=0.0,
-        bay_pitch=100.0,
-        bay_count=60,
+        bay_origin_y=float(data["bay_origin_y"]),
+        bay_pitch=float(data["bay_pitch"]),
+        bay_count=int(data["bay_count"]),
         levels=levels,
-        # We only enforce non-negative x; aisle ID is computed from spacing formula.
-        x_bounds=Interval(0.0, float("inf")),
-        y_bounds=Interval(0.0, 6000.0),
-        z_bounds=Interval(0.0, 288.0),
-        blocked_areas=blocked,
+        x_bounds=_to_interval(data["x_bounds"]),
+        y_bounds=_to_interval(data["y_bounds"]),
+        z_bounds=_to_interval(data["z_bounds"]),
+        blocked_areas=blocked_areas,
     )
 
 
-LAYOUT = build_reference_layout()
+def get_layout(warehouse_id: str) -> WarehouseLayout:
+    return _load_layout(warehouse_id)
 
 
-def ensure_coordinates_map(x: float, y: float, z: float) -> None:
+def ensure_coordinates_map(
+    x: float, y: float, z: float, warehouse_id: str = "default"
+) -> None:
     """Raise ValueError if (x, y, z) cannot map to a rack cell (for API validation)."""
     try:
-        map_to_location(x, y, z)
+        map_to_location(x, y, z, warehouse_id=warehouse_id)
     except MappingError as e:
         raise ValueError(str(e)) from e
 
 
-def map_to_location(x: float, y: float, z: float) -> Tuple[int, int, int]:
+def map_to_location(
+    x: float, y: float, z: float, warehouse_id: str = "default"
+) -> Tuple[int, int, int]:
     # Deterministic mapping entrypoint used by backend ingestion
+    layout = get_layout(warehouse_id)
+
     # Global bounds
-    if x < LAYOUT.x_bounds.start:
+    if not layout.x_bounds.contains(x):
         raise MappingError(f"x out of bounds: {x}")
-    if not LAYOUT.y_bounds.contains(y):
+    if not layout.y_bounds.contains(y):
         raise MappingError(f"y out of bounds: {y}")
-    if not LAYOUT.z_bounds.contains(z):
+    if not layout.z_bounds.contains(z):
         raise MappingError(f"z out of bounds: {z}")
 
-    for area in LAYOUT.blocked_areas:
+    for area in layout.blocked_areas:
         if area.contains(x, y):
             raise MappingError(f"point is inside blocked area: x={x}, y={y}")
 
-    # x -> aisle using spacing formula; no fixed aisle-count dependency.
-    aisle_width = 100.0
-    aisle_gap = 128.0
-    aisle_pitch = aisle_width + aisle_gap
-    slot = int(x // aisle_pitch)
-    offset_in_slot = x - (slot * aisle_pitch)
-    if offset_in_slot >= aisle_width:
-        raise MappingError(f"x is between aisles: {x}")
-    aisle_id = slot + 1
+    # x -> aisle (explicit per-warehouse aisle bands from JSON)
+    aisle_id = None
+    for aisle in layout.aisles:
+        if aisle.x_range.contains(x):
+            aisle_id = aisle.aisle_id
+            break
+    if aisle_id is None:
+        raise MappingError(f"x is outside configured aisle bands: {x}")
 
     # y -> bay
-    relative_y = y - LAYOUT.bay_origin_y
-    bay_index_zero_based = int(relative_y // LAYOUT.bay_pitch)
+    relative_y = y - layout.bay_origin_y
+    bay_index_zero_based = int(relative_y // layout.bay_pitch)
     bay_id = bay_index_zero_based + 1
-    if bay_id < 1 or bay_id > LAYOUT.bay_count:
+    if bay_id < 1 or bay_id > layout.bay_count:
         raise MappingError(f"y maps outside bay range: y={y}, bay={bay_id}")
 
     # z -> level
     level_id = None
-    for level in LAYOUT.levels:
+    for level in layout.levels:
         if level.z_range.contains(z):
             level_id = level.level_id
             break

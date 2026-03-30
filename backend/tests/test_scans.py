@@ -126,6 +126,19 @@ def test_reject_out_of_bounds_y_high():
     assert response.status_code == 422
 
 
+def test_reject_unknown_warehouse_id():
+    payload = {
+        "warehouseID": "does-not-exist",
+        "palletID": "P1",
+        "x": 10.0,
+        "y": 10.0,
+        "z": 10.0,
+        "confidence": 0.99,
+    }
+    response = client.post("/scans/", json=payload)
+    assert response.status_code == 422
+
+
 def test_dedupe_same_scan_within_time_window():
     payload = {
         "palletID": f"P_DEDUPE_{uuid4().hex[:8]}",
