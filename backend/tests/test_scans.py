@@ -1,4 +1,5 @@
 from fastapi.testclient import TestClient
+from uuid import uuid4
 from app.main import app
 
 client = TestClient(app)
@@ -7,7 +8,7 @@ client = TestClient(app)
 # all valid record
 def test_create_scan():
     payload = {
-        "palletID": "P1",
+        "palletID": f"P1_{uuid4().hex[:8]}",
         "x": 10.0,
         "y": 10.0,
         "z": 10.0,
@@ -127,7 +128,7 @@ def test_reject_out_of_bounds_y_high():
 
 def test_dedupe_same_scan_within_time_window():
     payload = {
-        "palletID": "P_DEDUPE",
+        "palletID": f"P_DEDUPE_{uuid4().hex[:8]}",
         "x": 10.0,
         "y": 10.0,
         "z": 10.0,

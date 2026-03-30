@@ -1,28 +1,53 @@
-from typing import Any
+from typing import Any, Self
 
 from fastapi import APIRouter, HTTPException
-from pydantic import BaseModel, field_validator
+from pydantic import BaseModel, Field, field_validator, model_validator
 from sqlmodel import Session, select
 
 from app.db import engine
 from app.models import Scan
+from app.services.location_mapper import LAYOUT, ensure_coordinates_map
 from app.services.scan_service import ScanProcessingError, process_scan
 
 router = APIRouter(prefix="/scans")
 
 
 class ScanCreate(BaseModel):
-    palletID: str
-    x: float
-    y: float
-    z: float
-    confidence: float
+    """Scan payload; x/y/z are in warehouse inches (same units as ``location_mapper``)."""
+
+    palletID: str = Field(..., description="Barcode / license plate; may be empty for no-read.")
+    x: float = Field(
+        ...,
+        ge=LAYOUT.x_bounds.start,
+        lt=LAYOUT.x_bounds.end,
+        description="X position (inches); must fall inside a rack aisle band.",
+    )
+    y: float = Field(
+        ...,
+        ge=LAYOUT.y_bounds.start,
+        lt=LAYOUT.y_bounds.end,
+        description="Y position (inches) along bay depth.",
+    )
+    z: float = Field(
+        ...,
+        ge=LAYOUT.z_bounds.start,
+        lt=LAYOUT.z_bounds.end,
+        description="Z height (inches); must match a defined rack level band.",
+    )
+    confidence: float = Field(
+        ...,
+        ge=0.0,
+        le=1.0,
+        description="Read confidence; >= 0.99 required when palletID is non-empty.",
+    )
 
     @field_validator("palletID")
+    @classmethod
     def validate_pallet_id(cls, v: str) -> str:
         return v.strip()
 
     @field_validator("confidence")
+    @classmethod
     def validate_confidence(cls, v: float, info: Any) -> float:
         if v < 0.0 or v > 1.0:
             raise ValueError("confidence must be between 0.0 and 1.0")
@@ -32,6 +57,11 @@ class ScanCreate(BaseModel):
             raise ValueError("confidence must be >= 0.99")
 
         return float(v)
+
+    @model_validator(mode="after")
+    def coordinates_must_map_to_rack(self) -> Self:
+        ensure_coordinates_map(self.x, self.y, self.z)
+        return self
 
 
 @router.get("/", status_code=200)
