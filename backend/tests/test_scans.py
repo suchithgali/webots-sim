@@ -1,14 +1,17 @@
 from fastapi.testclient import TestClient
+from uuid import uuid4
 from app.main import app
 
 client = TestClient(app)
 
+
+# all valid record
 def test_create_scan():
     payload = {
-        "palletID": "P1",
-        "aisle": "01",
-        "bay": "02",
-        "level": 1,
+        "palletID": f"P1_{uuid4().hex[:8]}",
+        "x": 10.0,
+        "y": 10.0,
+        "z": 10.0,
         "confidence": 0.99,
     }
 
@@ -17,18 +20,19 @@ def test_create_scan():
 
     data = response.json()
     assert data["palletID"] == payload["palletID"]
-    assert data["aisle"] == payload["aisle"]
-    assert data["bay"] == payload["bay"]
-    assert data["level"] == payload["level"]
+    assert data["aisle"] == 1
+    assert data["bay"] == 1
+    assert data["level"] == 1
     assert data["confidence"] == payload["confidence"]
+    assert data["duplicate"] is False
 
 
-def reject_low_confidence():
+def test_reject_low_confidence():
     payload = {
         "palletID": "P1",
-        "aisle": "01",
-        "bay": "02",
-        "level": 1,
+        "x": 10.0,
+        "y": 10.0,
+        "z": 10.0,
         "confidence": 0.5,
     }
 
@@ -36,12 +40,12 @@ def reject_low_confidence():
     assert response.status_code == 422
 
 
-def reject_negative_level():
+def test_reject_out_of_bounds_z():
     payload = {
         "palletID": "P1",
-        "aisle": "01",
-        "bay": "02",
-        "level": -1,
+        "x": 10.0,
+        "y": 10.0,
+        "z": -1.0,
         "confidence": 0.99,
     }
 
@@ -49,12 +53,12 @@ def reject_negative_level():
     assert response.status_code == 422
 
 
-def reject_negative_confidence():
+def test_reject_negative_confidence():
     payload = {
         "palletID": "P1",
-        "aisle": "01",
-        "bay": "02",
-        "level": 1,
+        "x": 10.0,
+        "y": 10.0,
+        "z": 10.0,
         "confidence": -0.1,
     }
 
@@ -62,12 +66,12 @@ def reject_negative_confidence():
     assert response.status_code == 422
 
 
-def reject_confidence_above_one():
+def test_reject_confidence_above_one():
     payload = {
         "palletID": "P1",
-        "aisle": "01",
-        "bay": "02",
-        "level": 1,
+        "x": 10.0,
+        "y": 10.0,
+        "z": 10.0,
         "confidence": 1.1,
     }
 
@@ -75,27 +79,82 @@ def reject_confidence_above_one():
     assert response.status_code == 422
 
 
-def reject_empty_aisle():
+def test_reject_out_of_bounds_x():
     payload = {
         "palletID": "P1",
-        "aisle": "   ",
-        "bay": "02",
-        "level": 1,
+        "x": -1.0,
+        "y": 10.0,
+        "z": 10.0,
         "confidence": 0.99,
     }
 
     response = client.post("/scans/", json=payload)
     assert response.status_code == 422
 
-
-def reject_empty_bay():
+def test_reject_between_aisles():
     payload = {
         "palletID": "P1",
-        "aisle": "01",
-        "bay": "",
-        "level": 1,
+        "x": 150.0,
+        "y": 10.0,
+        "z": 10.0,
         "confidence": 0.99,
     }
 
     response = client.post("/scans/", json=payload)
     assert response.status_code == 422
+
+def test_reject_out_of_bounds_y_low():
+    payload = {
+        "palletID": "P1",
+        "x": 10.0, 
+        "y": -1.0, 
+        "z": 10.0, 
+        "confidence": 0.99
+    }
+    response = client.post("/scans/", json=payload)
+    assert response.status_code == 422
+
+def test_reject_out_of_bounds_y_high():
+    payload = {
+        "palletID": "P1", 
+        "x": 10.0, 
+        "y": 7000.0, 
+        "z": 10.0, 
+        "confidence": 0.99
+    }
+    response = client.post("/scans/", json=payload)
+    assert response.status_code == 422
+
+
+def test_reject_unknown_warehouse_id():
+    payload = {
+        "warehouseID": "does-not-exist",
+        "palletID": "P1",
+        "x": 10.0,
+        "y": 10.0,
+        "z": 10.0,
+        "confidence": 0.99,
+    }
+    response = client.post("/scans/", json=payload)
+    assert response.status_code == 422
+
+
+def test_dedupe_same_scan_within_time_window():
+    payload = {
+        "palletID": f"P_DEDUPE_{uuid4().hex[:8]}",
+        "x": 10.0,
+        "y": 10.0,
+        "z": 10.0,
+        "confidence": 0.99,
+    }
+
+    first_response = client.post("/scans/", json=payload)
+    assert first_response.status_code == 201
+    first_data = first_response.json()
+
+    second_response = client.post("/scans/", json=payload)
+    assert second_response.status_code == 201
+    second_data = second_response.json()
+
+    assert second_data["duplicate"] is True
+    assert second_data["scanID"] == first_data["scanID"]

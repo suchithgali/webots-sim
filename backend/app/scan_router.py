@@ -1,120 +1,106 @@
+from typing import Any, Self
+
 from fastapi import APIRouter, HTTPException
-from pydantic import BaseModel, field_validator
-from app.db import get_connection
-from typing import Any
+from pydantic import BaseModel, Field, field_validator, model_validator
+from sqlmodel import Session, select
 
-# Router for all scan-related API endpoints
+from app.db import engine
+from app.models import Scan
+from app.services.location_mapper import ensure_coordinates_map, get_layout
+from app.services.scan_service import ScanProcessingError, process_scan
+
 router = APIRouter(prefix="/scans")
+DEFAULT_LAYOUT = get_layout("default")
 
-# Request body structure for creating a scan
+
 class ScanCreate(BaseModel):
-    palletID: str
-    aisle: str
-    bay: str
-    level: int
-    confidence: float
+    """Scan payload; x/y/z are in warehouse inches (same units as ``location_mapper``)."""
+
+    warehouseID: str = Field(
+        default="default",
+        min_length=1,
+        description="Warehouse profile ID used to load mapping rules.",
+    )
+    palletID: str = Field(..., description="Barcode / license plate; may be empty for no-read.")
+    x: float = Field(
+        ...,
+        ge=DEFAULT_LAYOUT.x_bounds.start,
+        lt=DEFAULT_LAYOUT.x_bounds.end,
+        description="X position (inches); must fall inside a rack aisle band.",
+    )
+    y: float = Field(
+        ...,
+        ge=DEFAULT_LAYOUT.y_bounds.start,
+        lt=DEFAULT_LAYOUT.y_bounds.end,
+        description="Y position (inches) along bay depth.",
+    )
+    z: float = Field(
+        ...,
+        ge=DEFAULT_LAYOUT.z_bounds.start,
+        lt=DEFAULT_LAYOUT.z_bounds.end,
+        description="Z height (inches); must match a defined rack level band.",
+    )
+    confidence: float = Field(
+        ...,
+        ge=0.0,
+        le=1.0,
+        description="Read confidence; >= 0.99 required when palletID is non-empty.",
+    )
 
     @field_validator("palletID")
+    @classmethod
     def validate_pallet_id(cls, v: str) -> str:
-        # Allow empty palletID so the endpoint can record BARCODE_NOT_FOUND exceptions
         return v.strip()
 
-    @field_validator("aisle")
-    def validate_aisle(cls, v: str) -> str:
-        v = v.strip()
-        if v == "":
-            raise ValueError("aisle must be non-empty")
-        return v
+    @field_validator("warehouseID")
+    @classmethod
+    def validate_warehouse_id(cls, v: str) -> str:
+        return v.strip()
 
-    @field_validator("bay")
-    def validate_bay(cls, v: str) -> str:
-        v = v.strip()
-        if v == "":
-            raise ValueError("bay must be non-empty")
-        return v
-
-    @field_validator("level")
-    def validate_level(cls, v: int) -> int:
-        if v < 0:
-            raise ValueError("level must be >= 0")
-        return v
-    
     @field_validator("confidence")
+    @classmethod
     def validate_confidence(cls, v: float, info: Any) -> float:
         if v < 0.0 or v > 1.0:
             raise ValueError("confidence must be between 0.0 and 1.0")
 
-        # If we have a pallet barcode, enforce 99%+ confidence as required by the project
         pallet_id = info.data.get("palletID", "")
         if pallet_id != "" and v < 0.99:
             raise ValueError("confidence must be >= 0.99")
 
         return float(v)
 
-# Read all rows from the Scan table and return them as a list of JSON objects
+    @model_validator(mode="after")
+    def coordinates_must_map_to_rack(self) -> Self:
+        ensure_coordinates_map(self.x, self.y, self.z, warehouse_id=self.warehouseID)
+        return self
+
+
 @router.get("/", status_code=200)
 def list_scans():
-    connect = get_connection()
-    rows = connect.execute("SELECT * FROM Scan").fetchall()
-    connect.close()
-    return [dict(row) for row in rows]
+    with Session(engine) as session:
+        scans = session.exec(select(Scan)).all()
+    return [s.model_dump() for s in scans]
 
-# Read a single row from the Scan table by scanID
+
 @router.get("/{scan_id}", status_code=200)
 def get_scan(scan_id: int):
-    connect = get_connection()
-    try:
-        row = connect.execute(
-            "SELECT * FROM Scan WHERE scanID = ?", (scan_id,)
-        ).fetchone()
-    finally:
-        connect.close()
-
+    with Session(engine) as session:
+        row = session.get(Scan, scan_id)
     if row is None:
         raise HTTPException(status_code=404, detail="Scan not found")
+    return row.model_dump()
 
-    return dict(row)
 
-# Insert a new row into the scan table and return that new scan as JSON
 @router.post("/", status_code=201)
 def create_scan(scan: ScanCreate):
-
-    connect = get_connection()
-
-    # trigger exception if barcode not detected
-    if not scan.palletID or scan.palletID.strip() == "":
-        cursor = connect.execute(
-            """
-            INSERT INTO Exceptions (aisle, bay, level, reason)
-            VALUES (?, ?, ?, ?)
-            """,
-            (scan.aisle, scan.bay, scan.level, "BARCODE_NOT_FOUND"),
+    try:
+        return process_scan(
+            warehouse_id=scan.warehouseID,
+            pallet_id=scan.palletID,
+            x=scan.x,
+            y=scan.y,
+            z=scan.z,
+            confidence=scan.confidence,
         )
-        exception_id = cursor.lastrowid
-        connect.commit()
-        connect.close()
-        raise HTTPException(
-            status_code=422,
-            detail=f"Barcode not detected. Exception recorded with exceptionID {exception_id}."
-        )
-
-    # normal scan logic
-    confidence_value = float(scan.confidence)
-
-    cursor = connect.execute(
-        "INSERT INTO Scan (palletID, aisle, bay, level, confidence) VALUES (?, ?, ?, ?, ?)",
-        (scan.palletID, scan.aisle, scan.bay, scan.level, confidence_value),
-    )
-
-    scan_id = cursor.lastrowid
-    connect.commit()
-    connect.close()
-
-    return {
-        "scanID": scan_id,
-        "palletID": scan.palletID,
-        "aisle": scan.aisle,
-        "bay": scan.bay,
-        "level": scan.level,
-        "confidence": confidence_value,
-    }
+    except ScanProcessingError as e:
+        raise HTTPException(status_code=e.status_code, detail=e.detail)
