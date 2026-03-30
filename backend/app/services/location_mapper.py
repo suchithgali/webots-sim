@@ -57,17 +57,10 @@ class WarehouseLayout:
 
 
 def build_reference_layout() -> WarehouseLayout:
-    aisles: List[AisleBand] = []
-
-    # Reference values from layout notes (inches); tune these per warehouse
+    # Reference spacing values (inches)
     aisle_width = 100.0
     aisle_gap = 128.0
-    aisle_count = 22
-    x = 0.0
-
-    for aisle_id in range(1, aisle_count + 1):
-        aisles.append(AisleBand(aisle_id=aisle_id, x_range=Interval(x, x + aisle_width)))
-        x = x + aisle_width + aisle_gap
+    aisles: List[AisleBand] = []
 
     # Vertical shelf bands (z -> level)
     levels = [
@@ -89,7 +82,8 @@ def build_reference_layout() -> WarehouseLayout:
         bay_pitch=100.0,
         bay_count=60,
         levels=levels,
-        x_bounds=Interval(0.0, x),
+        # We only enforce non-negative x; aisle ID is computed from spacing formula.
+        x_bounds=Interval(0.0, float("inf")),
         y_bounds=Interval(0.0, 6000.0),
         z_bounds=Interval(0.0, 288.0),
         blocked_areas=blocked,
@@ -110,7 +104,7 @@ def ensure_coordinates_map(x: float, y: float, z: float) -> None:
 def map_to_location(x: float, y: float, z: float) -> Tuple[int, int, int]:
     # Deterministic mapping entrypoint used by backend ingestion
     # Global bounds
-    if not LAYOUT.x_bounds.contains(x):
+    if x < LAYOUT.x_bounds.start:
         raise MappingError(f"x out of bounds: {x}")
     if not LAYOUT.y_bounds.contains(y):
         raise MappingError(f"y out of bounds: {y}")
@@ -121,14 +115,15 @@ def map_to_location(x: float, y: float, z: float) -> Tuple[int, int, int]:
         if area.contains(x, y):
             raise MappingError(f"point is inside blocked area: x={x}, y={y}")
 
-    # x -> aisle
-    aisle_id = None
-    for aisle in LAYOUT.aisles:
-        if aisle.x_range.contains(x):
-            aisle_id = aisle.aisle_id
-            break
-    if aisle_id is None:
+    # x -> aisle using spacing formula; no fixed aisle-count dependency.
+    aisle_width = 100.0
+    aisle_gap = 128.0
+    aisle_pitch = aisle_width + aisle_gap
+    slot = int(x // aisle_pitch)
+    offset_in_slot = x - (slot * aisle_pitch)
+    if offset_in_slot >= aisle_width:
         raise MappingError(f"x is between aisles: {x}")
+    aisle_id = slot + 1
 
     # y -> bay
     relative_y = y - LAYOUT.bay_origin_y

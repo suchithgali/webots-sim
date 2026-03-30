@@ -19,7 +19,6 @@ class ScanCreate(BaseModel):
     x: float = Field(
         ...,
         ge=LAYOUT.x_bounds.start,
-        lt=LAYOUT.x_bounds.end,
         description="X position (inches); must fall inside a rack aisle band.",
     )
     y: float = Field(
