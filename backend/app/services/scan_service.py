@@ -1,4 +1,4 @@
-from sqlalchemy import desc, text
+from sqlalchemy import text
 from sqlmodel import Session, select
 
 from app.db import engine
@@ -66,7 +66,7 @@ def process_scan(
                     f"datetime(Scan.timestamp) >= datetime('now', '-{DUPLICATE_WINDOW_SECONDS} seconds')"
                 )
             )
-            .order_by(desc(Scan.scanID))
+            .order_by(text("scanID DESC"))
             .limit(1)
         ).first()
 
