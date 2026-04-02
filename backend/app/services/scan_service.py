@@ -2,7 +2,7 @@ from sqlalchemy import text
 from sqlmodel import Session, select
 
 from app.db import engine
-from app.models import Scan, WarehouseException, TestScan
+from app.models import WarehouseException, TestScan
 from app.services.location_mapper import map_to_location, MappingError
 
 
