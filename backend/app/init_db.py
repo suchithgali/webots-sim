@@ -6,7 +6,7 @@ from sqlmodel import SQLModel
 from app.db import engine
 
 # Import models so they register on SQLModel.metadata
-from app.models import Scan, Skeleton, WarehouseException  # noqa: F401
+from app.models import Scan, Skeleton, WarehouseException, TestScan  # noqa: F401
 
 backend_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.append(backend_dir)

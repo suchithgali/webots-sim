@@ -23,6 +23,23 @@ class Scan(SQLModel, table=True):
         sa_column=Column(DateTime, server_default=text("CURRENT_TIMESTAMP")),
     )
 
+class TestScan(SQLModel, table=True):
+    __tablename__ = "TestScan"
+    __table_args__ = (
+        Index("idx_testscan_pallet", "palletID"),
+        Index("idx_testscan_location", "aisle", "bay", "level"),
+    )
+
+    scanID: Optional[int] = Field(default=None, primary_key=True)
+    palletID: str = Field(sa_type=Text)
+    aisle: str = Field(sa_type=Text)
+    bay: str = Field(sa_type=Text)
+    level: int
+    confidence: float = 1.0
+    timestamp: Optional[datetime] = Field(
+        default=None,
+        sa_column=Column(DateTime, server_default=text("CURRENT_TIMESTAMP")),
+    )
 
 class WarehouseException(SQLModel, table=True):
     __tablename__ = "Exceptions"

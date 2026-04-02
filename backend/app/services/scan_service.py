@@ -2,7 +2,7 @@ from sqlalchemy import text
 from sqlmodel import Session, select
 
 from app.db import engine
-from app.models import Scan, WarehouseException
+from app.models import Scan, WarehouseException, TestScan
 from app.services.location_mapper import map_to_location, MappingError
 
 
@@ -56,14 +56,14 @@ def process_scan(
 
     with Session(engine) as session:
         existing_row = session.exec(
-            select(Scan)
-            .where(Scan.palletID == pallet_id)
-            .where(Scan.aisle == str(mapped_aisle))
-            .where(Scan.bay == str(mapped_bay))
-            .where(Scan.level == mapped_level)
+            select(TestScan)
+            .where(TestScan.palletID == pallet_id)
+            .where(TestScan.aisle == str(mapped_aisle))
+            .where(TestScan.bay == str(mapped_bay))
+            .where(TestScan.level == mapped_level)
             .where(
                 text(
-                    f"datetime(Scan.timestamp) >= datetime('now', '-{DUPLICATE_WINDOW_SECONDS} seconds')"
+                    f"datetime(TestScan.timestamp) >= datetime('now', '-{DUPLICATE_WINDOW_SECONDS} seconds')"
                 )
             )
             .order_by(text("scanID DESC"))
@@ -85,7 +85,7 @@ def process_scan(
             }
 
         confidence_value = float(confidence)
-        row = Scan(
+        row = TestScan(
             palletID=pallet_id,
             aisle=str(mapped_aisle),
             bay=str(mapped_bay),
