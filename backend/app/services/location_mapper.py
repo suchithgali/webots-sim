@@ -137,30 +137,44 @@ def map_to_location(
         if area.contains(x, y):
             raise MappingError(f"point is inside blocked area: x={x}, y={y}")
 
-    # x -> aisle (explicit per-warehouse aisle bands from JSON)
+    # The JSON config defines each aisle as a "band" spanning a start and end X coordinate.
     aisle_id = None
+    # Loop through all available aisles configured for this warehouse.
     for aisle in layout.aisles:
+        # Check if the drone's X coordinate falls strictly within this aisle's boundaries.
         if aisle.x_range.contains(x):
+            # If it does, save this aisle's ID and stop looking.
             aisle_id = aisle.aisle_id
             break
+    # If the loop finished and no aisle contained the X coordinate, fail with an error.
     if aisle_id is None:
         raise MappingError(f"x is outside configured aisle bands: {x}")
 
-    # y -> bay
+    # Bays are continuous slots along the length of an aisle.
+    # First, subtract the starting Y offset (origin) so we get the distance from the very start of the bay row.
     relative_y = y - layout.bay_origin_y
+    # Divide that distance by the width of a single bay (bay_pitch) to see how many bays deep we are.
+    # Using integer division (//) truncates the decimal, turning it into a neat 0-based array index.
     bay_index_zero_based = int(relative_y // layout.bay_pitch)
+    # Backend human-readable bays are 1-based, so add 1 to the index.
     bay_id = bay_index_zero_based + 1
+    # Verify the calculated bay exists (e.g., we haven't flown past bay 10).
     if bay_id < 1 or bay_id > layout.bay_count:
         raise MappingError(f"y maps outside bay range: y={y}, bay={bay_id}")
 
-    # z -> level
+    # Very similar to Aisles, the JSON defines vertical height bands for each shelf level.
     level_id = None
+    # Loop through the configured vertical levels (e.g. Level 1: 0-50 in, Level 2: 51-150 in).
     for level in layout.levels:
+        # Check if the scanned height (Z) falls inside this specific level's band.
         if level.z_range.contains(z):
+            # If it does, save the level ID (e.g. 1 or 2) and stop looking.
             level_id = level.level_id
             break
+    # If no level band contained the Z coordinate, throw an error.
     if level_id is None:
         raise MappingError(f"invalid rack height z={z} (no matching level)")
 
+    # Finally, return the successfully mapped human-readable coordinates to the caller!
     return aisle_id, bay_id, level_id
 

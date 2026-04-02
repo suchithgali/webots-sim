@@ -2,7 +2,7 @@ from sqlalchemy import text
 from sqlmodel import Session, select
 
 from app.db import engine
-from app.models import WarehouseException, TestScan
+from app.models import WarehouseException, Scan
 from app.services.location_mapper import map_to_location, MappingError
 
 
@@ -56,14 +56,14 @@ def process_scan(
 
     with Session(engine) as session:
         existing_row = session.exec(
-            select(TestScan)
-            .where(TestScan.palletID == pallet_id)
-            .where(TestScan.aisle == str(mapped_aisle))
-            .where(TestScan.bay == str(mapped_bay))
-            .where(TestScan.level == mapped_level)
+            select(Scan)
+            .where(Scan.palletID == pallet_id)
+            .where(Scan.aisle == str(mapped_aisle))
+            .where(Scan.bay == str(mapped_bay))
+            .where(Scan.level == mapped_level)
             .where(
                 text(
-                    f"datetime(TestScan.timestamp) >= datetime('now', '-{DUPLICATE_WINDOW_SECONDS} seconds')"
+                    f"datetime(Scan.timestamp) >= datetime('now', '-{DUPLICATE_WINDOW_SECONDS} seconds')"
                 )
             )
             .order_by(text("scanID DESC"))
@@ -84,15 +84,23 @@ def process_scan(
                 "duplicate": True,
             }
 
+        # The backend knows exactly which table to insert the data into because 
+        # we explicitly instantiate the `Scan` SQLModel class here.
         confidence_value = float(confidence)
-        row = TestScan(
+        
+        # When we create this object, SQLModel knows to map it to the "Scan" table 
+        # in SQLite because in models.py, Scan has `__tablename__ = "Scan"`.
+        row = Scan(
             palletID=pallet_id,
             aisle=str(mapped_aisle),
             bay=str(mapped_bay),
             level=int(mapped_level),
             confidence=confidence_value,
         )
+        
+        # Adds the row to the active transaction queue
         session.add(row)
+        # Physically executes the INSERT INTO Scan ... SQL command
         session.commit()
         session.refresh(row)
         scan_id = row.scanID
