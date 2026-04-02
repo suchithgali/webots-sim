@@ -13,7 +13,7 @@ from controller import Robot
 
 from drone_state import DroneState
 from utils import get_telemetry_path, clamp
-from waypoint_planner import WaypointPlanner  # FIX 3: was never imported — caused NameError crash
+from waypoint_planner import WaypointPlanner 
 
 
 class Mavic(Robot):
@@ -29,6 +29,10 @@ class Mavic(Robot):
     SPIN_POSITION_GAIN    = 5.0
 
     def __init__(self):
+        """
+        Initializes the drone, connects to Webots sensors, and prepares the quadcopter motors. 
+        Also sets up state tracking and threads.
+        """
         Robot.__init__(self)
         self.time_step = int(self.getBasicTimeStep())
 
@@ -97,20 +101,19 @@ class Mavic(Robot):
         self.scanned_detail = []
         self.scan_throttle  = 0
         self.is_scanning    = False
-        self._scan_lock     = threading.Lock()  # FIX 5: guard shared scan state from race condition
+        self._scan_lock     = threading.Lock() 
 
-    # ------------------------------------------------------------------ FSM --
     def _set_state(self, new_state: DroneState):
+        """
+        Handles Finite State Machine (FSM) transitions (e.g. TAKEOFF -> NAVIGATING).
+        Manages initial configuration for camera pitch and target setups when entering a state.
+        """
         if new_state is None or new_state == self.state:
             return
         prev = self.state
         self.state = new_state
         print(f'[Mavic FSM] {prev.name} -> {new_state.name}', flush=True)
 
-        # FIX 1: reordered so CAPTURING is checked before NAVIGATING, then
-        # the CAPTURING→NAVIGATING altitude restore is an inner check — the old
-        # code had a dead elif that could never be reached, so altitude was
-        # never restored and the drone climbed higher each scan stop.
         if new_state == DroneState.TAKEOFF:
             self.target_altitude = 1.3
             self.camera_pitch_motor.setPosition(0.0)
@@ -127,8 +130,11 @@ class Mavic(Robot):
         elif new_state == DroneState.LANDING:
             self.camera_pitch_motor.setPosition(0.0)
 
-    # --------------------------------------------------------- interrupts ----
     def _check_interrupts(self):
+        """
+        Interrupt handler running every physics tick. Monitors health and sensors.
+        If the range-finder detects an obstacle within OBSTACLE_THRESHOLD_M, it aborts the path and sidesteps.
+        """
         if self.drone_damaged:
             self._set_state(DroneState.FAILURE)
             return
@@ -194,7 +200,6 @@ class Mavic(Robot):
         print(f"[AVOID] Sidestep → ({sidestep_x:.2f}, {sidestep_y:.2f}), "
               f"then resume → ({orig_target[0]:.2f}, {orig_target[1]:.2f})", flush=True)
 
-    # ------------------------------------------------------- barcode scan ----
     def _save_barcode(self, data, kind):
         log_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "scanned_barcodes.txt")
         with open(log_path, "a") as f:
@@ -237,8 +242,6 @@ class Mavic(Robot):
 
             for barcode in barcodes:
                 barcode_data = barcode.data.decode("utf-8")
-                # FIX 5: lock both the check and the write atomically to prevent
-                # duplicate entries caused by the background thread race condition.
                 with self._scan_lock:
                     if barcode_data in self.scanned_codes:
                         print(f"[Re-detected]: {barcode_data}", flush=True)
@@ -251,6 +254,10 @@ class Mavic(Robot):
             self.is_scanning = False
 
     def _scan_barcodes(self):
+        """
+        Triggers the camera. Offloads the heavy OpenCV image processing to a background thread
+        so that barcode scanning doesn't block the physics engine from ticking.
+        """
         if self.is_scanning:
             return
         image = self.camera.getImage()
@@ -267,7 +274,6 @@ class Mavic(Robot):
         worker.daemon = True
         worker.start()
 
-    # ------------------------------------------------------ flight helpers ---
     def set_position(self, pos):
         self.current_pose = pos
 
@@ -308,58 +314,95 @@ class Mavic(Robot):
         return False, yaw_correction, pitch_corr
 
     def _navigate_forward(self):
+        """
+        Calculates the required yaw (rotation) and pitch (forward tilt) to move strictly towards the target.
+        Applies braking math as the drone nears its destination coordinate.
+        """
+        # Calculates the X and Y difference between where the drone is and where it wants to be
         dx = self.target_position[0] - self.current_pose[0]
         dy = self.target_position[1] - self.current_pose[1]
+
+        # Computes the 2D Euclidean distance (straight line) to the target
         xy_dist = np.sqrt(dx ** 2 + dy ** 2)
 
+        # If the drone is more than 10cm away from the target horizontally
         if xy_dist > 0.1:
+            # Use arctangent to figure out the absolute angle (yaw) it needs to face
             desired_yaw = np.arctan2(dy, dx)
         else:
-            # Maintain current heading and stable 2D hover when moving vertically
+            # If the drone is already within 10cm, it shouldn't try to change its heading (prevents spinning wildly at the target)
             desired_yaw = self.current_pose[5]
+            # It sets its target yaw to the current yaw to lock it in
             self.target_position[2] = desired_yaw
+            # Calculates minor pitch adjustments just to stay hovering perfectly in place
             _, pitch_corr = self._hold_position(self.target_position[0:2])
+            # Returns 0 for yaw correction, and the hovering pitch correction
             return 0.0, pitch_corr
 
+        # Saves the calculated desired heading
         self.target_position[2] = desired_yaw
 
+        # Calculates how many radians the drone needs to rotate to face the target
         angle_left = desired_yaw - self.current_pose[5]
+
+        # Normalizes the angle to be strictly between 0 and 2*Pi
         angle_left = (angle_left + 2 * np.pi) % (2 * np.pi)
+
+        # Converts the angle to be between -Pi and Pi (so the drone turns left for negative, right for positive, taking the shortest path)
         if angle_left > np.pi:
             angle_left -= 2 * np.pi
 
-        # Actively correct lateral wind-drift using roll, but only if we are mostly facing the right direction
+        # If the drone is facing relatively close to the correct direction
         if abs(angle_left) < 0.3:
             yaw = self.current_pose[5]
+            # Calculate how far sideways the drone has drifted off the straight line path due to wind or momentum
             error_left = -dx * np.sin(yaw) + dy * np.cos(yaw)
+            # Apply a correction to stay perfectly on the invisible track line
             self.roll_disturbance = clamp(error_left * self.SPIN_POSITION_GAIN, -0.5, 0.5)
         else:
+            # Temporarily disable lateral corrections if the drone is busy doing a hard turn
             self.roll_disturbance = 0.0
 
+        # If the drone is more than 2 meters away
         if xy_dist > 2.0:
+            # And it's facing the wrong way 
             if abs(angle_left) > 0.6:
+                # Turn aggressively, but don't pitch forward yet 
                 yaw_disturbance   = clamp(angle_left * 0.6, -self.MAX_YAW_DISTURBANCE, self.MAX_YAW_DISTURBANCE)
                 pitch_disturbance = 0.0
             else:
+                # Otherwise it means it iS facing the right way: and use a smaller yaw correction and pitch forward aggressively to go fast
                 yaw_disturbance   = clamp(angle_left * 0.3, -0.3, 0.3)
                 pitch_disturbance = self.MAX_PITCH_DISTURBANCE * 0.6
+                
+        # If the drone is closer between 0.1m and 2.0m
         elif xy_dist > 0.1:
+            # Always try to turn toward the target
             yaw_disturbance = clamp(angle_left, -self.MAX_YAW_DISTURBANCE, self.MAX_YAW_DISTURBANCE)
+            # If the drone is pointing more than 0.4 radians away from the target, level out (0 pitch) to do an in-place turn
             if abs(angle_left) > 0.4:
                 pitch_disturbance = 0.0
             else:
-                # Add distance-based braking: if we are close to the target, slow down linearly!
+                # Creates a multiplier that drops from 1.0 to 0.2 as the drone gets closer to the 0.1m mark
                 dist_factor = clamp(xy_dist / 1.5, 0.2, 1.0)
+                # Scales the forward pitch based on distance (braking) and how straight the drone is facing
                 pitch_disturbance = clamp(np.log10(abs(angle_left) + 0.001), self.MAX_PITCH_DISTURBANCE, 0.1) * dist_factor
+                
+        # If the drone is practically on top of the target
         else:
-            # If we are simply hovering/ascending vertically (xy_dist < 0.1), don't apply any forward/backward pitch.
+            # Just correct heading, do not push forward or backward at all
             yaw_disturbance = clamp(angle_left, -self.MAX_YAW_DISTURBANCE, self.MAX_YAW_DISTURBANCE)
             pitch_disturbance = 0.0
 
+        # Return the computed steering inputs to the main loop
         return yaw_disturbance, pitch_disturbance
 
-    # ---------------------------------------------------------- main loop ----
     def run(self):
+        """
+        The core simulator loop.
+        Gets waypoints, reads sensors every tick, runs the State Machine logic, 
+        and mixes X/Y/Z adjustments into quadcopter motor velocities.
+        """
         config_path = os.path.join(
             os.path.dirname(os.path.abspath(__file__)),
             "..", "backend", "app", "configs", "warehouses", "default.json"
@@ -370,9 +413,6 @@ class Mavic(Robot):
                 warehouse_config = json.load(f)
             planner   = WaypointPlanner(warehouse_config)
             waypoints = planner.build()
-            # FIX 2: removed the two hardcoded waypoints that were appended here
-            # ([6.5, 3.0] and [-8.5, 3.0]) — WaypointPlanner.build() already
-            # appends a config-derived home waypoint at the end.
         except FileNotFoundError:
             print(f"[MISSION] FATAL: Config not found at {config_path}", flush=True)
             self._set_state(DroneState.FAILURE)
